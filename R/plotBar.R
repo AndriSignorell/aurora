@@ -112,10 +112,12 @@
 plotBar <- function(height,
                     bg = NULL,
                     col = NULL,
-                    axes = TRUE, box=TRUE,
-                    args.grid = NULL,
-                    args.text = NULL,
-                    args.connlines = NULL,
+                    axes = TRUE, 
+                    yax = NULL,
+                    box=FALSE,
+                    grid = NULL,
+                    text = NULL,
+                    connlines = NULL,
                     ...) {
   
   .withGraphicsState({
@@ -156,30 +158,33 @@ plotBar <- function(height,
                     ...)
     
     # --- GRID Layer ---
-    if (!is.null(args.grid)) {
+    if (!is.null(grid)) {
       
-      args.grid <- .mergeArgs(
+      if(isTRUE(grid))
+        grid <- NULL
+      
+      grid <- .mergeArgs(
         defaults = list(
           horiz = horiz,
           col   = "grey85",
           lty   = 1,
           lwd   = 1
         ),
-        user = args.grid,
+        user = grid,
         forbidden = c("horiz"),
         warn = TRUE
       )
       
       if (!horiz) {
         abline(h = axTicks(2),
-               col = args.grid$col,
-               lty = args.grid$lty,
-               lwd = args.grid$lwd)
+               col = grid$col,
+               lty = grid$lty,
+               lwd = grid$lwd)
       } else {
         abline(v = axTicks(1),
-               col = args.grid$col,
-               lty = args.grid$lty,
-               lwd = args.grid$lwd)
+               col = grid$col,
+               lty = grid$lty,
+               lwd = grid$lwd)
       }
     }
     
@@ -191,74 +196,82 @@ plotBar <- function(height,
                  ...)
     
     # --- Zero-Linie nach Balken ---
-    usr <- par("usr")
+    # ******* ???? do we need a zero line ???? ************
     
-    if (!horiz) {
-      if (!par("ylog") && usr[3] <= 0 && usr[4] >= 0) {
-        abline(h = 0, lwd = 1.5)
-      }
-    } else {
-      if (!par("xlog") && usr[1] <= 0 && usr[2] >= 0) {
-        abline(v = 0, lwd = 1.5)
-      }
-    }
+    # usr <- par("usr")
+    # 
+    # if (!horiz) {
+    #   if (!par("ylog") && usr[3] <= 0 && usr[4] >= 0) {
+    #     abline(h = 0, lwd = 1.5)
+    #   }
+    # } else {
+    #   if (!par("xlog") && usr[1] <= 0 && usr[2] >= 0) {
+    #     abline(v = 0, lwd = 1.5)
+    #   }
+    # }
     
     # --- Connecting Lines (nur stacked) ---
-    if (!is.null(args.connlines)) {
+    if (!is.null(connlines)) {
       
-      if (isTRUE(dots$beside)) {
+      if (isTRUE(beside)) {
         warning("Connecting lines only supported for stacked barplots.")
+        
       } else {
         
-        width <- dots$width %||% 1
+        # width <- dots$width %||% 1
         
-        args.connlines <- .mergeArgs(
+        if(isTRUE(connlines))
+          connlines <- NULL
+        
+        connlines <- .mergeArgs(
           defaults = list(
             height = height,
             b      = b,
             horiz  = horiz,
-            width  = width,
+            width  = 1,
             col    = "grey40",
             lwd    = 1,
             lty    = 2
           ),
-          user = args.connlines,
+          user = connlines,
           forbidden = c("height","b","horiz","width"),
           warn = TRUE
         )
         
-        do.call(.barConnLines, args.connlines)
+        do.call(.barConnLines, connlines)
       }
     }
     
     # --- Text Layer ---
-    if (!is.null(args.text)) {
-      
-      args.text <- .mergeArgs(
-        defaults = list(
-          height = height,
-          b      = b,
-          beside = beside,
-          horiz  = horiz,
-          labels = height,
-          pos    = "mid",
-          offset = 0
-        ),
-        user = args.text,
-        forbidden = c("height","b","horiz"),
-        warn = TRUE
-      )
-      
-      do.call(barText, args.text)
-    }
+    .callIf(barText,
+            text,
+            defaults = list(
+                height = height,
+                b      = b,
+                horiz  = horiz,
+                beside = beside,
+                labels = height,
+                pos    = "mid",
+                offset = 0
+              ),
+              forbidden = c("height","b","horiz", "beside"),
+              warn = TRUE
+            )
+
     
     # --- Numerische Achse ---
     if (isTRUE(axes)) {
-      if (!horiz) axis(2) else axis(1)
-    }
-    
-    if(box) 
-      box()
+      
+      if (!horiz) {
+        .drawAxis(2, yax)
+      } else {
+        .drawAxis(1, yax)
+      }
+    }    
+
+        
+    # draw box if box != FALSE || NA
+    .callIf(graphics::box, box)
     
     invisible(b)
     
@@ -267,8 +280,103 @@ plotBar <- function(height,
 
 
 
-
 # == internal helper functions =======================================
+
+.applyFmt <- function(x, fmt) {
+  
+  if (is.null(fmt))
+    return(x)
+  
+  if (isTRUE(fmt))
+    return(fm(x))
+  
+  if (is.function(fmt))
+    return(fmt(x))
+  
+  do.call(fm, modifyList(list(x = x), fmt))
+}
+
+
+
+.splitAxisArgs <- function(ax) {
+  
+  if (is.null(ax))
+    return(list(fmt = NULL, axis = NULL))
+  
+  fm_names <- names(formals(fm))
+  
+  # axis + par-Achsenparameter erlauben
+  axis_names <- unique(c(
+    names(formals(graphics::axis)),
+    grep("\\.axis$", names(par()), value = TRUE),
+    "col", "lwd", "lty", "tck", "las", "cex", "font"
+  ))
+  
+  fmt  <- ax[names(ax) %in% fm_names]
+  axis <- ax[names(ax) %in% axis_names]
+  
+  axis <- axis[names(axis) != "labels"]
+  
+  # # intuitive Interpretation
+  # if ("col" %in% names(axis)) {
+  #   
+  #   # wenn col.axis nicht gesetzt ist → Textfarbe übernehmen
+  #   if (!("col.axis" %in% names(axis)))
+  #     axis$col.axis <- axis$col
+  #   
+  #   # col bleibt für Achsenlinie
+  # }
+  
+  # intuitive Interpretation
+  has_col      <- "col" %in% names(axis)
+  has_col_axis <- "col.axis" %in% names(axis)
+
+  if (has_col && has_col_axis){
+    tmp <- axis$col.axis
+    axis$col.axis <- axis$col
+    axis$col <- tmp
+  }
+
+  
+  if (has_col && !has_col_axis){
+    axis$col.axis <- axis$col
+    axis$col <- par("col.axis")
+  }
+  
+  if (!has_col && has_col_axis){
+    axis$col <- axis$col.axis
+    axis$col.axis <- par("col")
+  }
+  
+  if("cex" %in% names(axis))
+    axis$cex.axis <- axis$cex
+  
+  if("font" %in% names(axis))
+    axis$font.axis <- axis$font
+  
+  
+  list(fmt = fmt, axis = axis)
+}
+
+
+
+.drawAxis <- function(side, ax) {
+  
+  at <- axTicks(side)
+  
+  sp <- .splitAxisArgs(ax)
+  
+  labs <- if (length(sp$fmt)) {
+    do.call(fm, modifyList(list(x=at), sp$fmt))
+  } else {
+    at
+  }
+  
+  do.call(
+    graphics::axis,
+    c(list(side=side, at=at, labels=labs), sp$axis)
+  )
+}
 
 
 .drawGridY <- function(horiz, col, lty, lwd, ...) {

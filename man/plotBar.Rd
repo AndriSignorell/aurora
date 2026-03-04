@@ -9,8 +9,8 @@ plotBar(
   bg = NULL,
   col = NULL,
   axes = TRUE,
-  box = TRUE,
-  args.grid = NULL,
+  box = FALSE,
+  grid = NULL,
   args.text = NULL,
   args.connlines = NULL,
   ...
@@ -27,15 +27,6 @@ Passed directly to \code{\link[graphics]{barplot}}.}
 \item{axes}{Logical. Should the numeric axis be drawn? Default is \code{TRUE}.}
 
 \item{box}{logical, defining if a box should be drawn or not}
-
-\item{args.grid}{Optional list of arguments controlling grid lines.
-Supported elements include:
-\describe{
-\item{col}{Grid line color (default: \code{"grey85"})}
-\item{lty}{Line type (default: \code{1})}
-\item{lwd}{Line width (default: \code{1})}
-}
-Grid orientation is determined automatically.}
 
 \item{args.text}{Optional list of arguments passed to \code{\link{barText}}
 to draw value labels. Common arguments include:
@@ -56,6 +47,15 @@ Typical elements include:
 
 \item{...}{Additional arguments passed to \code{\link[graphics]{barplot}}
 and graphical parameters (via \code{par()}).}
+
+\item{args.grid}{Optional list of arguments controlling grid lines.
+Supported elements include:
+\describe{
+\item{col}{Grid line color (default: \code{"grey85"})}
+\item{lty}{Line type (default: \code{1})}
+\item{lwd}{Line width (default: \code{1})}
+}
+Grid orientation is determined automatically.}
 }
 \value{
 Invisibly returns the midpoints of the bars

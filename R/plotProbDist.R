@@ -24,11 +24,10 @@
 #' \code{\link{curve}()}
 #' 
 #' @return nothing returned 
-#' @author Andri Signorell <andri@@signorell.net> 
+#' 
 #' @seealso \code{\link{shade}}, \code{\link{curve}}, \code{\link{polygon}} 
 #' 
 #' @examples
-#' 
 #' # plot t-distribution
 #' plotProbDist(breaks=c(-6, -2.3, 1.5, 6), 
 #'              function(x) dt(x, df=8), 
@@ -53,8 +52,6 @@
 #'              col=c("deeppink4", "skyblue3"), density=c(0, 20))
 #' 
 #' 
-
-
 
 #' @export
 plotProbDist <- function(breaks, FUN, blab=NULL, main="", xlim=NULL, 

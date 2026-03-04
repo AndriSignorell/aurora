@@ -58,36 +58,6 @@ often needed in theory texts for classes in statistics.
 The function sets up a two-step plot procedure based on curve() and shade()
 with additional labelling for convenience.
 }
-\examples{
-
-# plot t-distribution
-plotProbDist(breaks=c(-6, -2.3, 1.5, 6), 
-             function(x) dt(x, df=8), 
-             blab=c("A","B"), xlim=c(-4,4), alab=NA,
-             main="t-Distribution (df=8)",
-             col=c("deeppink4", "skyblue3", "darkorange2"), 
-             density=c(20, 7))
-
-# Normal
-plotProbDist(breaks=c(-10, -1, 12), 
-             function(x) dnorm(x, mean=2, sd=2), 
-             blab="A", xlim=c(-7,10),
-             main="Normal-Distribution N(2,2)",
-             col=c("deeppink4", "skyblue3", "deeppink4"), 
-             density=c(20, 7, 20))
-
-# same for Chi-square
-plotProbDist(breaks=c(0, 15, 35), 
-             function(x) dchisq(x, df=8), 
-             blab="B", xlim=c(0, 30),
-             main=expression(paste(chi^2-Distribution, " (df=8)")),
-             col=c("deeppink4", "skyblue3"), density=c(0, 20))
-
-
-}
 \seealso{
 \code{\link{shade}}, \code{\link{curve}}, \code{\link{polygon}}
-}
-\author{
-Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}
 }
