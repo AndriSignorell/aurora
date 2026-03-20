@@ -38,8 +38,8 @@
 #' @seealso \code{\link{lines}}, \code{\link{lines.loess}}, \code{\link{lm}} 
 #' @keywords aplot math
 #' @examples
-#' 
-#' opar <- par(mfrow=c(1,2))
+#' op <- par(no.readonly = TRUE)
+#' par(mfrow=c(1,2))
 #' 
 #' plot(hp ~ wt, mtcars)
 #' lines(lm(hp ~ wt, mtcars), col="steelblue")
@@ -60,7 +60,7 @@
 #' plot(dist ~ speed, cars)
 #' lines(lm(dist ~ poly(speed, degree=2), cars), col="deeppink4")
 #' 
-#' par(opar)
+#' par(op)
 #' 
 
 #' @rdname linesLm

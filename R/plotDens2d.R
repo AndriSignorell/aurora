@@ -10,7 +10,28 @@
 # 
 
 
-plotDens2D <- function(x, y, type=c("contour", "image", "persp"), ...){
+plotDens2D <- function( x, y, 
+                      
+                        # LABELS
+                        main = NULL,
+                        xlab = NULL,
+                        ylab = NULL,                    
+                        
+                        # AXES
+                        xax = NULL,
+                        yax = NULL,
+                        xlim = NULL, 
+                        ylim = NULL, 
+                        
+                        # STRUCTURE
+                        type=c("contour", "image", "persp"),
+                      
+                        # STYLE
+                        col = NULL,
+                        grid = NULL,
+                        box=FALSE,
+                        
+                        ... ) {
   
 
   bandwidth.nrd <- function (x) {
@@ -55,27 +76,54 @@ plotDens2D <- function(x, y, type=c("contour", "image", "persp"), ...){
   }
 
   
-  bw <- c(bandwidth.nrd(x), bandwidth.nrd(y))
+  .withGraphicsState({
+    
+    .applyParFromDots(...)
 
-  kde <- kde2d(x = x, y=y, h=bw, n=500, lims=c(1, 4, 0, 20))
+    bw <- c(bandwidth.nrd(x), bandwidth.nrd(y))
   
+    kde <- kde2d(x = x, y=y, h=bw, n=500, lims=c(1, 4, 0, 20))
   
+    res <- switch(match.arg(type),  
+           contour= { contour(kde, xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim,
+                              main = main,
+                              nlevels=8, labcex=0.8)},
+           
+           persp = { 
+             persp(kde, ticktype="simple", theta=50, phi=20, r=4, scale=TRUE,
+                   main = main,
+                   xlab=xlab %||% "", ylab=ylab  %||% "", zlab="Relative Frequency")},
+           
+           image = {
+             image(kde, 
+                   xlab=xlab %||% "", ylab=ylab  %||% "", 
+                   col=rev(Pal(1, 100)),
+                   main = main,
+                   xlim=xlim %||% range(x), ylim=ylim  %||% range(y)) }
+           )        
+
+    
+    .callIf(
+      graphics::grid,
+      .theme( grid = grid )$grid[c("col","lty","lwd")]
+      # , defaults = list(
+      #   col = th$col,
+      #   lty = th$lty,
+      #   lwd = th$lwd
+      #)
+    )
+    
+    
+    # draw box if box != FALSE || NA
+    .callIf(graphics::box, 
+            box,
+            defaults=list(which="plot"))
+
+    
+  })
   
-  switch(match.arg(type),  
-         contour= { contour(kde, xlab="Bodyweight", ylab="Heartweight",
-                            nlevels=8, labcex=0.8, xlim=c(1.5, 4), ylim=c(5, 17))},
-         
-         persp = { 
-           persp(kde, ticktype="simple", theta=50, phi=20, r=4, scale=TRUE,
-                 xlab="Bodyweight", ylab="Heartweight", zlab="Relative Frequency")},
-         
-         image = {
-           image(kde, xlab="Bodyweight", ylab="Heartweight", col=rev(Pal(1, 100)),
-                 xlim=c(1.5, 4), ylim=c(5, 17)) }
-         )        
-  
-  
-  
+  invisible(res)
+
 }
 
 

@@ -45,7 +45,9 @@
 #' @examples
 #' 
 #' 
+#' op <- par(no.readonly = TRUE)
 #' par(mfrow=c(2,2))
+#' 
 #' b <- barplot(1:5, ylim=c(0,6))
 #' errBars(from=1:5-rep(0.5,5), to=1:5+rep(0.5,5), pos=b, length=0.2)
 #' 
@@ -59,6 +61,8 @@
 #' par(xpd=FALSE)
 #' dotchart(1:5, xlim=c(0,6))
 #' errBars(from=1:5-rep(0.2,5), to=1:5+rep(0.2,5), horiz=TRUE, length=0.1)
+#' 
+#' par(op)
 #' 
 
 

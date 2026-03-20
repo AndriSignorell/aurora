@@ -45,6 +45,8 @@ Sonego calculates
 "black" if L >= 0.2 and "white" else.
 }
 \examples{
+op <- par(no.readonly = TRUE)
+
 # define some labels
 lbl <- c("Butcher","Carpenter","Carter","Farmer","Hunter","Miller","Taylor")
 
@@ -65,6 +67,8 @@ plotArea( y=matrix(rep(1, times=3, each=12), ncol=12), x=1:3,
   col=rainbow(12), ylab="", xlab="", axes=FALSE, main="method = Sonego" )
 text( x=2, y=1:12-0.5, lbl,
   col=contrastColor(rainbow(12), method="sonego"))
+
+par(op)
 
 }
 \author{

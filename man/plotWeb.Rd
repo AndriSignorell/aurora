@@ -78,6 +78,7 @@ order colors, linewidth etc. must be given, when the defaults are to be
 overrun.
 }
 \examples{
+op <- par(no.readonly = TRUE)
 
 m <- cor(swiss)
 plotWeb(m=m, main="Swiss correlation")
@@ -104,9 +105,11 @@ m[p > 0.05] <- NA
 # define line widths
 # plotWeb(m, lwd=abs(m[lower.tri(m)] * 10))
 
+par(op)
+
 }
 \seealso{
-\code{\link{plotCorr}}
+\code{\link{plotCor}}
 }
 \author{
 Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}

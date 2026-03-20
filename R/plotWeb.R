@@ -39,9 +39,10 @@
 #' @return A list of x and y coordinates, giving the coordinates of all the
 #' points drawn, useful for adding other elements to the plot.
 #' @author Andri Signorell <andri@@signorell.net>
-#' @seealso \code{\link{plotCorr}}
+#' @seealso \code{\link{plotCor}}
 #' @keywords hplot multivariate
 #' @examples
+#' op <- par(no.readonly = TRUE)
 #' 
 #' m <- cor(swiss)
 #' plotWeb(m=m, main="Swiss correlation")
@@ -68,6 +69,8 @@
 #' # define line widths
 #' # plotWeb(m, lwd=abs(m[lower.tri(m)] * 10))
 #' 
+#' par(op)
+#' 
 
 
 #' @export
@@ -81,17 +84,9 @@ plotWeb <- function(m, col=NULL, lty=NULL,
   
   
   .withGraphicsState({
-    
-    # qqplot for an optional distribution
-    
-    # example:
-    # y <- rexp(100, 1/10)
-    # plotQQ(y, function(p) qexp(p, rate=1/10))
-    
-    
-    # resolve potential pars given in the dots...
 
-    col <- col %||% .getOption("palette", default = c("firebrick", "steelblue"))[1:2]
+    col <- col %||% .getOption("palette", 
+                               default = c("firebrick", "steelblue"))[1:2]
     
     .applyParFromDots(...)
 

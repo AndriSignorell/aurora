@@ -32,6 +32,8 @@
 #' @keywords color
 #' 
 #' @examples
+#' op <- par(no.readonly = TRUE)
+#' 
 #' # define some labels
 #' lbl <- c("Butcher","Carpenter","Carter","Farmer","Hunter","Miller","Taylor")
 #' 
@@ -52,6 +54,8 @@
 #'   col=rainbow(12), ylab="", xlab="", axes=FALSE, main="method = Sonego" )
 #' text( x=2, y=1:12-0.5, lbl,
 #'   col=contrastColor(rainbow(12), method="sonego"))
+#' 
+#' par(op)
 #' 
 
 

@@ -50,6 +50,9 @@ plotTimeSeries <- function (x, lag.max = 10 * log10(length(x)),
       par(mar = c(4,4,0,1))
       .plotACF(pacf(x, plot=FALSE), zero = "add")
       
+      # we changed layout, so set it back here
+      layout(1)
+      
     })
     
     invisible(x)

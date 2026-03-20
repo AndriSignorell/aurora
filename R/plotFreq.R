@@ -18,9 +18,6 @@
 #' @param maxlablen Maximum number of characters used for category labels.
 #'   Longer labels are truncated.
 #'
-#' @param type Character string specifying the plot type.
-#'   Either \code{"bar"} (default) for bar charts or \code{"dot"} for dot plots.
-#'
 #' @param col Fill color(s) for bars or points. If \code{NULL}, sensible
 #'   defaults are chosen automatically.
 #'
@@ -81,6 +78,7 @@
 plot.Desc.factor <- function(x, col="grey80", border= FALSE, xlim=NULL,
                               maxlablen=25, ecdf=TRUE, main=NULL, ...) {
   
+
   tab <- x$freq$freq
   k <- length(tab)
   names(tab) <- x$freq[[1]]
@@ -106,34 +104,41 @@ plot.Desc.factor <- function(x, col="grey80", border= FALSE, xlim=NULL,
     names(tab) <- strTrunc(names(tab), maxlablen)
   }
   
-  par(mfrow=c(1,2), 
-      oma=c(0, .neededMargin(names(tt)), 0, 1))
-  
-  b <- plotBar(rev(tab), horiz=TRUE, beside=FALSE, border=border, col=col, grid=TRUE, 
-               xlab="frequency", stamp=NULL, yaxt="n", 
-               mar=c(left=0, right=1.5))
-  
-  mtext(names(rev(tab)), side = 2, las=1, at = .outerAt(b), 
-        cex=1.1, line=1, outer=TRUE)
-  
-  
-  plotBar(ptab, beside=FALSE, horiz=TRUE, border=border, xlim=c(0, 1),
-          col=c(col, fade(col, 0.5)), grid=TRUE, xlab="percent", yaxt="n",
-          mar=c(left=1.5, right=1), yax=list(fmt="%", digits=0)
-  )
-  
-  
-  if (is.null(main)) main <- x$meta$main
-  if (!is.na(main)) {
-    title(main = main %||% x$meta$main, outer = TRUE, line = -2)
-  }
-  
-  if (trunc_fg) {
-    text(
-      x = par()$usr[2], y = 0.4, labels = " ...[list output truncated]  ",
-      cex = 0.6, adj = c(1, 0.5)
+  .withGraphicsState({
+    
+    # par() from ...
+    .applyParFromDots(...)
+    
+
+    par(mfrow=c(1,2), 
+        oma=c(0, .neededMargin(names(x)), 0, 1))
+    
+    b <- plotBar(rev(tab), horiz=TRUE, beside=FALSE, border=border, col=col, grid=TRUE, 
+                 xlab="frequency", stamp=FALSE, yaxt="n", 
+                 mar=c(left=0, right=1.5))
+    
+    mtext(names(rev(tab)), side = 2, las=1, at = .outerAt(b), 
+          cex=1.1, line=1, outer=TRUE)
+    
+    
+    plotBar(ptab, beside=FALSE, horiz=TRUE, border=border, xlim=c(0, 1),
+            col=c(col, fade(col, 0.5)), grid=TRUE, xlab="percent", yaxt="n",
+            mar=c(left=1.5, right=1), yax=list(fmt="%", digits=0)
     )
-  }
+    
+    
+    if (is.null(main)) main <- x$meta$main
+    if (!is.na(main)) {
+      title(main = main %||% x$meta$main, outer = TRUE, line = -2)
+    }
+    
+    if (trunc_fg) {
+      text(
+        x = par()$usr[2], y = 0.4, labels = " ...[list output truncated]  ",
+        cex = 0.6, adj = c(1, 0.5)
+      )
+    }
+  })
   
   invisible()
   

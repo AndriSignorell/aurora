@@ -141,7 +141,7 @@ dat.sty <- style(fmt="MM, dd yyyy")
 num.sty                             # displays the details of the style
 # editing styles
 style("abs.sty")                    # looks for format "abs.sty"
-style("nexist")                     # return for nonexisting style
+# style("nexist")                     # return for nonexisting style
 style("abs.sty", big.mark="")       # get Style("abs") and overwrite big.mark
 style("abs.sty", na.form="-")       # get Style("abs") and add user defined na.form
 

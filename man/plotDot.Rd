@@ -17,7 +17,6 @@ plotDot(
   box = TRUE,
   grid = TRUE,
   pch = NULL,
-  col = NULL,
   ...
 )
 }
@@ -46,7 +45,7 @@ Defaults to \code{dimnames(x)[[1]]} if available.}
 \item{axes}{Logical; if \code{TRUE} axes are drawn.}
 
 \item{xax}{Optional specification of the x-axis. Passed to
-\code{\link{.drawAxis}}.}
+(the internal function) \code{.drawAxis}.}
 
 \item{yax}{Optional specification of the y-axis.}
 
@@ -57,8 +56,6 @@ Defaults to \code{dimnames(x)[[1]]} if available.}
 \item{pch}{Plotting symbol specification for the points. May be a single
 value or a list of graphical parameters passed to
 \code{\link[graphics]{points}}.}
-
-\item{col}{Colour used for points and confidence intervals.}
 
 \item{...}{Additional graphical parameters passed to \code{\link{par}} via
 \code{.applyParFromDots()}.}
@@ -98,33 +95,25 @@ high <- est + 3
 
 plotDot(cbind(est, low, high), items = LETTERS[1:5])
 
-# grouped example
-dat <- array(c(12,18,28,40,65,
-               20,15,22,32,55),
-             dim = c(5,1,2))
-
-plotDot(dat,
-        items = LETTERS[1:5],
-        groups = c("Group A","Group B"))
+dat <- structure(c(12, 18, 28, 40, 65, 9.2, 14.9, 24.3, 35.3, 62.4, 
+                   16.8, 20.6, 32, 42.4, 67.8, 20, 15, 22, 32, 55, 15.3, 10.2, 18, 
+                   28.1, 52.8, 23.2, 17, 25.1, 36.6, 58, 16, 24, 36, 54, 70, 13.4, 
+                   21.5, 31.9, 50.8, 65.7, 19.4, 27.8, 39.5, 56.6, 74.5, 10, 14, 
+                   21, 35, 50, 6.5, 9.8, 16, 31.9, 45.7, 14, 18.4, 23.3, 39.2, 53.2
+                   ), dim = c(5L, 3L, 4L)) 
 
 plotDot(
   dat, main="Plot Dot VADeaths", cex.axis=0.8,
   items = c("50-54","55-59","60-64","65-69","70-74"),
   groups = c("Rural Male","Rural Female","Urban Male","Urban Female"),
   xlim = c(0,80),
-  # axes=F,
-  # xax = list(fmt="\%", d=0, big=",", col="red", tck=-0.05),
-  pch = list(pch=c(16, 21), col= c("green","blue"), cex=c(1,2), bg="white")
-  # col = c("green","blue","orange","magenta")
+  pch = list(pch=c(16, 21), col= c("green","blue"), 
+             cex=c(1,2), bg="white")
 )
 
-
-plotDot(c(12,18,28,40,65), # groups="", 
-        items=LETTERS[1:5], pch=list(cex=1.5), main="Title")
-
-
-plotDot(
-  cbind(est[, 1], low[, 1], high[,1]), 
-  items=LETTERS[1:5])
-  
+ypos <- plotDot(c(12,18,28,40,65), # groups="", 
+                items=LETTERS[1:5], pch=list(cex=1.5), main="Title")
+                
+points(c(12,18,28,40,65) + runif(n = 5)*15, y=unlist(ypos$ypos), 
+       cex=1.5, pch=15)
 }

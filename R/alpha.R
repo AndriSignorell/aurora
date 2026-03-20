@@ -25,6 +25,8 @@
 #' @keywords color
 #' @examples
 #' 
+#' op <- par(no.readonly = TRUE)
+#' 
 #' alpha("yellow", 0.2)
 #' alpha(2, 0.5)   # red
 #' 
@@ -35,6 +37,8 @@
 #' par(mfrow=c(1,2))
 #' plot(x, type="p", col="blue" )
 #' plot(x, type="p", col=alpha("blue", .2), main="Better insight with alpha channel" )
+#' 
+#' par(op)
 #' 
 
 

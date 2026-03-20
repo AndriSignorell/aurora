@@ -1,71 +1,92 @@
 
-#' Themed Barplot with Optional Grid, Text and Connecting Lines
+#' Themed Barplot with Grid, Labels and Optional Connecting Lines
 #'
-#' Creates an enhanced wrapper around \code{\link[graphics]{barplot}} with
-#' support for theming, background handling, optional grid lines,
-#' value labels, and connecting lines for stacked barplots.
+#' Creates a themed wrapper around \code{\link[graphics]{barplot}} with
+#' support for consistent styling, optional grid lines, value labels,
+#' and connecting lines for stacked barplots.
 #'
-#' The function first initializes the plotting region invisibly,
-#' optionally adds grid lines, then draws the actual bars and
-#' additional layers (zero line, connecting lines, text).
+#' The function first initializes the plotting region invisibly using
+#' \code{\link[graphics]{barplot}}, optionally adds grid lines, and then
+#' draws the actual bars and additional layers (axis, connecting lines,
+#' text labels).
 #'
-#' @param height A vector or matrix of bar heights.
-#'   Passed directly to \code{\link[graphics]{barplot}}.
-#' @param bg Background color. Defaults to theme background or \code{par("bg")}.
-#' @param col Bar fill colors. Defaults to theme color.
-#' @param axes Logical. Should the numeric axis be drawn? Default is \code{TRUE}.
-#' @param yax Optional list of arguments controlling the y-axis
-#'   Supported elements include:
+#' @param height A vector or matrix of bar heights passed directly to
+#'   \code{\link[graphics]{barplot}}.
+#'
+#' @param main,xlab,ylab Optional plot labels. Defaults follow
+#'   base graphics behaviour.
+#'
+#' @param yax Controls drawing of the numeric axis.
+#'
+#'   Supported values are
 #'   \describe{
-#'     \item{col}{Label color (default: \code{"black"})}
-#'     \item{col.axis}{Grid line color (default: \code{"black"})}
-#'     \item{lty}{Line type (default: \code{1})}
-#'     \item{lwd}{Line width (default: \code{1})}
-#'     \item{fm}{Format for the tickmark labels (default: \code{NULL})}
+#'     \item{\code{TRUE}}{draw axis using package defaults}
+#'     \item{\code{FALSE}}{suppress axis}
+#'     \item{\code{NULL}}{use package option \code{DescToolsX.yax}}
+#'     \item{\code{list(...)}}{custom axis parameters passed to the axis drawing routine}
 #'   }
-#'   Grid orientation is determined automatically.
-#' @param grid Optional list of arguments controlling grid lines.
-#'   Supported elements include:
+#'
+#' @param beside Logical. If \code{TRUE}, bars are drawn side-by-side.
+#'   If \code{FALSE} (default), bars are stacked.
+#'
+#' @param horiz Logical. If \code{TRUE}, bars are drawn horizontally.
+#'   Defaults to \code{FALSE}.
+#'
+#' @param col Bar fill colours. Defaults to the theme value
+#'   \code{bar.col} if not specified.
+#'
+#' @param border Bar border colour. Defaults to the theme value
+#'   \code{bar.border}.
+#'
+#' @param grid Controls drawing of grid lines.
+#'
+#'   Supported values are
 #'   \describe{
-#'     \item{col}{Grid line color (default: \code{"grey85"})}
-#'     \item{lty}{Line type (default: \code{1})}
-#'     \item{lwd}{Line width (default: \code{1})}
+#'     \item{\code{TRUE}}{draw grid using theme defaults}
+#'     \item{\code{FALSE}}{suppress grid}
+#'     \item{\code{NULL}}{use package option \code{DescToolsX.grid}}
+#'     \item{\code{list(...)}}{custom grid parameters such as \code{col}, \code{lty}, \code{lwd}}
 #'   }
-#'   Grid orientation is determined automatically.
+#'
+#' @param box Logical indicating whether a box should be drawn around the
+#'   plot region.
+#'
 #' @param text Optional list of arguments passed to \code{\link{barText}}
-#'   to draw value labels. Common arguments include:
-#'   \describe{
-#'     \item{labels}{Text labels (default: \code{height})}
-#'     \item{pos}{Position of labels (default: \code{"mid"})}
-#'     \item{offset}{Offset from bar (default: \code{0})}
-#'   }
+#'   to draw value labels on bars.
+#'
 #' @param connlines Optional list of arguments controlling connecting
-#'   lines between stacked bars. Only supported when \code{beside = FALSE}.
-#'   Typical elements include:
-#'   \describe{
-#'     \item{col}{Line color (default: \code{"grey40"})}
-#'     \item{lwd}{Line width (default: \code{1})}
-#'     \item{lty}{Line type (default: \code{2})}
-#'   }
-#' @param box logical, defining if a box should be drawn or not   
+#'   lines between stacked bars. Only supported when
+#'   \code{beside = FALSE}.
+#'
+#' @param stamp Logical indicating whether a package stamp should be
+#'   drawn. Default is \code{TRUE}.
+#'
 #' @param ... Additional arguments passed to \code{\link[graphics]{barplot}}
-#'   and graphical parameters (via \code{par()}).
+#'   and graphical parameters (via \code{\link[graphics]{par}}).
 #'
 #' @details
-#' The function internally:
+#' The function internally performs the following steps:
 #' \enumerate{
-#'   \item Adjusts margins for rotated or horizontal labels.
-#'   \item Draws an invisible barplot to establish the coordinate system.
+#'   \item Draws an invisible \code{barplot} to establish the coordinate system.
 #'   \item Optionally adds grid lines.
-#'   \item Draws the actual bars.
-#'   \item Adds a zero reference line if appropriate.
-#'   \item Optionally adds connecting lines (stacked bars only).
+#'   \item Draws the bars.
+#'   \item Draws the numeric axis if enabled.
+#'   \item Optionally adds connecting lines for stacked bars.
 #'   \item Optionally adds value labels via \code{\link{barText}}.
-#'   \item Draws the numeric axis (if enabled) and a box.
+#'   \item Optionally draws a box around the plot region.
 #' }
 #'
-#' @return Invisibly returns the midpoints of the bars
-#'   (as returned by \code{\link[graphics]{barplot}}).
+#' Graphical parameters such as \code{bg}, \code{cex}, \code{las},
+#' \code{mar}, etc. can be supplied via \code{...}.
+#'
+#' The precedence of graphical settings is
+#'
+#' \preformatted{
+#' user arguments  >  DescToolsX theme  >  base defaults
+#' }
+#'
+#' @return Invisibly returns the midpoints of the bars as returned by
+#'   \code{\link[graphics]{barplot}}.
 #'
 #' @seealso \code{\link[graphics]{barplot}}, \code{\link{barText}}
 #'
@@ -74,15 +95,25 @@
 #' plotBar(1:5)
 #'
 #' # With grid lines
-#' plotBar(1:5,
-#'         args.grid = list(col = "grey90"))
+#' plotBar(1:5, grid = TRUE)
 #'
-#' # Stacked barplot with labels and connecting lines
+#' # Stacked bars with labels and connecting lines
 #' m <- matrix(c(3,2,4,1,5,2), nrow = 2)
 #' plotBar(m,
 #'         text = list(pos = "mid"),
 #'         connlines = list(col = "black"))
 #'
+#' # Grouped bars
+#' plotBar(VADeaths,
+#'         beside = TRUE,
+#'         col = gray.colors(nrow(VADeaths)))
+#'
+#' # Horizontal bars
+#' plotBar(VADeaths,
+#'         horiz = TRUE,
+#'         las = 1)
+#'         
+#'         
 #' plotBar(VADeaths, ylim=c(0,250),
 #'         grid=list(col = "grey", lty="dotted"), 
 #'         las=1, main="MyTitle", 
@@ -96,23 +127,23 @@
 #'         beside=TRUE, 
 #'         text = list(col="red", bg=alpha("white", 0.7), border=NA))
 #' 
+#' plotBar(VADeaths, connlines = list(lwd=1, col="blue"), 
+#'         box=FALSE, las=1, main="Connecting Lines")
+#' 
 #' ptab <- proportions(VADeaths, margin=2)
 #' plotBar(ptab,
 #'         las=1, main="VADeaths in %",
 #'         box=FALSE, horiz=TRUE, 
 #'         col=(cols <- gray.colors(nrow(VADeaths))),
-#'         beside=FALSE, mar=c(right=10),
+#'         beside=FALSE, mar=c(right=5),
 #'         text = list(labels=fm(ptab, fmt="%"), border=NA, 
 #'                     col=contrastColor(cols)))
 #' legend(x="right", fill=cols, legend=rownames(VADeaths))
 #' 
-#' plotBar(VADeaths, connlines = list(lwd=1, col="blue"), 
-#'         box=FALSE, las=1, main="Connecting Lines")
-#' 
 #' plotBar(VADeaths/1e3,  box=FALSE, bg="lightyellow", main="VADeaths",
 #'         horiz=TRUE, 
 #'         text=list(border=FALSE, cex=0.8, col=c("blue", "green","orange")), 
-#'         mar=c(right=8), 
+#'         mar=c(right=5), 
 #'         yax = list(fmt="%", d=0, big=",", 
 #'                    col="red", col.axis="blue", lwd=2))
 #' 
@@ -127,54 +158,76 @@
 
 #' @export
 plotBar <- function(height,
-                    bg = NULL,
-                    col = NULL,
-                    axes = TRUE, 
+                    
+                    # LABELS
+                    main = NULL,
+                    xlab = NULL,
+                    ylab = NULL,                    
+
+                    # AXES
                     yax = NULL,
-                    box=FALSE,
+                    
+                    # STRUCTURE
+                    beside = FALSE,
+                    horiz  = FALSE,
+                    
+                    # STYLE
+                    col = NULL,
+                    border = NULL,
                     grid = NULL,
+                    box=FALSE,
+                    
+                    # FEATURES
                     text = NULL,
                     connlines = NULL,
+                    
+                    # FRAMEWORK
                     stamp = TRUE,
                     ...) {
+
+  th <- .theme(
+    bar = list(col=col, border=border)
+  )
+  col <- th$col
+  border <- th$border
+
+  dots  <- list(...)
   
   .withGraphicsState({
     
-    # `%||%` <- function(a, b) if (!is.null(a)) a else b
-    
-    th <- .getTheme()
-    
-    bg  <- bg  %||% th$bg  %||% par("bg")
-    col <- col %||% th$col
-    
+        
     # par() aus ...
     .applyParFromDots(...)
-    
-    dots  <- list(...)
-    horiz <- isTRUE(dots$horiz)
+
+    # set by .applyParFromDots(...) and needed afterwards...
     las   <- par("las")
-    beside <- dots$beside %||% FALSE
     
     labels <- .getBarplotAxisLabels(height, dots)
     
-    # --- Margin-Korrekturen ---
+    # --- margin-corrections ---
     if (horiz && !(par("yaxt")=="n")) {
-      .adjustLeftMarginForLabels(labels)
+      .adjustMargin(labels, side=2)
+      # .adjustLeftMarginForLabels(labels)
     }
     
     if (!horiz && las == 2 && !(par("xaxt")=="n")) {
-      .adjustBottomMarginForLas2(labels)
+      .adjustMargin(labels, side=1, las=2)
+      # .adjustBottomMarginForLas2(labels)
     }
     
-    par(bg = bg)
-    
-    # --- Setup (unsichtbar) ---
-    dots[c("col","border","axes")] <- NULL
+    # --- Setup (invisible) ---
+    dots[c("col", "border", "axes")] <- NULL
     b <- do.call(barplot, c(list(
-                     height, 
-                     col=NA, 
-                     border=NA, 
-                     axes=FALSE), 
+                     height = height, 
+                     col    = NA, 
+                     border = NA, 
+                     axes   = FALSE,
+                     main   = main, 
+                     xlab   = xlab, 
+                     ylab   = ylab,
+                     beside = beside,
+                     horiz  = horiz
+                     ), 
                      dots))
 
     # --- GRID Layer ---
@@ -209,10 +262,13 @@ plotBar <- function(height,
     }
     
     # --- echte Balken ---
-    barplot(height,
-            col = col,
-            add = TRUE,
-            axes = FALSE,
+    barplot(height = height,
+            col    = col,
+            border = border,
+            add    = TRUE,
+            axes   = FALSE,
+            beside = beside, 
+            horiz  = horiz, 
             ...)
     
     # --- Zero-Linie nach Balken ---
@@ -230,7 +286,7 @@ plotBar <- function(height,
     #   }
     # }
     
-    # --- Connecting Lines (nur stacked) ---
+    # --- Connecting Lines (stacked only) ---
     if (!is.null(connlines)) {
       
       if (isTRUE(beside)) {
@@ -279,8 +335,8 @@ plotBar <- function(height,
             )
 
     
-    # --- Numerische Achse ---
-    if (isTRUE(axes)) {
+    # --- numeric axis ---
+    if (!isFALSE(yax)) {
       
       if (!horiz) {
         .drawAxis(2, yax)
@@ -295,11 +351,10 @@ plotBar <- function(height,
             box,
             defaults=list(which="plot"))
     
-    invisible(b)
     
-  }, stamp=stamp)
+  }, stamp = stamp)
   
-  return(b)
+  invisible(b)
   
 }
 

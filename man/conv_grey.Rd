@@ -36,8 +36,9 @@ These function was previously published as \code{col2Grey()} in the
 changes.
 }
 \examples{
-
+op <- par(no.readonly = TRUE)
 par(mfcol=c(2,2))
+
 tmp <- 1:3
 names(tmp) <- c('red','green','blue')
 
@@ -46,6 +47,8 @@ barplot(tmp, col=colToGrey(c('red','green','blue')))
 
 barplot(tmp, col=c('red','#008100','#3636ff'))
 barplot(tmp, col=colToGrey(c('red','#008100','#3636ff')))
+
+par(op)
 
 }
 \seealso{

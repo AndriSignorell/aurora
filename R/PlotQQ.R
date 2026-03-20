@@ -89,6 +89,12 @@ plotQQ <- function(x, qdist=stats::qnorm,
                    args.qqline=NULL, grid=NULL, ...) {
   
 
+  th <- .theme(
+    grid = grid
+    # , pch  = pch
+  )
+  
+  
   .withGraphicsState({
 
     # qqplot for an optional distribution
@@ -113,17 +119,23 @@ plotQQ <- function(x, qdist=stats::qnorm,
       x <- y
       y <- xy
     }
+
+        
+    # --------------------------------
+    # Grid
+    # --------------------------------
     
     if(!add){
       plot(x=x, y, main=main, xlab=xlab, ylab=ylab, type="n", ...)
       .callIf(graphics::grid, grid, 
               defaults = list(
-                  col   = "grey85",
-                  lty   = 1,
-                  lwd   = 1
-                )  )
+                col = th$grid$col,
+                lty = th$grid$lty,
+                lwd = th$grid$lwd
+              )  )
     }
 
+    
     # add confidence band if desired
     .callIf(.drawConfBandQQ,
             cband,

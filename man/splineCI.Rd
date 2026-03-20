@@ -81,6 +81,7 @@ the line to the plot and inserts a polygon with the confidence intervals.
 }
 \examples{
 
+op <- par(no.readonly = TRUE)
 par(mfrow=c(1,2))
 
 x <- runif(100)
@@ -90,6 +91,8 @@ lines(smooth.spline(y ~ x))
 
 plot(dist ~ speed, data=cars)
 lines(smoothSpline(dist ~ speed, data=cars))
+
+par(op)
 
 }
 \seealso{

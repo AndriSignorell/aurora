@@ -91,6 +91,7 @@
 #' @keywords hplot
 #' 
 #' @examples
+#' op <- par(no.readonly=TRUE)
 #' 
 #' plotFdist(x=faithful$eruptions, na.rm=TRUE)
 #' 
@@ -134,7 +135,10 @@
 #'        fill=c("deeppink4", "darkgreen"), xpd=NA)
 #' 
 #' # add a gamma distribution curve to both, histogram and ecdf
-#' ozone <- airquality$Ozone; m <- mean(ozone, na.rm = TRUE); v <- var(ozone, na.rm = TRUE)
+#' ozone <- airquality$Ozone
+#' m <- mean(ozone, na.rm = TRUE)
+#' v <- var(ozone, na.rm = TRUE)
+#' 
 #' plotFdist(ozone, args.hist = list(breaks=15),
 #'   args.curve = list(expr="dgamma(x, shape = m^2/v, scale = v/m)", 
 #'                     col="navajowhite3"),
@@ -142,11 +146,9 @@
 #'                          col="navajowhite3"),
 #'   na.rm = TRUE, main = "Airquality - Ozone")
 #' 
-#' legend(x="topright", xpd=NA,
-#'        legend=c(expression(plain("gamma:  ") * Gamma * " " * bgroup("(", k * " = " *
-#'            over(bar(x)^2, s^2) * " , " * theta * plain(" = ") * over(s^2, bar(x)), ")") ),
-#'                 "kernel density"),
-#'        fill=c("navajowhite3", "deeppink4"), text.width = 0.25)
+#'        
+#' par(op)
+#'         
 
 
 
@@ -525,3 +527,10 @@ plotFdist <- function (x, main = deparse(substitute(x)), xlab = ""
   })  # close .withGraphicsState
   
 }
+
+# legend(x="topright", xpd=NA,
+#        legend=c(expression(plain("gamma:  ") * Gamma * " " * bgroup("(", k * " = " *
+#            over(bar(x)^2, s^2) * " , " * theta * plain(" = ") * over(s^2, bar(x)), ")") ),
+#                 "kernel density"),
+#        fill=c("navajowhite3", "deeppink4"), text.width = 0.25)
+# 

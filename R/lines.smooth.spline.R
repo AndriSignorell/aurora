@@ -24,6 +24,7 @@
 #' @keywords math aplot
 #' @examples
 #' 
+#' op <- par(no.readonly = TRUE)
 #' par(mfrow=c(1,2))
 #' 
 #' x <- runif(100)
@@ -33,6 +34,8 @@
 #' 
 #' plot(dist ~ speed, data=cars)
 #' lines(smoothSpline(dist ~ speed, data=cars))
+#' 
+#' par(op)
 #' 
 
 

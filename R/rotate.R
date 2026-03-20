@@ -22,7 +22,7 @@
 #' \code{\link{drawEllipse}}, \code{\link{drawArc}} 
 #' @keywords aplot
 #' @examples
-#' 
+#' op <- par(no.readonly = TRUE)
 #' # let's have a triangle
 #' canvas(main="Rotation")
 #' x <- drawRegPolygon(nv=3)[[1]]
@@ -34,6 +34,9 @@
 #' } )
 #' 
 #' abline(v=0, h=0)
+#' 
+#' par(op)
+#' 
 
 
 #' @export

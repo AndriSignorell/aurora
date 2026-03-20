@@ -28,7 +28,7 @@ rotated shape(s).
 Rotate a geometric structure by an angle theta around a centerpoint xy.
 }
 \examples{
-
+op <- par(no.readonly = TRUE)
 # let's have a triangle
 canvas(main="Rotation")
 x <- drawRegPolygon(nv=3)[[1]]
@@ -40,6 +40,9 @@ sapply( (0:3) * pi/6, function(theta) {
 } )
 
 abline(v=0, h=0)
+
+par(op)
+
 }
 \seealso{
 \code{\link{polygon}}, \code{\link{drawRegPolygon}},

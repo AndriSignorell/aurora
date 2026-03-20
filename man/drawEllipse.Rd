@@ -57,6 +57,7 @@ Use \code{\link{degToRad}} if you want to define rotation angle in degrees.
 }
 \examples{
 
+op <- par(no.readonly = TRUE)
 par(mfrow=c(1,2))
 
 canvas()
@@ -72,6 +73,9 @@ eig.vec <- eig$vectors
 drawEllipse(x=mean(cars$speed), y=mean(cars$dist), 
             radius.x=eig.val[1] , radius.y=eig.val[2], 
             rot=acos(eig.vec[1,1]), border="blue", lwd=3)
+            
+par(op)
+
 }
 \seealso{
 \code{\link{polygon}}, \code{\link{drawRegPolygon}},

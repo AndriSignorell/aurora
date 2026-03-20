@@ -133,58 +133,6 @@
 
 
 
-.adjustLeftMarginForLabels <- function(labels, pad=0.5) {
-  
-  if (is.null(labels) || !length(labels))
-    return(invisible())
-  
-  # w <- max(strwidth(labels,
-  #                   units = "inches",
-  #                   cex = par("cex.axis")))
-  # 
-  # lineHeight <- par("csi") * par("mex")
-  # 
-  # needed <- 1.1 * (ceiling(w / lineHeight) + 1)
-  
-  needed <- .neededMargin(labels, pad=pad)
-  
-  mar <- par("mar")
-  
-  if (needed > mar[2]) {
-    mar[2] <- needed
-    par(mar = mar)
-  }
-  
-  invisible()
-}
-
-
-
-.adjustBottomMarginForLas2 <- function(labels) {
-  
-  if (is.null(labels) || !length(labels))
-    return(invisible())
-  
-  w <- max(strwidth(labels,
-                    units = "inches",
-                    cex = par("cex.axis")))
-  
-  lineHeight <- par("csi") * par("mex")
-  
-  needed <- ceiling(w / lineHeight) + 1
-  
-  mar <- par("mar")
-  
-  if (needed > mar[1]) {
-    mar[1] <- needed
-    par(mar = mar)
-  }
-  
-  invisible()
-}
-
-
-
 
 
 .neededMargin <- function(labels,
@@ -209,6 +157,202 @@
 }
 
 
+
+.adjustMargin <- function(labels,
+                          side = 2,
+                          las = par("las"),
+                          cex = par("cex.axis"),
+                          pad = 0.5,
+                          axis.line = 1) {
+  
+  if(is.null(labels) || !length(labels))
+    return(invisible())
+  
+  w <- max(strwidth(labels, units="inches", cex=cex))
+  h <- max(strheight(labels, units="inches", cex=cex))
+  
+  size <- if(las %in% c(2,3)) {
+    w
+  } else {
+    if(side %in% c(2,4)) w else h
+  }
+  
+  lineHeight <- par("csi") * par("mex")
+  
+  lines <- size / lineHeight
+  
+  needed <- ceiling(1.15 * (lines + axis.line + pad))
+  
+  mar <- par("mar")
+  
+  if(needed > mar[side]) {
+    mar[side] <- needed
+    par(mar = mar)
+  }
+  
+  .checkMargins()
+  
+  invisible()
+}
+
+
+
+.checkMargins <- function() {
+  
+  mar <- par("mar")
+  fin <- par("fin")
+  
+  lineHeight <- par("csi") * par("mex")
+  
+  heightLines <- fin[2] / lineHeight
+  widthLines  <- fin[1] / lineHeight
+  
+  if(mar[1] + mar[3] >= heightLines ||
+     mar[2] + mar[4] >= widthLines) {
+    
+    # shrink proportionally
+    scale <- 0.9 * min(
+      heightLines / (mar[1] + mar[3]),
+      widthLines  / (mar[2] + mar[4])
+    )
+    
+    par(mar = mar * scale)
+  }
+  
+  invisible()
+}
+
+
+# .adjustMargin <- function(labels,
+#                           side = 2,
+#                           las = par("las"),
+#                           cex = par("cex.axis"),
+#                           pad = 0.5,
+#                           axis.line = 1) {
+#   
+#   if(is.null(labels) || !length(labels))
+#     return(invisible())
+#   
+#   w <- max(strwidth(labels, units="inches", cex=cex))
+#   h <- max(strheight(labels, units="inches", cex=cex))
+#   
+#   size <- if(las %in% c(2,3)) w else if(side %in% c(2,4)) w else h
+#   
+#   lineHeight <- par("csi") * par("mex")
+#   
+#   lines <- size / lineHeight
+#   
+#   needed <- ceiling(1.15 * (lines + axis.line + pad))
+#   
+#   mar <- par("mar")
+#   
+#   # limit margins to avoid "figure margins too large"
+#   needed <- min(needed, 0.45 * sum(par("fin") / lineHeight))
+#   
+#   if(needed > mar[side]) {
+#     mar[side] <- needed
+#     par(mar = mar)
+#   }
+#   
+#   invisible()
+# }
+
+
+# .adjustMargin <- function(labels,
+#                           side = 2,
+#                           las = par("las"),
+#                           cex = par("cex.axis"),
+#                           pad = 0.5,
+#                           axis.line = 1) {
+#   
+#   if(is.null(labels) || !length(labels))
+#     return(invisible())
+#   
+#   w <- max(strwidth(labels, units="inches", cex=cex))
+#   h <- max(strheight(labels, units="inches", cex=cex))
+#   
+#   size <- if(las %in% c(2, 3)) {
+#     w
+#   } else {
+#     if(side %in% c(2,4)) w else h
+#   }
+#   
+#   lineHeight <- par("csi") * par("mex")
+#   
+#   lines <- size / lineHeight
+#   
+#   # slightly inflate to avoid clipping
+#   needed <- ceiling(1.15 * (lines + axis.line + pad))
+#   
+#   mar <- par("mar")
+#   
+#   if(needed > mar[side]) {
+#     mar[side] <- needed
+#     par(mar = mar)
+#   }
+#   
+#   invisible()
+# }
+# 
+# 
+
+
+
+# 
+# .adjustLeftMarginForLabels <- function(labels, pad=0.5) {
+#   
+#   if (is.null(labels) || !length(labels))
+#     return(invisible())
+#   
+#   # w <- max(strwidth(labels,
+#   #                   units = "inches",
+#   #                   cex = par("cex.axis")))
+#   # 
+#   # lineHeight <- par("csi") * par("mex")
+#   # 
+#   # needed <- 1.1 * (ceiling(w / lineHeight) + 1)
+#   
+#   needed <- .neededMargin(labels, pad=pad)
+#   
+#   mar <- par("mar")
+#   
+#   if (needed > mar[2]) {
+#     mar[2] <- needed
+#     par(mar = mar)
+#   }
+#   
+#   invisible()
+# }
+# 
+# 
+# 
+# .adjustBottomMarginForLas2 <- function(labels) {
+#   
+#   if (is.null(labels) || !length(labels))
+#     return(invisible())
+#   
+#   w <- max(strwidth(labels,
+#                     units = "inches",
+#                     cex = par("cex.axis")))
+#   
+#   lineHeight <- par("csi") * par("mex")
+#   
+#   needed <- ceiling(w / lineHeight) + 1
+#   
+#   mar <- par("mar")
+#   
+#   if (needed > mar[1]) {
+#     mar[1] <- needed
+#     par(mar = mar)
+#   }
+#   
+#   invisible()
+# }
+# 
+# 
+# 
+# 
+ 
 
 
 .outerAt <- function(at, side = 2) {
@@ -275,7 +419,7 @@
     }
     
     # combine argument + theme
-    if (is.null(arg)) {
+    if (is.null(arg) || isTRUE(arg)) {
       
       out[[nm]] <- th_sub
       
@@ -300,6 +444,10 @@
 
 
 
+
+
+## == old stuff ============================================================
+
 # 
 # .theme <- function(...) {
 #   
@@ -318,10 +466,6 @@
 # 
 # 
 
-
-
-
-## == old stuff ============================================================
 
 # # internal function to restore settings after a plot has been created
 # 

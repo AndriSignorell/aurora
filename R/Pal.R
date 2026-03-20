@@ -34,7 +34,7 @@
 #' @seealso \code{\link{colorRampPalette}}
 #' @keywords color
 #' @examples
-#' 
+#' op <- par(no.readonly = TRUE)
 #' canvas(c(0,1))
 #' colorLegend(x=0, y=1, width=0.1, col=Pal(1, n=50))
 #' colorLegend(x=0.15, y=1, width=0.1, col=Pal(2, n=50))
@@ -59,6 +59,8 @@
 #' barplot(1:10, col=Pal("RedBlackGreen", 10), axes=FALSE, main="Palette 'RedGreenGreen'" )
 #' barplot(1:10, col=Pal("SteeblueWhite", 10), axes=FALSE, main="Palette 'SteeblueWhite'" )
 #' barplot(1:10, col=Pal("RedWhiteGreen", 10), axes=FALSE, main="Palette 'RedWhiteGreen'" )
+#' 
+#' par(op)
 #' 
 
 

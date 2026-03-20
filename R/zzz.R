@@ -19,23 +19,26 @@
     
     DescToolsX.theme     = list(
       
-          grid.col = "grey90",
+          grid.col = "grey",
           grid.lty = 3,
           grid.lwd = 1,
-          grid.group.col = "grey40",
+          grid.group.col = "darkgrey",
           grid.group.lty = 2,
           grid.group.lwd = 1,
           
           pch.pch  = 21,
-          pch.col = par("fg"),
+          pch.col = "black",
           pch.bg  = "white",
           pch.cex = 1.2,
           
-          line.col = par("fg"),
+          line.col = "black",
           line.lwd = 1,
           line.lty = 1,
 
-          group.cex = par("cex.axis") * 1.05
+          group.cex = par("cex.axis") * 1.05,
+          
+          bar.col = "grey80",
+          bar.border = "grey70"
       ),
     
     abs.sty   = structure(list(digits = 0, big.mark = "",
@@ -78,5 +81,5 @@
 #' @importFrom stats qt sd as.dendrogram dist hclust order.dendrogram filter 
 #'             relevel setNames is.ts time prop.test predict qnorm formula var
 #'             model.frame model.response model.weights terms na.omit
-#'             acf plot.ts pacf complete.cases dnorm quantile
+#'             acf plot.ts pacf complete.cases dnorm quantile uniroot
 NULL

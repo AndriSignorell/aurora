@@ -47,6 +47,7 @@ Loess can result in heavy computational load if there are many points!
 }
 \examples{
 
+op <- par(no.readonly = TRUE)
 par(mfrow=c(1,2))
 
 x <- runif(100)
@@ -64,6 +65,8 @@ lines(loess(dist ~ speed, data=cars), conf.level = 0.99,
 # the default values from scatter.smooth
 lines(loess(dist ~ speed, data=cars,
             span=2/3, degree=1, family="symmetric"), col="red")
+
+par(op)
 
 }
 \seealso{

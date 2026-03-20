@@ -100,17 +100,6 @@ b <- barplot(VADeaths, horiz = TRUE)
 barText(VADeaths, b=b, horiz = TRUE, col="red", cex=1.5)
 
 
-# position of the text
-old <- par(mfrow=c(3,2), xpd=NA)
-off <- c(10, 4, 1, 20, -15)
-
-for(pos in eval(formals(barText)$pos)) {
-  b <- barplot(x, offset=off, 
-  main=gettextf("Textposition pos = '\%s'", pos), horiz=TRUE)
-  abline(h=0)
-  barText(x, b, x, offset = off, pos=pos, cex=1.5, horiz=TRUE)
-}
-par(old)
 
 }
 \seealso{

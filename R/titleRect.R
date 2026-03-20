@@ -27,7 +27,8 @@
 #' 
 
 #' @export
-titleRect <- function(label, bg = "grey", border=1, col="black", xjust=0.5, line=2, ...){
+titleRect <- function(label, bg = "grey", border=1, 
+                      col="black", xjust=0.5, line=2, ...){
   
   xpd <- par(xpd=TRUE); on.exit(par(xpd))
   

@@ -41,7 +41,7 @@
 #'              function(x) dnorm(x, mean=2, sd=2), 
 #'              blab="A", xlim=c(-7,10),
 #'              main="Normal-Distribution N(2,2)",
-#'              col=c("deeppink4", "skyblue3""), 
+#'              col=c("deeppink4", "skyblue3"), 
 #'              density=c(20, 7))
 #' 
 #' # same for Chi-square

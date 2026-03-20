@@ -39,9 +39,6 @@ Use \code{NA} to suppress the title entirely.}
 
 \item{...}{Graphical parameters passed to \code{par()}, such as
 \code{cex}, \code{las}, \code{mar}, or \code{oma}.}
-
-\item{type}{Character string specifying the plot type.
-Either \code{"bar"} (default) for bar charts or \code{"dot"} for dot plots.}
 }
 \value{
 Invisibly returns \code{NULL}. The function is called for its
