@@ -119,7 +119,7 @@ boxedText.default <- function(
     labels <- seq_along(coords$x)
   
   # ------------------------------------------------------------
-  # Recycling aller Parameter über DescToolsViz::recycle()
+  # Recycling aller Parameter über aurora::recycle()
   # ------------------------------------------------------------
   pars <- recycle(
     x       = coords$x,

@@ -248,7 +248,7 @@ plotQQ <- function(x, qdist=stats::qnorm,
     # use the exact distribution from the C code in R
     exact.kolmogorov.pdf <- function(x) {
       # p <- .Call("pKolmogorov2x", p = as.double(x), as.integer(n), 
-      #            PACKAGE = "DescToolsViz");
+      #            PACKAGE = "aurora");
       p <- pKolmogorov2x(x, n)
       return(p - conf);
     }

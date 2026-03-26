@@ -1,8 +1,8 @@
 
 
-test_that("DescToolsViz does not load without DescToolsX", {
+test_that("aurora does not load without DescToolsX", {
   expect_error(
-    library(DescToolsViz),
+    library(aurora),
     NA
   )
 })

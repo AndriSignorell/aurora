@@ -150,7 +150,7 @@
 
 
 
-# Principle for the plot part of DescToolsViz:
+# Principle for the plot part of aurora:
 # * User arguments override theme
 # * Theme overrides base defaults
 # .apply pars describe!!*********

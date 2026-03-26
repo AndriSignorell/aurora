@@ -12,7 +12,7 @@
 #' @param warn Logical; whether to issue a warning if forbidden arguments are removed.
 #'
 #' @note
-#' This function is intentionally duplicated in DescToolsViz and DescToolsX.
+#' This function is intentionally duplicated in aurora and DescToolsX.
 #' Do not refactor into cross-package dependency.
 #' Keep implementations in sync.
 #' 

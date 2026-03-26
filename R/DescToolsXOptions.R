@@ -113,7 +113,7 @@
 #' Otherwise, it changes the named settings and invisibly returns their
 #' previous values.
 #' @author Andri Signorell <andri@@signorell.net>
-#' @seealso \code{\link{fm}}, \code{\link[DescToolsViz]{pal}}
+#' @seealso \code{\link{fm}}, \code{\link[aurora]{pal}}
 #' @examples
 #' 
 #' getOption("DescToolsX.plotit")

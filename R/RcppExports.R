@@ -2,38 +2,38 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 between_num <- function(x, from, to, left_closed = TRUE, right_closed = TRUE) {
-    .Call(`_DescToolsViz_between_num`, x, from, to, left_closed, right_closed)
+    .Call(`_aurora_between_num`, x, from, to, left_closed, right_closed)
 }
 
 binaryTree_cpp <- function(n) {
-    .Call(`_DescToolsViz_binaryTree_cpp`, n)
+    .Call(`_aurora_binaryTree_cpp`, n)
 }
 
 conv_DecToBin <- function(n) {
-    .Call(`_DescToolsViz_conv_DecToBin`, n)
+    .Call(`_aurora_conv_DecToBin`, n)
 }
 
 formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
-    .Call(`_DescToolsViz_formatDateTime`, x, fmt, strict, locale)
+    .Call(`_aurora_formatDateTime`, x, fmt, strict, locale)
 }
 
 formatNum <- function(x, digits = NULL, ldigits = NULL, big_mark = NULL, decimal_mark = NULL, sci_big = 9999L, sci_small = -9999L) {
-    .Call(`_DescToolsViz_formatNum`, x, digits, ldigits, big_mark, decimal_mark, sci_big, sci_small)
+    .Call(`_aurora_formatNum`, x, digits, ldigits, big_mark, decimal_mark, sci_big, sci_small)
 }
 
 pSmirnov2x <- function(statistic, nx, ny) {
-    .Call(`_DescToolsViz_pSmirnov2x`, statistic, nx, ny)
+    .Call(`_aurora_pSmirnov2x`, statistic, nx, ny)
 }
 
 pKS2 <- function(statistic, tol) {
-    .Call(`_DescToolsViz_pKS2`, statistic, tol)
+    .Call(`_aurora_pKS2`, statistic, tol)
 }
 
 pKolmogorov2x <- function(statistic, n) {
-    .Call(`_DescToolsViz_pKolmogorov2x`, statistic, n)
+    .Call(`_aurora_pKolmogorov2x`, statistic, n)
 }
 
 roman2int_cpp <- function(x) {
-    .Call(`_DescToolsViz_roman2int_cpp`, x)
+    .Call(`_aurora_roman2int_cpp`, x)
 }
 

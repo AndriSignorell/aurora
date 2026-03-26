@@ -5,7 +5,7 @@
   # presetting DescToolsX options not already defined by the user
   
   # here the same as in DescToolsX to ensure they are defined, even
-  # id DescToolsViz are loaded as single package
+  # id aurora are loaded as single package
   
   op <- options()
   pkg.op <- list(
@@ -61,7 +61,7 @@
 }
 
 
-#' @useDynLib DescToolsViz, .registration = TRUE
+#' @useDynLib aurora, .registration = TRUE
 
 
 #' @importFrom Rcpp sourceCpp

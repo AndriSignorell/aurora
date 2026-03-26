@@ -13,21 +13,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-# DescToolsViz
+# aurora
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/AndriSignorell/DescToolsViz/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndriSignorell/DescToolsViz/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/AndriSignorell/aurora/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndriSignorell/aurora/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of DescToolsViz is to ...
+The goal of aurora is to ...
 
 ## Installation
 
-You can install the development version of DescToolsViz from [GitHub](https://github.com/) with:
+You can install the development version of aurora from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("AndriSignorell/DescToolsViz")
+pak::pak("AndriSignorell/aurora")
 ```
 
 ## Example
@@ -35,7 +35,7 @@ pak::pak("AndriSignorell/DescToolsViz")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(DescToolsViz)
+library(aurora)
 ## basic example code
 ```
 

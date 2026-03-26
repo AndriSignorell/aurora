@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(DescToolsViz)
+library(aurora)
 
-test_check("DescToolsViz")
+test_check("aurora")

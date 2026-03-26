@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // between_num
 LogicalVector between_num(NumericVector x, NumericVector from, NumericVector to, bool left_closed, bool right_closed);
-RcppExport SEXP _DescToolsViz_between_num(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP left_closedSEXP, SEXP right_closedSEXP) {
+RcppExport SEXP _aurora_between_num(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP left_closedSEXP, SEXP right_closedSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -27,7 +27,7 @@ END_RCPP
 }
 // binaryTree_cpp
 Rcpp::IntegerVector binaryTree_cpp(int n);
-RcppExport SEXP _DescToolsViz_binaryTree_cpp(SEXP nSEXP) {
+RcppExport SEXP _aurora_binaryTree_cpp(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -38,7 +38,7 @@ END_RCPP
 }
 // conv_DecToBin
 CharacterVector conv_DecToBin(IntegerVector n);
-RcppExport SEXP _DescToolsViz_conv_DecToBin(SEXP nSEXP) {
+RcppExport SEXP _aurora_conv_DecToBin(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -49,7 +49,7 @@ END_RCPP
 }
 // formatDateTime
 CharacterVector formatDateTime(SEXP x, std::string fmt, bool strict, std::string locale);
-RcppExport SEXP _DescToolsViz_formatDateTime(SEXP xSEXP, SEXP fmtSEXP, SEXP strictSEXP, SEXP localeSEXP) {
+RcppExport SEXP _aurora_formatDateTime(SEXP xSEXP, SEXP fmtSEXP, SEXP strictSEXP, SEXP localeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -63,7 +63,7 @@ END_RCPP
 }
 // formatNum
 CharacterVector formatNum(NumericVector x, Nullable<IntegerVector> digits, Nullable<IntegerVector> ldigits, Nullable<CharacterVector> big_mark, Nullable<CharacterVector> decimal_mark, int sci_big, int sci_small);
-RcppExport SEXP _DescToolsViz_formatNum(SEXP xSEXP, SEXP digitsSEXP, SEXP ldigitsSEXP, SEXP big_markSEXP, SEXP decimal_markSEXP, SEXP sci_bigSEXP, SEXP sci_smallSEXP) {
+RcppExport SEXP _aurora_formatNum(SEXP xSEXP, SEXP digitsSEXP, SEXP ldigitsSEXP, SEXP big_markSEXP, SEXP decimal_markSEXP, SEXP sci_bigSEXP, SEXP sci_smallSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -80,7 +80,7 @@ END_RCPP
 }
 // pSmirnov2x
 double pSmirnov2x(double statistic, int nx, int ny);
-RcppExport SEXP _DescToolsViz_pSmirnov2x(SEXP statisticSEXP, SEXP nxSEXP, SEXP nySEXP) {
+RcppExport SEXP _aurora_pSmirnov2x(SEXP statisticSEXP, SEXP nxSEXP, SEXP nySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -93,7 +93,7 @@ END_RCPP
 }
 // pKS2
 NumericVector pKS2(NumericVector statistic, double tol);
-RcppExport SEXP _DescToolsViz_pKS2(SEXP statisticSEXP, SEXP tolSEXP) {
+RcppExport SEXP _aurora_pKS2(SEXP statisticSEXP, SEXP tolSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -105,7 +105,7 @@ END_RCPP
 }
 // pKolmogorov2x
 double pKolmogorov2x(double statistic, int n);
-RcppExport SEXP _DescToolsViz_pKolmogorov2x(SEXP statisticSEXP, SEXP nSEXP) {
+RcppExport SEXP _aurora_pKolmogorov2x(SEXP statisticSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -117,7 +117,7 @@ END_RCPP
 }
 // roman2int_cpp
 IntegerVector roman2int_cpp(CharacterVector x);
-RcppExport SEXP _DescToolsViz_roman2int_cpp(SEXP xSEXP) {
+RcppExport SEXP _aurora_roman2int_cpp(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -128,19 +128,19 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_DescToolsViz_between_num", (DL_FUNC) &_DescToolsViz_between_num, 5},
-    {"_DescToolsViz_binaryTree_cpp", (DL_FUNC) &_DescToolsViz_binaryTree_cpp, 1},
-    {"_DescToolsViz_conv_DecToBin", (DL_FUNC) &_DescToolsViz_conv_DecToBin, 1},
-    {"_DescToolsViz_formatDateTime", (DL_FUNC) &_DescToolsViz_formatDateTime, 4},
-    {"_DescToolsViz_formatNum", (DL_FUNC) &_DescToolsViz_formatNum, 7},
-    {"_DescToolsViz_pSmirnov2x", (DL_FUNC) &_DescToolsViz_pSmirnov2x, 3},
-    {"_DescToolsViz_pKS2", (DL_FUNC) &_DescToolsViz_pKS2, 2},
-    {"_DescToolsViz_pKolmogorov2x", (DL_FUNC) &_DescToolsViz_pKolmogorov2x, 2},
-    {"_DescToolsViz_roman2int_cpp", (DL_FUNC) &_DescToolsViz_roman2int_cpp, 1},
+    {"_aurora_between_num", (DL_FUNC) &_aurora_between_num, 5},
+    {"_aurora_binaryTree_cpp", (DL_FUNC) &_aurora_binaryTree_cpp, 1},
+    {"_aurora_conv_DecToBin", (DL_FUNC) &_aurora_conv_DecToBin, 1},
+    {"_aurora_formatDateTime", (DL_FUNC) &_aurora_formatDateTime, 4},
+    {"_aurora_formatNum", (DL_FUNC) &_aurora_formatNum, 7},
+    {"_aurora_pSmirnov2x", (DL_FUNC) &_aurora_pSmirnov2x, 3},
+    {"_aurora_pKS2", (DL_FUNC) &_aurora_pKS2, 2},
+    {"_aurora_pKolmogorov2x", (DL_FUNC) &_aurora_pKolmogorov2x, 2},
+    {"_aurora_roman2int_cpp", (DL_FUNC) &_aurora_roman2int_cpp, 1},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_DescToolsViz(DllInfo *dll) {
+RcppExport void R_init_aurora(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
