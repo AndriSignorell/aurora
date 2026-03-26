@@ -73,8 +73,9 @@
 #'             plot.new plot.window close.screen screen split.screen
 #'             rug curve contour persp
 #'             
-#' @importFrom grDevices rgb col2rgb rgb2hsv colors colorRampPalette adjustcolor
+#' @importFrom grDevices rgb col2rgb rgb2hsv colors colorRampPalette 
 #'             xy.coords heat.colors dev.size gray.colors
+#'             rainbow adjustcolor
 #'             
 #' @importFrom utils head tail combn readRegistry modifyList
 #' 
@@ -82,4 +83,8 @@
 #'             relevel setNames is.ts time prop.test predict qnorm formula var
 #'             model.frame model.response model.weights terms na.omit
 #'             acf plot.ts pacf complete.cases dnorm quantile uniroot
+#'             
+#' @importFrom stringi stri_sub stri_length stri_pad stri_trim_both
+#'             stri_extract_first_regex
+#' 
 NULL

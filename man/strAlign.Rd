@@ -2,83 +2,75 @@
 % Please edit documentation in R/strAlign.R
 \name{strAlign}
 \alias{strAlign}
-\title{String Alignment}
+\title{Align Strings}
 \usage{
 strAlign(x, sep = "\\\\r")
 }
 \arguments{
-\item{x}{a character vector to be aligned. \%\% ~~Describe \code{x} here~~}
+\item{x}{A character vector.}
 
-\item{sep}{the character on whose position the strings will be aligned. Left
-alignment can be requested by setting \code{sep = "\\l"}, right alignment by
-\code{"\\r"} and center alignment by \code{"\\c"}. Mind the backslashes, as
-if they are omitted, strings would be aligned to the \bold{character} l, r
-or c respectively. Default value is \code{"\\r"}, thus right alignment.}
+\item{sep}{A character specifying the alignment mode:
+\itemize{
+\item \code{"\\l"}: left alignment
+\item \code{"\\r"}: right alignment (default)
+\item \code{"\\c"}: centered alignment
+\item any other character: align at the first occurrence of this separator
+}}
 }
 \value{
-a character vector containing the aligned strings
+A character vector of aligned strings.
 }
 \description{
-Align a vector of strings to the left, to the right, to the center or to the
-first occurance of a specified character, e.g. to the decimal separator.
-Alignment is achieved by padding the strings with empty spaces (which
-evidently only will have an alignment effect if the text is displayed with a
-monospaced font).
+Aligns a character vector to the left, right, center, or with respect
+to the first occurrence of a specified separator.
 }
 \details{
-Alignment to the left or right leave no room for misinterpretation. The
-function will determine the maximum string size in the vector, resize all
-the strings to this size by padding empty spaces either at the beginning or
-at the end. \preformatted{cbind(strAlign(c("here", "there", "everywhere"),
-sep = "\r")) [1,] " here" [2,] " there" [3,] "everywhere"}
+Alignment is achieved by padding strings with spaces so that all elements
+have equal width. This is mainly useful for monospaced output.
 
-When it comes to center strings, it's not clear where to place strings with
-an even length in case the maximum length is odd (or vice versa). We will
-put the shorter distance of an uneven string to the left (note the second
-term, that has 2 spaces on the left and 3 spaces on the right).
-\preformatted{cbind(strAlign(c("here", "there", "everywhere"), sep = "\c"))
-[1,] " here " [2,] " there " [3,] "everywhere"}
+For left, right, and center alignment, strings are padded to the maximum
+width using spaces.
 
-Any specific length of the strings can be created by \code{\link{strPad}} if
-required.
+If a separator is provided, strings are aligned such that the first
+occurrence of the separator is vertically aligned. If a string does not
+contain the separator, it is treated as if the separator occurred at the end.
 
-In case of a given character as separator the strings will be aligned
-towards this separator. Frequently this might be the decimal separator. If a
-string does not contain the separator, the affected string will be aligned
-as if it had a separator as last character. This seems to be a good default,
-when integer numbers are to be aligned with numerical values. Note that the
-character length of the resulting strings can excceed the maximum length of
-the supplied strings. \preformatted{z <- c(" 6.0", "6.00 ", " 45.12 ",
-"784", NA) cbind(strAlign(z, sep=".")) [,1] [1,] " 6.0 " [2,] " 6.00" [3,] "
-45.12" [4,] "784 " [5,] NA }
-
-The character strings will not be pruned of whitespaces, if the requested
-alignment does not explicitly require it. \code{\link{strTrim}} can be used
-for that.
+This function uses Unicode-aware string handling via the \pkg{stringi}
+package.
 }
 \examples{
+x <- c("here", "there", "everywhere")
 
-# align on (the first occuring) B
-x <- c("ABCDMNB", "CDGHEBK", "BCI")
-cbind(strAlign(x, sep="B"))
+# right align (default)
+strAlign(x)
 
-# align to decimal separator (here point)
-z <- c("    6.0", "6.00  ", " 45.12    ", "784", NA)
-cbind(strAlign(z, sep="."))
-
-# right align, the width will be the max number of characters in x
-cbind(strAlign(x, sep="\\\\r"))
 # left align
-cbind(strAlign(x, sep="\\\\l"))
-# center
-cbind(strAlign(x, sep="\\\\c"))
+strAlign(x, "\\\\l")
+
+# center align
+strAlign(x, "\\\\c")
+
+# align at decimal separator
+z <- c("6.0", "45.12", "784")
+strAlign(z, ".")
 
 }
 \seealso{
-\code{\link{strTrim}}, \code{\link{strPad}},
-\code{\link[DescToolsViz]{fm}}
+\code{\link[stringi]{stri_pad}},
+\code{\link[stringi]{stri_sub}},
+\code{\link[stringi]{stri_trim_right}}
+
+Other string utilities: 
+\code{\link{strAbbr}()},
+\code{\link{strCap}()},
+\code{\link{strCountW}()},
+\code{\link{strExtract}()},
+\code{\link{strExtractBetween}()},
+\code{\link{strRev}()},
+\code{\link{strSpell}()},
+\code{\link{strSplit}()},
+\code{\link{strVal}()}
 }
-\author{
-Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}
-}
-\keyword{character}
+\concept{string alignment}
+\concept{string utilities}
+\concept{text formatting}

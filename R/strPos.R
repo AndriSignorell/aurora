@@ -14,9 +14,9 @@
 #' @param pos integer, defining the start position for the search within x. The
 #' result will then be relative to the begin of the truncated string. Will be
 #' recycled. 
-#' @param \dots the dots are passed to the function \code{\link{regexpr}}. 
+#' 
 #' @return a vector of the first position of pattern in x 
-#' @author Andri Signorell <andri@@signorell.net> 
+#' 
 #' @seealso \code{\link{strChop}}, \code{\link{regexpr}} 
 #' @keywords character utilities
 #' @examples
@@ -30,13 +30,26 @@
 
 
 #' @export
-strPos <- function(x, pattern, pos=1, ... ){
+strPos <- function(x, pattern, pos = 1) {
   
-  pos <- rep(pos, length.out=length(x))
-  x <- substr(x, start=pos, stop=nchar(x))
+  pos <- rep(pos, length.out = length(x))
+  x_sub <- stringi::stri_sub(x, from = pos)
   
-  i <- as.vector(regexpr(pattern = pattern, text = x, ...))
-  i[i<0] <- NA
-  return(i)
+  res <- stringi::stri_locate_first_regex(x_sub, pattern)[,1]
+  res[is.na(res)] <- NA
+  
+  return(res)
 }
+
+
+
+# strPos <- function(x, pattern, pos=1, ... ){
+#   
+#   pos <- rep(pos, length.out=length(x))
+#   x <- substr(x, start=pos, stop=nchar(x))
+#   
+#   i <- as.vector(regexpr(pattern = pattern, text = x, ...))
+#   i[i<0] <- NA
+#   return(i)
+# }
 

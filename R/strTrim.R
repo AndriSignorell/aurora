@@ -38,13 +38,28 @@
 
  
 #' @export
-strTrim <- function(x, pattern=" \t\n", method="both") {
+strTrim <- function(x, pattern = " \t\n", method = "both") {
   
-  switch(match.arg(arg = method, choices = c("both", "left", "right")),
-         both =  { gsub( pattern=gettextf("^[%s]+|[%s]+$", pattern, pattern), replacement="", x=x) },
-         left =  { gsub( pattern=gettextf("^[%s]+",pattern), replacement="", x=x)  },
-         right = { gsub( pattern=gettextf("[%s]+$",pattern), replacement="", x=x)  }
-  )
+  method <- match.arg(method, c("both", "left", "right"))
   
+  if (method == "both") {
+    stringi::stri_trim_both(x)
+  } else if (method == "left") {
+    stringi::stri_trim_left(x)
+  } else {
+    stringi::stri_trim_right(x)
+  }
 }
 
+
+# old:
+# strTrim <- function(x, pattern=" \t\n", method="both") {
+#   
+#   switch(match.arg(arg = method, choices = c("both", "left", "right")),
+#          both =  { gsub( pattern=gettextf("^[%s]+|[%s]+$", pattern, pattern), replacement="", x=x) },
+#          left =  { gsub( pattern=gettextf("^[%s]+",pattern), replacement="", x=x)  },
+#          right = { gsub( pattern=gettextf("[%s]+$",pattern), replacement="", x=x)  }
+#   )
+#   
+# }
+# 

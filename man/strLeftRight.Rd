@@ -2,13 +2,13 @@
 % Please edit documentation in R/strLeftRight.R
 \name{strLeftRight}
 \alias{strLeftRight}
-\alias{strRight}
 \alias{strLeft}
+\alias{strRight}
 \title{Returns the Left Or the Right Part Of a String}
 \usage{
-strRight(x, n)
-
 strLeft(x, n)
+
+strRight(x, n)
 }
 \arguments{
 \item{x}{a vector of strings.}

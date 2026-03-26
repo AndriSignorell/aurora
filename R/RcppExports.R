@@ -5,6 +5,10 @@ between_num <- function(x, from, to, left_closed = TRUE, right_closed = TRUE) {
     .Call(`_DescToolsViz_between_num`, x, from, to, left_closed, right_closed)
 }
 
+binaryTree_cpp <- function(n) {
+    .Call(`_DescToolsViz_binaryTree_cpp`, n)
+}
+
 conv_DecToBin <- function(n) {
     .Call(`_DescToolsViz_conv_DecToBin`, n)
 }

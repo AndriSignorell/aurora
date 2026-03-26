@@ -25,6 +25,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// binaryTree_cpp
+Rcpp::IntegerVector binaryTree_cpp(int n);
+RcppExport SEXP _DescToolsViz_binaryTree_cpp(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(binaryTree_cpp(n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // conv_DecToBin
 CharacterVector conv_DecToBin(IntegerVector n);
 RcppExport SEXP _DescToolsViz_conv_DecToBin(SEXP nSEXP) {
@@ -118,6 +129,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_DescToolsViz_between_num", (DL_FUNC) &_DescToolsViz_between_num, 5},
+    {"_DescToolsViz_binaryTree_cpp", (DL_FUNC) &_DescToolsViz_binaryTree_cpp, 1},
     {"_DescToolsViz_conv_DecToBin", (DL_FUNC) &_DescToolsViz_conv_DecToBin, 1},
     {"_DescToolsViz_formatDateTime", (DL_FUNC) &_DescToolsViz_formatDateTime, 4},
     {"_DescToolsViz_formatNum", (DL_FUNC) &_DescToolsViz_formatNum, 7},

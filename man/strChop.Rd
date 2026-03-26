@@ -4,7 +4,7 @@
 \alias{strChop}
 \title{Split a String into a Number of Sections of Defined Length}
 \usage{
-strChop(x, len, pos)
+strChop(x, len = NULL, pos = NULL)
 }
 \arguments{
 \item{x}{the string to be cut in pieces.}

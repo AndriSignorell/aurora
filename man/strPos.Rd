@@ -4,7 +4,7 @@
 \alias{strPos}
 \title{Find Position of First Occurrence Of a String}
 \usage{
-strPos(x, pattern, pos = 1, ...)
+strPos(x, pattern, pos = 1)
 }
 \arguments{
 \item{x}{a character vector in which to search for the pattern, or an object
@@ -17,8 +17,6 @@ regular expression.}
 \item{pos}{integer, defining the start position for the search within x. The
 result will then be relative to the begin of the truncated string. Will be
 recycled.}
-
-\item{\dots}{the dots are passed to the function \code{\link{regexpr}}.}
 }
 \value{
 a vector of the first position of pattern in x
@@ -41,9 +39,6 @@ strPos(x=rownames(mtcars), pattern="t", pos=4)
 }
 \seealso{
 \code{\link{strChop}}, \code{\link{regexpr}}
-}
-\author{
-Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}
 }
 \keyword{character}
 \keyword{utilities}

@@ -41,11 +41,11 @@ strTrunc(x, maxlen=10)
 strTrunc(c(x, NA_character_), maxlen=15, wbound=TRUE)
 
 # using word boundaries
-for(i in -5:20)
+for(i in 0:20)
   print(strTrunc(x, maxlen=i, wbound=TRUE))
 
 # compare
-for(i in -5:20)
+for(i in 0:20)
   print(strTrunc(x, maxlen=i, wbound=FALSE))
 
 }

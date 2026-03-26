@@ -36,33 +36,62 @@
 #' strChop(x=x, pos=c(5, 10))
 #' 
 
+
 #' @export
-strChop <- function(x, len, pos) {
+strChop <- function(x, len = NULL, pos = NULL) {
   
-  .chop <- function(x, len, pos) {
-    # Splits a string into a number of pieces of fixed length
-    # example: strChop(x=paste(letters, collapse=""), len = c(3,5,0))
-    if(!missing(len)){
-      if(!missing(pos))
-        stop("too many arguments")
-    } else {
-      len <- c(pos[1], diff(pos), nchar(x))
-    }
-    
-    xsplit <- character(0)
-    for(i in 1:length(len)){
-      xsplit <- append(xsplit, substr(x, 1, len[i]))
-      x <- substr(x, len[i]+1, nchar(x))
-    }
-    return(xsplit)
+  if (!is.null(len) && !is.null(pos)) {
+    stop("Specify either 'len' or 'pos', not both")
   }
   
-  res <- lapply(x, .chop, len=len, pos=pos)
+  chop_one <- function(xi) {
+    
+    if (!is.null(len)) {
+      cuts <- cumsum(len)
+    } else {
+      cuts <- pos
+    }
+    
+    starts <- c(1, cuts + 1)
+    ends <- c(cuts, stringi::stri_length(xi))
+    
+    stringi::stri_sub(xi, starts, ends)
+  }
   
-  if(length(x)==1)
-    res <- res[[1]]
+  res <- lapply(x, chop_one)
   
-  return(res)
-  
+  if (length(x) == 1) res[[1]] else res
 }
 
+
+
+# old:
+# strChop <- function(x, len, pos) {
+#   
+#   .chop <- function(x, len, pos) {
+#     # Splits a string into a number of pieces of fixed length
+#     # example: strChop(x=paste(letters, collapse=""), len = c(3,5,0))
+#     if(!missing(len)){
+#       if(!missing(pos))
+#         stop("too many arguments")
+#     } else {
+#       len <- c(pos[1], diff(pos), nchar(x))
+#     }
+#     
+#     xsplit <- character(0)
+#     for(i in 1:length(len)){
+#       xsplit <- append(xsplit, substr(x, 1, len[i]))
+#       x <- substr(x, len[i]+1, nchar(x))
+#     }
+#     return(xsplit)
+#   }
+#   
+#   res <- lapply(x, .chop, len=len, pos=pos)
+#   
+#   if(length(x)==1)
+#     res <- res[[1]]
+#   
+#   return(res)
+#   
+# }
+# 

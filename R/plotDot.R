@@ -144,7 +144,7 @@ plotDot <- function(x,
       xlim <- range(x, na.rm = TRUE)
     
     # --------------------------------
-    # Margin automatisch anpassen
+    # adjust margin automatically 
     # --------------------------------
     
     # .adjustLeftMarginForLabels(c(groups, items), pad=1)

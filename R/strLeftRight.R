@@ -35,26 +35,38 @@
 
 #' @rdname strLeftRight
 #' @export
-strRight <- function(x, n) {
-  n <- rep(n, length.out=length(x))
-  sapply(seq_along(x), function(i) {
-    if(n[i] >= 0)
-      substr(x[i], (nchar(x[i]) - n[i]+1L), nchar(x[i]))
-    else
-      substr(x[i], - n[i]+1L, nchar(x[i]))
-  }  )
+strLeft <- function(x, n) {
+  n <- rep(n, length.out = length(x))
+  
+  mapply(function(xi, ni) {
+    if (is.na(xi)) return(NA_character_)
+    
+    if (ni >= 0) {
+      stringi::stri_sub(xi, 1, ni)
+    } else {
+      stringi::stri_sub(xi, 1, stringi::stri_length(xi) + ni)
+    }
+  }, x, n, USE.NAMES = FALSE)
 }
 
 
 #' @rdname strLeftRight
 #' @export
-strLeft <- function(x, n) {
-  n <- rep(n, length.out=length(x))
-  sapply(seq_along(x), function(i) {
-    if(n[i] >= 0)
-      substr(x[i], 0, n[i])
-    else
-      substr(x[i], 0, nchar(x[i]) + n[i])
-  } )
+strRight <- function(x, n) {
+  n <- rep(n, length.out = length(x))
+  
+  mapply(function(xi, ni) {
+    if (is.na(xi)) return(NA_character_)
+    
+    len <- stringi::stri_length(xi)
+    
+    if (ni >= 0) {
+      stringi::stri_sub(xi, len - ni + 1, len)
+    } else {
+      stringi::stri_sub(xi, -ni + 1, len)
+    }
+  }, x, n, USE.NAMES = FALSE)
 }
+
+
 
