@@ -12,8 +12,8 @@
 #' @param cumulate should the result be calculated as cumulative sum? Default
 #' is \code{FALSE}.
 #' @return numeric vector with the calculated midpoins 
-#' @author Andri Signorell <andri@@signorell.net> 
-#' @seealso \code{\link{moveAvg}}
+#' 
+#' @seealso \code{\link[bedrock]{moveAvg}}
 #' @keywords univar
 #' @examples
 #' 
@@ -24,7 +24,7 @@
 #' midx(x, incl.zero = TRUE, cumulate = TRUE)
 #' 
 #' # see also as alternative:
-#' # head(moveAvg(c(0, x), order = 2, align = "l"), n = -1)
+#' # head(bedrock::moveAvg(c(0, x), order = 2, align = "l"), n = -1)
 #' 
 #' tab <- matrix(c(401,216,221,254,259,169), nrow=2, byrow=TRUE)
 #' b <- barplot(tab, beside = FALSE, horiz=TRUE)

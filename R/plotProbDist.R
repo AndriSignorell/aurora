@@ -75,7 +75,7 @@ plotProbDist <- function(breaks, FUN, blab=NULL, main="", xlim=NULL,
         col=col, density=density)
   
   if(is.null(alab_x))
-    alab_x <- moveAvg(c(xlim[1], head(breaks, -1)[-1], xlim[2]), order=2, align="left")
+    alab_x <- bedrock::moveAvg(c(xlim[1], head(breaks, -1)[-1], xlim[2]), order=2, align="left")
   
   if(is.null(alab_y))
     alab_y <- abcCoords("left")$xy$y

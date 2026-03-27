@@ -45,7 +45,7 @@ plotMiss(airquality, main="Missing data (clustered)", clust=TRUE)
 
 }
 \seealso{
-\code{\link{hclust}}, \code{\link{countCompCases}}
+\code{\link{hclust}}, \code{\link[bedrock]{countCompCases}}
 }
 \author{
 Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}, following an idea of Henk

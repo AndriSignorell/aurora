@@ -79,7 +79,7 @@
 
   # if some defaults for dots required use:
   # do.call(.applyParFromDots, 
-  #         .mergeArgs(defaults=list(
+  #         mergeArgs(defaults=list(
   #           yaxs="r"), 
   #           list(...)
   #         ))

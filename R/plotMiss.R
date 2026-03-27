@@ -17,7 +17,7 @@
 #' @return if clust is set to TRUE, the new order will be returned invisibly.
 #' @author Andri Signorell <andri@@signorell.net>, following an idea of Henk
 #' Harmsen <henk@@carbonmetrics.com> 
-#' @seealso \code{\link{hclust}}, \code{\link{countCompCases}} 
+#' @seealso \code{\link{hclust}}, \code{\link[bedrock]{countCompCases}} 
 #' @keywords hplot
 #' @examples
 #' 

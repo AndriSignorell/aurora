@@ -153,7 +153,7 @@ plotQQ <- function(x, qdist=stats::qnorm,
     
 
     # draw points last so they stay on top of confidence band
-    do.call(points, .mergeArgs(
+    do.call(points, mergeArgs(
       defaults = list(
         x=x, y=y,
         pch = 21,

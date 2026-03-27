@@ -85,7 +85,7 @@ plotTreemap(x=sort(area, decreasing=TRUE), labels=letters[1:20],
 
 grp <- sample(x=1:3, size=20, replace=TRUE, prob=c(0.2,0.3,0.5))
 
-z <- sortX(data.frame(area=area, grp=grp), c("grp","area"), 
+z <- bedrock::sortX(data.frame(area=area, grp=grp), c("grp","area"), 
            decreasing=c(FALSE,TRUE))
 z$col <- alpha(c("steelblue","green","yellow")[z$grp],
                   unlist(lapply(split(z$area, z$grp),

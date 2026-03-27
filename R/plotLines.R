@@ -94,7 +94,7 @@ plotLines <- function(x, y, col=1:5, xlab = NULL,
     
     # par() aus ...
     do.call(.applyParFromDots, 
-            .mergeArgs(defaults=list(
+            mergeArgs(defaults=list(
                 mar=c(right=10)), 
                 list(...)
                 ))

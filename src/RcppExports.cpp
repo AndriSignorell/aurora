@@ -10,43 +10,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// between_num
-LogicalVector between_num(NumericVector x, NumericVector from, NumericVector to, bool left_closed, bool right_closed);
-RcppExport SEXP _aurora_between_num(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP left_closedSEXP, SEXP right_closedSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type to(toSEXP);
-    Rcpp::traits::input_parameter< bool >::type left_closed(left_closedSEXP);
-    Rcpp::traits::input_parameter< bool >::type right_closed(right_closedSEXP);
-    rcpp_result_gen = Rcpp::wrap(between_num(x, from, to, left_closed, right_closed));
-    return rcpp_result_gen;
-END_RCPP
-}
-// binaryTree_cpp
-Rcpp::IntegerVector binaryTree_cpp(int n);
-RcppExport SEXP _aurora_binaryTree_cpp(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(binaryTree_cpp(n));
-    return rcpp_result_gen;
-END_RCPP
-}
-// conv_DecToBin
-CharacterVector conv_DecToBin(IntegerVector n);
-RcppExport SEXP _aurora_conv_DecToBin(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerVector >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(conv_DecToBin(n));
-    return rcpp_result_gen;
-END_RCPP
-}
 // formatDateTime
 CharacterVector formatDateTime(SEXP x, std::string fmt, bool strict, std::string locale);
 RcppExport SEXP _aurora_formatDateTime(SEXP xSEXP, SEXP fmtSEXP, SEXP strictSEXP, SEXP localeSEXP) {
@@ -115,28 +78,13 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// roman2int_cpp
-IntegerVector roman2int_cpp(CharacterVector x);
-RcppExport SEXP _aurora_roman2int_cpp(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(roman2int_cpp(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_aurora_between_num", (DL_FUNC) &_aurora_between_num, 5},
-    {"_aurora_binaryTree_cpp", (DL_FUNC) &_aurora_binaryTree_cpp, 1},
-    {"_aurora_conv_DecToBin", (DL_FUNC) &_aurora_conv_DecToBin, 1},
     {"_aurora_formatDateTime", (DL_FUNC) &_aurora_formatDateTime, 4},
     {"_aurora_formatNum", (DL_FUNC) &_aurora_formatNum, 7},
     {"_aurora_pSmirnov2x", (DL_FUNC) &_aurora_pSmirnov2x, 3},
     {"_aurora_pKS2", (DL_FUNC) &_aurora_pKS2, 2},
     {"_aurora_pKolmogorov2x", (DL_FUNC) &_aurora_pKolmogorov2x, 2},
-    {"_aurora_roman2int_cpp", (DL_FUNC) &_aurora_roman2int_cpp, 1},
     {NULL, NULL, 0}
 };
 

@@ -222,9 +222,9 @@ fm(1200, digits=2, big.mark = ".", outdec=",")
 \seealso{
 \code{\link{format}}, \code{\link{formatC}},
 \code{\link{prettyNum}}, \code{\link{sprintf}}, \code{\link{symnum}},\cr
-\code{\link{Sys.setlocale}},\cr \code{\link[DescTools]{Weekday}},
-\code{\link[DescTools]{Month}},
-\code{\link{setDescToolsXOption}}, \code{\link{style}}, \code{\link{styles}}
+\code{\link{Sys.setlocale}},\cr \code{\link[DescToolsX]{weekday}},
+\code{\link[DescToolsX]{month}},
+\code{\link[DescToolsX]{setDescToolsXOption}}, \code{\link{style}}, \code{\link{styles}}
 }
 \author{
 Andri Signorell \href{mailto:andri@signorell.net}{andri@signorell.net}

@@ -68,7 +68,7 @@ lines.Lc <- function(x, general=FALSE, lwd=2, conf.level = NA,
   
   if (!(is.na(conf.level) || identical(args.cband, NA)) ) {
     
-    args.cband1 <- .mergeArgs(defaults = list(
+    args.cband1 <- mergeArgs(defaults = list(
       col    = alpha(.getOption("palette")[1], 0.12), 
       border = NA),
       args.cband)

@@ -236,7 +236,7 @@ plotBar <- function(height,
       if(isTRUE(grid))
         grid <- NULL
       
-      grid <- .mergeArgs(
+      grid <- mergeArgs(
         defaults = list(
           horiz = horiz,
           col   = "grey85",
@@ -299,7 +299,7 @@ plotBar <- function(height,
         if(isTRUE(connlines))
           connlines <- NULL
         
-        connlines <- .mergeArgs(
+        connlines <- mergeArgs(
           defaults = list(
             height = height,
             b      = b,

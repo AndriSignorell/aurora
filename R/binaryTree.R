@@ -13,9 +13,7 @@
 #' 3, 7)} meaning that the smallest element will be in position 8 of the tree,
 #' the next smallest in position 4, etc.
 #' 
-#' @name binaryTree
 #' @aliases binaryTree plotBinaryTree
-#' @param n integer, size of the tree 
 #' @param x numeric vector to be organized as binary tree. 
 #' @param main main title of the plot. 
 #' @param horiz logical, should the plot be oriented horizontally or
@@ -34,7 +32,7 @@
 #' 
 #' @examples
 #' 
-#' binaryTree(12)
+#' bedrock::binaryTree(12)
 #' 
 #' x <- sort(sample(100, 24))
 #' z <- plotBinaryTree(x, cex=0.8)
@@ -51,22 +49,10 @@
 #'            , as.vector(aperm(prop.table(tab, c(1,2)), c(3,2,1)))
 #' )
 #' 
-#' plotBinaryTree(round(cprob[binaryTree(length(cprob))],2), horiz=TRUE, cex=0.8,
+#' plotBinaryTree(round(cprob[bedrock::binaryTree(length(cprob))],2), horiz=TRUE, cex=0.8,
 #'             main="Titanic")
 #' text(c("sex","age","survived"), y=0, x=c(1,2,3)+1)
 #' 
-
-
-#' @rdname binaryTree
-#' @export
-binaryTree <- function(n) {
-  
-  if(length(n) != 1 || n < 1)
-    stop("n must be a positive integer")
-  
-  binaryTree_cpp(n)
-  
-}
 
 
 #' @rdname binaryTree
@@ -83,7 +69,7 @@ plotBinaryTree <- function(x, main = "Binary tree", horiz = FALSE,
     # par() aus ...
     # default: asp = FALSE, mar = c(0,0,2,0) + 1
     do.call(.applyParFromDots, 
-            .mergeArgs(defaults=list(
+            mergeArgs(defaults=list(
               mar=c(0,0,2,0)),
               list(...)
             ))
@@ -110,7 +96,7 @@ plotBinaryTree <- function(x, main = "Binary tree", horiz = FALSE,
     )
     
     # map values to positions
-    binpos <- binaryTree(n)
+    binpos <- bedrock::binaryTree(n)
     df <- coords[binpos, ]
     df$x <- x
     

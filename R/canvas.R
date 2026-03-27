@@ -38,7 +38,7 @@ canvas <- function(xlim=NULL, ylim=xlim, main=NULL,
     # par() aus ...
     # default: asp = FALSE, mar = c(0,0,2,0) + 1
     do.call(.applyParFromDots, 
-            .mergeArgs(defaults=list(
+            mergeArgs(defaults=list(
               mar=par("mar"), 
               bg=par("bg"), 
               xpd=par("xpd")),

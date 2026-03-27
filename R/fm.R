@@ -143,9 +143,9 @@
 #' @author Andri Signorell <andri@@signorell.net>
 #' @seealso \code{\link{format}}, \code{\link{formatC}},
 #' \code{\link{prettyNum}}, \code{\link{sprintf}}, \code{\link{symnum}},\cr
-#' \code{\link{Sys.setlocale}},\cr \code{\link[DescTools]{Weekday}}, 
-#' \code{\link[DescTools]{Month}},
-#' \code{\link{setDescToolsXOption}}, \code{\link{style}}, \code{\link{styles}}
+#' \code{\link{Sys.setlocale}},\cr \code{\link[DescToolsX]{weekday}}, 
+#' \code{\link[DescToolsX]{month}},
+#' \code{\link[DescToolsX]{setDescToolsXOption}}, \code{\link{style}}, \code{\link{styles}}
 #' @keywords IO
 #' @examples
 #' 
