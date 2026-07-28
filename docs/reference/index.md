@@ -24,6 +24,9 @@
 - [`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md)
   : Place a Break Mark on an Axis
 
+- [`axisFmt()`](https://andrisignorell.github.io/aurora/reference/axisFmt.md)
+  : Draw an Axis With Formatted or Rotated Labels
+
 - [`axTicks.POSIXct()`](https://andrisignorell.github.io/aurora/reference/axTicks.md)
   [`axTicks.Date()`](https://andrisignorell.github.io/aurora/reference/axTicks.md)
   : Compute Axis Tickmark Locations (For POSIXct Axis)

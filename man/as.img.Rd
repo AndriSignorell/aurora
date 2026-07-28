@@ -26,7 +26,10 @@ embedding directly in HTML text.
 }
 \seealso{
 Other html:
+\code{\link[=as.fileLink]{as.fileLink()}},
 \code{\link[=as.html]{as.html()}},
+\code{\link[=embedFile]{embedFile()}},
+\code{\link[=escapeHtml]{escapeHtml()}},
 \code{\link{htmlNotation}},
 \code{\link{htmlSubscript}},
 \code{\link[=toHtmlTable]{toHtmlTable()}}

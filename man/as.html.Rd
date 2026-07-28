@@ -23,7 +23,10 @@ as.html("<b>bold</b>")
 }
 \seealso{
 Other html:
+\code{\link[=as.fileLink]{as.fileLink()}},
 \code{\link[=as.img]{as.img()}},
+\code{\link[=embedFile]{embedFile()}},
+\code{\link[=escapeHtml]{escapeHtml()}},
 \code{\link{htmlNotation}},
 \code{\link{htmlSubscript}},
 \code{\link[=toHtmlTable]{toHtmlTable()}}

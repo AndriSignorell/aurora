@@ -11,7 +11,7 @@ proportions (ECDF-style) can be displayed."><meta property="og:image" content="h
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.935</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,9 @@ proportions (ECDF-style) can be displayed.</p>
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>a factor, character vector, or table of counts.</p></dd>
+<dd><p>a factor or character vector, a one-dimensional table of counts,
+or a numeric vector of precomputed frequencies. Unnamed numeric frequency
+vectors are labelled by their positions.</p></dd>
 
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
@@ -111,6 +113,9 @@ instead of simple relative frequencies.</p></dd>
 </ul><p>If <code>type = "both"</code>, both views are shown side by side.</p>
 <p>Long labels are truncated, and large category sets can be limited via
 <code>maxcats</code>.</p>
+<p>Raw categorical data and their pre-tabulated form are treated identically.
+When categories are truncated via <code>maxcats</code>, proportions remain based
+on the total frequency before truncation.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -134,23 +139,21 @@ instead of simple relative frequencies.</p></dd>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">100</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">plotCatDist</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plotCatDist-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu">plotCatDist</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plotCatDist-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Only proportions</span></span></span>
 <span class="r-in"><span><span class="fu">plotCatDist</span><span class="op">(</span><span class="va">x</span>, type <span class="op">=</span> <span class="st">"perc"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plotCatDist-3.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="plotCatDist-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With cumulative distribution</span></span></span>
 <span class="r-in"><span><span class="fu">plotCatDist</span><span class="op">(</span><span class="va">x</span>, ecdf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="plotCatDist-5.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="plotCatDist-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="plotCatDist-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Many categories (truncation)</span></span></span>
 <span class="r-in"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, <span class="fl">200</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">plotCatDist</span><span class="op">(</span><span class="va">x2</span>, maxcats <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="plotCatDist-7.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="plotCatDist-8.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="plotCatDist-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

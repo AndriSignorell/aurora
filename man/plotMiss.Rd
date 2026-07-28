@@ -53,6 +53,7 @@ plotMiss(airquality, main="Missing data (clustered)", clust=TRUE)
 Other plot.special:
 \code{\link[=plotBinaryTree]{plotBinaryTree()}},
 \code{\link[=plotCirc]{plotCirc()}},
+\code{\link[=plotLift]{plotLift()}},
 \code{\link[=plotPolar]{plotPolar()}},
 \code{\link[=plotPropCI]{plotPropCI()}},
 \code{\link[=plotTernary]{plotTernary()}},

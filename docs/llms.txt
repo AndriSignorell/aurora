@@ -27,7 +27,7 @@ uniform styling across all plot functions.
 | `pharos`  | graphics and visualization (this package)  |
 | `lumen`   | statistical tests and confidence intervals |
 | `alloy`   | model fitting and evaluation               |
-| `hermes`  | reporting and output                       |
+| `pons`    | reporting and output                       |
 
 ## Installation
 
@@ -287,6 +287,9 @@ GPL (≥ 2)
 
 - [`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md)
   : Place a Break Mark on an Axis
+
+- [`axisFmt()`](https://andrisignorell.github.io/aurora/reference/axisFmt.md)
+  : Draw an Axis With Formatted or Rotated Labels
 
 - [`axTicks.POSIXct()`](https://andrisignorell.github.io/aurora/reference/axTicks.md)
   [`axTicks.Date()`](https://andrisignorell.github.io/aurora/reference/axTicks.md)

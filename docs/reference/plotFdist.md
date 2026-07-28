@@ -15,7 +15,6 @@ plotFdist(
   main = NULL,
   xlab = "",
   xlim = NULL,
-  na.rm = FALSE,
   heights = NULL,
   hist = TRUE,
   dens = TRUE,
@@ -48,14 +47,8 @@ plotFdist(
 
 - xlim:
 
-  range of the x-axis. `NULL` (default) uses a pretty range of
-  `range(x, na.rm = TRUE)`.
-
-- na.rm:
-
-  logical; should `NA`s be removed before plotting? The density function
-  requires complete cases, so `TRUE` is recommended when `x` contains
-  missing values. Default `FALSE`.
+  range of the x-axis. `NULL` (default) uses a pretty range of the
+  non-missing values in `x`.
 
 - heights:
 
@@ -67,8 +60,8 @@ plotFdist(
 - hist:
 
   controls the histogram panel. `TRUE` (default) uses package defaults;
-  `FALSE`/`NA` suppresses the panel (not recommended: also disables
-  automatic `xlim` detection); a list overrides specific arguments
+  `FALSE`/`NA` suppresses the panel (`xlim` then falls back to the
+  pretty range of the data); a list overrides specific arguments
   forwarded to [`hist`](https://rdrr.io/r/graphics/hist.html). The
   element `type` selects the plot style: `"hist"` (standard histogram,
   chosen automatically for continuous or high-cardinality data) or
@@ -89,10 +82,12 @@ plotFdist(
 - curve:
 
   controls a fitted theoretical distribution curve on the histogram.
-  `FALSE` (default) suppresses it; `TRUE` or `NULL` draws a normal curve
-  with `mean(x)`/`sd(x)`; a list may include `expr` as a character
-  string or expression for any distribution (e.g.
-  `list(expr = "dt(x, df=2)", col = "darkgreen")`).
+  `FALSE` (default), `NULL`, or `NA` suppress it; `TRUE` draws a normal
+  curve with `mean(x)`/`sd(x)`; a list may include `expr` as a character
+  string, expression, or function of `x` for any distribution (e.g.
+  `list(expr = "dt(x, df=2)", col = "darkgreen")`). A character `expr`
+  is evaluated in the caller's environment, so local variables may be
+  referenced (see the gamma example below).
 
 - boxplot:
 
@@ -126,7 +121,9 @@ plotFdist(
 
   further graphical parameters passed to
   [`par`](https://rdrr.io/r/graphics/par.html) via the internal
-  framework.
+  framework. Note that `mar` given here sets the *outer* margins (`oma`)
+  of the multi-panel figure; the inner panel margins are managed
+  internally and cannot be overridden.
 
 ## Details
 
@@ -170,14 +167,13 @@ Other plot.univariate:
 ## Examples
 
 ``` r
-plotFdist(faithful$eruptions, na.rm = TRUE)
+plotFdist(faithful$eruptions)
 
 
 # custom histogram breaks, density color, boxplot styling
 plotFdist(faithful$eruptions,
   hist    = list(breaks = 50),
   dens    = list(col = "olivedrab4"),
-  na.rm   = TRUE,
   boxplot = list(col = "olivedrab2", pch.mean = NA, col.meanci = NA))
 
 
@@ -209,9 +205,8 @@ plotFdist(ozone,
   hist       = list(breaks = 15),
   curve      = list(expr = "dgamma(x, shape = m^2/v, scale = v/m)",
                     col = "navajowhite3"),
-  curveEcdf = list(expr = "pgamma(x, shape = m^2/v, scale = v/m)",
+  curveEcdf  = list(expr = "pgamma(x, shape = m^2/v, scale = v/m)",
                     col = "navajowhite3"),
-  na.rm = TRUE, main = "Airquality - Ozone")
-#> Error in eval(expr, envir = ll, enclos = parent.frame()): object 'm' not found
+  main = "Airquality - Ozone")
 
 ```

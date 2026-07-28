@@ -138,9 +138,11 @@ Invisibly returns the matrix used for plotting.
 
 The heatmap represents values in a contingency table using color
 intensity. Depending on `scale`, the plot shows either absolute counts
-or different types of proportions. This plot complements association and
-spine plots by focusing on overall structure rather than conditional
-distributions or statistical inference.
+or different types of proportions. Rows are drawn in reading order: the
+first table row appears at the top, matching the printed table and the
+other bivariate plots. This plot complements association and spine plots
+by focusing on overall structure rather than conditional distributions
+or statistical inference.
 
 ## See also
 

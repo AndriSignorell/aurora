@@ -78,6 +78,7 @@ text(c("sex","age","survived"), y=0, x=c(1,2,3)+1)
 \seealso{
 Other plot.special:
 \code{\link[=plotCirc]{plotCirc()}},
+\code{\link[=plotLift]{plotLift()}},
 \code{\link[=plotMiss]{plotMiss()}},
 \code{\link[=plotPolar]{plotPolar()}},
 \code{\link[=plotPropCI]{plotPropCI()}},

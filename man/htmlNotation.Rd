@@ -28,8 +28,11 @@ htmlBar("x")  # -> "x&#772;"   (renders as x with a macron)
 }
 \seealso{
 Other html:
+\code{\link[=as.fileLink]{as.fileLink()}},
 \code{\link[=as.html]{as.html()}},
 \code{\link[=as.img]{as.img()}},
+\code{\link[=embedFile]{embedFile()}},
+\code{\link[=escapeHtml]{escapeHtml()}},
 \code{\link{htmlSubscript}},
 \code{\link[=toHtmlTable]{toHtmlTable()}}
 }

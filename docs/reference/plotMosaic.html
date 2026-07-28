@@ -13,7 +13,7 @@ palette, optional legend).'><meta property="og:image" content="https://andrisign
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.935</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -164,10 +164,13 @@ further annotations (e.g. via <code><a href="https://rdrr.io/r/graphics/rect.htm
     <p>Cells belonging to a row with a row total of zero are drawn as
 zero-height tiles and receive no label, but do not cause an error or
 <code>NaN</code> in the geometry.</p>
-<p>When <code>horiz = TRUE</code>, only the first table dimension (shown on the y-axis)
-receives an axis, since its split points are constant across the whole
-plot. The second dimension's split points vary by row/column and is
-represented via the legend only.</p>
+<p>In both orientations only the first table dimension receives an axis
+(its split points are constant across the whole plot); the second
+dimension's split points vary per column/row and are represented via
+the legend only. No numeric probability axis is drawn. The second
+dimension is stacked top-down (vertical) resp. left-to-right
+(<code>horiz = TRUE</code>): its first level sits at the top / left, matching
+<code><a href="https://rdrr.io/r/graphics/spineplot.html" class="external-link">graphics::spineplot()</a></code> and the legend order.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

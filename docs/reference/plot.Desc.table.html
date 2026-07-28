@@ -15,7 +15,7 @@ supported; a message is issued and the call returns invisibly."><meta property="
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.935</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,13 +36,13 @@ supported; a message is issued and the call returns invisibly."><meta property="
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Plot Method for Categorical-Categorical <code>Desc</code> Objects</h1>
-      <small class="dont-index">Source: <a href="https://github.com/AndriSignorell/pharos/blob/HEAD/R/plot.Desc.table.R" class="external-link"><code>R/plot.Desc.table.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/AndriSignorell/pharos/blob/HEAD/R/plot_Desc_table.R" class="external-link"><code>R/plot_Desc_table.R</code></a></small>
       <div class="d-none name"><code>plot.Desc.table.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
     <p>Visualises a (two-dimensional) cross-tabulation, as computed by
-<code><a href="https://rdrr.io/pkg/DescToolsX/man/desc.html" class="external-link">desc()</a></code> for a categorical/categorical pair.
+<code>desc()</code> for a categorical/categorical pair.
 Four panel types are available, selectable (and combinable) via
 <code>which</code>. Higher-dimensional tables (more than two margins) are not
 supported; a message is issued and the call returns invisibly.</p>
@@ -70,7 +70,7 @@ supported; a message is issued and the call returns invisibly.</p>
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>an object of class <code>"Desc.table"</code>, as returned by
-<code><a href="https://rdrr.io/pkg/DescToolsX/man/desc.html" class="external-link">desc()</a></code> for a categorical-categorical pair.</p></dd>
+<code>desc()</code> for a categorical-categorical pair.</p></dd>
 
 
 <dt id="arg-main">main<a class="anchor" aria-label="anchor" href="#arg-main"></a></dt>
@@ -134,15 +134,23 @@ panel-appropriate default rather than one shared color, since fill
 ramps, diverging palettes, and sequential heat scales are different
 things:</p><dl><dt>panel 1</dt>
 <dd><p>a grey ramp from <code>"grey30"</code> to <code>"grey90"</code>,
-sized to the number of columns of <code>tab</code> (not theme-driven by
+sized to the number of rows of <code>tab</code> - the panel draws
+<code>spineplot(t(tab))</code>, so the stacked (filled) dimension is the
+row dimension of <code>tab</code>, not its columns (not theme-driven by
 design, to keep the unordered category fill neutral).</p></dd>
 
 <dt>panel 2</dt>
 <dd><p>a grey ramp from <code>"grey30"</code> to <code>"grey90"</code>,
-sized to the number of columns of <code>tab</code>, passed to
-<code><a href="plotMosaic.html">plotMosaic</a></code>.</p></dd>
+sized to the number of columns of <code>tab</code> (the fill dimension
+of the untransposed mosaic), passed to <code><a href="plotMosaic.html">plotMosaic</a></code>.</p></dd>
 
 <dt>panel 3</dt>
+<dd><p>a grey ramp from <code>"grey30"</code> to <code>"grey90"</code>,
+sized to the number of rows of <code>tab</code> - with
+<code>swap = TRUE</code> the fill dimension is the row dimension,
+passed to <code><a href="plotMosaic.html">plotMosaic</a></code>.</p></dd>
+
+<dt>panel 4</dt>
 <dd><p>left at <code><a href="plotAssoc.html">plotAssoc</a></code>'s own default
 (<code>pal("red-white-blue-3", n = 100)</code>), a diverging palette - cell
 colors there encode the sign and strength of Pearson residuals, so
@@ -150,7 +158,7 @@ a categorical or grey-ramp default would not be meaningful. Supplying
 <code>col</code> overrides this with the diverging palette of the user's
 choice.</p></dd>
 
-<dt>panel 4</dt>
+<dt>panel 5</dt>
 <dd><p>left at <code><a href="plotHeatmap.html">plotHeatmap</a></code>'s own default
 (<code>pal("Blues", n = 100)</code>), a sequential ramp - cell colors
 there encode magnitude only. Supplying <code>col</code> overrides this.</p></dd>
@@ -167,16 +175,16 @@ suppress it; a named list overrides frame-drawing arguments.</p><dl><dt>panel 1<
 <dd><p>has no effect - <code><a href="https://rdrr.io/r/graphics/spineplot.html" class="external-link">spineplot()</a></code> always draws its
 native frame unconditionally, with no toggle to override it.</p></dd>
 
-<dt>panel 2</dt>
-<dd><p><code><a href="plotMosaic.html">plotMosaic</a></code> always draws its own frame;
-this argument has no effect.</p></dd>
+<dt>panels 2/3</dt>
+<dd><p><code><a href="plotMosaic.html">plotMosaic</a></code> always draws its own
+frame; this argument has no effect.</p></dd>
 
-<dt>panel 3</dt>
+<dt>panel 4</dt>
 <dd><p><code><a href="plotAssoc.html">plotAssoc</a></code> has no frame/box concept of
 its own (it draws dashed reference lines instead); this argument
 has no effect.</p></dd>
 
-<dt>panel 4</dt>
+<dt>panel 5</dt>
 <dd><p>forwarded as-is to <code><a href="plotHeatmap.html">plotHeatmap</a></code>'s own
 <code>box</code> argument, which draws the outer frame via
 <code><a href="https://rdrr.io/r/graphics/rect.html" class="external-link">rect()</a></code> at the exact tile boundaries rather than
@@ -189,7 +197,7 @@ has no effect.</p></dd>
 <dt id="arg-stamp">stamp<a class="anchor" aria-label="anchor" href="#arg-stamp"></a></dt>
 <dd><p>controls the corner stamp. <code>.useTheme</code> (default)
 resolves to <code>getTheme()$stamp</code>, drawn once after all selected
-panels. Panels 2-4 delegate to <code><a href="plotMosaic.html">plotMosaic</a></code>/
+panels. Panels 2-5 delegate to <code><a href="plotMosaic.html">plotMosaic</a></code>/
 <code><a href="plotAssoc.html">plotAssoc</a></code>/<code><a href="plotHeatmap.html">plotHeatmap</a></code>, whose own
 <code>stamp</code> argument is set to <code>NA</code> internally to avoid a
 duplicate. <code>TRUE</code>/<code>FALSE</code>/<code>NULL</code>, a string, or a
@@ -218,7 +226,7 @@ invisibly without drawing anything.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/DescToolsX/man/desc.html" class="external-link">desc</a></code>, <code><a href="plotAssoc.html">plotAssoc</a></code>,
+    <div class="dont-index"><p><code>desc</code>, <code><a href="plotAssoc.html">plotAssoc</a></code>,
 <code><a href="plotHeatmap.html">plotHeatmap</a></code>, <code><a href="plotMosaic.html">plotMosaic</a></code>,
 <code><a href="https://rdrr.io/r/graphics/spineplot.html" class="external-link">spineplot</a></code></p>
 <p>Other plot.s3:

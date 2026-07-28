@@ -1,10 +1,9 @@
 # Plot Method for Numeric-Categorical `Desc` Objects
 
 Visualises the relationship between a numeric variable and a categorical
-variable, as computed by
-[`desc`](https://rdrr.io/pkg/DescToolsX/man/desc.html)`(y ~ x)` (or
-`x ~ y`) for a numeric/categorical pair. Five panel types are available,
-selectable (and combinable) via `which`.
+variable, as computed by `desc(y ~ x)` (or `x ~ y`) for a
+numeric/categorical pair. Five panel types are available, selectable
+(and combinable) via `which`.
 
 ## Usage
 
@@ -28,8 +27,7 @@ plot(
 
 - x:
 
-  an object of class `"Desc.qn"`, as returned by
-  [`desc()`](https://rdrr.io/pkg/DescToolsX/man/desc.html) for a
+  an object of class `"Desc.qn"`, as returned by `desc()` for a
   numeric-categorical pair.
 
 - main:
@@ -175,7 +173,7 @@ clipped regardless of `which`.
 
 ## See also
 
-[`desc`](https://rdrr.io/pkg/DescToolsX/man/desc.html),
+`desc`,
 [`plotDens`](https://andrisignorell.github.io/aurora/reference/plotDens.md),
 [`plotBox`](https://andrisignorell.github.io/aurora/reference/plotBox.md),
 [`cdplot`](https://rdrr.io/r/graphics/cdplot.html),

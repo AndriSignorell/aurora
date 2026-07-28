@@ -121,7 +121,7 @@ Group International Conference Proceedings*, 17, 190–200.
 ## See also
 
 [graphics::mosaicplot](https://rdrr.io/r/graphics/mosaicplot.html),
-[DescToolsX::conf](https://rdrr.io/pkg/DescToolsX/man/conf.html)
+DescToolsX::conf
 
 Other plot.bivariate:
 [`plotBag()`](https://andrisignorell.github.io/aurora/reference/plotBag.md),

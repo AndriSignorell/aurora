@@ -100,7 +100,7 @@ Invisibly returns `x`.
 ## Details
 
 Objects of class `"blandAltman"` are typically created with
-[`DescToolsX::blandAltmanData()`](https://rdrr.io/pkg/DescToolsX/man/blandAltmanData.html).
+`DescToolsX::blandAltmanData()`.
 
 ## See also
 

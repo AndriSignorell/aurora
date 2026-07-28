@@ -1,11 +1,10 @@
 # Plot Method for Categorical-Categorical `Desc` Objects
 
-Visualises a (two-dimensional) cross-tabulation, as computed by
-[`desc()`](https://rdrr.io/pkg/DescToolsX/man/desc.html) for a
-categorical/categorical pair. Four panel types are available, selectable
-(and combinable) via `which`. Higher-dimensional tables (more than two
-margins) are not supported; a message is issued and the call returns
-invisibly.
+Visualises a (two-dimensional) cross-tabulation, as computed by `desc()`
+for a categorical/categorical pair. Four panel types are available,
+selectable (and combinable) via `which`. Higher-dimensional tables (more
+than two margins) are not supported; a message is issued and the call
+returns invisibly.
 
 ## Usage
 
@@ -28,8 +27,7 @@ plot(
 
 - x:
 
-  an object of class `"Desc.table"`, as returned by
-  [`desc()`](https://rdrr.io/pkg/DescToolsX/man/desc.html) for a
+  an object of class `"Desc.table"`, as returned by `desc()` for a
   categorical-categorical pair.
 
 - main:
@@ -105,16 +103,26 @@ plot(
   panel 1
 
   :   a grey ramp from `"grey30"` to `"grey90"`, sized to the number of
-      columns of `tab` (not theme-driven by design, to keep the
-      unordered category fill neutral).
+      rows of `tab` - the panel draws `spineplot(t(tab))`, so the
+      stacked (filled) dimension is the row dimension of `tab`, not its
+      columns (not theme-driven by design, to keep the unordered
+      category fill neutral).
 
   panel 2
 
   :   a grey ramp from `"grey30"` to `"grey90"`, sized to the number of
-      columns of `tab`, passed to
+      columns of `tab` (the fill dimension of the untransposed mosaic),
+      passed to
       [`plotMosaic`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md).
 
   panel 3
+
+  :   a grey ramp from `"grey30"` to `"grey90"`, sized to the number of
+      rows of `tab` - with `swap = TRUE` the fill dimension is the row
+      dimension, passed to
+      [`plotMosaic`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md).
+
+  panel 4
 
   :   left at
       [`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md)'s
@@ -124,7 +132,7 @@ plot(
       be meaningful. Supplying `col` overrides this with the diverging
       palette of the user's choice.
 
-  panel 4
+  panel 5
 
   :   left at
       [`plotHeatmap`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md)'s
@@ -148,18 +156,18 @@ plot(
       draws its native frame unconditionally, with no toggle to override
       it.
 
-  panel 2
+  panels 2/3
 
   :   [`plotMosaic`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md)
       always draws its own frame; this argument has no effect.
 
-  panel 3
+  panel 4
 
   :   [`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md)
       has no frame/box concept of its own (it draws dashed reference
       lines instead); this argument has no effect.
 
-  panel 4
+  panel 5
 
   :   forwarded as-is to
       [`plotHeatmap`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md)'s
@@ -171,7 +179,7 @@ plot(
 - stamp:
 
   controls the corner stamp. `.useTheme` (default) resolves to
-  `getTheme()$stamp`, drawn once after all selected panels. Panels 2-4
+  `getTheme()$stamp`, drawn once after all selected panels. Panels 2-5
   delegate to
   [`plotMosaic`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md)/
   [`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md)/[`plotHeatmap`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
@@ -207,7 +215,7 @@ invisibly without drawing anything.
 
 ## See also
 
-[`desc`](https://rdrr.io/pkg/DescToolsX/man/desc.html),
+`desc`,
 [`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
 [`plotHeatmap`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
 [`plotMosaic`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md),

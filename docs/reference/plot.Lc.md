@@ -1,7 +1,6 @@
 # Plot Methods for Lorenz Curve Objects
 
-Visualize objects of class `"Lc"` and `"LcList"` returned by
-[`lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html). The
+Visualize objects of class `"Lc"` and `"LcList"` returned by `lc()`. The
 [`plot()`](https://rdrr.io/r/graphics/plot.default.html) method draws a
 new Lorenz curve plot including the line of perfect equality;
 [`lines()`](https://rdrr.io/r/graphics/lines.html) and
@@ -124,9 +123,8 @@ plot(x, col = NULL, ...)
 - cbandArgs:
 
   used by `lines.Lc()` only. `NA` to suppress the confidence band
-  (default), or a list of arguments passed to
-  [`predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html) to
-  control bootstrap confidence intervals.
+  (default), or a list of arguments passed to `predict.Lc()` to control
+  bootstrap confidence intervals.
 
 - pch:
 
@@ -145,19 +143,14 @@ group and overlays the remaining groups with
 automatically when `col` is not supplied.
 
 The confidence band in `lines.Lc()` is drawn via `cbandArgs`. Pass a
-list of arguments to
-[`predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html) to control
-the bootstrap (e.g. `cbandArgs = list(conf.level = 0.90, n = 500)`). Set
-`cbandArgs = NA` (default) to suppress the band.
+list of arguments to `predict.Lc()` to control the bootstrap (e.g.
+`cbandArgs = list(conf.level = 0.90, n = 500)`). Set `cbandArgs = NA`
+(default) to suppress the band.
 
 ## See also
 
-[`lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html) for computing the
-Lorenz curve,
-[`predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html) for
-bootstrap confidence intervals,
-[`gini()`](https://rdrr.io/pkg/DescToolsX/man/gini.html) for the Gini
-coefficient.
+`lc()` for computing the Lorenz curve, `predict.Lc()` for bootstrap
+confidence intervals, `gini()` for the Gini coefficient.
 
 Other plot.s3:
 [`plot.BlandAltman()`](https://andrisignorell.github.io/aurora/reference/plot.BlandAltman.md),

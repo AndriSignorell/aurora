@@ -1,12 +1,28 @@
 # Create a Bagplot (Bivariate Boxplot)
 
 Draws a bagplot (bivariate boxplot) based on halfspace (Tukey) depth.
-The bag contains approximately the innermost 50\\ is an inflated version
-of the bag, and points outside the loop are flagged as outliers.
+The bag contains the innermost 50\\ hull of all non-outlying points, and
+points outside the fence (the bag inflated by `factor`, not drawn) are
+flagged as outliers.
 
 ## Usage
 
 ``` r
+plotBag(x, ...)
+
+# S3 method for class 'formula'
+plotBag(
+  x,
+  data = NULL,
+  subset,
+  na.action = na.omit,
+  main = "",
+  xlab = NULL,
+  ylab = NULL,
+  ...
+)
+
+# Default S3 method
 plotBag(
   x,
   main = "",
@@ -20,6 +36,7 @@ plotBag(
   points = TRUE,
   bag = TRUE,
   loop = TRUE,
+  fence = FALSE,
   out = TRUE,
   median = TRUE,
   grid = FALSE,
@@ -33,11 +50,32 @@ plotBag(
 
 - x:
 
-  A numeric matrix or data frame with exactly two columns.
+  a numeric matrix or data frame with exactly two columns, or a formula
+  of the form `y ~ x` (see the formula method).
+
+- ...:
+
+  additional graphical parameters passed to
+  [`par()`](https://rdrr.io/r/graphics/par.html).
+
+- data:
+
+  an optional data frame containing the variables in `formula`.
+
+- subset:
+
+  an optional expression indicating which observations to use.
+
+- na.action:
+
+  a function specifying how missing values are handled. Defaults to
+  [`na.omit`](https://rdrr.io/r/stats/na.fail.html), as the depth
+  computation requires complete pairs.
 
 - main, xlab, ylab:
 
-  character strings for plot annotations.
+  character strings for plot annotations. The formula method derives
+  `xlab` and `ylab` from the variable names if they are not supplied.
 
 - xlim, ylim:
 
@@ -45,7 +83,7 @@ plotBag(
 
 - factor:
 
-  inflation factor for the loop (default: 3).
+  inflation factor for the fence (default: 3).
 
 - eps:
 
@@ -53,36 +91,38 @@ plotBag(
 
 - dither:
 
-  logical; whether to add small noise to break ties.
+  logical, whether to add small noise to break ties.
 
-- points, bag, loop, out, median, grid, box:
+- points, bag, loop, fence, out, median, grid, box:
 
-  Object-oriented control of plot elements (see Details).
+  object-oriented control of plot elements (see Details).
 
 - stamp:
 
   optional stamp passed to `.withGraphicsState()`.
 
-- ...:
+- formula:
 
-  additional graphical parameters passed to
-  [`par()`](https://rdrr.io/r/graphics/par.html).
+  a formula of the form `y ~ x`, where both variables are numeric. `x`
+  is drawn on the horizontal, `y` on the vertical axis.
 
 ## Value
 
-Invisibly returns a list with components:
+Invisibly returns a list of class `"bagplot"` with components:
 
-- `center` – Tukey median
+- `center` - Tukey median.
 
-- `depth` – depth threshold defining the bag
+- `depth` - depth of the innermost region bounding the bag.
 
-- `bag` – bag polygon (matrix)
+- `bag` - bag polygon (matrix).
 
-- `loop` – loop polygon (matrix)
+- `fence` - fence polygon (matrix, not drawn by default).
 
-- `outliers` – outlier points (matrix)
+- `loop` - loop polygon (matrix).
 
-- `depths` – depth of all observations
+- `outliers` - outlier points (matrix).
+
+- `depths` - halfspace depth of all observations.
 
 ## Details
 
@@ -91,54 +131,74 @@ each element can be specified as `TRUE`, `FALSE`, or a `list(...)` of
 graphical parameters. Internally, this is handled via
 [`bedrock::callIf()`](https://rdrr.io/pkg/bedrock/man/callIf.html).
 
-## Details
+The construction follows Rousseeuw, Ruts and Tukey (1999):
 
-The halfspace (Tukey) depth is computed using a direct port of the
-original Fortran routine `TUKDEPTH` (Rousseeuw & Ruts, 1996), ensuring a
-numerically faithful implementation of the depth itself.
+1.  The halfspace (Tukey) depth of every observation is computed using a
+    direct port of the original Fortran routine `TUKDEPTH` (Rousseeuw &
+    Ruts, 1996).
 
-The resulting bagplot is based on standard practical approximations: the
-bag is constructed as the convex hull of all observations with depth
-greater than or equal to the 50\\ is obtained by affine inflation of the
-bag around the Tukey median.
+2.  The Tukey median is approximated by the mean of all observations
+    with maximal depth.
 
-While this approach is consistent with common implementations, it does
-not represent the exact continuous depth regions defined in the original
-theory. In particular, the loop is not derived from an isodepth contour
-but from a geometric scaling of the bag. Consequently, small deviations
-from other implementations (e.g. `aplpack`) may occur, especially in the
-shape of the loop and the classification of borderline outliers.
+3.  The *bag* is obtained by radial interpolation between the convex
+    hulls of two adjacent depth regions, calibrated such that it
+    contains \\\lfloor n/2 \rfloor\\ observations (up to ties on the
+    polygon boundary).
+
+4.  The *fence* is the bag inflated by `factor` relative to the Tukey
+    median. Following the original proposal it is used for
+    classification only and not drawn by default.
+
+5.  Observations outside the fence are flagged as *outliers*.
+
+6.  The *loop* is the convex hull of all non-outlying observations, so
+    it always lies within the data range.
+
+Two approximations remain relative to the strict theory: the Tukey
+median is not computed via `HALFMED`, and the bag interpolates hulls of
+sample depth regions rather than exact isodepth contours. Borderline
+outlier classifications may therefore differ slightly from other
+implementations (e.g. aplpack).
+
+Exact ties and collinear configurations violate the general-position
+assumption of the depth algorithm; `dither` (default `TRUE`) adds
+negligible noise (order `eps`) to break them.
 
 ## Element Control
 
 Each of the following arguments accepts:
 
-- `TRUE` – draw element with defaults
+- `TRUE` - draw element with defaults
 
-- `FALSE` – suppress element
+- `FALSE` - suppress element
 
-- `list(...)` – customize graphical parameters
+- `list(...)` - customize graphical parameters
 
-Supported elements:
+Supported elements (in drawing order):
 
-- `points` – raw data points
+- `grid` - background grid
 
-- `bag` – central 50\\
+- `fence` - classification boundary (default `FALSE`)
 
-- `loop` – inflated bag (fence)
+- `loop` - convex hull of the non-outlying points
 
-- `out` – outliers
+- `bag` - central 50\\
 
-- `median` – Tukey median
+- `points` - raw data points
 
-- `grid` – background grid
+- `out` - outliers
 
-- `box` – plot frame
+- `median` - Tukey median
+
+- `box` - plot frame
 
 ## References
 
 P. J. Rousseeuw, I. Ruts, J. W. Tukey (1999): The bagplot: a bivariate
-boxplot, *The American Statistician*, vol. 53, no. 4, 382–387
+boxplot, *The American Statistician*, vol. 53, no. 4, 382–387.
+
+P. J. Rousseeuw, I. Ruts (1996): Algorithm AS 307: Bivariate location
+depth, *Applied Statistics*, vol. 45, no. 4, 516–526.
 
 ## See also
 
@@ -157,6 +217,23 @@ Other plot.bivariate:
 set.seed(1)
 x <- cbind(rnorm(200), rnorm(200))
 
+# data of Rousseeuw et al. (1999): car weight vs engine displacement
+cardata <- data.frame(
+  Weight = c(2560, 2345, 1845, 2260, 2440,
+           2285, 2275, 2350, 2295, 1900, 2390, 2075, 2330, 3320, 2885,
+           3310, 2695, 2170, 2710, 2775, 2840, 2485, 2670, 2640, 2655,
+           3065, 2750, 2920, 2780, 2745, 3110, 2920, 2645, 2575, 2935,
+           2920, 2985, 3265, 2880, 2975, 3450, 3145, 3190, 3610, 2885,
+           3480, 3200, 2765, 3220, 3480, 3325, 3855, 3850, 3195, 3735,
+           3665, 3735, 3415, 3185, 3690),
+  Disp = c(97, 114, 81, 91, 113, 97, 97,
+         98, 109, 73, 97, 89, 109, 305, 153, 302, 133, 97, 125, 146,
+         107, 109, 121, 151, 133, 181, 141, 132, 133, 122, 181, 146,
+         151, 116, 135, 122, 141, 163, 151, 153, 202, 180, 182, 232,
+         143, 180, 180, 151, 189, 180, 231, 305, 302, 151, 202, 182,
+         181, 143, 146, 146)
+)
+
 plotBag(x)
 
 
@@ -173,22 +250,11 @@ plotBag(x,
 plotBag(x, points = FALSE, median = FALSE)
 
 
-# example of Rousseeuw et al.
-cardata <- data.frame( 
-Weight= c(2560,2345,1845,2260,2440,
-          2285, 2275, 2350, 2295, 1900, 2390, 2075, 2330, 3320, 2885,
-          3310, 2695, 2170, 2710, 2775, 2840, 2485, 2670, 2640, 2655,
-          3065, 2750, 2920, 2780, 2745, 3110, 2920, 2645, 2575, 2935,
-          2920, 2985, 3265, 2880, 2975, 3450, 3145, 3190, 3610, 2885,
-          3480, 3200, 2765, 3220, 3480, 3325, 3855, 3850, 3195, 3735,
-          3665, 3735, 3415, 3185, 3690),
-Disp=c(97, 114, 81, 91, 113, 97, 97,
-       98, 109, 73, 97, 89, 109, 305, 153, 302, 133, 97, 125, 146,
-       107, 109, 121, 151, 133, 181, 141, 132, 133, 122, 181, 146,
-       151, 116, 135, 122, 141, 163, 151, 153, 202, 180, 182, 232,
-       143, 180, 180, 151, 189, 180, 231, 305, 302, 151, 202, 182,
-       181, 143, 146, 146)
-)
-# Minimal plot
-plotBag(x, points = FALSE, median = FALSE)
+# formula interface
+plotBag(Disp ~ Weight, data = cardata)
+
+
+# example of Rousseeuw et al. (1999): car weight vs engine displacement
+plotBag(cardata, xlab = "Weight", ylab = "Displacement")
+
 ```

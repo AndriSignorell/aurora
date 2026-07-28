@@ -15,7 +15,9 @@ toHtmlTable(
   border = 0,
   tableWidth = NA,
   captionAlign = "center",
-  frame = TRUE
+  frame = TRUE,
+  rowNames = TRUE,
+  colNames = TRUE
 )
 }
 \arguments{
@@ -49,6 +51,12 @@ to the number of columns including an optional rowname column; use
 
 \item{frame}{logical; if \code{TRUE}, draw outer frame and group rules
 (\code{frame="hsides" rules="groups"})}
+
+\item{rowNames}{logical; render the row names as a leading header
+column. Ignored when \code{m} has none}
+
+\item{colNames}{logical; render the column names as a header row.
+Ignored when \code{m} has none}
 }
 \value{
 an object of class \code{c("html", "character")}
@@ -64,8 +72,11 @@ The result has class \code{c("html", "character")} (see
 \link[bedrock:appendEnum]{bedrock::appendEnum}
 
 Other html:
+\code{\link[=as.fileLink]{as.fileLink()}},
 \code{\link[=as.html]{as.html()}},
 \code{\link[=as.img]{as.img()}},
+\code{\link[=embedFile]{embedFile()}},
+\code{\link[=escapeHtml]{escapeHtml()}},
 \code{\link{htmlNotation}},
 \code{\link{htmlSubscript}}
 }

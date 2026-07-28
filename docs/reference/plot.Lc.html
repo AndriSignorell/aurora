@@ -13,7 +13,7 @@ and points() add to an existing plot.'><meta property="og:image" content="https:
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.935</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ and points() add to an existing plot.'><meta property="og:image" content="https:
 
     <div class="ref-description section level2">
     <p>Visualize objects of class <code>"Lc"</code> and <code>"LcList"</code> returned by
-<code><a href="https://rdrr.io/pkg/DescToolsX/man/lc.html" class="external-link">lc()</a></code>.  The <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> method draws a new
+<code>lc()</code>.  The <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> method draws a new
 Lorenz curve plot including the line of perfect equality; <code><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines()</a></code>
 and <code><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points()</a></code> add to an existing plot.</p>
     </div>
@@ -168,7 +168,7 @@ recycled over groups (default <code>NULL</code>, i.e. <code>seq_len(k)</code>).<
 <dt id="arg-cbandargs">cbandArgs<a class="anchor" aria-label="anchor" href="#arg-cbandargs"></a></dt>
 <dd><p>used by <code>lines.Lc()</code> only.  <code>NA</code> to suppress
 the confidence band (default), or a list of arguments passed to
-<code><a href="https://rdrr.io/pkg/DescToolsX/man/lc.html" class="external-link">predict.Lc()</a></code> to control bootstrap confidence
+<code>predict.Lc()</code> to control bootstrap confidence
 intervals.</p></dd>
 
 
@@ -187,15 +187,15 @@ intervals.</p></dd>
 the first group and overlays the remaining groups with <code><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines()</a></code>.
 Colors cycle automatically when <code>col</code> is not supplied.</p>
 <p>The confidence band in <code>lines.Lc()</code> is drawn via <code>cbandArgs</code>.
-Pass a list of arguments to <code><a href="https://rdrr.io/pkg/DescToolsX/man/lc.html" class="external-link">predict.Lc()</a></code> to
+Pass a list of arguments to <code>predict.Lc()</code> to
 control the bootstrap (e.g. <code>cbandArgs = list(conf.level = 0.90,
 n = 500)</code>).  Set <code>cbandArgs = NA</code> (default) to suppress the band.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/DescToolsX/man/lc.html" class="external-link">lc()</a></code> for computing the Lorenz curve,
-<code><a href="https://rdrr.io/pkg/DescToolsX/man/lc.html" class="external-link">predict.Lc()</a></code> for bootstrap confidence
-intervals, <code><a href="https://rdrr.io/pkg/DescToolsX/man/gini.html" class="external-link">gini()</a></code> for the Gini coefficient.</p>
+    <div class="dont-index"><p><code>lc()</code> for computing the Lorenz curve,
+<code>predict.Lc()</code> for bootstrap confidence
+intervals, <code>gini()</code> for the Gini coefficient.</p>
 <p>Other plot.s3:
 <code><a href="plot.BlandAltman.html">plot.BlandAltman()</a></code>,
 <code><a href="plot.Desc.qn.html">plot.Desc.qn()</a></code>,

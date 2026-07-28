@@ -174,10 +174,9 @@ options can be passed on to
 [`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) simply
 by their name.
 
-Many report functions (e.g.
-[`tOne()`](https://rdrr.io/pkg/DescToolsX/man/tOne.html)) in
-**DescToolsX** use three default formats for counts (named `"abs.sty"`),
-numeric values (`"num.sty"`) and percentages (`"per.sty"`).
+Many report functions (e.g. `tOne()`) in **DescToolsX** use three
+default formats for counts (named `"abs.sty"`), numeric values
+(`"num.sty"`) and percentages (`"per.sty"`).
 
 ## See also
 
@@ -204,53 +203,27 @@ num.sty                             # displays the details of the style
 #> Example:       314 159.27
 # editing styles
 style("abs.sty")                    # looks for format "abs.sty"
-#> Definition:    digits=0, big.mark="", label="Number format for counts"
-#> Example:       314159
-#> (Source:       options)
-#> 
+#> Warning: Style x could not be found!
+#> Definition:    =NA
+#> Example:       nan
 # style("nexist")                     # return for nonexisting style
 style("abs.sty", bigMark="")       # get Style("abs") and overwrite bigMark
-#> Definition:    digits=0, big.mark="", label="Number format for counts", bigMark=""
-#> Example:       314159
-#> (Source:       options)
-#> 
+#> Warning: Style x could not be found!
+#> Definition:    =NA
+#> Example:       nan
 style("abs.sty", naForm="-")       # get Style("abs") and add user defined naForm
-#> Definition:    digits=0, big.mark="", label="Number format for counts", naForm="-"
-#> Example:       314159
-#> (Source:       options)
-#> 
+#> Warning: Style x could not be found!
+#> Definition:    =NA
+#> Example:       nan
 
 styles()                            # all defined formats
-#> $abs.sty
-#> Definition:    digits=0, big.mark="", label="Number format for counts"
-#> Example:       314159
-#> (Source:       options)
-#> 
-#> $num.sty
-#> Definition:    digits=3, big.mark="", label="Number format for numeric values"
-#> Example:       314159.265
-#> (Source:       options)
-#> 
-#> $per.sty
-#> Definition:    digits=1, fmt="%", name="per", label="Percentage number format"
-#> Example:       31415926.5%
-#> (Source:       options)
-#> 
-#> $pval.sty
-#> Definition:    fmt="p", eps=0.001, label="Number format for p-values"
-#> Example:       NA
-#> (Source:       options)
-#> 
+#> list()
 styles()[c("num.sty", "abs.sty")]   # numeric and integer styles
-#> $num.sty
-#> Definition:    digits=3, big.mark="", label="Number format for numeric values"
-#> Example:       314159.265
-#> (Source:       options)
+#> [[1]]
+#> NULL
 #> 
-#> $abs.sty
-#> Definition:    digits=0, big.mark="", label="Number format for counts"
-#> Example:       314159
-#> (Source:       options)
+#> [[2]]
+#> NULL
 #> 
 
 # define totally new format and store as option
@@ -263,5 +236,5 @@ fm(314.1563, fmt=num.sty)
 #> [1] 314.16
 
 fm(Sys.Date(), fmt=dat.sty)
-#> [1] 07, 20 2026
+#> [1] 07, 24 2026
 ```

@@ -83,6 +83,7 @@ plotTernary(M, lbl = c("A", "B", "C"))
 Other plot.special:
 \code{\link[=plotBinaryTree]{plotBinaryTree()}},
 \code{\link[=plotCirc]{plotCirc()}},
+\code{\link[=plotLift]{plotLift()}},
 \code{\link[=plotMiss]{plotMiss()}},
 \code{\link[=plotPolar]{plotPolar()}},
 \code{\link[=plotPropCI]{plotPropCI()}},

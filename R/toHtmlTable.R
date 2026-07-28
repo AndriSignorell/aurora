@@ -27,6 +27,10 @@
 #' @param captionAlign horizontal alignment of the header row cells
 #' @param frame logical; if \code{TRUE}, draw outer frame and group rules
 #'   (\code{frame="hsides" rules="groups"})
+#' @param rowNames logical; render the row names as a leading header
+#'   column. Ignored when \code{m} has none
+#' @param colNames logical; render the column names as a header row.
+#'   Ignored when \code{m} has none
 #'
 #' @return an object of class \code{c("html", "character")}
 #'
@@ -39,7 +43,20 @@
 toHtmlTable <- function(m, sepCol = FALSE, caption = "", bodyAlign = "center",
                         valign = "top", width = NULL, cellpadding = 3,
                         border = 0, tableWidth = NA,
-                        captionAlign = "center", frame = TRUE) {
+                        captionAlign = "center", frame = TRUE,
+                        rowNames = TRUE, colNames = TRUE) {
+  
+  # a vector is a one-column table; without this, .Dim below is NULL and
+  # the row assembly fails
+  if (!is.matrix(m))
+    m <- as.matrix(m)
+  
+  # cbind() readily invents dimnames from the names of its arguments, so
+  # callers assembling a table programmatically must be able to say no
+  if (!rowNames && !is.null(dimnames(m)))
+    rownames(m) <- NULL
+  if (!colNames && !is.null(dimnames(m)))
+    colnames(m) <- NULL
   
   has_rownames <- (!is.null(dimnames(m)) && !is.null(dimnames(m)[[1]])) * 1
   
@@ -83,8 +100,14 @@ toHtmlTable <- function(m, sepCol = FALSE, caption = "", bodyAlign = "center",
       
       col_x <- colnames(m)
       
-      if (!is.null(dimnames(m)[[1]]))
-        col_x <- c(if (is.null(names(dimnames(m))[[1]])) "" else names(dimnames(m))[1], col_x)
+      # the corner cell carries the name of the row dimension, if it has
+      # one; note the single bracket -- names(dimnames(m)) is NULL for the
+      # ordinary case of a matrix whose dimensions are unnamed, and [[1]]
+      # on NULL is an error, not an empty result
+      if (!is.null(dimnames(m)[[1]])) {
+        corner <- names(dimnames(m))[1]
+        col_x <- c(if (is.null(corner) || is.na(corner)) "" else corner, col_x)
+      }
       
       col_x <- gettextf('<b>%s</b>', col_x)
       col_x <- gettextf('<td %s style="text-align: %s;">%s</td>', width, captionAlign, col_x)

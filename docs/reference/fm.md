@@ -214,8 +214,7 @@ flexible.
 [base::sprintf](https://rdrr.io/r/base/sprintf.html),
 [stats::symnum](https://rdrr.io/r/stats/symnum.html),  
 [base::Sys.setlocale](https://rdrr.io/r/base/locales.html),  
-[DescToolsX::weekday](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
-[DescToolsX::month](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
+DescToolsX::weekday, DescToolsX::month,
 [theme](https://andrisignorell.github.io/aurora/reference/theme.md)
 
 Other format:

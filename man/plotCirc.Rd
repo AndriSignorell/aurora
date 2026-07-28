@@ -95,6 +95,7 @@ plotCirc(
 \seealso{
 Other plot.special:
 \code{\link[=plotBinaryTree]{plotBinaryTree()}},
+\code{\link[=plotLift]{plotLift()}},
 \code{\link[=plotMiss]{plotMiss()}},
 \code{\link[=plotPolar]{plotPolar()}},
 \code{\link[=plotPropCI]{plotPropCI()}},
