@@ -211,7 +211,13 @@ fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL
                        , lang = NULL, ...){
 
   # Format a vector x
-  
+
+  # A POSIXlt is a list by construction, so it would be turned away by the
+  # guard below although it is a perfectly ordinary date-time input.
+  # Convert before the guard, not after it.
+  if (inherits(x, "POSIXlt"))
+    x <- as.POSIXct(x)
+
   # refuse handling nonvectors
   if (is.list(x)) {
     stop("x must be an atomic vector, not a list", call. = FALSE)
@@ -261,8 +267,8 @@ fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL
     
     # for dates only the fmt argument is relevant
     if(inherits(fmt, "Style")) fmt <- fmt[["fmt"]]
-    
-    r <- formatDateTime(x=x, fmt=fmt, strict=TRUE, locale="current")
+
+    r <- formatDateTime(x = x, fmt = fmt, strict = TRUE, locale = "current")
 
   } else if(all(class(x) %in% c("character","factor","ordered"))) {
     
@@ -738,5 +744,67 @@ fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 }
 
 
+#' Format a Date or Date-Time
+#'
+#' Renders a \code{Date}, \code{POSIXct} or \code{POSIXlt} with the
+#' package's own format tokens. This is the entry point used by
+#' \code{\link{fm}()}; the compiled kernel behind it,
+#' \code{formatDateTimeUtc()}, works exclusively in UTC.
+#'
+#' The time zone is resolved here rather than in C++. The C runtime's
+#' \code{localtime()} is not usable for the job: on Windows
+#' \code{_tzset()} understands only POSIX-style \code{TZ} strings and
+#' falls back to UTC for IANA names such as \code{"Europe/Zurich"}, and
+#' \code{localtime_r()} is not even required to consult \code{TZ}. R
+#' carries its own time zone database, so the shift belongs on this side -
+#' which is also what makes the result agree with
+#' \code{\link{format}()} for a \code{POSIXct} that carries a
+#' \code{tzone} attribute.
+#'
+#' @param x a \code{Date}, \code{POSIXct} or \code{POSIXlt} vector
+#' @param fmt a format string
+#' @param strict logical; reject unknown or ambiguous format tokens
+#' @param locale locale for month and weekday names, or \code{"current"}
+#'
+#' @return a character vector
+#' @noRd
+formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
+  formatDateTimeUtc(x = .toWallClock(x), fmt = fmt, strict = strict,
+                    locale = locale)
+}
 
 
+# Reinterpret a date-time in its own time zone as if that wall-clock
+# reading were UTC, so that formatDateTime() - which always uses
+# gmtime() - prints the zone the user expects.
+#
+# A Date has no time zone and passes through untouched. A POSIXct uses
+# its tzone attribute, falling back to the session zone when it carries
+# none, exactly like format.POSIXct(). A POSIXlt is converted first: the
+# compiled routine reads a numeric vector and would choke on the list.
+#
+# The reinterpretation goes through POSIXlt rather than through
+# format()/as.POSIXct(), which would be a character round trip, and
+# rather than through lt$gmtoff, which is NA on some platforms.
+#' @noRd
+.toWallClock <- function(x) {
+
+  if(inherits(x, "Date"))
+    return(x)
+
+  if(inherits(x, "POSIXlt"))
+    x <- as.POSIXct(x)
+
+  tz <- attr(x, "tzone")
+  if(is.null(tz) || !nzchar(tz[1L]))
+    tz <- Sys.timezone()
+
+  lt <- as.POSIXlt(x, tz = tz)
+
+  attr(lt, "tzone") <- "UTC"
+  # [] on the component: a bare lt$isdst <- 0L would replace the whole
+  # vector with a single element and leave the POSIXlt fields ragged
+  lt$isdst[] <- 0L
+
+  as.POSIXct(lt)
+}

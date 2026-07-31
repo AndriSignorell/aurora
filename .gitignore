@@ -4,5 +4,6 @@
 .Ruserdata
 .positai
 Rplots.pdf
-desktop\.ini$
-src\.dll
+desktop\*.ini$
+src\*.dll
+src\*.o

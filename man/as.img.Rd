@@ -4,25 +4,48 @@
 \alias{as.img}
 \title{Embed a plot as an inline HTML image}
 \usage{
-as.img(x, ...)
+as.img(expr, width = 520, height = 440, res = 96, ...)
 }
 \arguments{
-\item{x}{a string containing a plotting expression, e.g.
-\code{"plot(1:10)"} -- evaluated via \code{eval(parse(text = x))}
-in the caller's environment}
+\item{expr}{a plotting expression, evaluated once inside the device.
+Character input is evaluated via \code{eval(parse(text = expr))} for
+compatibility with the earlier form of this function.}
 
-\item{...}{further arguments passed to \code{\link[grDevices]{png}}
-(e.g. \code{width}, \code{height})}
+\item{width, height}{size of the device in pixels}
+
+\item{res}{nominal resolution in dpi, which also scales the text: raise
+it for a larger picture with the same relative proportions}
+
+\item{...}{further arguments passed to \code{\link[grDevices]{png}}}
 }
 \value{
-an object of class \code{"html"} containing an \verb{<img>}
-tag with a \code{data:image/png;base64,...} source
+an object of class \code{c("html", "character")} containing an
+\verb{<img>} tag with a \code{data:image/png;base64,...} source
 }
 \description{
 Evaluates a plotting expression in a temporary PNG device and returns
 the resulting image as a self-contained, base64-encoded \verb{<img>}
-tag (class \code{"html"}, see \code{\link{as.html}}) suitable for
-embedding directly in HTML text.
+tag (class \code{"html"}, see \code{\link{as.html}}), suitable for
+embedding directly in HTML text -- a report, a question, an e-mail.
+}
+\details{
+The expression is passed unevaluated and carries its own environment, so
+a plot built inside a function sees that function's local variables.
+Several statements are given in braces, as in the examples below.
+}
+\examples{
+img <- as.img(plot(1:10))
+
+# several statements, and local variables
+f <- function(n) {
+  x <- seq_len(n)
+  as.img({
+    plot(x, x^2, type = "b")
+    abline(h = mean(x^2), lty = 2)
+  })
+}
+substr(f(10), 1, 30)
+
 }
 \seealso{
 Other html:

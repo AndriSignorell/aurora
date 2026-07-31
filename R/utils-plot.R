@@ -152,7 +152,11 @@ fcol <- .pal_data$discrete$helsana
     "mar","mai","cex","cex.axis","cex.lab","cex.main","cex.sub",
     "las","tck","mgp","xaxs","yaxs","xaxt","yaxt",
     "col","col.axis","col.lab","col.main","col.sub",
-    "lwd","lty","pch","bg","fg","xpd", "plt"
+    "lwd","lty","pch","bg","fg","xpd",
+    # 'pty' must precede 'plt': par() processes its arguments
+    # sequentially and pty = "m" resets plt to the maximal region,
+    # which would undo a plt restored earlier in the same call.
+    "pty", "plt"
     #,"oma", "omi"
   )
 
@@ -326,7 +330,7 @@ fcol <- .pal_data$discrete$helsana
     return(value)
   }
 
-  opt <- .getOption(paste0("DescToolsX.plot.", name))
+  opt <- .getOption(paste0("plot.", name))
   if (!is.null(opt)) {
     return(opt)
   }

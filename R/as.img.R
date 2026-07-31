@@ -3,38 +3,57 @@
 #'
 #' Evaluates a plotting expression in a temporary PNG device and returns
 #' the resulting image as a self-contained, base64-encoded \verb{<img>}
-#' tag (class \code{"html"}, see \code{\link{as.html}}) suitable for
-#' embedding directly in HTML text.
+#' tag (class \code{"html"}, see \code{\link{as.html}}), suitable for
+#' embedding directly in HTML text -- a report, a question, an e-mail.
 #'
-#' @param x a string containing a plotting expression, e.g.
-#'   \code{"plot(1:10)"} -- evaluated via \code{eval(parse(text = x))}
-#'   in the caller's environment
+#' The expression is passed unevaluated and carries its own environment, so
+#' a plot built inside a function sees that function's local variables.
+#' Several statements are given in braces, as in the examples below.
+#'
+#' @param expr a plotting expression, evaluated once inside the device.
+#'   Character input is evaluated via \code{eval(parse(text = expr))} for
+#'   compatibility with the earlier form of this function.
+#' @param width,height size of the device in pixels
+#' @param res nominal resolution in dpi, which also scales the text: raise
+#'   it for a larger picture with the same relative proportions
 #' @param ... further arguments passed to \code{\link[grDevices]{png}}
-#'   (e.g. \code{width}, \code{height})
 #'
-#' @return an object of class \code{"html"} containing an \verb{<img>}
-#'   tag with a \code{data:image/png;base64,...} source
+#' @return an object of class \code{c("html", "character")} containing an
+#'   \verb{<img>} tag with a \code{data:image/png;base64,...} source
 #'
-
-
-
-#' @family html  
+#' @examples
+#' img <- as.img(plot(1:10))
+#'
+#' # several statements, and local variables
+#' f <- function(n) {
+#'   x <- seq_len(n)
+#'   as.img({
+#'     plot(x, x^2, type = "b")
+#'     abline(h = mean(x^2), lty = 2)
+#'   })
+#' }
+#' substr(f(10), 1, 30)
+#'
+#' @family html
 #' @concept html
 #' @concept formatting
 #'
-#'
 #' @export
-as.img <- function(x, ...) {
-  
+as.img <- function(expr, width = 520, height = 440, res = 96, ...) {
+
   fn <- tempfile(fileext = ".png")
-  on.exit(unlink(fn))
-  
-  grDevices::png(fn, ...)
-  eval(parse(text = x), envir = parent.frame())
-  grDevices::dev.off()
-  
-  as.html(gettextf('<img src="data:image/png;base64,%s">',
-                   base64enc::base64encode(fn)))
+  on.exit(unlink(fn), add = TRUE)
+
+  grDevices::png(fn, width = width, height = height, res = res, ...)
+
+  # the device is closed even when the plot fails, so that a broken
+  # expression does not leave the session drawing into a dead file
+  tryCatch({
+    if (is.character(expr))
+      eval(parse(text = expr), envir = parent.frame())
+    else
+      expr
+  }, finally = grDevices::dev.off())
+
+  as.html(gettextf('<img src="data:image/png;base64,%s">', embedFile(fn)))
 }
-
-

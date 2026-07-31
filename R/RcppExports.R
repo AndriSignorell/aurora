@@ -5,8 +5,8 @@ bagplot_compute_cpp <- function(xy, factor = 3.0, eps = 1e-8, dither = TRUE) {
     .Call(`_pharos_bagplot_compute_cpp`, xy, factor, eps, dither)
 }
 
-formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
-    .Call(`_pharos_formatDateTime`, x, fmt, strict, locale)
+formatDateTimeUtc <- function(x, fmt, strict = TRUE, locale = "current") {
+    .Call(`_pharos_formatDateTimeUtc`, x, fmt, strict, locale)
 }
 
 formatNum <- function(x, digits = NULL, leadDigits = NULL, bigMark = NULL, decimalMark = NULL, sciBig = 9999L, sciSmall = -9999L) {

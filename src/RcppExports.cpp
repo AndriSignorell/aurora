@@ -24,9 +24,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// formatDateTime
-CharacterVector formatDateTime(SEXP x, std::string fmt, bool strict, std::string locale);
-RcppExport SEXP _pharos_formatDateTime(SEXP xSEXP, SEXP fmtSEXP, SEXP strictSEXP, SEXP localeSEXP) {
+// formatDateTimeUtc
+CharacterVector formatDateTimeUtc(SEXP x, std::string fmt, bool strict, std::string locale);
+RcppExport SEXP _pharos_formatDateTimeUtc(SEXP xSEXP, SEXP fmtSEXP, SEXP strictSEXP, SEXP localeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< std::string >::type fmt(fmtSEXP);
     Rcpp::traits::input_parameter< bool >::type strict(strictSEXP);
     Rcpp::traits::input_parameter< std::string >::type locale(localeSEXP);
-    rcpp_result_gen = Rcpp::wrap(formatDateTime(x, fmt, strict, locale));
+    rcpp_result_gen = Rcpp::wrap(formatDateTimeUtc(x, fmt, strict, locale));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -95,7 +95,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_pharos_bagplot_compute_cpp", (DL_FUNC) &_pharos_bagplot_compute_cpp, 4},
-    {"_pharos_formatDateTime", (DL_FUNC) &_pharos_formatDateTime, 4},
+    {"_pharos_formatDateTimeUtc", (DL_FUNC) &_pharos_formatDateTimeUtc, 4},
     {"_pharos_formatNum", (DL_FUNC) &_pharos_formatNum, 7},
     {"_pharos_pSmirnov2x", (DL_FUNC) &_pharos_pSmirnov2x, 3},
     {"_pharos_pKS2", (DL_FUNC) &_pharos_pKS2, 2},
