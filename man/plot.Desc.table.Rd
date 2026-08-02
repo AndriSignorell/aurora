@@ -18,7 +18,7 @@
 }
 \arguments{
 \item{x}{an object of class \code{"Desc.table"}, as returned by
-\code{\link[DescToolsX]{desc}()} for a categorical-categorical pair.}
+\code{DescToolsX::desc()} for a categorical-categorical pair.}
 
 \item{main}{main title. \code{NULL} (default) derives a title per panel
 from \code{x$meta$xname} (the deparsed expression originally passed to
@@ -124,7 +124,7 @@ Invisibly returns \code{x}.
 }
 \description{
 Visualises a (two-dimensional) cross-tabulation, as computed by
-\code{\link[DescToolsX]{desc}()} for a categorical/categorical pair.
+\code{DescToolsX::desc()} for a categorical/categorical pair.
 Four panel types are available, selectable (and combinable) via
 \code{which}. Higher-dimensional tables (more than two margins) are not
 supported; a message is issued and the call returns invisibly.
@@ -139,7 +139,7 @@ with more than two margins, a message is issued and the function returns
 invisibly without drawing anything.
 }
 \seealso{
-\code{\link[DescToolsX]{desc}}, \code{\link{plotAssoc}},
+\code{DescToolsX::desc}, \code{\link{plotAssoc}},
 \code{\link{plotHeatmap}}, \code{\link{plotMosaic}},
 \code{\link[graphics]{spineplot}}
 

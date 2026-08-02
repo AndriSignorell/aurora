@@ -3,13 +3,13 @@
 #' Plot Method for Categorical-Categorical \code{Desc} Objects
 #'
 #' Visualises a (two-dimensional) cross-tabulation, as computed by
-#' \code{\link[DescToolsX]{desc}()} for a categorical/categorical pair.
+#' \code{DescToolsX::desc()} for a categorical/categorical pair.
 #' Four panel types are available, selectable (and combinable) via
 #' \code{which}. Higher-dimensional tables (more than two margins) are not
 #' supported; a message is issued and the call returns invisibly.
 #'
 #' @param x an object of class \code{"Desc.table"}, as returned by
-#'   \code{\link[DescToolsX]{desc}()} for a categorical-categorical pair.
+#'   \code{DescToolsX::desc()} for a categorical-categorical pair.
 #'
 #' @param main main title. \code{NULL} (default) derives a title per panel
 #'   from \code{x$meta$xname} (the deparsed expression originally passed to
@@ -118,7 +118,7 @@
 #'
 #' @return Invisibly returns \code{x}.
 #'
-#' @seealso \code{\link[DescToolsX]{desc}}, \code{\link{plotAssoc}},
+#' @seealso \code{DescToolsX::desc}, \code{\link{plotAssoc}},
 #'   \code{\link{plotHeatmap}}, \code{\link{plotMosaic}},
 #'   \code{\link[graphics]{spineplot}}
 #'

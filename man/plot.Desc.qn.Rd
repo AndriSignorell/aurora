@@ -19,7 +19,7 @@
 }
 \arguments{
 \item{x}{an object of class \code{"Desc.qn"}, as returned by
-\code{\link[DescToolsX]{desc}()} for a numeric-categorical pair.}
+\code{DescToolsX::desc()} for a numeric-categorical pair.}
 
 \item{main}{main title. \code{NULL} (default) derives a title per panel
 from the variable names and the panel type (e.g.
@@ -107,7 +107,7 @@ Invisibly returns \code{x}.
 }
 \description{
 Visualises the relationship between a numeric variable and a categorical
-variable, as computed by \code{\link[DescToolsX]{desc}(y ~ x)} (or \code{x ~ y}) for
+variable, as computed by \code{DescToolsX::desc(y ~ x)} (or \code{x ~ y}) for
 a numeric/categorical pair. Five panel types are available, selectable
 (and combinable) via \code{which}.
 }
@@ -118,7 +118,7 @@ categorical level names drawn as axis tick labels, so neither is ever
 clipped regardless of \code{which}.
 }
 \seealso{
-\code{\link[DescToolsX]{desc}}, \code{\link{plotDens}}, \code{\link{plotBox}},
+\code{DescToolsX::desc}, \code{\link{plotDens}}, \code{\link{plotBox}},
 \code{\link[graphics]{cdplot}}, \code{\link[graphics]{spineplot}}
 
 Other plot.s3:

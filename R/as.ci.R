@@ -2,75 +2,75 @@
 #' Confidence Interval Objects
 #'
 #' Converts common confidence interval representations into a standardized
-#' \code{"ci"} object.
+#' object of class \code{"CI"}. The standardized representation removes the
+#' ambiguity between ordinary numeric data and confidence interval data.
 #'
-#' A \code{ci} object is a data frame containing at least the columns
-#' \code{est}, \code{lci}, and \code{uci}. Additional columns are interpreted
-#' as grouping variables.
+#' @param x object to convert or, for \code{is.CI()}, object to test
+#' @param estimate name of the data-frame column containing the point estimates
+#' @param lower name of the data-frame column containing the lower confidence
+#'   limits
+#' @param upper name of the data-frame column containing the upper confidence
+#'   limits
+#' @param ... further arguments passed to methods
 #'
-#' The primary purpose of \code{as.CI()} is to remove ambiguity between
-#' ordinary matrices and confidence interval data. For example, a
-#' 3-column matrix may either represent three groups or the columns
-#' \code{est}, \code{lci}, and \code{uci}. Wrapping the object in
-#' \code{as.CI()} explicitly declares that the structure should be treated
-#' as confidence interval data.
-#'
-#' @param x object to convert.
-#' @param ... further arguments passed to methods.
-#'
-#' @name as.CI
 #' @details
-#' Supported inputs include:
+#' A \code{"CI"} object is a data frame containing the columns \code{est},
+#' \code{lci}, and \code{uci}. Additional columns are retained and can be used
+#' as grouping variables by functions such as \code{\link{plotDot}}.
 #'
+#' The primary purpose of \code{as.CI()} is to declare explicitly that an
+#' object contains estimates and confidence limits. For example, a numeric
+#' matrix with three columns is normally ambiguous: its columns may represent
+#' three groups or the estimate, lower limit, and upper limit. Passing the
+#' matrix to \code{as.CI()} declares that its columns have the latter meaning.
+#'
+#' Supported inputs are:
 #' \itemize{
-#'   \item Numeric matrices with three columns representing
-#'         \code{est}, \code{lci}, and \code{uci}.
-#'
-#'   \item Data frames containing columns for estimate, lower confidence
-#'         limit, and upper confidence limit.
-#'
-#'   \item Named lists where each element contains
-#'         \code{c(est, lci, uci)}.
-#'
-#'   \item Results from \code{tapply()} where the applied function returns
-#'         \code{c(est, lci, uci)}. Grouping dimensions are automatically
-#'         converted to grouping variables.
+#'   \item a numeric matrix with exactly three columns, interpreted in the
+#'     order \code{est}, \code{lci}, and \code{uci}
+#'   \item a data frame containing columns for the estimates and confidence
+#'     limits; their names can be specified with \code{estimate},
+#'     \code{lower}, and \code{upper}
+#'   \item a list in which every element contains three values representing
+#'     \code{c(est, lci, uci)}
+#'   \item an array-like result from \code{\link{tapply}} in which every cell
+#'     contains \code{c(est, lci, uci)}; its dimensions are converted to
+#'     grouping variables
+#'   \item an existing \code{"CI"} object, which is returned unchanged
 #' }
 #'
-#' The returned object inherits from class \code{"ci"}.
+#' The standardized object can be passed directly to \code{\link{plotDot}} to
+#' display the estimates and their confidence intervals. This is particularly
+#' useful for matrices, because a bare matrix supplied to \code{plotDot()} is
+#' interpreted as grouped estimates rather than as confidence interval data.
 #'
-#' @return
-#' A data frame of class \code{"ci"} with columns:
-#'
-#' \describe{
-#'   \item{est}{Point estimate}
-#'   \item{lci}{Lower confidence limit}
-#'   \item{uci}{Upper confidence limit}
-#' }
-#'
-#' Additional columns represent grouping variables.
+#' @return \code{as.CI()} returns a data frame of class \code{"CI"} containing
+#'   the columns \code{est}, \code{lci}, and \code{uci}, followed by any
+#'   grouping columns; \code{is.CI()} returns a single logical value
 #'
 #' @examples
-#'
-#' # ----------------------------------------------------------
-#' # matrix
-#' # ----------------------------------------------------------
-#'
+#' # matrix containing estimate, lower limit, and upper limit
 #' x <- matrix(
 #'   c(
 #'     10, 20, 30,
 #'      8, 18, 28,
 #'     12, 22, 32
 #'   ),
-#'   ncol = 3
+#'   ncol = 3,
+#'   dimnames = list(
+#'     c("A", "B", "C"),
+#'     c("est", "lci", "uci")
+#'   )
 #' )
 #'
-#' as.CI(x)
+#' ci <- as.CI(x)
+#' ci
+#' is.CI(ci)
 #'
-#' # ----------------------------------------------------------
-#' # data frame
-#' # ----------------------------------------------------------
+#' # display the estimates and confidence intervals
+#' plotDot(ci)
 #'
+#' # data frame using the standard column names
 #' d <- data.frame(
 #'   est = c(10, 20),
 #'   lci = c(8, 18),
@@ -80,10 +80,22 @@
 #'
 #' as.CI(d)
 #'
-#' # ----------------------------------------------------------
-#' # tapply result
-#' # ----------------------------------------------------------
+#' # data frame using different column names
+#' d <- data.frame(
+#'   item = c("A", "B"),
+#'   estimate = c(10, 20),
+#'   lower = c(8, 18),
+#'   upper = c(12, 22)
+#' )
 #'
+#' as.CI(
+#'   d,
+#'   estimate = "estimate",
+#'   lower = "lower",
+#'   upper = "upper"
+#' )
+#'
+#' # confidence intervals returned by tapply()
 #' \dontrun{
 #' xci <- with(
 #'   Pizza,
@@ -98,15 +110,15 @@
 #' plotDot(as.CI(xci))
 #' }
 #'
-#' @seealso \code{\link{fmCI}}, \code{\link{plotDot}}
+#' @seealso \code{\link{plotDot}}, \code{\link{fmCI}}
 #' @concept confidence-interval
+#' @export
 #'
 
 # ============================================================
 # CI objects
 # ============================================================
 
-#' @export
 as.CI <- function(x, ...) {
   
   # ----------------------------------------------------------
@@ -174,6 +186,7 @@ as.CI <- function(x, ...) {
 # ============================================================
 # matrix
 # ============================================================
+#' @rdname as.CI
 #' @export
 
 as.CI.matrix <- function(x, ...) {
@@ -205,8 +218,8 @@ as.CI.matrix <- function(x, ...) {
 # ============================================================
 # data.frame
 # ============================================================
+#' @rdname as.CI
 #' @export
-
 as.CI.data.frame <- function(
     x,
     estimate = "est",
@@ -243,6 +256,7 @@ as.CI.data.frame <- function(
 # ============================================================
 # list
 # ============================================================
+#' @rdname as.CI
 #' @export
 as.CI.list <- function(x, ...) {
   
@@ -270,6 +284,7 @@ as.CI.list <- function(x, ...) {
 # ============================================================
 # already ci
 # ============================================================
+#' @rdname as.CI
 #' @export
 as.CI.CI <- function(x, ...) {
   x
@@ -279,6 +294,7 @@ as.CI.CI <- function(x, ...) {
 # ============================================================
 # default
 # ============================================================
+#' @rdname as.CI
 #' @export
 as.CI.default <- function(x, ...) {
   

@@ -2,12 +2,12 @@
 #' Plot Method for Numeric-Categorical \code{Desc} Objects
 #'
 #' Visualises the relationship between a numeric variable and a categorical
-#' variable, as computed by \code{\link[DescToolsX]{desc}(y ~ x)} (or \code{x ~ y}) for
+#' variable, as computed by \code{DescToolsX::desc(y ~ x)} (or \code{x ~ y}) for
 #' a numeric/categorical pair. Five panel types are available, selectable
 #' (and combinable) via \code{which}.
 #'
 #' @param x an object of class \code{"Desc.qn"}, as returned by
-#'   \code{\link[DescToolsX]{desc}()} for a numeric-categorical pair.
+#'   \code{DescToolsX::desc()} for a numeric-categorical pair.
 #'
 #' @param main main title. \code{NULL} (default) derives a title per panel
 #'   from the variable names and the panel type (e.g.
@@ -94,7 +94,7 @@
 #'
 #' @return Invisibly returns \code{x}.
 #'
-#' @seealso \code{\link[DescToolsX]{desc}}, \code{\link{plotDens}}, \code{\link{plotBox}},
+#' @seealso \code{DescToolsX::desc}, \code{\link{plotDens}}, \code{\link{plotBox}},
 #'   \code{\link[graphics]{cdplot}}, \code{\link[graphics]{spineplot}}
 #'
 #' @family plot.s3  

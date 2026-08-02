@@ -2,7 +2,7 @@
 #' Plot Methods for Lorenz Curve Objects
 #'
 #' Visualize objects of class \code{"Lc"} and \code{"LcList"} returned by
-#' \code{\link[DescToolsX]{lc}()}.  The \code{plot()} method draws a new
+#' \code{DescToolsX::lc()}.  The \code{plot()} method draws a new
 #' Lorenz curve plot including the line of perfect equality; \code{lines()}
 #' and \code{points()} add to an existing plot.
 #'
@@ -16,7 +16,7 @@
 #' and one set of semantics - including the confidence band, which is
 #' controlled by \code{cbandArgs} in \code{plot.Lc()} exactly as it is in
 #' \code{lines.Lc()}.  Pass a list of arguments to
-#' \code{\link[DescToolsX]{predict.Lc}()} to control the bootstrap (e.g.
+#' \code{DescToolsX::predict.Lc()} to control the bootstrap (e.g.
 #' \code{cbandArgs = list(conf.level = 0.90, n = 500)}).  Set
 #' \code{cbandArgs = NA} (default) to suppress the band.  Note that
 #' \code{line = FALSE} suppresses the band along with the curve.
@@ -85,7 +85,7 @@
 #'   \code{16}.
 #' @param cbandArgs used by \code{plot.Lc()} and \code{lines.Lc()}.
 #'   \code{NA} to suppress the confidence band (default), or a list of
-#'   arguments passed to \code{\link[DescToolsX]{predict.Lc}()} to control
+#'   arguments passed to \code{DescToolsX::predict.Lc()} to control
 #'   bootstrap confidence intervals.
 #' @param ... further arguments.  For \code{plot.Lc()}, graphical parameters
 #'   passed to \code{\link[graphics]{par}()} via \code{.applyParFromDots()}
@@ -100,9 +100,9 @@
 #' @return All methods return \code{NULL} invisibly.
 #'
 #' @seealso
-#'   \code{\link[DescToolsX]{lc}()} for computing the Lorenz curve,
-#'   \code{\link[DescToolsX]{predict.Lc}()} for bootstrap confidence
-#'   intervals, \code{\link[DescToolsX]{gini}()} for the Gini coefficient.
+#'   \code{DescToolsX::lc()} for computing the Lorenz curve,
+#'   \code{DescToolsX::predict.Lc()} for bootstrap confidence
+#'   intervals, \code{DescToolsX::gini()} for the Gini coefficient.
 #'
 #' @family plot.s3
 #' @concept inequality

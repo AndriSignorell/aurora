@@ -315,8 +315,8 @@ fm(1200, digits=2, bigMark = ".", decMark=",")
 \seealso{
 \link[base:format]{base::format}, \link[base:formatC]{base::formatC},
 \link[base:prettyNum]{base::prettyNum}, \link[base:sprintf]{base::sprintf}, \link[stats:symnum]{stats::symnum},\cr
-\link[base:Sys.setlocale]{base::Sys.setlocale},\cr \link[DescToolsX:weekday]{DescToolsX::weekday},
-\link[DescToolsX:month]{DescToolsX::month},
+\link[base:Sys.setlocale]{base::Sys.setlocale},\cr \code{DescToolsX::weekday},
+\code{DescToolsX::month},
 \link{theme}
 
 Other format:

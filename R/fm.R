@@ -192,7 +192,7 @@
 #' @seealso [base::format], [base::formatC],
 #' [base::prettyNum], [base::sprintf], [stats::symnum],\cr
 #' [base::Sys.setlocale],\cr \code{DescToolsX::weekday}, 
-#' [DescToolsX::month],
+#' \code{DescToolsX::month},
 #' [theme]
 #' 
 #' @family format  
