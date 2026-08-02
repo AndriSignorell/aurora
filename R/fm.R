@@ -1,3 +1,10 @@
+# Names a Style may carry that describe the Style itself rather than an
+# argument of fm(). Single source of truth for fm() and style() - keep the
+# two in step; it is the only reason a Style may hold a name that fm() does
+# not know.
+#' @noRd
+.styleMetaNames <- c("label")
+
 
 #' Format Numbers and Dates
 #' 
@@ -17,7 +24,7 @@
 #' reporting. Among these, the argument \code{fmt} deserves a more detailed
 #' description due to its flexibility. It is used to generate a variety of
 #' different special formats. \cr\cr If \code{x} is a date, it can take
-#' ISO-8601–inspired token syntax similar to .NET or Moment.js (consisting of
+#' ISO-8601-inspired token syntax similar to .NET or Moment.js (consisting of
 #' \code{d}, \code{M} and \code{y} for day, month or year and \code{h/H},
 #' \code{m}, \code{s}, \code{t} for hours, minutes, seconds and AM/PM
 #' designator) and defining the combination of day month and year
@@ -62,10 +69,10 @@
 #' \code{eng}, but replaces the exponential representation by codes, \cr
 #' \tab\tab e.g. \code{M} for mega (1e6). \cr
 #' 
-#' \code{\%} \tab percent \tab will divide the given number by 100 and append
+#' \code{\%} \tab percent \tab multiplies the given number by 100 and appends
 #' the \%-sign (without a separator).\cr \tab\cr \code{p} \tab p-value \tab
-#' will wrap the function \code{\link{format.pval}} and return a p-value
-#' format. \cr \tab \tab Use \code{pThreshold} to define the threshold to e.g.
+#' formats values as p-values. \cr \tab \tab Use \code{pThreshold} to define
+#' the threshold to e.g.
 #' switch to a \code{ <0.001 } representation.\cr \tab\cr \code{frac} \tab
 #' fractions \tab will (try to) convert numbers to fractions. So 0.1 will be
 #' displayed as 1/10. \cr \tab\tab See \code{\link[MASS]{fractions}()}.\cr
@@ -85,46 +92,51 @@
 #' \code{fmt} can as well be an object of class "\code{Style}" consisting of a
 #' list out of the arguments above (as created by \code{\link{style}()}). This
 #' allows to store and manage the full format in variables or as options and
-#' use it as format template subsequently.
+#' use it as format template subsequently. Arguments supplied directly to
+#' \code{fm()} override the corresponding Style settings, including an
+#' explicitly supplied \code{NULL}.
 #' 
-#' Finally \code{fmt} can also be a function in x, which makes formatting very
-#' flexible.
-#' 
-#' @aliases fm fm.default fm.matrix fm.table 
-#' @param x an atomic numerical, typically a vector of real numbers or a matrix
-#' of numerical values. Factors will be converted to strings.
+#' For data frames, every formatting argument must have length one or the
+#' number of columns. Length-one arguments are recycled, allowing each column
+#' to use its own formatting settings without ambiguous partial recycling.
+#' Functions and Style objects count as single settings; use a list to supply
+#' different functions or Styles by column.
+#'
+#' Finally, \code{fmt} can be a function of \code{x}. Additional arguments in
+#' \code{\dots} are forwarded to that function.
+#'
+#' @param x a numeric, logical, character, factor, \code{Date}, or
+#'   \code{POSIXt} vector, or a matrix, table, ftable, or data frame
 #' @param digits integer, the desired (fixed) number of digits after the
 #' decimal point. Unlike \code{\link{formatC}} you will always get this number
 #' of digits even if the last digit is 0.  Negative numbers of digits round to
-#' a power of ten (\code{digits=-2} would round to the nearest hundred).
+#' a power of ten (\code{digits=-2} would round to the nearest hundred) for
+#' standard numeric formats; engineering formats require nonnegative values
 #' @param leadDigits number of leading zeros. \code{leadDigits=3} would make sure
 #' that at least 3 digits on the left side will be printed, say \code{3.4} will
 #' be printed as \code{003.4}. Setting \code{leadDigits} to \code{0} will yield
 #' results like \code{.452} for \code{0.452}. The default \code{NULL} will
 #' leave the numbers as they are (meaning at least one 0 digit).
-#' @param sci integer. The power of 10 to be set when deciding to print numeric
-#' values in exponential notation. Fixed notation will be preferred unless the
-#' number is larger than 10^scipen. If just one value is set it will be used
-#' for the left border 10^(-scipen) as well as for the right one (10^scipen). A
-#' negative and a positive value can also be set independently. Default is
-#' \code{getOption("scipen")}, whereas \code{scipen=0} is overridden.
+#' @param sci numeric scalar giving the absolute power-of-ten threshold for
+#'   scientific notation. Its absolute value is used symmetrically: for
+#'   \code{sci = 8}, nonzero values below \eqn{10^{-8}} and values at or above
+#'   \eqn{10^8} are displayed scientifically. The default is based on
+#'   \code{getOption("scipen")}; an option value of zero is replaced by 7
 #' @param bigMark character; if not empty used as mark between every 3
 #' decimals before the decimal point. Default is "" (none).
-#' @param decMark character, specifying the decimal mark to be used. If not
-#' provided, the default set as \code{decMark} option is used.
+#' @param decMark character specifying the decimal mark. If \code{NULL}, the
+#'   current \code{OutDec} option is used
 #' @param naForm character, string specifying how \code{NA}s should be
 #' specially formatted.  If set to \code{NULL} (default) no special action will
 #' be taken.
 #' @param zeroForm character, string specifying how zeros should be specially
 #' formatted. Useful for pretty printing 'sparse' objects.  If set to
 #' \code{NULL} (default) no special action will be taken.
-#' @param fmt either a format string, allowing to flexibly define special
-#' formats or an object of class \code{style}, consisting of a list of
-#' \code{fm} arguments. See Details.
-#' @param pThreshold a numerical tolerance used mainly for formatting p values,
-#' those less than pThreshold are formatted as "\verb{\code{< [pThreshold]}}" (where '\verb{[pThreshold]}'
-#' stands for \code{format(pThreshold, digits))}.  Default is \code{0.001}.
-#' @param width integer, the defined fixed width of the strings.
+#' @param fmt a format code or date-time template, a formatting function, a
+#'   named Style, or an object of class \code{Style}. See Details
+#' @param pThreshold positive numeric threshold below which p-values are shown
+#'   as \code{"< threshold"}
+#' @param width nonnegative integer giving the minimum display width
 #' @param align the character on whose position the strings will be aligned.
 #' Left alignment can be requested by setting \code{sep = "\\l"}, right
 #' alignment by \code{"\\r"} and center alignment by \code{"\\c"}. Mind the
@@ -134,12 +146,12 @@
 #' to the function \code{\link[pharos]{strAlign}()} as argument \code{sep}.
 #' @param lang optional value setting the language for the months and daynames.
 #' Can be either \code{"local"} for current locale or \code{"en"} for english.
-#' If left to \code{NULL}, the DescToolsOption \code{"lang"} will be searched
-#' for and if not found \code{"local"} will be taken as default.
-#' @param \dots further arguments to be passed to or from methods.
-#' @return the formatted values as characters. \cr If \code{x} was a
-#' \code{matrix}, then a the result will also be a \code{matrix}. (Hope this
-#' will not surprise you...)
+#' If left to \code{NULL}, the package option \code{"lang"} is used, falling
+#' back to \code{"en"}
+#' @param \dots additional arguments passed to methods or to a formatting
+#'   function supplied through \code{fmt}
+#' @return formatted character values with the dimensions or tabular structure
+#'   of \code{x} preserved where applicable
 #' @examples
 #' 
 #' fm(as.Date(c("2014-11-28", "2014-1-2")), fmt="ddd, d mmmm yyyy")
@@ -179,7 +191,7 @@
 #' 
 #' @seealso [base::format], [base::formatC],
 #' [base::prettyNum], [base::sprintf], [stats::symnum],\cr
-#' [base::Sys.setlocale],\cr [DescToolsX::weekday], 
+#' [base::Sys.setlocale],\cr \code{DescToolsX::weekday}, 
 #' [DescToolsX::month],
 #' [theme]
 #' 
@@ -189,281 +201,277 @@
 #'
 #'
 #' @export  
-fm <- function(x
-               , digits = NULL, leadDigits = NULL, sci = NULL
-               , bigMark=NULL, decMark = NULL
-               , naForm = NULL, zeroForm = NULL
-               , fmt = NULL, pThreshold = NULL
-               , width = NULL, align = NULL
-               , lang = NULL
-               , ...){
+fm <- function(x, digits = NULL, leadDigits = NULL, 
+               sci = NULL,
+               bigMark = NULL, decMark = NULL,
+               naForm = NULL, zeroForm = NULL,
+               fmt = NULL, pThreshold = NULL,
+               width = NULL, align = NULL,
+               lang = NULL, ...) {
   UseMethod("fm")
 }
 
 
 
+#' @rdname fm
 #' @export
-fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL
-                       , bigMark=NULL, decMark = NULL
-                       , naForm = NULL, zeroForm = NULL
-                       , fmt = NULL, pThreshold = NULL
-                       , width = NULL, align = NULL
-                       , lang = NULL, ...){
+fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
+                       bigMark = NULL, decMark = NULL,
+                       naForm = NULL, zeroForm = NULL,
+                       fmt = NULL, pThreshold = NULL,
+                       width = NULL, align = NULL,
+                       lang = NULL, ...) {
 
-  # Format a vector x
+  specialFormats <- c("*", "p", "p*", "eng", "engabb", "e", "%", "frac")
 
-  # A POSIXlt is a list by construction, so it would be turned away by the
-  # guard below although it is a perfectly ordinary date-time input.
-  # Convert before the guard, not after it.
+  if (!(is.null(fmt) || is.function(fmt) || inherits(fmt, "Style") ||
+        (is.character(fmt) && length(fmt) == 1L && !is.na(fmt)))) {
+    stop("'fmt' must be NULL, one character string, a function, or a Style",
+         call. = FALSE)
+  }
+
+  # Resolve a named Style before touching x. This ensures that all Style
+  # settings, including naForm, align, and lang, see the original input.
+  if (is.character(fmt) && !fmt %in% specialFormats) {
+    availableStyles <- styles()
+    if (fmt %in% names(availableStyles)) {
+      fmt <- availableStyles[[fmt]]
+      if (!inherits(fmt, "Style"))
+        stop("a named Style must inherit from 'Style'", call. = FALSE)
+    }
+  }
+
+  if (inherits(fmt, "Style")) {
+    styleArgs <- unclass(fmt)
+    if (!is.list(styleArgs) || is.null(names(styleArgs)) ||
+        any(!nzchar(names(styleArgs))) || anyDuplicated(names(styleArgs)))
+      stop("a Style must be a named list", call. = FALSE)
+
+    supplied <- names(match.call(expand.dots = FALSE))
+    supplied <- intersect(
+      supplied,
+      setdiff(names(formals(fm.default)), c("x", "fmt", "..."))
+    )
+
+    for (arg in supplied)
+      styleArgs[[arg]] <- get(arg, inherits = FALSE)
+
+    styleArgs[["x"]] <- NULL
+
+    # Components that describe the Style itself instead of parametrising
+    # fm(). They are dropped here rather than passed on.
+    styleArgs <- styleArgs[!names(styleArgs) %in% .styleMetaNames]
+
+    # Everything else is passed on as an argument of fm(). A name that is
+    # neither metadata nor an argument lands in '...' of the recursive call,
+    # where it produces
+    #   "'...' is only available when 'fmt' is a function"
+    # - a message that names neither the Style nor the offending component,
+    # and that appears wherever the Style happens to be used rather than
+    # where it was built. Report it here instead, with the name.
+    unknown <- setdiff(names(styleArgs),
+                       setdiff(names(formals(fm.default)), c("x", "...")))
+    if (length(unknown))
+      stop(gettextf(
+        "Style contains component(s) that are neither arguments of fm() nor style metadata: %s",
+        paste(sQuote(unknown), collapse = ", ")), call. = FALSE)
+
+    return(do.call(fm, c(list(x = x), styleArgs, list(...))))
+  }
+
+  dots <- list(...)
+  if (length(dots) && !is.function(fmt))
+    stop("'...' is only available when 'fmt' is a function", call. = FALSE)
+
+  .validateScalar <- function(value, name, mode = c("numeric", "character"),
+                              integer = FALSE, lower = -Inf, upper = Inf) {
+    if (is.null(value)) return(invisible(NULL))
+
+    mode <- match.arg(mode)
+    validType <- if (mode == "numeric") is.numeric(value) else is.character(value)
+    valid <- validType && length(value) == 1L && !is.na(value)
+
+    if (mode == "numeric") {
+      valid <- valid && is.finite(value) && value >= lower && value <= upper
+      if (integer) valid <- valid && value == trunc(value)
+    }
+
+    if (!valid)
+      stop(gettextf("'%s' must be one valid %s value", name, mode),
+           call. = FALSE)
+  }
+
+  .validateScalar(digits, "digits", integer = TRUE)
+  .validateScalar(leadDigits, "leadDigits", integer = TRUE, lower = 0)
+  .validateScalar(sci, "sci")
+  .validateScalar(bigMark, "bigMark", mode = "character")
+  .validateScalar(decMark, "decMark", mode = "character")
+  .validateScalar(naForm, "naForm", mode = "character")
+  .validateScalar(zeroForm, "zeroForm", mode = "character")
+  .validateScalar(pThreshold, "pThreshold", lower = 0, upper = 1)
+  .validateScalar(width, "width", integer = TRUE, lower = 0)
+  .validateScalar(align, "align", mode = "character")
+  .validateScalar(lang, "lang", mode = "character")
+
+  if (!is.null(lang) && !lang %in% c("en", "local"))
+    stop("'lang' must be 'en' or 'local'", call. = FALSE)
+
+  if (!is.null(pThreshold) && pThreshold == 0)
+    stop("'pThreshold' must be greater than zero", call. = FALSE)
+
+  if (!is.null(decMark) && nchar(decMark, type = "chars") != 1L)
+    stop("'decMark' must contain exactly one character", call. = FALSE)
+
   if (inherits(x, "POSIXlt"))
     x <- as.POSIXct(x)
 
-  # refuse handling nonvectors
-  if (is.list(x)) {
-    stop("x must be an atomic vector, not a list", call. = FALSE)
+  if (is.list(x))
+    stop("'x' must be an atomic vector, not a list", call. = FALSE)
+
+  isDateTime <- inherits(x, c("Date", "POSIXct", "POSIXt"))
+  isText <- is.character(x) || is.factor(x) || is.logical(x)
+  isNumber <- is.numeric(x) && !is.complex(x) && !isDateTime
+
+  if (!isDateTime && !isText && !isNumber)
+    stop("'x' must be numeric, logical, character, factor, Date, or POSIXt",
+         call. = FALSE)
+
+  # A character 'fmt' that is neither a special code nor a registered Style
+  # warns and falls back to the default format: fm() is called deep inside
+  # report functions (tOne(), desc()), where one mistyped or not-yet-
+  # registered style name would otherwise take down a whole table.
+  #
+  # ONLY for numeric x. For a Date or POSIXct every string is a legal format
+  # (see .formatDateTime(), which owns its own token grammar and reports an
+  # unknown token itself), and for character/factor/logical a non-NULL 'fmt'
+  # is refused further down. Checking this before isNumber is known would
+  # reject "yyyy-MM-dd" as an unknown format code.
+  #
+  # The position is still ahead of the early return for an empty or all-NA
+  # 'x', so the message does not depend on whether there are data.
+  if (isNumber && is.character(fmt) && !fmt %in% specialFormats) {
+    warning(gettextf("unknown format code '%s' in 'fmt'; using the default format",
+                     fmt), call. = FALSE)
+    fmt <- NULL
   }
 
-  # store names
-  orig_names <- names(x)
-
-  # store index of missing values in ina
-  if ((has.na <- any(ina <- is.na(x))))
-    x <- x[!ina]
-
-  if(is.null(naForm)) naForm <- NA_real_
-  
-  # --- Guard: return if only NAs ---
-  if (length(x) == 0L) {
-    r <- rep(as.character(naForm), length(ina))
-    names(r) <- orig_names
-    return(r)
+  if (!is.null(decMark)) {
+    oldOptions <- options(OutDec = decMark)
+    on.exit(options(oldOptions), add = TRUE)
   }
-  
-  # Dispatch on class of x **************
-  
-  if(all(inherits(x, c("Date", "POSIXct", "POSIXt")))) {
-    
-    # Format DATES
-    
-    # the language is only needed for date formats, so avoid looking up the option
-    # for other types
-    if(is.null(lang)) lang <- .getOption("lang", "en")
-    
-    if(lang=="en"){
-      loc <- Sys.getlocale("LC_TIME")
-      Sys.setlocale("LC_TIME", "C")
-      on.exit(Sys.setlocale("LC_TIME", loc), add = TRUE)
-    }
-    
-    # defunct! Use Rcpp function from now on ...
-    # r <- format(x, as.CDateFmt(fmt=fmt))
-    
-    # CharacterVector FmDateTime_cpp(
-    #   SEXP x,
-    #   std::string fmt,
-    #   bool strict = true,
-    #   std::string locale = "current"
-    # )
-    
-    # for dates only the fmt argument is relevant
-    if(inherits(fmt, "Style")) fmt <- fmt[["fmt"]]
 
-    r <- formatDateTime(x = x, fmt = fmt, strict = TRUE, locale = "current")
+  if (is.null(naForm)) naForm <- NA_character_
+  if (is.null(bigMark)) bigMark <- getOption("bigMark", "")
+  if (is.null(leadDigits)) leadDigits <- 1L
+  if (is.null(pThreshold)) pThreshold <- 1e-3
 
-  } else if(all(class(x) %in% c("character","factor","ordered"))) {
-    
-    # Format any form of TEXT
-    
-    r <- format(x)
-    # handle NAs
-    if (has.na) r[ina] <- naForm
-    return(r)
+  sciDefault <- coalesceX(naIf(getOption("scipen"), 0), 7)
+  if (is.null(sci)) sci <- sciDefault
 
-  } else { 
-  
-    # Format any NUMERIC values
-    
-    # store index of missing values in ina
-    has.zero <- any(iz <- isZero(x))
-    
-      
-    # dispatch fmt *******************
-    
-    # fmt is a super flexible argument, it can contain
-    # * a predefined style with class style
-    # * a (character) name of a style defined as R option
-    # * a special short cut for special format styles, currently:
-    #     *       significance stars for p values
-    #     p       the p value
-    #     p*      both, p val and star
-    #     %       a percentage value
-    #     e       a scientific representation
-    #     eng     engineering representation with powers of 10 in multiple of 3
-    #     engabb  engineering representation with powers of 10 in multiple of 3
-    # * a ISO-8601 code for dates
-    # * a function
+  .validateScalar(bigMark, "bigMark", mode = "character")
+  .validateScalar(sci, "sci")
+  sci <- abs(sci)
 
-    if(!is.null(fmt)){
-      
-      if(is.function(fmt)){
-        r <- fmt(x)
-        
-      } else if(inherits(x=fmt, what="Style")) {
-        
-        # class of fmt is: <style> 
-        
-        # we want to offer the user the option to overrun format definitions
-        # consequence is, that all defaults of the function must be set to NULL
-        # as we cannot distinguish between defaults and user sets else
-        
-        fmt <- unclass(fmt)
-        
-        a <- methods::formalArgs("fm")
-        # do for all function arguments, besides x, ..., and fmt
-        # (as it has the class "style" when landing here!)
-        for( z in a[a %notin% c("x", "fmt", "...")]){
-          # get the provided value for the argument
-          value <- dynGet(z)
-          # overwrite the style argument with the new value
-          if( !is.null(value) ) fmt[z] <- value
-        }
-        
-        # clear style class and rerun default routine
-        class(fmt) <- setdiff(class(fmt), "Style")
-        
-        # return the formatted values by recursive call of Fm()
-        r <- do.call(fm, c(fmt, x = list(x)))   
-        
-      } else {
-        
-        # class of fmt is <character> (or something else than <function> or <style>) 
-        
-        # special code: *, p, *p, e, ...
-        if(fmt=="*"){
-          r <- .format.stars(x)
-          
-        } else if(fmt=="p"){
-          # better use 0.001 than .Machine$double.eps as eps
-          r <- .format.pval(x, coalesceX(pThreshold, 1e-3), 
-                            coalesceX(digits, 3), coalesceX(leadDigits, 1))
-          
-        } else if(fmt=="p*"){
-          r <- .format.pstars(x, coalesceX(pThreshold, 1e-3), 
-                              coalesceX(digits, 3), coalesceX(leadDigits, 1))
-          
-        } else if(fmt=="eng"){
-          r <- .format.eng(x, digits=digits, leadDigits=leadDigits, 
-                           zeroForm=zeroForm, naForm=naForm)
-          
-        } else if(fmt=="engabb"){
-          r <- .format.engabb(x, digits=digits, leadDigits=leadDigits, 
-                              zeroForm=zeroForm, naForm=naForm)
-          
-        } else if(fmt=="e"){
-          # r <- formatC(x, digits = digits, width = width, format = "e",
-          #              bigMark=bigMark, zero.print = zeroForm)
-          r <- formatNum(x, digits = digits, sciBig = 0, sciSmall = 0)
-          
-        } else if(fmt=="%"){
-          # we use 1 digit as default here
-          if(is.null(digits)) digits <- 1
-          r <- paste(formatNum(x * 100, digits = digits,
-                               bigMark = bigMark,
-                               leadDigits = leadDigits %||% 1L),
-                     "%", sep="")
-          
-        } else if(fmt=="frac"){
-          
-          r <- as.character(MASS::fractions(x))
-          
-        } else if (fmt %in% names(styles())) {
-          # so far fmt could be a character denoting the name of a style, 
-          # defined either in the global environment or in the options
-          r <- fm(x, fmt=styles()[[fmt]])
+  originalNames <- names(x)
+  missing <- is.na(x)
+  values <- x[!missing]
 
-        } else {  # format else   ********************************************
-          
-          warning(gettextf("Non interpretable fmt code %s will be ignored.", fmt))
-          r <- x
-        }  
-      } 
+  if (!length(values)) {
+    result <- rep.int(naForm, length(x))
+    result <- .finishFormat(result, width = width, align = align,
+                            objectNames = originalNames)
+    return(noquote(result))
+  }
+
+  zero <- if (isNumber) isZero(values) else rep.int(FALSE, length(values))
+
+  if (is.function(fmt)) {
+    result <- do.call(fmt, c(list(values), dots))
+
+  } else if (isDateTime) {
+    if (is.null(fmt)) {
+      result <- format(values)
     } else {
-      
-      # fmt hat no value so proceed to basic numeric formatting
-      
-      # set the format defaults, if not provided ...
+      if (is.null(lang)) lang <- .getOption("lang", "en")
 
-      CountDecimals <- function(x, digits = getOption("digits")) {
-        decMark <- getOption("OutDec", ".")
-        s <- formatC(x, digits = digits, format = "g")
-        
-        pos <- regexpr(decMark, s, fixed = TRUE)
-        
-        ifelse(
-          pos > 0,
-          nchar(s) - pos,
-          0L
-        )
+      .validateScalar(lang, "lang", mode = "character")
+      if (!lang %in% c("en", "local"))
+        stop("'lang' must be 'en' or 'local'", call. = FALSE)
+
+      if (lang == "en") {
+        oldLocale <- Sys.getlocale("LC_TIME")
+        Sys.setlocale("LC_TIME", "C")
+        on.exit(Sys.setlocale("LC_TIME", oldLocale), add = TRUE)
       }
 
-      # if sci is not set at all, the default will be 0, which leads to all numbers being
-      # presented as scientific - this is definitely nonsense...
-      if(is.null(sci))       sci <- coalesceX(naIf(getOption("scipen"), 0), 7) # default
-      if(is.null(pThreshold))     pThreshold <- 1e-3
-      if(is.null(bigMark))  bigMark <- getOption("bigMark", "")
-      if(is.null(leadDigits))   leadDigits <- 1
-      if(is.null(digits))    digits <- max(CountDecimals(x))
-
-      if(!is.null(decMark)) { 
-        opt <- options(OutDec = decMark)
-        on.exit(options(opt), add=TRUE) 
-      }
-
-      # this is for sci big and sci small, this does not line up well with recyling rule!
-      # ***** reconsider!! *****
-      # sci <- rep(sci, length.out=2)
-      # maybe better sci.big and sci.small (?)
-
-      r <- formatNum(x,
-                     digits = digits, leadDigits=leadDigits, # width = width, 
-                     bigMark=bigMark, sciBig = sci, sciSmall = -sci)
-
+      result <- .formatDateTime(values, fmt = fmt, strict = TRUE,
+                                locale = "current")
     }
-    
-    # replace zeros with required zeroForm
-    if(!is.null(zeroForm) & has.zero)
-      r[iz] <- zeroForm
-    
+
+  } else if (isText) {
+    if (!is.null(fmt))
+      stop("character, factor, and logical values require 'fmt = NULL' or a function",
+           call. = FALSE)
+    result <- as.character(values)
+
+  } else if (is.null(fmt)) {
+    if (is.null(digits)) digits <- max(.countDecimals(values))
+
+    result <- formatNum_cpp(values, digits = digits, leadDigits = leadDigits,
+                        bigMark = bigMark, sciSmall = -sci, sciBig = sci)
+
+  } else {
+    result <- switch(
+      fmt,
+      "*" = .formatStars(values),
+      "p" = .formatPval(values, pThreshold = pThreshold,
+                         digits = digits %||% 3L, leadDigits = leadDigits),
+      "p*" = .formatPstars(values, pThreshold = pThreshold,
+                            digits = digits %||% 3L, leadDigits = leadDigits),
+      "eng" = .formatEng(values, digits = digits,
+                          leadDigits = leadDigits, bigMark = bigMark),
+      "engabb" = .formatEngabb(values, digits = digits,
+                                leadDigits = leadDigits, bigMark = bigMark),
+      "e" = formatNum_cpp(values, digits = digits, leadDigits = leadDigits,
+                       bigMark = bigMark, sciSmall = 0, sciBig = 0),
+      "%" = paste0(
+        formatNum_cpp(values * 100, digits = digits %||% 1L,
+                  leadDigits = leadDigits, bigMark = bigMark,
+                  sciSmall = -sci, sciBig = sci),
+        "%"
+      ),
+      "frac" = as.character(MASS::fractions(values)),
+      # unreachable: anything not in 'specialFormats' was turned into NULL
+      # above. Kept so that the two lists cannot drift apart unnoticed.
+      stop(gettextf("unknown format code '%s'", fmt), call. = FALSE)
+    )
   }
 
-  
-  # the same with NAs
-  if (has.na) {
-    rok <- r
-    r <- character(length(ina))
-    r[!ina] <- rok
-    r[ina] <- naForm
+  if (length(result) != length(values))
+    stop("the formatter must return exactly one value for each element of 'x'",
+         call. = FALSE)
+
+  result <- as.character(result)
+  if (!is.null(zeroForm) && any(zero)) result[zero] <- zeroForm
+
+  if (any(missing)) {
+    complete <- rep.int(NA_character_, length(x))
+    complete[!missing] <- result
+    complete[missing] <- naForm
+    result <- complete
   }
-  
-  # Do the alignment
-  if(!is.null(align)){
-    r <- strAlign(r, sep = align)
-  }
-  
-  
-  # restore names
-  if (!is.null(orig_names)) names(r) <- orig_names
-  
-  # noquote() marks the result as a formatted string vector —
-  # print() will suppress quotes automatically (via print.noquote).
-  # No custom class needed; base R handles the display.
-  return(noquote(r))
-  
+
+  result <- .finishFormat(result, width = width, align = align,
+                          objectNames = originalNames)
+
+  noquote(result)
 }
 
 
 
 
+#' @rdname fm
+#' @export
 #' @export
 fm.data.frame <- function(x,
                           digits = NULL, leadDigits = NULL, sci = NULL,
@@ -516,6 +524,8 @@ fm.data.frame <- function(x,
 }
 
 
+
+#' @rdname fm
 #' @export
 fm.matrix <- function(x, digits = NULL, leadDigits = NULL, sci = NULL, 
                       bigMark = NULL, decMark = NULL, naForm = NULL, 
@@ -536,6 +546,7 @@ fm.matrix <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 }
 
 
+#' @rdname fm
 #' @export
 fm.table <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
                      bigMark = NULL, decMark = NULL, naForm = NULL, 
@@ -557,6 +568,7 @@ fm.table <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 
 
 
+#' @rdname fm
 #' @export
 fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
                       bigMark = NULL, decMark = NULL, naForm = NULL, 
@@ -593,154 +605,206 @@ fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 
 
 
-.is_ch_locale <- function() {
-  # are CH-settings active?
+.asColumnArgument <- function(x) {
+  if (is.function(x) || inherits(x, "Style")) return(list(x))
+  as.list(x)
+}
+
+
+.countDecimals <- function(x, digits = getOption("digits")) {
+  decimalMark <- getOption("OutDec", ".")
+  formatted <- formatC(x, digits = digits, format = "g")
+  formatted <- sub("[eE].*$", "", formatted)
+  position <- regexpr(decimalMark, formatted, fixed = TRUE)
+
+  ifelse(position > 0L, nchar(formatted) - position, 0L)
+}
+
+
+.finishFormat <- function(x, width = NULL, align = NULL,
+                          objectNames = NULL) {
+  x <- as.character(x)
+  present <- !is.na(x)
+
+  if (!is.null(align) && any(present))
+    x[present] <- strAlign(x[present], sep = align)
+
+  if (!is.null(width) && any(present)) {
+    currentWidth <- nchar(x[present], type = "width")
+    padding <- pmax.int(width - currentWidth, 0L)
+
+    justify <- if (identical(align, "\\l")) {
+      "left"
+    } else if (identical(align, "\\c")) {
+      "centre"
+    } else {
+      "right"
+    }
+
+    if (justify == "left") {
+      x[present] <- paste0(x[present], strrep(" ", padding))
+    } else if (justify == "centre") {
+      left <- padding %/% 2L
+      right <- padding - left
+      x[present] <- paste0(strrep(" ", left), x[present], strrep(" ", right))
+    } else {
+      x[present] <- paste0(strrep(" ", padding), x[present])
+    }
+  }
+
+  if (!is.null(objectNames)) names(x) <- objectNames
+  x
+}
+
+
+.isChLocale <- function() {
   any(grepl("_CH|Switzerland", Sys.getlocale()))
 }
 
-# .dec_sep <- function() getOption("OutDec", ".")
 
-.thousands_sep <- function(sep="") {
-  
-  # try to get a default thousand's separator
-  
-  coalesceX(
-    # take user's choice first
-    getOption("thousands_sep"), 
-    
-    # if not there, use locale definition in R environment
-    # but treat blank as "not defined"
-    naIf(Sys.localeconv()["thousands_sep"], ""),
-    
-    # try to get the system's setting
-    if(Sys.info()[["sysname"]] == "Windows"){
-      readRegistry("Control Panel\\International", hive = "HCU")$sThousand
-      
+.thousandsSep <- function(sep = "") {
+  systemSep <- tryCatch(
+    if (Sys.info()[["sysname"]] == "Windows") {
+      utils::readRegistry("Control Panel\\International", hive = "HCU")$sThousand
     } else {
-      # Sys.info()[["sysname"]] %in% c("Linux", "Darwin")
-      out <- system("locale -k thousands_sep", intern = TRUE)
-      sub(".*=", "", out[1])
+      out <- system2("locale", c("-k", "thousands_sep"),
+                     stdout = TRUE, stderr = FALSE)
+      if (length(out)) sub(".*=", "", out[1L]) else NULL
     },
-    
-    # if all else fails, fallback to the given default ""
-    sep)
-}  
-
-
-
-
-
-
-.format.stars <- function(x, 
-                          breaks=c(0,0.001,0.01,0.05,0.1,1), 
-                          labels=c("***","** ","*  ",".  ","   ")){
-  
-  # format significance stars ***, **, * ... 
-  # example: Fm(c(0.3, 0.08, 0.042, 0.001), fmt="*")
-  
-  res <- as.character(sapply(x, cut, 
-                             breaks=breaks, 
-                             labels=labels, include.lowest=TRUE))
-  return(res)
-  
-}
-
-
-.format.pstars <- function(x, pThreshold, digits, leadDigits)
-  # format p-val AND stars
-  paste(.format.pval(x, pThreshold, digits, leadDigits), .format.stars(x))
-
-
-
-.format.pval <- function(x, pThreshold=0.001, digits=3, leadDigits=1){
-  
-  # format p-values  
-  # this is based on original code from format.pval
-  
-  # if(is.null(digits))
-  #   digits <- NA
-  # 
-  # digits <- rep(digits, length.out=3)
-  
-  # 1 has no digits
-  is1 <- isZero(x-1)
-  # do not accept p-values outside [0,1]
-  isna <- x %)(% c(0,1)
-  
-  r <- character(length(is0 <- x < pThreshold))
-  if (any(!is0)) {
-    rr <- x <- x[!is0]
-    expo <- floor(log10(ifelse(x > 0, x, 1e-50)))
-    fixp <- (expo >= -3)
-    
-    if (any(fixp))
-      rr[fixp] <- fm(x[fixp], digits=coalesceX(digits, 4), leadDigits=leadDigits)
-    
-    if (any(!fixp))
-      rr[!fixp] <- format(x[!fixp], digits=coalesceX(digits, 3), scientific=TRUE)
-    
-    r[!is0] <- rr
-  }
-  if (any(is0)) {
-    if(log10(pThreshold) >= -3)
-      pThreshold <- fm(pThreshold, digits=digits, leadDigits=leadDigits)
-    else
-      pThreshold <- fm(pThreshold, digits=1, fmt="e")
-    
-    r[is0] <- gettextf("< %s", pThreshold)
-  }
-  
-  r[is1] <- 1
-  r[isna] <- NA
-  
-  return(r)
-  
-}
-
-
-
-.format.eng <- function(x, digits = NULL, leadDigits = 1
-                        , zeroForm = NULL, naForm = NULL){
-  
-  # engineering format, snap to powers of 10^3
-  
-  s <- lapply(strsplit(format(x, scientific=TRUE), "e"), as.numeric)
-  y <- unlist(lapply(s, "[[", 1))
-  pwr <- unlist(lapply(s, "[", 2))
-  
-  return(paste(fm(y * 10^(pwr %% 3), digits=digits, leadDigits=leadDigits,
-                  zeroForm = zeroForm, naForm=naForm)
-               , "e"
-               , c("-","+")[(pwr >= 0) + 1]
-               , fm(abs((pwr - (pwr %% 3))), leadDigits = 2, digits=0)
-               , sep="")
+    error = function(e) NULL
   )
-  
+
+  coalesceX(
+    getOption("thousands_sep"),
+    naIf(Sys.localeconv()["thousands_sep"], ""),
+    naIf(systemSep, ""),
+    sep
+  )
 }
 
 
-.format.engabb <- function(x, digits = NULL, leadDigits = 1
-                           , zeroForm = NULL, naForm = NULL){
-  
-  s <- lapply(strsplit(format(x, scientific=TRUE), "e"), as.numeric)
-  y <- unlist(lapply(s, "[[", 1))
-  pwr <- unlist(lapply(s, "[", 2))
-  
-  a <- paste("1e"
-             , c("-","+")[(pwr >= 0) + 1]
-             , fm(abs((pwr - (pwr %% 3))), leadDigits=2, digits=0)
-             , sep="")
-  am <- Prefix$abbr[match(as.numeric(a), Prefix$mult)]
-  
-  a[!is.na(am)] <- am[!is.na(am)]
-  a[a == "1e+00"] <- ""
-  
-  return(paste(fm(y * 10^(pwr %% 3), digits=digits, leadDigits=leadDigits,
-                  zeroForm = zeroForm, naForm=naForm)
-               , " " , a
-               , sep="")
-  )
-  
+.formatStars <- function(x,
+                         breaks = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                         labels = c("***", "** ", "*  ", ".  ", "   ")) {
+  as.character(cut(x, breaks = breaks, labels = labels,
+                   include.lowest = TRUE))
+}
+
+
+.formatPstars <- function(x, pThreshold, digits, leadDigits) {
+  pValue <- .formatPval(x, pThreshold, digits, leadDigits)
+  stars <- .formatStars(x)
+  result <- paste(pValue, stars)
+  result[is.na(pValue) | is.na(stars)] <- NA_character_
+  result
+}
+
+
+.formatPval <- function(x, pThreshold = 0.001, digits = 3,
+                        leadDigits = 1) {
+  invalid <- is.na(x) | !is.finite(x) | x < 0 | x > 1
+  one <- !invalid & isZero(x - 1)
+  below <- !invalid & !one & x < pThreshold
+  regular <- !invalid & !one & !below
+
+  result <- rep.int(NA_character_, length(x))
+
+  if (any(regular)) {
+    values <- x[regular]
+    exponent <- floor(log10(values))
+    fixed <- exponent >= -3
+    formatted <- character(length(values))
+
+    if (any(fixed))
+      formatted[fixed] <- fm(values[fixed], digits = digits,
+                             leadDigits = leadDigits)
+
+    if (any(!fixed))
+      formatted[!fixed] <- fm(values[!fixed], digits = digits, fmt = "e",
+                              leadDigits = leadDigits)
+
+    result[regular] <- formatted
+  }
+
+  if (any(below)) {
+    threshold <- if (log10(pThreshold) >= -3) {
+      fm(pThreshold, digits = digits, leadDigits = leadDigits)
+    } else {
+      fm(pThreshold, digits = 1L, fmt = "e", leadDigits = leadDigits)
+    }
+    result[below] <- gettextf("< %s", threshold)
+  }
+
+  result[one] <- "1"
+  result
+}
+
+
+.engineeringParts <- function(x, digits = NULL) {
+  if (!is.null(digits) && digits < 0)
+    stop("engineering formats require nonnegative 'digits'", call. = FALSE)
+
+  exponent <- rep.int(NA_real_, length(x))
+  mantissa <- x
+  finite <- is.finite(x)
+  nonzero <- finite & x != 0
+
+  exponent[finite] <- 0
+  logValue <- log10(abs(x[nonzero]))
+  exponent[nonzero] <- floor(logValue)
+  exponent[nonzero] <- exponent[nonzero] - exponent[nonzero] %% 3
+  mantissa[nonzero] <- sign(x[nonzero]) *
+    10^(logValue - exponent[nonzero])
+
+  if (!is.null(digits)) {
+    shift <- nonzero & abs(round(mantissa, digits = digits)) >= 1000
+    if (any(shift)) {
+      mantissa[shift] <- mantissa[shift] / 1000
+      exponent[shift] <- exponent[shift] + 3
+    }
+  }
+
+  list(mantissa = mantissa, exponent = exponent, finite = finite)
+}
+
+
+.formatEng <- function(x, digits = NULL, leadDigits = 1,
+                       bigMark = "") {
+  parts <- .engineeringParts(x, digits = digits)
+  result <- as.character(x)
+
+  if (any(parts$finite)) {
+    mantissa <- fm(parts$mantissa[parts$finite], digits = digits,
+                   leadDigits = leadDigits, bigMark = bigMark)
+    exponent <- sprintf("e%+03d", as.integer(parts$exponent[parts$finite]))
+    result[parts$finite] <- paste0(mantissa, exponent)
+  }
+
+  result
+}
+
+
+.formatEngabb <- function(x, digits = NULL, leadDigits = 1,
+                          bigMark = "") {
+  parts <- .engineeringParts(x, digits = digits)
+  result <- as.character(x)
+
+  if (any(parts$finite)) {
+    exponent <- as.integer(parts$exponent[parts$finite])
+    prefixExponent <- round(log10(Prefix$mult))
+    abbreviation <- Prefix$abbr[match(exponent, prefixExponent)]
+    fallback <- sprintf("e%+03d", exponent)
+    hasAbbreviation <- !is.na(abbreviation)
+    suffix <- ifelse(hasAbbreviation, abbreviation, fallback)
+    suffix[exponent == 0L] <- ""
+
+    mantissa <- fm(parts$mantissa[parts$finite], digits = digits,
+                   leadDigits = leadDigits, bigMark = bigMark)
+    separator <- ifelse(hasAbbreviation & nzchar(suffix), " ", "")
+    result[parts$finite] <- paste0(mantissa, separator, suffix)
+  }
+
+  result
 }
 
 
@@ -749,7 +813,7 @@ fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 #' Renders a \code{Date}, \code{POSIXct} or \code{POSIXlt} with the
 #' package's own format tokens. This is the entry point used by
 #' \code{\link{fm}()}; the compiled kernel behind it,
-#' \code{formatDateTimeUtc()}, works exclusively in UTC.
+#' \code{formatDateTimeUtc_cpp()}, works exclusively in UTC.
 #'
 #' The time zone is resolved here rather than in C++. The C runtime's
 #' \code{localtime()} is not usable for the job: on Windows
@@ -768,14 +832,14 @@ fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
 #'
 #' @return a character vector
 #' @noRd
-formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
-  formatDateTimeUtc(x = .toWallClock(x), fmt = fmt, strict = strict,
+.formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
+  formatDateTimeUtc_cpp(x = .toWallClock(x), fmt = fmt, strict = strict,
                     locale = locale)
 }
 
 
 # Reinterpret a date-time in its own time zone as if that wall-clock
-# reading were UTC, so that formatDateTime() - which always uses
+# reading were UTC, so that .formatDateTime() - which always uses
 # gmtime() - prints the zone the user expects.
 #
 # A Date has no time zone and passes through untouched. A POSIXct uses
@@ -796,8 +860,10 @@ formatDateTime <- function(x, fmt, strict = TRUE, locale = "current") {
     x <- as.POSIXct(x)
 
   tz <- attr(x, "tzone")
-  if(is.null(tz) || !nzchar(tz[1L]))
+  if (is.null(tz) || !length(tz) || is.na(tz[1L]) || !nzchar(tz[1L]))
     tz <- Sys.timezone()
+
+  if (!length(tz) || is.na(tz[1L])) tz <- ""
 
   lt <- as.POSIXlt(x, tz = tz)
 

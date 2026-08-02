@@ -121,25 +121,25 @@ test_that("changing TZ does not disturb a POSIXct that carries a tzone", {
 })
 
 
-test_that("formatDateTime() applies the time zone, its kernel does not", {
+test_that(".formatDateTime() applies the time zone, its kernel does not", {
 
-  # test-fm.R calls formatDateTime() directly, so the entry point has to
+  # test-fm.R calls .formatDateTime() directly, so the entry point has to
   # keep behaving like format(). The UTC-only kernel sits behind it under
   # its own name and must NOT be called with an unshifted value.
   dt <- as.POSIXct("2024-01-15 14:07:09", tz = "Europe/Zurich")
 
-  expect_equal(chr(formatDateTime(dt, "HH:mm:ss")), format(dt, "%H:%M:%S"))
+  expect_equal(chr(.formatDateTime(dt, "HH:mm:ss")), format(dt, "%H:%M:%S"))
   expect_equal(chr(fm(dt, fmt = "HH:mm:ss")), format(dt, "%H:%M:%S"))
 
   # the kernel is one hour off by design here - it reads the raw instant
-  expect_equal(chr(pharos:::formatDateTimeUtc(dt, "HH:mm:ss")),
+  expect_equal(chr(pharos:::formatDateTimeUtc_cpp(dt, "HH:mm:ss")),
                format(dt, "%H:%M:%S", tz = "UTC"))
 })
 
 
 test_that("a POSIXlt is accepted", {
 
-  # formatDateTime() reads a numeric vector; a POSIXlt is a list and
+  # .formatDateTime() reads a numeric vector; a POSIXlt is a list and
   # would have hit "cannot coerce type 'list'"
   lt <- as.POSIXlt("2019-07-01 14:45:00", tz = "Europe/Zurich")
 
@@ -162,10 +162,10 @@ test_that("strict checks fire in the compiled routine regardless of length", {
 
   # fm() itself short-circuits on a zero-length x and never reaches the
   # C++ routine, so the check is asserted where it lives
-  expect_error(pharos:::formatDateTime(as.Date(character(0)), "yyy"), "yyyy")
-  expect_error(pharos:::formatDateTime(as.Date(character(0)), "qq"),
+  expect_error(pharos:::.formatDateTime(as.Date(character(0)), "yyy"), "yyyy")
+  expect_error(pharos:::.formatDateTime(as.Date(character(0)), "qq"),
                "Unknown format token")
-  expect_error(pharos:::formatDateTime(as.Date(character(0)), "hh:mm"), "AM/PM")
+  expect_error(pharos:::.formatDateTime(as.Date(character(0)), "hh:mm"), "AM/PM")
 
   # and identically for a non-empty vector
   expect_error(fm(Sys.Date(), fmt = "yyy"), "yyyy")

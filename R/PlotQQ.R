@@ -258,9 +258,9 @@ plotQQ <- function(x, qdist=stats::qnorm,
   if (n < 50) {
     # use the exact distribution from the C code in R
     exact.kolmogorov.pdf <- function(x) {
-      # p <- .Call("pKolmogorov2x", p = as.double(x), as.integer(n), 
+      # p <- .Call("pKolmogorov2x_cpp", p = as.double(x), as.integer(n), 
       #            PACKAGE = "pharos");
-      p <- pKolmogorov2x(x, n)
+      p <- pKolmogorov2x_cpp(x, n)
       return(p - conf);
     }
     

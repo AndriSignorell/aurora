@@ -1,6 +1,6 @@
 
 # =============================================================================
-# Tests for fm(), formatNum(), formatDateTime()
+# Tests for fm(), formatNum_cpp(), formatDateTime()
 # =============================================================================
 # Run with: testthat::test_file("test-fm.R")
 # or place in tests/testthat/ and run: devtools::test()
@@ -13,81 +13,81 @@ library(testthat)
 
 
 # =============================================================================
-# formatNum() – low-level C++ number formatter
+# formatNum_cpp() – low-level C++ number formatter
 # =============================================================================
 
-test_that("formatNum: basic fixed-decimal formatting", {
+test_that("formatNum_cpp: basic fixed-decimal formatting", {
   # Default leadDigits = 0: leading zero before decimal point is stripped
-  expect_equal(formatNum(3.14159, digits = 2L),  "3.14")  # integer part > 0, no stripping
-  expect_equal(formatNum(0.14159, digits = 2L),  ".14")   # leadDigits=0 strips leading "0"
-  expect_equal(formatNum(3.14159, digits = 2L, leadDigits = 1L), "3.14")
-  expect_equal(formatNum(0.5,     digits = 1L, leadDigits = 1L), "0.5")
-  expect_equal(formatNum(100,     digits = 0L, leadDigits = 1L), "100")
+  expect_equal(formatNum_cpp(3.14159, digits = 2L),  "3.14")  # integer part > 0, no stripping
+  expect_equal(formatNum_cpp(0.14159, digits = 2L),  ".14")   # leadDigits=0 strips leading "0"
+  expect_equal(formatNum_cpp(3.14159, digits = 2L, leadDigits = 1L), "3.14")
+  expect_equal(formatNum_cpp(0.5,     digits = 1L, leadDigits = 1L), "0.5")
+  expect_equal(formatNum_cpp(100,     digits = 0L, leadDigits = 1L), "100")
 })
 
-test_that("formatNum: zero value", {
-  expect_equal(formatNum(0, digits = 2L, leadDigits = 1L), "0.00")
-  expect_equal(formatNum(0, digits = 0L, leadDigits = 1L), "0")
+test_that("formatNum_cpp: zero value", {
+  expect_equal(formatNum_cpp(0, digits = 2L, leadDigits = 1L), "0.00")
+  expect_equal(formatNum_cpp(0, digits = 0L, leadDigits = 1L), "0")
 })
 
-test_that("formatNum: negative values", {
-  expect_equal(formatNum(-3.14, digits = 2L, leadDigits = 1L), "-3.14")
-  expect_equal(formatNum(-0.5,  digits = 1L, leadDigits = 1L), "-0.5")
+test_that("formatNum_cpp: negative values", {
+  expect_equal(formatNum_cpp(-3.14, digits = 2L, leadDigits = 1L), "-3.14")
+  expect_equal(formatNum_cpp(-0.5,  digits = 1L, leadDigits = 1L), "-0.5")
 })
 
-test_that("formatNum: NA propagation", {
-  res <- formatNum(c(1.0, NA_real_, 3.0), digits = 1L, leadDigits = 1L)
+test_that("formatNum_cpp: NA propagation", {
+  res <- formatNum_cpp(c(1.0, NA_real_, 3.0), digits = 1L, leadDigits = 1L)
   expect_true(is.na(res[2]))
   expect_equal(res[1], "1.0")
   expect_equal(res[3], "3.0")
 })
 
-test_that("formatNum: vectorised digits", {
-  res <- formatNum(c(1.5, 2.567), digits = c(1L, 2L), leadDigits = 1L)
+test_that("formatNum_cpp: vectorised digits", {
+  res <- formatNum_cpp(c(1.5, 2.567), digits = c(1L, 2L), leadDigits = 1L)
   expect_equal(res[1], "1.5")
   expect_equal(res[2], "2.57")
 })
 
-test_that("formatNum: bigMark inserts thousands separator", {
-  res <- formatNum(1234567, digits = 0L, leadDigits = 1L, bigMark = ",")
+test_that("formatNum_cpp: bigMark inserts thousands separator", {
+  res <- formatNum_cpp(1234567, digits = 0L, leadDigits = 1L, bigMark = ",")
   expect_equal(res, "1,234,567")
 })
 
-test_that("formatNum: decimalMark substitution", {
-  res <- formatNum(3.14, digits = 2L, leadDigits = 1L, decimalMark = ",")
+test_that("formatNum_cpp: decimalMark substitution", {
+  res <- formatNum_cpp(3.14, digits = 2L, leadDigits = 1L, decimalMark = ",")
   expect_equal(res, "3,14")
 })
 
-test_that("formatNum: scientific notation triggered by sciBig", {
-  res <- formatNum(1e10, digits = 2L, leadDigits = 1L, sciBig = 9L)
+test_that("formatNum_cpp: scientific notation triggered by sciBig", {
+  res <- formatNum_cpp(1e10, digits = 2L, leadDigits = 1L, sciBig = 9L)
   expect_match(res, "e|E")
 })
 
-test_that("formatNum: no scientific notation when below threshold", {
-  res <- formatNum(1234, digits = 0L, leadDigits = 1L, sciBig = 9999L, sciSmall = -9999L)
+test_that("formatNum_cpp: no scientific notation when below threshold", {
+  res <- formatNum_cpp(1234, digits = 0L, leadDigits = 1L, sciBig = 9999L, sciSmall = -9999L)
   expect_false(grepl("e|E", res, ignore.case = TRUE))
 })
 
-test_that("formatNum: negative digits round to power of ten", {
+test_that("formatNum_cpp: negative digits round to power of ten", {
   # digits = -2 should round 1234 to 1200
-  res <- formatNum(1234, digits = -2L, leadDigits = 1L)
+  res <- formatNum_cpp(1234, digits = -2L, leadDigits = 1L)
   expect_equal(res, "1200")
-  res2 <- formatNum(1250, digits = -2L, leadDigits = 1L)
+  res2 <- formatNum_cpp(1250, digits = -2L, leadDigits = 1L)
   expect_equal(res2, "1300")  # round half up
 })
 
-test_that("formatNum: leadDigits pads with leading zeros", {
-  res <- formatNum(5, digits = 0L, leadDigits = 3L)
+test_that("formatNum_cpp: leadDigits pads with leading zeros", {
+  res <- formatNum_cpp(5, digits = 0L, leadDigits = 3L)
   expect_equal(res, "005")
 })
 
-test_that("formatNum: leadDigits = 0 strips leading zero before decimal", {
-  res <- formatNum(0.75, digits = 2L, leadDigits = 0L)
+test_that("formatNum_cpp: leadDigits = 0 strips leading zero before decimal", {
+  res <- formatNum_cpp(0.75, digits = 2L, leadDigits = 0L)
   expect_equal(res, ".75")
 })
 
-test_that("formatNum: vector recycling of bigMark and digits", {
-  res <- formatNum(c(1000, 2000), digits = 0L, leadDigits = 1L, bigMark = ".")
+test_that("formatNum_cpp: vector recycling of bigMark and digits", {
+  res <- formatNum_cpp(c(1000, 2000), digits = 0L, leadDigits = 1L, bigMark = ".")
   expect_equal(res, c("1.000", "2.000"))
 })
 
@@ -100,112 +100,112 @@ d1 <- as.Date("2024-03-05")    # Tuesday, 5 March 2024
 d2 <- as.Date("2024-11-28")   # Thursday, 28 November 2024
 d_jan1 <- as.Date("2024-01-01")
 
-test_that("formatDateTime: basic date tokens dd/MM/yyyy", {
-  expect_equal(formatDateTime(d1, "dd/MM/yyyy"), "05/03/2024")
+test_that(".formatDateTime: basic date tokens dd/MM/yyyy", {
+  expect_equal(.formatDateTime(d1, "dd/MM/yyyy"), "05/03/2024")
 })
 
-test_that("formatDateTime: single-digit tokens d/M/yyyy", {
-  expect_equal(formatDateTime(d1, "d/M/yyyy"), "5/3/2024")
+test_that(".formatDateTime: single-digit tokens d/M/yyyy", {
+  expect_equal(.formatDateTime(d1, "d/M/yyyy"), "5/3/2024")
 })
 
-test_that("formatDateTime: abbreviated weekday (C locale)", {
-  res <- formatDateTime(d1, "ddd", locale = "C")
+test_that(".formatDateTime: abbreviated weekday (C locale)", {
+  res <- .formatDateTime(d1, "ddd", locale = "C")
   expect_match(res, "^[A-Z][a-z]{2}$")  # e.g. "Tue"
 })
 
-test_that("formatDateTime: full weekday (C locale)", {
-  res <- formatDateTime(d1, "dddd", locale = "C")
+test_that(".formatDateTime: full weekday (C locale)", {
+  res <- .formatDateTime(d1, "dddd", locale = "C")
   expect_match(res, "^[A-Z][a-z]+$")    # e.g. "Tuesday"
   expect_true(nchar(res) > 3)
 })
 
-test_that("formatDateTime: abbreviated month name (C locale)", {
-  res <- formatDateTime(d1, "MMM", locale = "C")
+test_that(".formatDateTime: abbreviated month name (C locale)", {
+  res <- .formatDateTime(d1, "MMM", locale = "C")
   expect_match(res, "^[A-Z][a-z]{2}$")   # "Mar"
   expect_equal(res, "Mar")
 })
 
-test_that("formatDateTime: full month name (C locale)", {
-  res <- formatDateTime(d1, "MMMM", locale = "C")
+test_that(".formatDateTime: full month name (C locale)", {
+  res <- .formatDateTime(d1, "MMMM", locale = "C")
   expect_equal(res, "March")
 })
 
-test_that("formatDateTime: yyyy returns 4-digit year", {
-  expect_equal(formatDateTime(d1, "yyyy"), "2024")
+test_that(".formatDateTime: yyyy returns 4-digit year", {
+  expect_equal(.formatDateTime(d1, "yyyy"), "2024")
 })
 
 test_that("formatDateTime: yy returns 2-digit year with leading zero", {
   d_old <- as.Date("2004-06-01")
-  expect_equal(formatDateTime(d_old, "yy"), "04")
+  expect_equal(.formatDateTime(d_old, "yy"), "04")
 })
 
 test_that("formatDateTime: y returns 2-digit year without leading zero", {
   d_old <- as.Date("2004-06-01")
-  expect_equal(formatDateTime(d_old, "y"), "4")
-  expect_equal(formatDateTime(d1, "y"), "24")
+  expect_equal(.formatDateTime(d_old, "y"), "4")
+  expect_equal(.formatDateTime(d1, "y"), "24")
 })
 
-test_that("formatDateTime: ordinal suffix 'do'", {
+test_that(".formatDateTime: ordinal suffix 'do'", {
   # Pass locale = "C" (English) to suppress the non-English locale warning
-  expect_equal(formatDateTime(as.Date("2024-01-01"), "do", locale = "C"), "1st")
-  expect_equal(formatDateTime(as.Date("2024-01-02"), "do", locale = "C"), "2nd")
-  expect_equal(formatDateTime(as.Date("2024-01-03"), "do", locale = "C"), "3rd")
-  expect_equal(formatDateTime(as.Date("2024-01-04"), "do", locale = "C"), "4th")
-  expect_equal(formatDateTime(as.Date("2024-01-11"), "do", locale = "C"), "11th")
-  expect_equal(formatDateTime(as.Date("2024-01-12"), "do", locale = "C"), "12th")
-  expect_equal(formatDateTime(as.Date("2024-01-13"), "do", locale = "C"), "13th")
-  expect_equal(formatDateTime(as.Date("2024-01-21"), "do", locale = "C"), "21st")
-  expect_equal(formatDateTime(as.Date("2024-01-22"), "do", locale = "C"), "22nd")
+  expect_equal(.formatDateTime(as.Date("2024-01-01"), "do", locale = "C"), "1st")
+  expect_equal(.formatDateTime(as.Date("2024-01-02"), "do", locale = "C"), "2nd")
+  expect_equal(.formatDateTime(as.Date("2024-01-03"), "do", locale = "C"), "3rd")
+  expect_equal(.formatDateTime(as.Date("2024-01-04"), "do", locale = "C"), "4th")
+  expect_equal(.formatDateTime(as.Date("2024-01-11"), "do", locale = "C"), "11th")
+  expect_equal(.formatDateTime(as.Date("2024-01-12"), "do", locale = "C"), "12th")
+  expect_equal(.formatDateTime(as.Date("2024-01-13"), "do", locale = "C"), "13th")
+  expect_equal(.formatDateTime(as.Date("2024-01-21"), "do", locale = "C"), "21st")
+  expect_equal(.formatDateTime(as.Date("2024-01-22"), "do", locale = "C"), "22nd")
 })
 
-test_that("formatDateTime: time tokens on a Date return zeros", {
-  expect_equal(formatDateTime(d1, "HH:mm:ss"), "00:00:00")
-  expect_equal(formatDateTime(d1, "H:m:s"),    "0:0:0")
+test_that(".formatDateTime: time tokens on a Date return zeros", {
+  expect_equal(.formatDateTime(d1, "HH:mm:ss"), "00:00:00")
+  expect_equal(.formatDateTime(d1, "H:m:s"),    "0:0:0")
 })
 
-test_that("formatDateTime: NA propagation", {
-  res <- formatDateTime(c(d1, NA, d2), "dd.MM.yyyy")
+test_that(".formatDateTime: NA propagation", {
+  res <- .formatDateTime(c(d1, NA, d2), "dd.MM.yyyy")
   expect_equal(res[1], "05.03.2024")
   expect_true(is.na(res[2]))
   expect_equal(res[3], "28.11.2024")
 })
 
-test_that("formatDateTime: vector input returns correct length", {
+test_that(".formatDateTime: vector input returns correct length", {
   dates <- as.Date(c("2024-01-01", "2024-06-15", "2024-12-31"))
-  res <- formatDateTime(dates, "yyyy-MM-dd")
+  res <- .formatDateTime(dates, "yyyy-MM-dd")
   expect_length(res, 3)
   expect_equal(res[1], "2024-01-01")
   expect_equal(res[3], "2024-12-31")
 })
 
-test_that("formatDateTime: literal characters pass through", {
-  res <- formatDateTime(d1, "dd. MM. yyyy")
+test_that(".formatDateTime: literal characters pass through", {
+  res <- .formatDateTime(d1, "dd. MM. yyyy")
   expect_equal(res, "05. 03. 2024")
 })
 
-test_that("formatDateTime: strict=TRUE rejects 'yyy'", {
-  expect_error(formatDateTime(d1, "yyy"), regex = "yyy|yyyy")
+test_that(".formatDateTime: strict=TRUE rejects 'yyy'", {
+  expect_error(.formatDateTime(d1, "yyy"), regex = "yyy|yyyy")
 })
 
-test_that("formatDateTime: strict=TRUE rejects unknown alpha token", {
-  expect_error(formatDateTime(d1, "dd/MM/yyyy Z"), regex = "Unknown|token")
+test_that(".formatDateTime: strict=TRUE rejects unknown alpha token", {
+  expect_error(.formatDateTime(d1, "dd/MM/yyyy Z"), regex = "Unknown|token")
 })
 
-test_that("formatDateTime: strict=TRUE requires t with 12h format", {
-  expect_error(formatDateTime(
+test_that(".formatDateTime: strict=TRUE requires t with 12h format", {
+  expect_error(.formatDateTime(
     as.POSIXct("2024-03-05 14:30:00"),
     "hh:mm"
   ), regex = "AM/PM|12-hour|tt")
 })
 
-test_that("formatDateTime: POSIXct HH:mm:ss", {
+test_that(".formatDateTime: POSIXct HH:mm:ss", {
   # Use local time (no tz="UTC") so formatDateTime's localtime_r matches
   dt <- as.POSIXct("2024-03-05 14:07:09")
-  expect_equal(formatDateTime(dt, "HH:mm:ss"),
+  expect_equal(.formatDateTime(dt, "HH:mm:ss"),
                format(dt, "%H:%M:%S"))
 })
 
-test_that("formatDateTime: POSIXct single-digit H:m:s strips leading zero", {
+test_that(".formatDateTime: POSIXct single-digit H:m:s strips leading zero", {
   dt <- as.POSIXct("2024-03-05 03:05:09")
   expected <- paste(
     as.integer(format(dt, "%H")),
@@ -213,7 +213,7 @@ test_that("formatDateTime: POSIXct single-digit H:m:s strips leading zero", {
     as.integer(format(dt, "%S")),
     sep = ":"
   )
-  expect_equal(formatDateTime(dt, "H:m:s"), expected)
+  expect_equal(.formatDateTime(dt, "H:m:s"), expected)
 })
 
 
@@ -484,8 +484,8 @@ test_that("fm: single element vector still returns character", {
 
 test_that("fm: empty numeric vector returns zero-length character", {
   res <- fm(numeric(0), digits = 2)
-  expect_length(res, 0)
-  expect_true(inherits(res, "character"))
+  expect_true(is.character(res))
+  expect_length(res, 0)  
 })
 
 test_that("fm: non-interpretable fmt raises warning, not error", {

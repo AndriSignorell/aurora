@@ -12,7 +12,7 @@ double round_to_power(double value, int power) {
 }
 
 // [[Rcpp::export]]
-CharacterVector formatNum(NumericVector x,
+CharacterVector formatNum_cpp(NumericVector x,
                           Nullable<IntegerVector> digits = R_NilValue,
                           Nullable<IntegerVector> leadDigits = R_NilValue,
                           Nullable<CharacterVector> bigMark = R_NilValue,
@@ -22,6 +22,11 @@ CharacterVector formatNum(NumericVector x,
   
   int n = x.size();
   
+  // Whether 'digits' was supplied matters further down: the default rule
+  // below counts DECIMALS for fixed notation, which is the wrong quantity
+  // once a value ends up in scientific notation.
+  const bool digitsSupplied = digits.isNotNull();
+  
   // digits: default = 7 signifikante Stellen
   IntegerVector dig(n);
   if (digits.isNotNull()) {
@@ -29,7 +34,9 @@ CharacterVector formatNum(NumericVector x,
     for (int i = 0; i < n; ++i) dig[i] = dvec[i % dvec.size()];
   } else {
     for (int i = 0; i < n; ++i) {
-      if (NumericVector::is_na(x[i])) {
+      if (NumericVector::is_na(x[i]) || !R_FINITE(x[i])) {
+        // (int) std::floor(std::log10(Inf)) below would be a cast of an
+        // out-of-range value, i.e. undefined behaviour
         dig[i] = 7;
       } else if (x[i] == 0) {
         dig[i] = 6;
@@ -62,6 +69,11 @@ CharacterVector formatNum(NumericVector x,
   int nb = bmark.size();
   int ndm = dmark.size();
   
+  // i % 0 is undefined behaviour, and a zero-length argument is easy to
+  // produce from R (leadDigits = integer(0))
+  if (n > 0 && (nd == 0 || nl == 0 || nb == 0 || ndm == 0))
+    stop("'digits', 'leadDigits', 'bigMark' and 'decimalMark' must not be empty");
+  
   CharacterVector result(n);
   
   for (int i = 0; i < n; ++i) {
@@ -76,6 +88,14 @@ CharacterVector formatNum(NumericVector x,
     std::string bm = as<std::string>(bmark[i % nb]);
     std::string dm = as<std::string>(dmark[i % ndm]);
     
+    // Inf reached the scientific branch below and came out as the C++
+    // spelling "inf"; R writes "Inf". NaN never gets here - is_na() above
+    // covers it, in step with is.na() on the R side.
+    if (!R_FINITE(val)) {
+      result[i] = val > 0 ? "Inf" : "-Inf";
+      continue;
+    }
+    
     double abs_val = std::abs(val);
     std::ostringstream ss;
     
@@ -86,8 +106,16 @@ CharacterVector formatNum(NumericVector x,
     }
     
     if (use_sci) {
-      // Wissenschaftliche Notation
-      ss << std::scientific << std::setprecision(std::max(d, 0)) << val;
+      // Wissenschaftliche Notation.
+      // The default 'd' is the number of DECIMALS for fixed notation. In
+      // scientific notation setprecision() counts the decimals of the
+      // MANTISSA, so that rule collapses: a value of 1e15 got d = 0 and
+      // printed as "1e+15", a value of 1e-9 got d = 15 and printed as
+      // "1.234500000000000e-09". Without an explicit 'digits' we therefore
+      // ask for 7 significant digits, i.e. 6 mantissa decimals - R's
+      // default. An explicit 'digits' keeps its meaning (fmt = "e").
+      const int sciPrec = digitsSupplied ? std::max(d, 0) : 6;
+      ss << std::scientific << std::setprecision(sciPrec) << val;
       std::string sci_str = ss.str();
       
       // OutDec ersetzen

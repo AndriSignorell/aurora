@@ -3,8 +3,10 @@
 \name{fm}
 \alias{fm}
 \alias{fm.default}
+\alias{fm.data.frame}
 \alias{fm.matrix}
 \alias{fm.table}
+\alias{fm.ftable}
 \title{Format Numbers and Dates}
 \usage{
 fm(
@@ -23,15 +25,101 @@ fm(
   lang = NULL,
   ...
 )
+
+\method{fm}{default}(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+\method{fm}{data.frame}(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+\method{fm}{matrix}(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+\method{fm}{table}(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+\method{fm}{ftable}(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
 }
 \arguments{
-\item{x}{an atomic numerical, typically a vector of real numbers or a matrix
-of numerical values. Factors will be converted to strings.}
+\item{x}{a numeric, logical, character, factor, \code{Date}, or
+\code{POSIXt} vector, or a matrix, table, ftable, or data frame}
 
 \item{digits}{integer, the desired (fixed) number of digits after the
 decimal point. Unlike \code{\link{formatC}} you will always get this number
 of digits even if the last digit is 0.  Negative numbers of digits round to
-a power of ten (\code{digits=-2} would round to the nearest hundred).}
+a power of ten (\code{digits=-2} would round to the nearest hundred) for
+standard numeric formats; engineering formats require nonnegative values}
 
 \item{leadDigits}{number of leading zeros. \code{leadDigits=3} would make sure
 that at least 3 digits on the left side will be printed, say \code{3.4} will
@@ -39,18 +127,17 @@ be printed as \code{003.4}. Setting \code{leadDigits} to \code{0} will yield
 results like \code{.452} for \code{0.452}. The default \code{NULL} will
 leave the numbers as they are (meaning at least one 0 digit).}
 
-\item{sci}{integer. The power of 10 to be set when deciding to print numeric
-values in exponential notation. Fixed notation will be preferred unless the
-number is larger than 10^scipen. If just one value is set it will be used
-for the left border 10^(-scipen) as well as for the right one (10^scipen). A
-negative and a positive value can also be set independently. Default is
-\code{getOption("scipen")}, whereas \code{scipen=0} is overridden.}
+\item{sci}{numeric scalar giving the absolute power-of-ten threshold for
+scientific notation. Its absolute value is used symmetrically: for
+\code{sci = 8}, nonzero values below \eqn{10^{-8}} and values at or above
+\eqn{10^8} are displayed scientifically. The default is based on
+\code{getOption("scipen")}; an option value of zero is replaced by 7}
 
 \item{bigMark}{character; if not empty used as mark between every 3
 decimals before the decimal point. Default is "" (none).}
 
-\item{decMark}{character, specifying the decimal mark to be used. If not
-provided, the default set as \code{decMark} option is used.}
+\item{decMark}{character specifying the decimal mark. If \code{NULL}, the
+current \code{OutDec} option is used}
 
 \item{naForm}{character, string specifying how \code{NA}s should be
 specially formatted.  If set to \code{NULL} (default) no special action will
@@ -60,15 +147,13 @@ be taken.}
 formatted. Useful for pretty printing 'sparse' objects.  If set to
 \code{NULL} (default) no special action will be taken.}
 
-\item{fmt}{either a format string, allowing to flexibly define special
-formats or an object of class \code{style}, consisting of a list of
-\code{fm} arguments. See Details.}
+\item{fmt}{a format code or date-time template, a formatting function, a
+named Style, or an object of class \code{Style}. See Details}
 
-\item{pThreshold}{a numerical tolerance used mainly for formatting p values,
-those less than pThreshold are formatted as "\verb{\code{< [pThreshold]}}" (where '\verb{[pThreshold]}'
-stands for \code{format(pThreshold, digits))}.  Default is \code{0.001}.}
+\item{pThreshold}{positive numeric threshold below which p-values are shown
+as \code{"< threshold"}}
 
-\item{width}{integer, the defined fixed width of the strings.}
+\item{width}{nonnegative integer giving the minimum display width}
 
 \item{align}{the character on whose position the strings will be aligned.
 Left alignment can be requested by setting \code{sep = "\\l"}, right
@@ -80,15 +165,15 @@ to the function \code{\link[pharos]{strAlign}()} as argument \code{sep}.}
 
 \item{lang}{optional value setting the language for the months and daynames.
 Can be either \code{"local"} for current locale or \code{"en"} for english.
-If left to \code{NULL}, the DescToolsOption \code{"lang"} will be searched
-for and if not found \code{"local"} will be taken as default.}
+If left to \code{NULL}, the package option \code{"lang"} is used, falling
+back to \code{"en"}}
 
-\item{\dots}{further arguments to be passed to or from methods.}
+\item{\dots}{additional arguments passed to methods or to a formatting
+function supplied through \code{fmt}}
 }
 \value{
-the formatted values as characters. \cr If \code{x} was a
-\code{matrix}, then a the result will also be a \code{matrix}. (Hope this
-will not surprise you...)
+formatted character values with the dimensions or tabular structure
+of \code{x} preserved where applicable
 }
 \description{
 Formatting numbers with base R tools often degenerates into a major
@@ -108,7 +193,7 @@ comprehensive range of format options that are likely to occur in everyday
 reporting. Among these, the argument \code{fmt} deserves a more detailed
 description due to its flexibility. It is used to generate a variety of
 different special formats. \cr\cr If \code{x} is a date, it can take
-ISO-8601–inspired token syntax similar to .NET or Moment.js (consisting of
+ISO-8601-inspired token syntax similar to .NET or Moment.js (consisting of
 \code{d}, \code{M} and \code{y} for day, month or year and \code{h/H},
 \code{m}, \code{s}, \code{t} for hours, minutes, seconds and AM/PM
 designator) and defining the combination of day month and year
@@ -153,10 +238,10 @@ further respected.\cr \tab\cr
 \code{eng}, but replaces the exponential representation by codes, \cr
 \tab\tab e.g. \code{M} for mega (1e6). \cr
 
-\code{\%} \tab percent \tab will divide the given number by 100 and append
+\code{\%} \tab percent \tab multiplies the given number by 100 and appends
 the \\%-sign (without a separator).\cr \tab\cr \code{p} \tab p-value \tab
-will wrap the function \code{\link{format.pval}} and return a p-value
-format. \cr \tab \tab Use \code{pThreshold} to define the threshold to e.g.
+formats values as p-values. \cr \tab \tab Use \code{pThreshold} to define
+the threshold to e.g.
 switch to a \code{ <0.001 } representation.\cr \tab\cr \code{frac} \tab
 fractions \tab will (try to) convert numbers to fractions. So 0.1 will be
 displayed as 1/10. \cr \tab\tab See \code{\link[MASS]{fractions}()}.\cr
@@ -176,10 +261,18 @@ according to the used defaults e.g. in \code{lm} as \cr \tab \tab \verb{[0, 0.00
 \code{fmt} can as well be an object of class "\code{Style}" consisting of a
 list out of the arguments above (as created by \code{\link{style}()}). This
 allows to store and manage the full format in variables or as options and
-use it as format template subsequently.
+use it as format template subsequently. Arguments supplied directly to
+\code{fm()} override the corresponding Style settings, including an
+explicitly supplied \code{NULL}.
 
-Finally \code{fmt} can also be a function in x, which makes formatting very
-flexible.
+For data frames, every formatting argument must have length one or the
+number of columns. Length-one arguments are recycled, allowing each column
+to use its own formatting settings without ambiguous partial recycling.
+Functions and Style objects count as single settings; use a list to supply
+different functions or Styles by column.
+
+Finally, \code{fmt} can be a function of \code{x}. Additional arguments in
+\code{\dots} are forwarded to that function.
 }
 \examples{
 

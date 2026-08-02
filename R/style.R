@@ -139,7 +139,7 @@ styles <- function(){
         inherits(get(x, envir = .GlobalEnv), "Style"))
     ]
     
-    res_env <- setNamesX(lapply(found, get), names=found)
+    res_env <- setNamesX(lapply(found, get, envir = .GlobalEnv), names=found)
     res_env <- lapply(res_env, function(x) {
       attr(x, "source") <- "GlobalEnv"
       x
@@ -150,7 +150,11 @@ styles <- function(){
   
   # all styles defined in R options
   opt <- options()
-  res_opt <- opt[sapply(opt, class) == "Style"]
+  # sapply(opt, class) returns a LIST as soon as one option holds an object
+  # with several classes (a data frame, a POSIXct, ...), and comparing that
+  # list with "Style" then fails outright. inherits() asks the question that
+  # was meant. (Same construction as the ctype detection in tOne().)
+  res_opt <- opt[vapply(opt, inherits, logical(1L), what = "Style")]
   res_opt <- lapply(res_opt, function(x) {
     attr(x, "source") <- "options"
     x
@@ -205,12 +209,35 @@ style <- function( x, digits = NULL, leadDigits = NULL, sci = NULL
   # remove dots name from the list
   a <- a[a %notin% c("x","label","...")]
   
-  # get the values of all the arguments
-  v <- sapply(a, dynGet)
+  # get the values of all the arguments.
+  # lapply, not sapply: with every single argument supplied and of length 1
+  # sapply would simplify to an atomic vector, and the resulting "Style"
+  # would no longer be the named list that fm() requires.
+  v <- lapply(a, dynGet)
+  names(v) <- a
+  
+  # Anything in the dots becomes a component of the Style and is later
+  # handed to fm() as an argument. A name that fm() does not know used to be
+  # accepted here without a word and only surfaced much later, wherever the
+  # Style happened to be used, as
+  #   "'...' is only available when 'fmt' is a function"
+  # - a message naming neither the Style nor the component. Report it where
+  # the mistake is made instead.
+  dots <- match.call(expand.dots = FALSE)$...
+  if (length(dots)) {
+    known <- c(setdiff(names(formals(fm.default)), c("x", "...")),
+               .styleMetaNames)
+    unknown <- setdiff(names(dots), known)
+    if (length(unknown) || is.null(names(dots)))
+      stop(gettextf(
+        "style() got argument(s) that fm() does not know: %s",
+        paste(sQuote(if (is.null(names(dots))) "<unnamed>" else unknown),
+              collapse = ", ")), call. = FALSE)
+  }
   
   # get rid of NULLs and append dots again
-  res <- c(v[!sapply(v, is.null)],
-           unlist(match.call(expand.dots=FALSE)$...))    
+  res <- c(v[!vapply(v, is.null, logical(1L))],
+           unlist(dots))    
   
   sty <- NA
   if(!missing(x)){
@@ -225,11 +252,17 @@ style <- function( x, digits = NULL, leadDigits = NULL, sci = NULL
       # a style with the given <name> has been found in the options
       # overwrite or append separately provided arguments
       sty[names(res)] <- res
+      res <- sty
+      
     } else {
-      warning("Style x could not be found!")
-    } 
-    
-    res <- sty    
+      # An NA carrying class "Style" used to be returned here, which only
+      # failed later inside fm() with "a Style must be a named list". An
+      # empty Style formats with fm()'s defaults instead.
+      warning(gettextf("style '%s' could not be found",
+                       if (is.character(x)) x else deparse(substitute(x))),
+              call. = FALSE)
+      res <- structure(list(), names = character(0))
+    }
   }
   
   if(!is.null(label))
@@ -256,17 +289,37 @@ print.Style <- function(x, ...){
     return(z)
   }
   
-  cat(gettextf("Format name:    %s%s\n", attr(x, "fmt_name"), 
+  # gettextf() with a NULL argument returns character(0), and cat() then
+  # drops the whole line: neither fmt_name nor label is ever set by style(),
+  # so the first two lines silently disappeared.
+  orEmpty <- function(z) if (length(z) == 0L) "" else as.character(z)[1L]
+  
+  # A style built for dates (fmt = "MM, dd yyyy") cannot demonstrate itself
+  # on a number - it used to abort the whole print method. Try a number
+  # first and fall back to a date.
+  notNumeric <- FALSE
+  ex <- withCallingHandlers(
+    fm(pi * 1e5, fmt = x),
+    warning = function(w) {
+      notNumeric <<- TRUE
+      invokeRestart("muffleWarning")
+    })
+  if (notNumeric)
+    ex <- tryCatch(fm(as.Date("2024-03-05"), fmt = x),
+                   error = function(e) NA_character_)
+  
+  cat(gettextf("Format name:   %s%s\n", orEmpty(attr(x, "fmt_name")), 
                ifelse(identical(attr(x, "default"), TRUE), " (default)", "")),  
-      gettextf("Description:   %s\n", label(x)),
+      gettextf("Description:   %s\n", orEmpty(label(x))),
       gettextf("Definition:    %s\n", CollapseList(x)),
-      gettextf("Example:       %s\n", fm(pi * 1e5, fmt=x)),
+      gettextf("Example:       %s\n", orEmpty(ex)),
       sep = ""
   )
   if(!is.null(attr(x, "source"))){
     cat(cli::col_silver(gettextf("(Source:       %s)\n", attr(x, "source"))))
   }
   
+  invisible(x)
   
 }
 

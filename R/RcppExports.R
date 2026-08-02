@@ -5,23 +5,23 @@ bagplot_compute_cpp <- function(xy, factor = 3.0, eps = 1e-8, dither = TRUE) {
     .Call(`_pharos_bagplot_compute_cpp`, xy, factor, eps, dither)
 }
 
-formatDateTimeUtc <- function(x, fmt, strict = TRUE, locale = "current") {
-    .Call(`_pharos_formatDateTimeUtc`, x, fmt, strict, locale)
+formatDateTimeUtc_cpp <- function(x, fmt, strict = TRUE, locale = "current") {
+    .Call(`_pharos_formatDateTimeUtc_cpp`, x, fmt, strict, locale)
 }
 
-formatNum <- function(x, digits = NULL, leadDigits = NULL, bigMark = NULL, decimalMark = NULL, sciBig = 9999L, sciSmall = -9999L) {
-    .Call(`_pharos_formatNum`, x, digits, leadDigits, bigMark, decimalMark, sciBig, sciSmall)
+formatNum_cpp <- function(x, digits = NULL, leadDigits = NULL, bigMark = NULL, decimalMark = NULL, sciBig = 9999L, sciSmall = -9999L) {
+    .Call(`_pharos_formatNum_cpp`, x, digits, leadDigits, bigMark, decimalMark, sciBig, sciSmall)
 }
 
-pSmirnov2x <- function(statistic, nx, ny) {
-    .Call(`_pharos_pSmirnov2x`, statistic, nx, ny)
+pKolmogorov2x_cpp <- function(statistic, n) {
+    .Call(`_pharos_pKolmogorov2x_cpp`, statistic, n)
 }
 
-pKS2 <- function(statistic, tol) {
-    .Call(`_pharos_pKS2`, statistic, tol)
+pSmirnov2x_cpp <- function(statistic, nx, ny) {
+    .Call(`_pharos_pSmirnov2x_cpp`, statistic, nx, ny)
 }
 
-pKolmogorov2x <- function(statistic, n) {
-    .Call(`_pharos_pKolmogorov2x`, statistic, n)
+pKS2_cpp <- function(statistic, tol) {
+    .Call(`_pharos_pKS2_cpp`, statistic, tol)
 }
 

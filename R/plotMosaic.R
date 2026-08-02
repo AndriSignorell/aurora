@@ -264,8 +264,8 @@ plotMosaic <- function(x,
     
     if (labels != "none") {
       labTxt <- switch(labels,
-                       n = fm(tiles$n,             digits = 0,         sciThreshold = Inf),
-                       p = paste0(fm(tiles$p * 100, digits = labDigits, sciThreshold = Inf), "%")
+                       n = fm(tiles$n, digits = 0),
+                       p = paste0(fm(tiles$p * 100, digits = labDigits), "%")
       )
       
       show <- (tiles$x1 - tiles$x0) > 0.03 &

@@ -256,7 +256,7 @@ static bool uses_token(const std::vector<Piece>& pieces,
 // definitions of formatDateTime into one namespace, with the winner
 // decided by collation order.
 // [[Rcpp::export]]
-CharacterVector formatDateTimeUtc(
+CharacterVector formatDateTimeUtc_cpp(
     SEXP x,
     std::string fmt,
     bool strict = true,
