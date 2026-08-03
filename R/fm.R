@@ -280,8 +280,16 @@ fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
   }
 
   dots <- list(...)
-  if (length(dots) && !is.function(fmt))
-    stop("'...' is only available when 'fmt' is a function", call. = FALSE)
+  if (length(dots) && !is.function(fmt)) {
+    # Name the arguments. This message has now been reached three times from
+    # three different causes (a Style component, a style() dots entry, a
+    # legacy argument name in a direct call), and each time it named neither
+    # the argument nor anything else one could act on.
+    nms <- names(dots)
+    nms <- if (is.null(nms)) "<unnamed>" else ifelse(nzchar(nms), nms, "<unnamed>")
+    stop(gettextf("unused argument(s) %s: '...' is only available when 'fmt' is a function",
+                  paste(sQuote(nms), collapse = ", ")), call. = FALSE)
+  }
 
   .validateScalar <- function(value, name, mode = c("numeric", "character"),
                               integer = FALSE, lower = -Inf, upper = Inf) {
