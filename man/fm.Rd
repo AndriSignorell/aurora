@@ -173,7 +173,11 @@ function supplied through \code{fmt}}
 }
 \value{
 formatted character values with the dimensions or tabular structure
-of \code{x} preserved where applicable
+of \code{x} preserved where applicable, of class \code{noquote} so that
+they print without quotation marks. For a matrix or a table the entries
+are padded to one common width unless \code{width} is given, so that the
+decimal points line up: a character matrix prints left justified, which
+would otherwise shift every negative entry against the positive ones.
 }
 \description{
 Formatting numbers with base R tools often degenerates into a major

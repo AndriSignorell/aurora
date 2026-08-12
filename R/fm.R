@@ -3,7 +3,26 @@
 # two in step; it is the only reason a Style may hold a name that fm() does
 # not know.
 #' @noRd
-.styleMetaNames <- c("label")
+.styleMetaNames <- c("label", "name")
+
+
+# Argument names of DescTools' Format() that were renamed in fm(). Used only
+# to make the "unknown component" messages actionable - nothing is translated
+# silently, the old names remain invalid.
+#' @noRd
+.styleLegacyNames <- c(big.mark = "bigMark", decimal.mark = "decMark",
+                       dec.mark = "decMark", ldigits = "leadDigits",
+                       na.form = "naForm", zero.form = "zeroForm")
+
+
+# Quote unknown names and add "did you mean" for known renamings
+#' @noRd
+.unknownNamesMsg <- function(x) {
+  hint <- .styleLegacyNames[x]
+  paste(sQuote(x),
+        ifelse(is.na(hint), "", gettextf(" (did you mean %s?)", sQuote(hint))),
+        sep = "", collapse = ", ")
+}
 
 
 #' Format Numbers and Dates
@@ -151,7 +170,11 @@
 #' @param \dots additional arguments passed to methods or to a formatting
 #'   function supplied through \code{fmt}
 #' @return formatted character values with the dimensions or tabular structure
-#'   of \code{x} preserved where applicable
+#'   of \code{x} preserved where applicable, of class \code{noquote} so that
+#'   they print without quotation marks. For a matrix or a table the entries
+#'   are padded to one common width unless \code{width} is given, so that the
+#'   decimal points line up: a character matrix prints left justified, which
+#'   would otherwise shift every negative entry against the positive ones.
 #' @examples
 #' 
 #' fm(as.Date(c("2014-11-28", "2014-1-2")), fmt="ddd, d mmmm yyyy")
@@ -247,14 +270,30 @@ fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
         any(!nzchar(names(styleArgs))) || anyDuplicated(names(styleArgs)))
       stop("a Style must be a named list", call. = FALSE)
 
+    # An argument the caller gave explicitly overrides the Style. What
+    # counts as "given" cannot be read off match.call() alone: the methods
+    # for matrix, table and ftable pass EVERY formal on by name, NULL
+    # included, so match.call() reported all of them as supplied and the
+    # loop below then assigned NULL - which deletes a list element and
+    # thereby wiped the Style clean. fm(pi, fmt = "num.sty") honoured
+    # digits = 3, fm(cor(swiss), fmt = "num.sty") silently did not.
+    #
+    # NULL means "not specified" for every one of these arguments, so a
+    # NULL value is not an override no matter how it arrived. There is
+    # consequently no way to say "ignore the Style's digits and use fm's
+    # own default" - that would need a sentinel, and no caller has asked
+    # for it.
     supplied <- names(match.call(expand.dots = FALSE))
     supplied <- intersect(
       supplied,
       setdiff(names(formals(fm.default)), c("x", "fmt", "..."))
     )
 
-    for (arg in supplied)
-      styleArgs[[arg]] <- get(arg, inherits = FALSE)
+    for (arg in supplied) {
+      value <- get(arg, inherits = FALSE)
+      if (!is.null(value))
+        styleArgs[[arg]] <- value
+    }
 
     styleArgs[["x"]] <- NULL
 
@@ -271,10 +310,18 @@ fm.default <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
     # where it was built. Report it here instead, with the name.
     unknown <- setdiff(names(styleArgs),
                        setdiff(names(formals(fm.default)), c("x", "...")))
-    if (length(unknown))
-      stop(gettextf(
-        "Style contains component(s) that are neither arguments of fm() nor style metadata: %s",
-        paste(sQuote(unknown), collapse = ", ")), call. = FALSE)
+    if (length(unknown)) {
+      # Not an error: a Style can come from options(), from an older version
+      # of the suite or from another package, and refusing to format would
+      # take down otherwise valid output - including print.Style(), which
+      # formats an example and would then no longer be able to show what is
+      # wrong. Drop the component and say so. style() still refuses to build
+      # such a Style in the first place, where the mistake can be fixed.
+      warning(gettextf(
+        "ignoring Style component(s) that are neither arguments of fm() nor style metadata: %s",
+        .unknownNamesMsg(unknown)), call. = FALSE)
+      styleArgs <- styleArgs[!names(styleArgs) %in% unknown]
+    }
 
     return(do.call(fm, c(list(x = x), styleArgs, list(...))))
   }
@@ -547,9 +594,15 @@ fm.matrix <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
                        align = align, width = width, lang = lang, 
                        pThreshold = pThreshold, decMark = decMark, ...)
   
-  result <- matrix(result, nrow = d[1], ncol = d[2], dimnames = dn)
-  
-  result
+  # noquote() is what fm.default() returns, and matrix() drops the class -
+  # so fm() on a matrix printed with quotes while fm() on a vector did not.
+  # unclass() first, because matrix() on a classed vector is what lost it.
+  if (is.null(width))
+    result <- .padMatrixWidth(result, align = align)
+
+  result <- matrix(unclass(result), nrow = d[1], ncol = d[2], dimnames = dn)
+
+  noquote(result)
   
 }
 
@@ -569,7 +622,12 @@ fm.table <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
                        align = align, width = width, lang = lang,
                        pThreshold = pThreshold, decMark = decMark, ...)
   
-  result <- array(result, dim = d, dimnames = dn)
+  # print.table() defaults to right = FALSE for character storage, so the
+  # same padding is needed here; it prints unquoted by itself.
+  if (is.null(width))
+    result <- .padMatrixWidth(result, align = align)
+
+  result <- array(unclass(result), dim = d, dimnames = dn)
   class(result) <- c("table", class(result))
   result
 }
@@ -626,6 +684,35 @@ fm.ftable <- function(x, digits = NULL, leadDigits = NULL, sci = NULL,
   position <- regexpr(decimalMark, formatted, fixed = TRUE)
 
   ifelse(position > 0L, nchar(formatted) - position, 0L)
+}
+
+
+# Pads the entries of a formatted matrix or table to one common width.
+#
+# A character matrix prints LEFT justified - print.default() and
+# print.table() both default to right = FALSE for character storage. Without
+# padding, every negative entry therefore shifts one place against the
+# positive ones and the decimal points do not line up, which is the whole
+# point of a formatted table. Numeric matrices do not have the problem
+# because format() has already padded them.
+#
+# NA entries are left alone: .finishFormat() pads only the non-missing ones,
+# and format() would turn NA into the string "NA".
+#' @noRd
+.padMatrixWidth <- function(x, align = NULL) {
+
+  chars <- nchar(as.character(x), type = "width")
+
+  if (!any(!is.na(chars)))
+    return(x)
+
+  # align is passed for the justification only - the alignment character
+  # itself has already been applied by .finishFormat() inside fm.default(),
+  # and running strAlign() a second time would pad twice
+  just <- if (identical(align, "\\l")) "\\l" else
+          if (identical(align, "\\c")) "\\c" else NULL
+
+  .finishFormat(x, width = max(chars, na.rm = TRUE), align = just)
 }
 
 

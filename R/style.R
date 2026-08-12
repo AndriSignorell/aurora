@@ -231,8 +231,8 @@ style <- function( x, digits = NULL, leadDigits = NULL, sci = NULL
     if (length(unknown) || is.null(names(dots)))
       stop(gettextf(
         "style() got argument(s) that fm() does not know: %s",
-        paste(sQuote(if (is.null(names(dots))) "<unnamed>" else unknown),
-              collapse = ", ")), call. = FALSE)
+        .unknownNamesMsg(if (is.null(names(dots))) "<unnamed>" else unknown)),
+        call. = FALSE)
   }
   
   # get rid of NULLs and append dots again

@@ -409,8 +409,12 @@ test_that("fm.matrix: returns matrix with correct dimensions", {
 test_that("fm.matrix: values are formatted", {
   m <- matrix(c(1.5, 2.5), nrow = 1)
   res <- fm(m, digits = 1)
-  expect_equal(res[1, 1], "1.5")
-  expect_equal(res[1, 2], "2.5")
+  # fm.matrix() returns a noquote matrix so that it prints like the vector
+  # method; [.noquote keeps that class, hence as.character() as everywhere
+  # else in this file
+  expect_s3_class(res, "noquote")
+  expect_equal(as.character(res[1, 1]), "1.5")
+  expect_equal(as.character(res[1, 2]), "2.5")
 })
 
 test_that("fm.matrix: dimnames are preserved", {
