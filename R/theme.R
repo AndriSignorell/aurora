@@ -372,6 +372,9 @@ resetTheme <- function() {
 # grid = NULL already means "explicitly suppress" for several functions -
 # theme integration must not silently reinterpret that). No dots-sniffing,
 # no new ...-argument - plain, explicit formal-argument matching.
+
+#' @rdname graphics-framework
+#' @export
 .useTheme <- structure(list(), class = "pharos_useTheme")
 
 

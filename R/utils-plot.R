@@ -55,7 +55,8 @@ fcol <- .pal_data$discrete$helsana
 #'   before merging, as they parameterize grouped-plot variants and are not
 #'   valid [graphics::grid()] arguments.
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .drawGrid <- function(grid, defaults = list()) {
 
   th <- getTheme()$grid
@@ -86,7 +87,8 @@ fcol <- .pal_data$discrete$helsana
 #'
 #' @return Invisibly `NULL`; called for its side effect (drawing).
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .drawBox <- function(box, defaults = list()) {
 
   th <- getTheme()$box
@@ -145,7 +147,8 @@ fcol <- .pal_data$discrete$helsana
 #' reset fires when `expr` throws: a half-drawn plot is not stamped, and
 #' the (possibly user-owned) layout is left untouched for inspection.
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .withGraphicsState <- function(expr, stamp = .useTheme, resetLayout = FALSE) {
 
   keep <- c(
@@ -232,7 +235,8 @@ fcol <- .pal_data$discrete$helsana
 #' length 4, with `NA` entries keeping the current value
 #' (`mar = c(NA, 8, NA, NA)` widens only the left margin).
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .applyParFromDots <- function(..., exclude = "cex", defaults = list()) {
 
   patch_fourpar <- function(new_val, old_val, pname) {
@@ -302,7 +306,8 @@ fcol <- .pal_data$discrete$helsana
 #'
 #' @return A single numeric: `2.1` (no title) or `4.1` (title present).
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .marTop <- function(main) {
   noTitle <- isFALSE(main) || identical(main, "") || isTRUE(is.na(main))
   if (noTitle) 2.1 else 4.1
@@ -352,7 +357,8 @@ fcol <- .pal_data$discrete$helsana
 #'
 #' @return A character string: `default`, `""`, or `main` itself.
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .resolveTitle <- function(main, default = "") {
 
   if (is.null(main))
@@ -478,7 +484,8 @@ fcol <- .pal_data$discrete$helsana
 #'
 #' @return A single numeric: the required margin size in lines (ceiling).
 #'
-#' @noRd
+#' @rdname graphics-framework
+#' @export
 .marginLines <- function(labels,
                          side = 4,
                          las = par("las"),

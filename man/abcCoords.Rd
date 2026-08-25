@@ -6,7 +6,7 @@
 \usage{
 abcCoords(
   x = "topleft",
-  region = c("figure", "plot", "device"),
+  region = c("plot", "figure", "device"),
   cex = NULL,
   inset = 0
 )
@@ -17,8 +17,9 @@ of \code{"bottomright"}, \code{"bottom"}, \code{"bottomleft"},
 \code{"left"}, \code{"topleft"}, \code{"top"}, \code{"topright"},
 \code{"right"}, or \code{"center"}.  Partial matching is supported.}
 
-\item{region}{one of \code{"figure"} (default), \code{"plot"}, or
-\code{"device"}.  Determines the coordinate region used.}
+\item{region}{one of \code{"plot"} (default), \code{"figure"}, or
+\code{"device"}.  Determines the coordinate region used.  See Details
+for the clipping that comes with the latter two.}
 
 \item{cex}{character expansion factor. If \code{NULL} (default),
 the current \code{par("cex")} is used.}
@@ -50,11 +51,18 @@ changes, and plot-range scaling.
 
 Three regions are supported:
 \describe{
-\item{\code{"plot"}}{The inner plot area (\code{par("usr")}).}
+\item{\code{"plot"}}{The inner plot area (\code{par("usr")}).  The
+default, and the region \code{\link{legend}} positions in.}
 \item{\code{"figure"}}{The figure region within the device, accounting
 for \code{par("fig")}.}
 \item{\code{"device"}}{The full device area.}
 }
+
+Coordinates for \code{"figure"} and \code{"device"} lie outside
+\code{par("usr")} and are therefore clipped away by \code{\link{text}}
+and friends unless the drawing call sets \code{xpd = NA}.  The returned
+values are in user space either way; only the clipping has to be turned
+off by the caller.
 }
 \examples{
 plot(x = rnorm(10), type = "n", xlab = "", ylab = "")
@@ -63,19 +71,23 @@ plot(x = rnorm(10), type = "n", xlab = "", ylab = "")
 abcCoords("bottomleft")
 
 # place text at a named position
-xy <- abcCoords("bottomleft", region = "plot")
-text(x = xy$xy$x, y = xy$xy$y, labels = "My Label",
-     adj = xy$adj, xpd = NA)
+xy <- abcCoords("bottomleft")
+text(x = xy$xy$x, y = xy$xy$y, labels = "My Label", adj = xy$adj)
 
 # all nine positions with inset
 sapply(c("topleft", "top", "topright",
          "left",    "center", "right",
          "bottomleft", "bottom", "bottomright"),
   function(p) {
-    xy <- abcCoords(p, region = "plot", inset = 1)
+    xy <- abcCoords(p, inset = 1)
     text(x = xy$xy$x, y = xy$xy$y,
-         labels = p, adj = xy$adj, xpd = NA)
+         labels = p, adj = xy$adj)
   })
+
+# the margins need xpd = NA, whatever the coordinates say
+xy <- abcCoords("bottomright", region = "figure", inset = 0.5)
+text(x = xy$xy$x, y = xy$xy$y, labels = "source: ...",
+     adj = xy$adj, cex = 0.7, xpd = NA)
 
 }
 \seealso{

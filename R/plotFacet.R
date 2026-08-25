@@ -14,6 +14,25 @@
 #' \code{vert} lines. Since margin lines have the same physical size in
 #' both directions, \code{horiz == vert} yields visually equal gaps.
 #'
+#' @section Bound and free scales:
+#' By default all panels share one coordinate system, and the axes are
+#' drawn on the outer panels only - the arrangement that makes small
+#' multiples comparable at a glance.
+#'
+#' Passing \code{xlim = "free"} - or a list of limits, for control over
+#' the individual panels - frees that dimension:
+#' every panel gets its own limits, and with them its own axis, because an
+#' outer axis would no longer describe the panels above or beside it.
+#' The layout answers for this - a freed dimension reserves the full
+#' \code{mar} on every panel edge that now carries annotation, not just on
+#' the outer ones, so the panels stay equal in size and the tick labels
+#' have room.
+#'
+#' Free scales cost what they free: panels can no longer be compared by
+#' position, only by shape. The natural case is a set of diagnostics of one
+#' model against different predictors - the residual scale is shared and
+#' worth comparing, the predictor scales are not commensurable at all.
+#'
 #' The strip is drawn with \code{\link{titleRect}} above each panel. Its
 #' height (\code{line} argument of \code{titleRect}) is reserved in the top
 #' margin of every panel, so the strip never eats into the gap between the
@@ -33,15 +52,25 @@
 #'   of the panel matrix, \code{c(nrow, ncol)}.
 #' @param panelFun the panel function, called per panel as
 #'   \code{panelFun(x, y, col, pch, ...)} with a fully set up coordinate
-#'   system.
+#'   system. Components of a sample beyond \code{x} and \code{y} are
+#'   passed on under their own names, so a panel can carry per-panel data
+#'   of its own - confidence bounds, weights, labels. They are only passed
+#'   to a \code{panelFun} that can accept them (a matching formal, or
+#'   \code{...}), so panel functions written for the two-component form
+#'   keep working unchanged.
 #' @param cols the colors for the panels, recycled to the number of
 #'   samples. Default is \code{hcl.colors(n, "Dark 3")}.
-#' @param stripLabels the labels for the panel strips. Default is the
+#' @param stripLabels the labels for the panel strips. Default is
+#'   \code{names(samples)} where the samples are named, otherwise the
 #'   sequence along \code{samples}.
 #' @param main the main title, placed in the outer margin.
 #' @param xlab,ylab the axis labels, placed in the outer margins.
-#' @param xlim,ylim the common axis limits for all panels. Default is the
-#'   range over all samples.
+#' @param xlim,ylim the axis limits. A numeric vector of length 2 (or
+#'   \code{NULL}, the default, for the range over all samples) binds every
+#'   panel to the same scale. \code{"free"} gives each panel its own
+#'   scale, taken from its own sample. A \emph{list} of length 2 vectors,
+#'   one per sample, does the same with limits you choose; a list of
+#'   length 1 is recycled. See the section on free scales.
 #' @param mar the margins around the whole panel matrix in lines,
 #'   \code{c(bottom, left, top, right)}. The bottom and left margins hold
 #'   the axis annotation of the outer panels.
@@ -94,6 +123,27 @@
 #'            xlab = "Time", ylab = "Weight", main = "ChickWeight",
 #'            strip = list(bg = "grey80", cex = 0.8))
 #'
+#' # free x scales: mpg against four predictors, each on its own range,
+#' # with a shared y scale. The regression band travels in the samples and
+#' # reaches the panel function under its own names.
+#' vars <- c("disp", "hp", "wt", "qsec")
+#'
+#' samples <- lapply(vars, function(v) {
+#'   ord <- order(mtcars[[v]])
+#'   ci  <- predict(lm(reformulate(v, "mpg"), mtcars), interval = "confidence")
+#'   list(x = mtcars[[v]][ord], y = mtcars$mpg[ord],
+#'        lci = ci[ord, "lwr"], uci = ci[ord, "upr"])
+#' })
+#'
+#' panelBand <- function(x, y, lci, uci, col, pch = 16, ...) {
+#'   polygon(c(x, rev(x)), c(uci, rev(lci)), col = "grey85", border = NA)
+#'   points(x, y, col = col, pch = pch)
+#' }
+#'
+#' plotFacet(setNames(samples, vars), dim = c(2, 2), panelFun = panelBand,
+#'           xlim = "free", ylab = "mpg",
+#'           main = "mpg against four predictors")
+#'
 #' @seealso [graphics::layout], [titleRect], [bedrock::callIf]
 #'
 #' @family graphics.layout
@@ -134,12 +184,27 @@ plotFacet <- function(
   if (n > n_panels)
     stop("More samples than panels available.")
 
+  # x and y are the contract - everything else in a sample is optional
+  # extra data for the panel function. Checked here because the failure
+  # otherwise surfaces inside the panel call, where it reads as a problem
+  # with panelFun.
+  bad <- which(!vapply(samples,
+                       function(z) all(c("x", "y") %in% names(z)),
+                       logical(1L)))
+  if (length(bad))
+    stop(gettextf(
+      "sample %d has no components named 'x' and 'y'; it has: %s",
+      bad[1L], paste(names(samples[[bad[1L]]]), collapse = ", ")),
+      domain = NA)
+
   if (is.null(cols))
     cols <- grDevices::hcl.colors(n, "Dark 3")
   cols <- rep(cols, length.out = n)
 
+  # a named list of samples names its own panels; the index is the last
+  # resort, not the default
   if (is.null(stripLabels))
-    stripLabels <- seq_len(n)
+    stripLabels <- names(samples) %||% seq_len(n)
 
   # margin lines have the same physical size horizontally and vertically
   # (mai = mar * csi * mex on all four sides), so no aspect correction needed
@@ -157,10 +222,11 @@ plotFacet <- function(
   # grid defaults; positions v/h are added per panel from axTicks()
   grid_defaults <- list(col = "grey85", lwd = 0.8)
 
-  if (is.null(xlim))
-    xlim <- range(unlist(lapply(samples, `[[`, "x")), na.rm = TRUE)
-  if (is.null(ylim))
-    ylim <- range(unlist(lapply(samples, `[[`, "y")), na.rm = TRUE)
+  xlim <- .facetLim(xlim, samples, "x", n)
+  ylim <- .facetLim(ylim, samples, "y", n)
+
+  free_x <- xlim$free
+  free_y <- ylim$free
 
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar), add = TRUE)
@@ -179,10 +245,14 @@ plotFacet <- function(
   # margins per column (left to right) and per row (top to bottom), in
   # lines; the strip belongs to EVERY panel and is reserved in the top
   # margin, so the visible gap between rows remains exactly 'vert'
-  left_mars   <- c(mar[2], rep(horiz / 2, max(0, nc - 1)))
+  # a freed dimension puts an axis on every panel, so every panel needs the
+  # annotation margin - not only the outer one
+  left_mars   <- if (free_y) rep(mar[2], nc)
+                 else c(mar[2], rep(horiz / 2, max(0, nc - 1)))
   right_mars  <- c(rep(horiz / 2, max(0, nc - 1)), mar[4])
   top_mars    <- strip_line + c(mar[3], rep(vert / 2, max(0, nr - 1)))
-  bottom_mars <- c(rep(vert / 2, max(0, nr - 1)), mar[1])
+  bottom_mars <- if (free_x) rep(mar[1], nr)
+                 else c(rep(vert / 2, max(0, nr - 1)), mar[1])
 
   # common plot region size (identical for all panels)
   plot_w <- (inner_w - sum(left_mars + right_mars) * line_in) / nc
@@ -220,7 +290,7 @@ plotFacet <- function(
     plot.new()
     # override the automatic multi-figure cex reduction deterministically
     par(cex = cex)
-    plot.window(xlim = xlim, ylim = ylim)
+    plot.window(xlim = xlim$lim[[i]], ylim = ylim$lim[[i]])
     usr <- par("usr")
 
     # background and grid; default grid positions at the axis ticks,
@@ -230,12 +300,15 @@ plotFacet <- function(
            defaults = c(list(v = axTicks(1), h = axTicks(2)),
                         grid_defaults))
 
-    # axes on the outer panels only
-    if (row_i == nr) axis(1)
-    if (col_i == 1)  axis(2, las = 1)
+    # axes on the outer panels only - unless the dimension is free, where
+    # every panel carries its own
+    if (free_x || row_i == nr) axis(1)
+    if (free_y || col_i == 1)  axis(2, las = 1)
 
-    # panel content
-    panelFun(x = s$x, y = s$y, col = cols[i], pch = pch, ...)
+    # panel content; components beyond x and y travel under their own names
+    do.call(panelFun,
+            .panelArgs(panelFun, s,
+                       c(list(col = cols[i], pch = pch), list(...))))
     box()
 
     # strip above the plot region, in the reserved top margin;
@@ -253,9 +326,87 @@ plotFacet <- function(
   invisible(list(
     horiz = horiz,
     vert = vert,
+    free_x = free_x,
+    free_y = free_y,
     strip_line = strip_line,
     cex = cex,
     plot_width_in = plot_w,
     plot_height_in = plot_h
   ))
+}
+
+
+# -------------------------------------------------------------------------
+# Axis limits: one range for all panels, or one per panel
+# -------------------------------------------------------------------------
+
+# A list marks the dimension as free. The distinction is carried in the
+# type rather than in a second argument, because a scales = "free" flag
+# would still need the limits from somewhere, and the two would then be
+# able to contradict each other.
+#' @keywords internal
+.facetLim <- function(lim, samples, comp, n) {
+
+  # "free" is not a second way of saying the same thing as a list: it says
+  # the limits come from each sample, which is where they would otherwise
+  # be fetched from by hand at the call site
+  if (identical(lim, "free"))
+    return(list(
+      lim  = lapply(samples, function(z) range(z[[comp]], na.rm = TRUE)),
+      free = TRUE))
+
+  if (is.character(lim))
+    stop('the only string accepted as axis limits is "free"')
+
+  if (is.null(lim))
+    return(list(
+      lim  = rep(list(range(unlist(lapply(samples, `[[`, comp)),
+                            na.rm = TRUE)), n),
+      free = FALSE))
+
+  if (is.list(lim)) {
+
+    if (length(lim) == 1L)
+      lim <- rep(lim, n)
+
+    if (length(lim) != n)
+      stop(gettextf(
+        "axis limits given as a list must have one element per sample (%d), not %d",
+        n, length(lim)), domain = NA)
+
+    if (!all(vapply(lim, function(z) is.numeric(z) && length(z) == 2L,
+                    logical(1L))))
+      stop("each element of the axis limits must be a numeric vector of length 2")
+
+    return(list(lim = lim, free = TRUE))
+  }
+
+  if (!is.numeric(lim) || length(lim) != 2L)
+    stop("axis limits must be a numeric vector of length 2, or a list of them")
+
+  list(lim = rep(list(lim), n), free = FALSE)
+}
+
+
+# -------------------------------------------------------------------------
+# Assemble the panel call
+# -------------------------------------------------------------------------
+
+# Everything in the sample travels to the panel function under its own
+# name, but only what the function can actually receive: a panel written
+# as function(x, y, col, pch, ...) takes everything, one written as
+# function(x, y, col, pch) takes just those four. That keeps samples with
+# extra components from breaking panel functions that predate them.
+#' @keywords internal
+.panelArgs <- function(panelFun, sample, extra) {
+
+  args <- c(as.list(sample), extra)
+  args <- args[!duplicated(names(args))]
+
+  fmls <- names(formals(panelFun))
+
+  if ("..." %in% fmls)
+    return(args)
+
+  args[names(args) %in% fmls]
 }
