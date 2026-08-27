@@ -1,167 +1,146 @@
-# pharos <img src="man/figures/logo.png" align="right" height="120" alt="" />
-
-**Descriptive Statistics Graphics and Utilities**
-
-Version 0.0.0.927 · License GPL (≥ 2)
+# 📦 pharos <img src="man/figures/logo.png" align="right" height="139" alt="pharos logo" />
 
 <!-- badges: start -->
-<!-- [![R-CMD-check](https://github.com/AndriSignorell/pharos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AndriSignorell/pharos/actions) -->
+[![CRAN status](https://www.r-pkg.org/badges/version/pharos)](https://CRAN.R-project.org/package=pharos)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 <!-- badges: end -->
 
-## Overview
+**Title:** Descriptive Statistics Graphics and Utilities\
+**License:** GPL (≥ 2)
 
-`pharos` is the graphics package of the **DescToolsX ecosystem**. It provides
-a comprehensive collection of statistical plots, geometric drawing primitives,
-color tools, annotation helpers, and formatting utilities — all built directly
-on **base R graphics**.
+## 🧩 Overview
 
-Building on base graphics keeps the package lightweight and fully compatible
-with everything base R offers (`layout()`, `par()`, custom devices), while a
-central **theme system** and consistent argument conventions remove the usual
-boilerplate: sensible defaults, automatic margin handling, and uniform
-styling across all plot functions.
+`pharos` is the graphics layer of the **DescToolsX ecosystem**. It draws
+statistical graphics on top of base graphics — distribution and density
+displays, bivariate and categorical plots, diagnostic and model
+evaluation panels — and supplies the colour, geometry, formatting and
+HTML tools they are built from.
 
-`pharos` is part of the DescToolsX package suite:
+A theme system resolves colours, symbols and layout centrally, so the
+look of a whole analysis can be set once instead of being repeated at
+every call.
 
-| Package   | Role                                    |
-|-----------|-----------------------------------------|
-| `bedrock` | core infrastructure and utilities       |
-| `pharos`  | graphics and visualization (this package) |
-| `lumen`   | statistical tests and confidence intervals |
-| `alloy`   | model fitting and evaluation            |
-| `pons`  | reporting and output                    |
+The package is self-contained and usable without the rest of the suite.
 
-## Installation
+📖 **Documentation:** <https://andrisignorell.github.io/pharos/>
+
+## ⚙️ Installation
 
 ``` r
-# development version from GitHub
+install.packages("pharos")
+```
+
+Or the development version from GitHub:
+
+``` r
 remotes::install_github("AndriSignorell/pharos")
 ```
 
-## Key Features
+## 📚 Core Features
 
-### Statistical plots
+### 🔹 Univariate and Distribution Plots
 
-A large family of high-level `plot*()` functions with a consistent
-interface (formula support, grouped variants, theme-driven styling):
+-   `plotFdist()`, `plotDens()`, `plotECDF()`, `plotProbDist()`
+-   `plotBox()`, `plotViolin()`, `plotRidge()`, `plotDensBox()`
+-   `plotDot()`, `plotBar()`, `plotBag()`, `plotQQ()`
 
-- **Distributions:** `plotDens()`, `plotDens2D()`, `plotDensBox()`,
-  `plotViolin()`, `plotRidge()`, `plotBox()`, `plotECDF()`, `plotFdist()`,
-  `plotQQ()`, `plotProbDist()`
-- **Categorical data:** `plotBar()`, `plotDot()`, `plotMosaic()`,
-  `plotCatDist()`, `plotTreemap()`, `plotWeb()`
-- **Relationships:** `plotXY()`, `plotLines()`, `plotCor()`, `plotAssoc()`,
-  `plotBubble()`, `plotHexbin()`, `plotBag()`
-- **Special purpose:** `plotTimeSeries()`, `plotArea()`, `plotMiss()`,
-  `plotPropCI()`, `plotCirc()`, `plotPolar()`, `plotTernary()`,
-  `plotBinaryTree()`, `plotFun()`
+### 🔹 Bivariate and Multivariate Plots
 
-Plot methods for objects from the suite are included, e.g.
-`plot.Desc.*` (for `desc()` results), `plot.Lc` (Lorenz curves),
-`plot.BlandAltman`, and `lines()` methods for `lm` and `loess` fits.
+-   `plotXY()`, `plotBubble()`, `plotDens2D()`, `plotHexbin()`
+-   `plotCor()`, `plotAssoc()`, `plotMosaic()`, `plotHeatmap()`
+-   `plotTernary()`, `plotPolar()`, `plotCirc()`, `plotWeb()`,
+    `plotTreemap()`
 
-### Theme system
+### 🔹 Model and Diagnostic Displays
 
-All plot functions draw their defaults from a central, replaceable theme:
+-   `plotLift()`, `plotPropCI()`, `plotMiss()`, `plotCatDist()`
+-   `plot.BlandAltman()`, `plot.Lc()`, `plotBinaryTree()`
+-   `lines.lm()`, `lines.loess()`, `splineCI()`
 
-``` r
-getTheme()                              # inspect the active theme
-setTheme(list(palette = "Set2"))        # change one component globally
-setTheme(list(grid = list(col = "grey90", lwd = 1, lty = "dotted")))
-resetTheme()                            # back to the default
-```
+### 🔹 Layout and Faceting
 
-Explicit arguments always override the theme at the call site; the theme in
-turn overrides the package defaults. One place to define the look — every
-plot follows.
+-   `plotFacet()` — panel layouts with a user-supplied panel function
+-   `canvas()`, `plotArea()`, `mar()`, `abcCoords()`, `axisBreak()`,
+    `axTicks()`, `axisFmt()`
+-   `spreadOut()`, `lineToUser()`, `isValidPlotRegion()`
 
-### Geometric drawing
+### 🔹 Annotation
 
-Geometry follows a clean two-step design: **constructors** create geometry
-objects — `circle()`, `ellipse()`, `arc()`, `bezier()`, `band()`, `ring()`,
-`regPolygon()` — and an overloaded `polygon()` generic (fully compatible with
-`graphics::polygon()`) draws them. `canvas()` provides a blank, aspect-true
-plotting canvas, `polarGrid()` a polar coordinate system.
+-   `boxedText()`, `barText()`, `textLegend()`, `colLegend()`,
+    `errBars()`, `band()`, `stamp()`, `titleRect()`, `lineSep()`
 
-``` r
-canvas()
-polygon(circle(radius = 1), col = "lightblue")
-polygon(regPolygon(radius = 0.7, numVertices = 5), border = "red")
-```
+### 🔹 Colour
 
-Because geometries are plain objects, they can be transformed before
-drawing (`rotate()`, `transformXY()`) or combined into composite shapes.
+-   Conversions: `colToHex()`, `colToRGB()`, `colToHSV()`,
+    `hexToRGB()`, `rgbToCmy()`, `cmykToRgb()`, `longToRGB()`
+-   Manipulation: `addOpacity()`, `fade()`, `darken()`, `lighten()`,
+    `shade()`, `mixColors()`, `contrastColor()`, `grayScale()`
+-   Palettes: `pal()`, `palNames()`, `hcol()`, `findColor()`,
+    `setBackCol()`
 
-### Colors
+### 🔹 Geometry
 
-- **Manipulation:** `addOpacity()`, `fade()`, `darken()`, `lighten()`,
-  `mixColors()`, `grayscale()`, `colToOpaque()`
-- **Analysis:** `contrastColor()` (legible text colors on any background),
-  `findColor()` (nearest named color)
-- **Conversion:** hex, RGB, HSV, CMY(K), and long integer representations
-  (`colToHex()`, `hexToRGB()`, `cmykToRgb()`, `rgbToLong()`, …)
-- **Palettes:** `pal()` and `palNames()` for the suite's curated palettes
+-   `arc()`, `bezier()`, `circle()`, `ellipse()`, `ring()`,
+    `polygon()`, `regPolygon()`, `polarGrid()`
+-   `rotate()`, `transformXY()`, coordinate conversions, degree/radian
+    conversion, `convUnit()`
 
-### Annotation and layout helpers
+### 🔹 Formatting and Strings
 
-Utilities that handle the fiddly parts of base graphics:
+-   `fm()`, `fmCI()`, `unit()`, `ftable.list()`
+-   `strAbbr()`, `strAlign()`, `strCap()`, `strChop()`, `strPad()`,
+    `strTrunc()`, `strRev()`, `strDist()`, `strSpell()`, `strExtract()`
 
-- `stamp()` — automatic plot stamping (author/date), theme-controlled
-- `boxedText()`, `barText()`, `textLegend()`, `colLegend()` — labels and
-  legends beyond `text()`/`legend()`
-- `errBars()`, `shade()`, `splineCI()`, `band()` — uncertainty display
-- `axisBreak()`, `axTicks()`, `titleRect()`, `lineSep()` — axis and title
-  furniture
-- `spreadOut()` — de-overlapping label positions
-- `isValidPlotRegion()` — check the device geometry before drawing
+### 🔹 HTML Output
 
-### Formatting and output
+-   `as.html()`, `toHtmlTable()`, `escapeHtml()`, `htmlNotation()`,
+    `htmlSubscript()`, `as.img()`, `as.fileLink()`, `embedFile()`,
+    `preview()`
 
-- `fm()` / `fmCI()` — flexible number and confidence interval formatting
-- `notation()`, `style()` — notation and style control
-- `as.html()`, `toHtmlTable()`, `preview()` — HTML rendering of tables and
-  plots, e.g. for quick reports
+## 🚀 Design Principles
 
-### Coordinates, units, and strings
+-   **Consistent** — lowerCamelCase API and uniform argument
+    conventions across the whole DescToolsX suite
+-   **Themed** — colours, symbols and layout resolved centrally through
+    `theme()` and `style()`
+-   **Base graphics** — no grid, no extra graphics stack; plots compose
+    with everything already in R
+-   **Fast** — performance-critical routines implemented in Rcpp
 
-- Coordinate transformations: `transformXY()`, `rotate()`, `degToRad()`,
-  `lineToUser()`, `abcCoords()`
-- Unit conversion engine: `convUnit()` with SI and derived units
-- A complete `str*()` family for string handling (`strTrim()`, `strPad()`,
-  `strAlign()`, `strExtract()`, `strDist()`, `strAbbr()`, …)
-
-## Example
+## 🧪 Example
 
 ``` r
 library(pharos)
 
-# grouped violin plot, styled by the active theme
-plotViolin(mpg ~ cyl, data = mtcars)
+# distribution overview: histogram, density, boxplot, ecdf in one panel
+plotFdist(rnorm(500))
 
-# correlation matrix plot
-plotCor(cor(mtcars))
+# named plot positions without arithmetic
+plot(rnorm(20), type = "n")
+xy <- abcCoords("topleft", inset = 1)
+text(xy$xy$x, xy$xy$y, "annotation", adj = xy$adj)
 
-# custom geometric graphic
-canvas(main = "pharos primitives")
-polygon(circle(radius = 1), col = addOpacity("steelblue", 0.4))
-polygon(regPolygon(radius = 0.7, numVertices = 6), border = "red")
+# colour manipulation
+fade(pal("dark"), 0.4)
+
+# faceting with a panel function
+plotFacet(split(iris$Sepal.Length, iris$Species),
+          dim = c(1, 3), panelFun = plotDens)
 ```
 
-## Design principles
+## 🧱 The Suite
 
-- **Base graphics, no grid** — lightweight, transparent, hackable
-- **Consistent API** — lowerCamelCase, uniform argument names and ordering
-  across the whole suite
-- **Theme-driven** — one place to define the look, every plot follows
-- **Robust by default** — automatic margin adjustment, device geometry
-  checks, protected graphics state
-- **Performance-aware** — Rcpp under the hood where it matters
+`pharos` builds on `bedrock` (base utilities). `DescToolsX` (descriptive
+statistics), `lumen` (tests and intervals), `alloy` (modelling), `pons`
+(MS-Office) and `swissValet` (RStudio addins) complete the family.
 
-## Documentation
+## 🙏 Acknowledgements
 
-- Website: <https://andrisignorell.github.io/pharos/>
-- Bug reports: <https://github.com/AndriSignorell/pharos/issues>
+Parts of the code and documentation were reviewed with the help of large
+language models (OpenAI Codex, Anthropic Claude). Every suggestion was
+assessed, edited and verified by the maintainer, who remains solely
+responsible for the content of this package.
 
-## License
+## 📜 License
 
 GPL (≥ 2)

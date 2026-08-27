@@ -1,4 +1,4 @@
-#'
+
 #' QQ-Plot for Any Distribution 
 #' 
 #' Create a QQ-plot for a variable of any distribution. The assumed underlying

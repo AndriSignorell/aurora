@@ -1,5 +1,243 @@
+home:
+  title: pharos
+  description: Graphics, colour, formatting, and string utilities for the DescToolsX ecosystem
 
-url: https://andrisignorell.github.io/pharos/
+destination: docs
+
+development:
+  mode: auto
 
 template:
+  default_assets: true
   bootstrap: 5
+  bootswatch: flatly
+
+navbar:
+  structure:
+    left:  [version, home, reference, articles, news]
+    right: [github]
+  components:
+    version:
+      icon: fa-book
+      menu:
+      - text: "Documentation for version of package:"
+      - text: Released
+        href: https://andrisignorell.github.io/pharos/
+      - text: In-development
+        href: https://andrisignorell.github.io/pharos/dev/
+    articles:
+      text: Tutorials
+      menu:
+      - text: "PDF:"
+      - text: Formatting
+        href: https://github.com/AndriSignorell/pharos/blob/main/vignettes/Format.pdf
+
+# About package ==============================================================
+reference:
+- title: Univariate & Distribution Plots
+  desc: >
+    Plots for distributions, grouped data, functions, and time series.
+  contents:
+  # plot.univariate -- One-dimensional distributions and summaries
+  - plotArea
+  - plotBar
+  - plotBox
+  - plotCatDist
+  - plotDens
+  - plotDensBox
+  - plotDot
+  - plotECDF
+  - plotFdist
+  - plotLines
+  - plotQQ
+  - plotRidge
+  - plotViolin
+  # plot.distribution -- Mathematical and probability distributions
+  - plotFun
+  - plotProbDist
+  - shade
+
+- title: Bivariate & Specialized Plots
+  desc: >
+    Plots for relationships, contingency tables, diagnostics, and specialized displays.
+  contents:
+  # plot.bivariate -- Relationships between variables
+  - plotAssoc
+  - plotBag
+  - plotBubble
+  - plotCor
+  - plotDens2D
+  - plotHeatmap
+  - plotHexbin
+  - plotMosaic
+  - plotXY
+  # plot.special -- Specialized graphical displays
+  - plotBinaryTree
+  - plotCirc
+  - plotFacet
+  - plotLift
+  - plotMiss
+  - plotPolar
+  - plotPropCI
+  - plotTernary
+  - plotTimeSeries
+  - plotTreemap
+  - plotWeb
+  # plot.s3 -- Plot methods for analytical objects
+  - plot.BlandAltman
+  - plot.Desc.qn
+  - plot.Desc.table
+  - plot.Lc
+
+- title: Annotation, Axes & Layout
+  desc: >
+    Plot annotation, axes, smoothers, themes, and graphics-state helpers.
+  contents:
+  # graphics.annotation -- Labels, legends, and annotations
+  - abcCoords
+  - axisBreak
+  - axisFmt
+  - axTicks
+  - barText
+  - boxedText
+  - colLegend
+  - errBars
+  - polarGrid
+  - stamp
+  - textLegend
+  - titleRect
+  # graphics.trendlines -- Regression and smoothing overlays
+  - lines.lm
+  - lines.loess
+  - splineCI
+  # graphics.layout -- Plot regions, margins, and theming
+  - graphics-framework
+  - isValidPlotRegion
+  - mar
+  - preview
+  - setBackCol
+  - spreadOut
+  - theme
+
+- title: Geometry & Coordinates
+  desc: >
+    Geometric structures, coordinate conversions, and transformations.
+  contents:
+  # geometry.structures -- Reusable geometric objects
+  - arc
+  - band
+  - bezier
+  - canvas
+  - circle
+  - ellipse
+  - polygon
+  - regPolygon
+  - ring
+  # geometry.conversion -- Coordinate and angular conversions
+  - coordinate-conversions
+  - degree-radians-conversion
+  - lineToUser
+  # geometry.transformation -- Geometric transformations
+  - rotate
+  - transformXY
+
+- title: Colours & Palettes
+  desc: >
+    Colour conversion, manipulation, lookup, and palette construction.
+  contents:
+  # color.overview -- Entry point for colour utilities
+  - color-conversion-overview
+  # color.conversion -- Conversion between colour representations
+  - cmykToCmy
+  - cmykToRgb
+  - cmyToCmyk
+  - colToHex
+  - colToHSV
+  - colToRGB
+  - grayScale
+  - hexToCol
+  - hexToRGB
+  - longToRGB
+  - rgbToCmy
+  - rgbToCol
+  - rgbToHex
+  - rgbToLong
+  # color.manipulation -- Transparency, mixing, and contrast
+  - addOpacity
+  - colToOpaque
+  - contrastColor
+  - darken
+  - fade
+  - findColor
+  - lighten
+  - mixColors
+  # color.palettes -- Palette construction and discovery
+  - hcol
+  - pal
+  - palNames
+
+- title: Formatting, Units & Tables
+  desc: >
+    Formatting of values and confidence intervals, units, and table helpers.
+  contents:
+  # format.values -- Numbers, dates, confidence intervals, and styles
+  - fm
+  - fmCI
+  - style
+  # format.objects -- Confidence intervals and units
+  - as.CI
+  - convUnit
+  - print.Unit
+  - unit
+  # tables.interfaces -- Table and formula helpers
+  - Formulas
+  - ftable.list
+  # constants -- Shared package constants
+  - constants
+
+- title: Strings
+  desc: >
+    String inspection, extraction, transformation, and formatting.
+  contents:
+  # string.overview -- Entry point for string utilities
+  - string-overview
+  # string.inspect -- Length, positions, distance, and numeric content
+  - strCountW
+  - strDist
+  - strIsNumeric
+  - strLen
+  - strPos
+  # string.extract -- Extracting and splitting strings
+  - strChop
+  - strExtract
+  - strExtractBetween
+  - strLeftRight
+  - strSplit
+  - strVal
+  # string.transform -- Formatting and transformation
+  - lineSep
+  - strAbbr
+  - strAlign
+  - strCap
+  - strPad
+  - strRev
+  - strSpell
+  - strTrim
+  - strTrunc
+
+- title: HTML & Embedding
+  desc: >
+    HTML markup, embedded files and images, and self-contained HTML tables.
+  contents:
+  # html.objects -- HTML-aware objects and previews
+  - as.html
+  - preview.html
+  # html.embedding -- Files, plots, and encoded resources
+  - as.fileLink
+  - as.img
+  - embedFile
+  # html.markup -- Escaping, notation, and tables
+  - escapeHtml
+  - htmlNotation
+  - htmlSubscript
+  - toHtmlTable

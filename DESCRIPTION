@@ -1,30 +1,39 @@
 Package: pharos
 Title: Descriptive Statistics Graphics and Utilities
-Version: 0.0.0.949
+Version: 0.0.0.950
 Authors@R: c(
   person(given="Andri", family="Signorell", 
          email = "andri@signorell.net", 
          role = c("aut", "cre"),
          comment = c(ORCID = "0000-0003-4311-1969")),
-  person("R-Core"                                      , role = c("ctb")),
-  person("Ben"          , "Bolker"                     , role = c("ctb")),
-  person("Jeff"         , "Enos"                       , role = c("ctb")),
-  person("Frank E."     , "Harrell Jr"                 , role = c("ctb")),
-  person("Henk"         , "Harmsen"                    , role = c("ctb")),
-  person("Christian W." , "Hoffmann"                   , role = c("ctb")),
-  person("Markus"       , "Huerzeler"                  , role = c("ctb")),
-  person("Matthias"     , "Kohl"                       , role = c("ctb")),
-  person("Jim"          , "Lemon"                      , role = c("ctb")),
-  person("Arni"         , "Magnusson"                  , role = c("ctb")),
-  person("Markus"       , "Naepflin"                   , role = c("ctb")),
-  person("B. D."        , "Ripley"                     , role = c("ctb")),
-  person("Terry"        , "Therneau"                   , role = c("ctb")),
-  person("John"         , "Verzani"                    , role = c("ctb")),
-  person("W. N."        , "Venables"                   , role = c("ctb")),
-  person("Hans Peter"   , "Wolf"                       , role = c("ctb")),
-  person("Ying"         , "Wu"                         , role = c("ctb"))
+  person("R Core Team"                    , role = c("ctb")),
+  person("Ben"          , "Bolker"        , role = c("ctb")),
+  person("Jeff"         , "Enos"          , role = c("ctb")),
+  person("Frank E."     , "Harrell Jr"    , role = c("ctb")),
+  person("Henk"         , "Harmsen"       , role = c("ctb")),
+  person("Christian W." , "Hoffmann"      , role = c("ctb")),
+  person("Markus"       , "Huerzeler"     , role = c("ctb")),
+  person("Matthias"     , "Kohl"          , role = c("ctb")),
+  person("Jim"          , "Lemon"         , role = c("ctb")),
+  person("Arni"         , "Magnusson"     , role = c("ctb")),
+  person("Markus"       , "Naepflin"      , role = c("ctb")),
+  person("B. D."        , "Ripley"        , role = c("ctb")),
+  person("Terry"        , "Therneau"      , role = c("ctb")),
+  person("John"         , "Verzani"       , role = c("ctb")),
+  person("W. N."        , "Venables"      , role = c("ctb")),
+  person("Hans Peter"   , "Wolf"          , role = c("ctb")),
+  person("Ying"         , "Wu"            , role = c("ctb"))
  )
-Description: Provides plots and graphic routines used in DescToolsX.
+Description: Draws the statistical graphics of the DescToolsX ecosystem
+    on top of base graphics: distribution and density displays,
+    bivariate and categorical plots, diagnostic and model evaluation
+    panels, and a faceting mechanism for arranging them. A theme system
+    resolves colours, symbols and layout centrally, so a consistent look
+    can be set once rather than repeated at every call. The package also
+    contains the colour conversion and palette tools, the geometry
+    helpers, the number and string formatting routines and the HTML
+    output utilities that the plots are built from. It is self contained
+    and usable without the rest of the suite.
 Depends: R (>= 4.2.0)
 License: GPL (>= 2)
 Encoding: UTF-8

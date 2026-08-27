@@ -5,7 +5,7 @@
 - **Andri Signorell**. Author, maintainer.
   [](https://orcid.org/0000-0003-4311-1969)
 
-- **R-Core**. Contributor.
+- **R Core Team**. Contributor.
 
 - **Ben Bolker**. Contributor.
 
@@ -45,13 +45,13 @@ Source:
 [`DESCRIPTION`](https://github.com/AndriSignorell/pharos/blob/HEAD/DESCRIPTION)
 
 Signorell A (2026). *pharos: Descriptive Statistics Graphics and
-Utilities*. R package version 0.0.0.948,
+Utilities*. R package version 0.0.0.950,
 <https://andrisignorell.github.io/pharos/>.
 
     @Manual{,
       title = {pharos: Descriptive Statistics Graphics and Utilities},
       author = {Andri Signorell},
       year = {2026},
-      note = {R package version 0.0.0.948},
+      note = {R package version 0.0.0.950},
       url = {https://andrisignorell.github.io/pharos/},
     }
