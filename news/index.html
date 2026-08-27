@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.949</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.950</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,11 +32,20 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.0.0.9000" id="pharos-0009000">pharos 0.0.0.9000<a class="anchor" aria-label="anchor" href="#pharos-0009000"></a></h2>
+<h2 class="pkg-version" data-toc-text="development version" id="pharos-development-version">pharos (development version)<a class="anchor" aria-label="anchor" href="#pharos-development-version"></a></h2>
 <div class="section level3">
-<h3 id="new-features-0-0-0-9000">New features<a class="anchor" aria-label="anchor" href="#new-features-0-0-0-9000"></a></h3>
-<ul><li>Initial development version.</li>
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>Graphics layer of the DescToolsX package suite, built on base graphics: distribution and density displays, bivariate and categorical plots, diagnostic and model evaluation panels.</li>
+<li>A theme system (<code><a href="../reference/theme.html">theme()</a></code>, <code><a href="../reference/style.html">style()</a></code>) resolves colours, symbols and layout centrally, so the appearance of a whole analysis is set once rather than at every call.</li>
+<li>
+<code><a href="../reference/plotFacet.html">plotFacet()</a></code> arranges panels from a user-supplied panel function and is the mechanism the other packages of the suite draw their multi-panel diagnostics with.</li>
+<li>Supporting toolkits for colour conversion and palettes, plot geometry, number and string formatting, and HTML output.</li>
+<li>Performance-critical routines are implemented in C++ via Rcpp.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="acknowledgements-development-version">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements-development-version"></a></h3>
+<p>Parts of the code and documentation were reviewed with the help of large language models (OpenAI Codex, Anthropic Claude). Every suggestion was assessed, edited and verified by the maintainer, who remains solely responsible for the content of this package.</p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
