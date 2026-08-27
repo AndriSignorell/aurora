@@ -111,9 +111,9 @@ plot(x, col = NULL, general = FALSE, ylim = NULL, ...)
 
   callIf-style specs for the grid and the box around the plot region,
   used by `plot.Lc()` only. `.useTheme` (default) lets
-  [`getTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
-  decide, `TRUE`/`FALSE` force drawing/suppression, and a named list is
-  forwarded to [`grid()`](https://rdrr.io/r/graphics/grid.html) resp.
+  [`getTheme()`](theme.md) decide, `TRUE`/`FALSE` force
+  drawing/suppression, and a named list is forwarded to
+  [`grid()`](https://rdrr.io/r/graphics/grid.html) resp.
   [`box()`](https://rdrr.io/r/graphics/box.html).
 
 - cbandArgs:
@@ -127,16 +127,15 @@ plot(x, col = NULL, general = FALSE, ylim = NULL, ...)
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - ...:
 
   further arguments. For `plot.Lc()`, graphical parameters passed to
   [`par()`](https://rdrr.io/r/graphics/par.html) via
-  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  (e.g. `mar`, `cex.axis`, `las`). For `lines.Lc()` and `points.Lc()`,
-  further arguments passed on to
+  [`.applyParFromDots()`](graphics-framework.md) (e.g. `mar`,
+  `cex.axis`, `las`). For `lines.Lc()` and `points.Lc()`, further
+  arguments passed on to
   [`lines()`](https://rdrr.io/r/graphics/lines.html) and
   [`points()`](https://rdrr.io/r/graphics/points.html), respectively.
   For `plot.LcList()`, arguments are passed to `plot.Lc()` for the first
@@ -195,7 +194,6 @@ for bootstrap confidence intervals,
 [`DescToolsX::gini()`](https://rdrr.io/pkg/DescToolsX/man/gini.html) for
 the Gini coefficient.
 
-Other plot.s3:
-[`plot.BlandAltman()`](https://andrisignorell.github.io/pharos/reference/plot.BlandAltman.md),
-[`plot.Desc.qn()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.qn.md),
-[`plot.Desc.table()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.table.md)
+Other plot.s3: [`plot.BlandAltman()`](plot.BlandAltman.md),
+[`plot.Desc.qn()`](plot.Desc.qn.md),
+[`plot.Desc.table()`](plot.Desc.table.md)

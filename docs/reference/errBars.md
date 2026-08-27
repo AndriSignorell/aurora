@@ -116,13 +116,10 @@ typical use case of adding confidence intervals to a
 [`arrows`](https://rdrr.io/r/graphics/arrows.html),
 [`points`](https://rdrr.io/r/graphics/points.html)
 
-Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
+Other graphics.annotation: [`barText()`](barText.md),
+[`boxedText()`](boxedText.md), [`colLegend()`](colLegend.md),
+[`stamp()`](stamp.md), [`textLegend()`](textLegend.md),
+[`titleRect()`](titleRect.md)
 
 ## Examples
 

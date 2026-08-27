@@ -102,9 +102,8 @@ plotBar(
 
 - text:
 
-  optional list of arguments passed to
-  [`barText`](https://andrisignorell.github.io/pharos/reference/barText.md)
-  to draw value labels on bars.
+  optional list of arguments passed to [`barText`](barText.md) to draw
+  value labels on bars.
 
 - connlines:
 
@@ -115,9 +114,7 @@ plotBar(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/`NULL`, or an explicit string, as
-  for
-  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  (internal).
+  for [`.withGraphicsState()`](graphics-framework.md) (internal).
 
 - ...:
 
@@ -149,8 +146,7 @@ The function internally performs the following steps:
 
 5.  Optionally adds connecting lines for stacked bars.
 
-6.  Optionally adds value labels via
-    [`barText`](https://andrisignorell.github.io/pharos/reference/barText.md).
+6.  Optionally adds value labels via [`barText`](barText.md).
 
 7.  Optionally draws a box around the plot region.
 
@@ -166,21 +162,14 @@ The precedence of theme-aware settings (`col`, `border`, `grid`, `box`,
 ## See also
 
 [graphics::barplot](https://rdrr.io/r/graphics/barplot.html),
-[barText](https://andrisignorell.github.io/pharos/reference/barText.md),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[barText](barText.md), [theme](theme.md)
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBox()`](plotBox.md), [`plotCatDist()`](plotCatDist.md),
+[`plotDens()`](plotDens.md), [`plotDensBox()`](plotDensBox.md),
+[`plotDot()`](plotDot.md), [`plotECDF()`](plotECDF.md),
+[`plotFdist()`](plotFdist.md), [`plotLines()`](plotLines.md),
+[`plotQQ()`](plotQQ.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

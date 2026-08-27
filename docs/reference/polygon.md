@@ -6,12 +6,9 @@ such as circle(), ellipse(), regPolygon() and ring() and further remains
 fully compatible with its original interface. \#' For ordinary
 coordinate vectors the call is forwarded to
 [`polygon`](https://rdrr.io/r/graphics/polygon.html). Geometry objects
-such as
-[`circle`](https://andrisignorell.github.io/pharos/reference/circle.md),
-[`ellipse`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-[`regPolygon`](https://andrisignorell.github.io/pharos/reference/regPolygon.md)
-and [`ring`](https://andrisignorell.github.io/pharos/reference/ring.md)
-are dispatched to specialised methods.
+such as [`circle`](circle.md), [`ellipse`](ellipse.md),
+[`regPolygon`](regPolygon.md) and [`ring`](ring.md) are dispatched to
+specialised methods.
 
 ## Usage
 
@@ -88,14 +85,10 @@ Invisibly returns `x`.
 
 ## See also
 
-Other geometry.structures:
-[`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
-[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
-[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
-[`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
+Other geometry.structures: [`arc()`](arc.md), [`band()`](band.md),
+[`bezier()`](bezier.md), [`circle()`](circle.md),
+[`ellipse()`](ellipse.md), [`regPolygon()`](regPolygon.md),
+[`ring()`](ring.md)
 
 ## Examples
 

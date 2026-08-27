@@ -45,13 +45,10 @@ For R results may not be satisfactory if `par(mfrow=)` is in effect.
 
 [`text`](https://rdrr.io/r/graphics/text.html)
 
-Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
-[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
+Other graphics.annotation: [`barText()`](barText.md),
+[`boxedText()`](boxedText.md), [`colLegend()`](colLegend.md),
+[`errBars()`](errBars.md), [`textLegend()`](textLegend.md),
+[`titleRect()`](titleRect.md)
 
 ## Examples
 

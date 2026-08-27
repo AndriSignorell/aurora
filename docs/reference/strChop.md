@@ -44,11 +44,11 @@ Typical usages are
 
 ## See also
 
-[`strLeft`](https://andrisignorell.github.io/pharos/reference/strLeftRight.md),
+[`strLeft`](strLeftRight.md),
 [`substr`](https://rdrr.io/r/base/substr.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

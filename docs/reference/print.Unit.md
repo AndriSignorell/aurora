@@ -30,12 +30,8 @@ Invisibly returns `x`.
 [base::attr](https://rdrr.io/r/base/attr.html),
 [bedrock::label](https://andrisignorell.github.io/bedrock/reference/label.html)
 
-Other format:
-[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
+Other format: [`convUnit()`](convUnit.md), [`fm()`](fm.md),
+[`fmCI()`](fmCI.md), [`style()`](style.md), [`unit()`](unit.md)
 
 ## Examples
 

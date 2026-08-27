@@ -34,8 +34,7 @@ plotBinaryTree(
 - text:
 
   properties of the text, can be any of the arguments of
-  [`boxedText`](https://andrisignorell.github.io/pharos/reference/boxedText.md)
-  (besides geometry and label).
+  [`boxedText`](boxedText.md) (besides geometry and label).
 
 - line:
 
@@ -43,8 +42,7 @@ plotBinaryTree(
 
 - ...:
 
-  the dots are sent to
-  [`canvas`](https://andrisignorell.github.io/pharos/reference/canvas.md).
+  the dots are sent to [`canvas`](canvas.md).
 
 ## Value
 
@@ -69,16 +67,12 @@ improvements by the package author.
 
 ## See also
 
-Other plot.special:
-[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotCirc()`](plotCirc.md),
+[`plotLift()`](plotLift.md), [`plotMiss()`](plotMiss.md),
+[`plotPolar()`](plotPolar.md), [`plotPropCI()`](plotPropCI.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 

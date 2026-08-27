@@ -12,28 +12,27 @@ two tables below.
 |  |  |  |  |  |
 |----|----|----|----|----|
 | From \\ To | Col | Hex | HSV | RGB |
-| **Col** | \- | [`colToHex()`](https://andrisignorell.github.io/pharos/reference/colToHex.md) | [`colToHSV()`](https://andrisignorell.github.io/pharos/reference/colToHSV.md) | [`colToRGB()`](https://andrisignorell.github.io/pharos/reference/colToRGB.md) |
-| **Hex** | [`hexToCol()`](https://andrisignorell.github.io/pharos/reference/hexToCol.md) | \- | . | [`hexToRGB()`](https://andrisignorell.github.io/pharos/reference/hexToRGB.md) |
+| **Col** | \- | [`colToHex()`](colToHex.md) | [`colToHSV()`](colToHSV.md) | [`colToRGB()`](colToRGB.md) |
+| **Hex** | [`hexToCol()`](hexToCol.md) | \- | . | [`hexToRGB()`](hexToRGB.md) |
 | **HSV** | . | . | \- | . |
-| **RGB** | [`rgbToCol()`](https://andrisignorell.github.io/pharos/reference/rgbToCol.md) | [`rgbToHex()`](https://andrisignorell.github.io/pharos/reference/rgbToHex.md) | . | \- |
+| **RGB** | [`rgbToCol()`](rgbToCol.md) | [`rgbToHex()`](rgbToHex.md) | . | \- |
 
 *"Col" is any valid R color specification (name, hex string, or palette
 index) as accepted by*
 [`col2rgb`](https://rdrr.io/r/grDevices/col2rgb.html). No function
 starts from HSV: it is only ever a conversion target (via
-[`colToHSV`](https://andrisignorell.github.io/pharos/reference/colToHSV.md)),
-not a source – see the note below the second table for the reason this
-gap is left open.
+[`colToHSV`](colToHSV.md)), not a source – see the note below the second
+table for the reason this gap is left open.
 
 ## RGB, CMY, CMYK, and long integer
 
 |  |  |  |  |  |
 |----|----|----|----|----|
 | From \\ To | CMY | CMYK | Long | RGB |
-| **CMY** | \- | [`cmyToCmyk()`](https://andrisignorell.github.io/pharos/reference/cmyToCmyk.md) | . | . |
-| **CMYK** | [`cmykToCmy()`](https://andrisignorell.github.io/pharos/reference/cmykToCmy.md) | \- | . | [`cmykToRgb()`](https://andrisignorell.github.io/pharos/reference/cmykToRgb.md) |
-| **Long** | . | . | \- | [`longToRGB()`](https://andrisignorell.github.io/pharos/reference/longToRGB.md) |
-| **RGB** | [`rgbToCmy()`](https://andrisignorell.github.io/pharos/reference/rgbToCmy.md) | . | [`rgbToLong()`](https://andrisignorell.github.io/pharos/reference/rgbToLong.md) | \- |
+| **CMY** | \- | [`cmyToCmyk()`](cmyToCmyk.md) | . | . |
+| **CMYK** | [`cmykToCmy()`](cmykToCmy.md) | \- | . | [`cmykToRgb()`](cmykToRgb.md) |
+| **Long** | . | . | \- | [`longToRGB()`](longToRGB.md) |
+| **RGB** | [`rgbToCmy()`](rgbToCmy.md) | . | [`rgbToLong()`](rgbToLong.md) | \- |
 
 ## Not part of either conversion matrix
 
@@ -43,8 +42,8 @@ representation, so they don't fit a row/column slot above:
 |  |  |
 |----|----|
 | Function | Purpose |
-| [`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md) | Computes the equivalent opaque color for a transparent color against a background – Hex stays Hex |
-| [`grayScale()`](https://andrisignorell.github.io/pharos/reference/grayScale.md) | Converts colors to grayscale using luminance weighting – Col stays Col |
+| [`colToOpaque()`](colToOpaque.md) | Computes the equivalent opaque color for a transparent color against a background – Hex stays Hex |
+| [`grayScale()`](grayScale.md) | Converts colors to grayscale using luminance weighting – Col stays Col |
 
 ## Why HSV has no source functions
 
@@ -54,10 +53,8 @@ color string directly from h/s/v values – the same role
 [`rgb()`](https://rdrr.io/r/grDevices/rgb.html) plays for RGB triplets.
 pharos deliberately doesn't duplicate it; chain
 [`hsv()`](https://rdrr.io/r/grDevices/hsv.html) into
-[`colToRGB()`](https://andrisignorell.github.io/pharos/reference/colToRGB.md)
-or
-[`colToHex()`](https://andrisignorell.github.io/pharos/reference/colToHex.md)
-instead (see examples).
+[`colToRGB()`](colToRGB.md) or [`colToHex()`](colToHex.md) instead (see
+examples).
 
 ## See also
 

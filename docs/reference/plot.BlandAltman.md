@@ -104,7 +104,5 @@ Objects of class `"blandAltman"` are typically created with
 
 ## See also
 
-Other plot.s3:
-[`plot.Desc.qn()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.qn.md),
-[`plot.Desc.table()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.table.md),
-[`plot.Lc()`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
+Other plot.s3: [`plot.Desc.qn()`](plot.Desc.qn.md),
+[`plot.Desc.table()`](plot.Desc.table.md), [`plot.Lc()`](plot.Lc.md)

@@ -23,9 +23,7 @@ A named character vector of hex color codes.
 
 ## See also
 
-Other color.palettes:
-[`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md),
-[`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md)
+Other color.palettes: [`pal()`](pal.md), [`palNames()`](palNames.md)
 
 ## Examples
 

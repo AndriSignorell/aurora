@@ -47,8 +47,7 @@ shade(expr, col = par("fg"), breaks, density = 10, n = 101, xname = "x", ...)
 
 - ...:
 
-  the dots are passed on to
-  [`polygon`](https://andrisignorell.github.io/pharos/reference/polygon.md).
+  the dots are passed on to [`polygon`](polygon.md).
 
 ## Value
 
@@ -62,12 +61,11 @@ significance tests.
 
 ## See also
 
-[`polygon`](https://andrisignorell.github.io/pharos/reference/polygon.md),
+[`polygon`](polygon.md),
 [`curve`](https://rdrr.io/r/graphics/curve.html)
 
-Other plot.distribution:
-[`plotFun()`](https://andrisignorell.github.io/pharos/reference/plotFun.md),
-[`plotProbDist()`](https://andrisignorell.github.io/pharos/reference/plotProbDist.md)
+Other plot.distribution: [`plotFun()`](plotFun.md),
+[`plotProbDist()`](plotProbDist.md)
 
 ## Examples
 

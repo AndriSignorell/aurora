@@ -28,17 +28,11 @@ An object inheriting from class `"ellipseGeometry"`.
 
 ## Details
 
-Use
-[`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md)
-to rotate the resulting geometry.
+Use [`rotate`](rotate.md) to rotate the resulting geometry.
 
 ## See also
 
-Other geometry.structures:
-[`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
-[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
-[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
-[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
+Other geometry.structures: [`arc()`](arc.md), [`band()`](band.md),
+[`bezier()`](bezier.md), [`circle()`](circle.md),
+[`polygon()`](polygon.md), [`regPolygon()`](regPolygon.md),
+[`ring()`](ring.md)

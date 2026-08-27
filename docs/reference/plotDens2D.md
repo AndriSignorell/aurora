@@ -52,12 +52,11 @@ plotDens2D(
 - col:
 
   color specification used for `type = "image"`. Defaults to a reversed
-  `"red-black"` sequential ramp
-  ([`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md)),
-  running from black (low density) to red (high density) - hardcoded
-  rather than theme-driven, since this is a continuous, unidirectional
-  gradient, unlike the active theme's categorical `palette` or diverging
-  `twin` pair, neither of which fits a density surface.
+  `"red-black"` sequential ramp ([`pal()`](pal.md)), running from black
+  (low density) to red (high density) - hardcoded rather than
+  theme-driven, since this is a continuous, unidirectional gradient,
+  unlike the active theme's categorical `palette` or diverging `twin`
+  pair, neither of which fits a density surface.
 
 - grid:
 
@@ -107,14 +106,10 @@ error.
 
 ## See also
 
-Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
+Other plot.bivariate: [`plotAssoc()`](plotAssoc.md),
+[`plotBag()`](plotBag.md), [`plotCor()`](plotCor.md),
+[`plotHeatmap()`](plotHeatmap.md), [`plotHexbin()`](plotHexbin.md),
+[`plotMosaic()`](plotMosaic.md), [`plotXY()`](plotXY.md)
 
 ## Examples
 

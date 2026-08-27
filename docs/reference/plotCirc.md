@@ -101,16 +101,12 @@ coordinates.
 
 ## See also
 
-Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
-[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotBinaryTree()`](binaryTree.md),
+[`plotLift()`](plotLift.md), [`plotMiss()`](plotMiss.md),
+[`plotPolar()`](plotPolar.md), [`plotPropCI()`](plotPropCI.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 

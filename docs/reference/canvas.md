@@ -46,9 +46,8 @@ The plot is created with these settings:
 
 ## See also
 
-Other graphics.setup:
-[`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md),
-[`setBackCol()`](https://andrisignorell.github.io/pharos/reference/setBackCol.md)
+Other graphics.setup: [`polarGrid()`](polarGrid.md),
+[`setBackCol()`](setBackCol.md)
 
 ## Examples
 

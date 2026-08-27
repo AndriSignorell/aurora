@@ -38,13 +38,10 @@ shape(s).
 
 ## See also
 
-[`polygon`](https://andrisignorell.github.io/pharos/reference/polygon.md),
-[`regPolygon`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-[`ellipse`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-[`arc`](https://andrisignorell.github.io/pharos/reference/arc.md)
+[`polygon`](polygon.md), [`regPolygon`](regPolygon.md),
+[`ellipse`](ellipse.md), [`arc`](arc.md)
 
-Other geometry.transformation:
-[`transformXY()`](https://andrisignorell.github.io/pharos/reference/transformXY.md)
+Other geometry.transformation: [`transformXY()`](transformXY.md)
 
 ## Examples
 

@@ -3,9 +3,8 @@
 Converts a matrix (or vector) to a `<table>` HTML fragment, with
 optional row/column headers, caption, per-column alignment and widths.
 The result has class `c("html", "character")` (see
-[`as.html`](https://andrisignorell.github.io/pharos/reference/as.html.md))
-and prints as a formatted text table via
-[`preview.html`](https://andrisignorell.github.io/pharos/reference/preview.html.md).
+[`as.html`](as.html.md)) and prints as a formatted text table via
+[`preview.html`](preview.html.md).
 
 ## Usage
 
@@ -98,11 +97,7 @@ an object of class `c("html", "character")`
 
 [bedrock::appendEnum](https://andrisignorell.github.io/bedrock/reference/appendEnum.html)
 
-Other html:
-[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
-[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
-[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
-[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md)
+Other html: [`as.fileLink()`](as.fileLink.md),
+[`as.html()`](as.html.md), [`as.img()`](as.img.md),
+[`embedFile()`](embedFile.md), [`escapeHtml()`](escapeHtml.md),
+[`htmlNotation`](htmlNotation.md), [`htmlSubscript`](htmlSubscript.md)

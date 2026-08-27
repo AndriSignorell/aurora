@@ -24,9 +24,6 @@ Character vector of colors.
 
 ## See also
 
-Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
-[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
-[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
-[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
+Other color.manipulation: [`addOpacity()`](addOpacity.md),
+[`colToOpaque()`](colToOpaque.md), [`darken()`](darken.md),
+[`lighten()`](lighten.md), [`mixColors()`](mixColors.md)

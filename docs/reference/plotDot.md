@@ -29,8 +29,7 @@ plotDot(
 
   numeric estimates or confidence interval data. Supported formats are a
   numeric vector, a numeric matrix, a three-dimensional numeric array,
-  or a `"CI"` object created with
-  [`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md)
+  or a `"CI"` object created with [`as.CI`](as.CI.md)
 
 - items:
 
@@ -114,11 +113,9 @@ columns define the groups. Consequently, a matrix with three columns is
 interpreted as three groups and not automatically as estimates with
 lower and upper confidence limits.
 
-Use
-[`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md) to
-declare explicitly that a matrix, data frame, list, or result from
-[`tapply`](https://rdrr.io/r/base/tapply.html) contains confidence
-interval data:
+Use [`as.CI`](as.CI.md) to declare explicitly that a matrix, data frame,
+list, or result from [`tapply`](https://rdrr.io/r/base/tapply.html)
+contains confidence interval data:
 
 
     plotDot(as.CI(x))
@@ -138,22 +135,15 @@ corresponding settings of the active theme.
 
 ## See also
 
-[`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md),
-[`is.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md),
+[`as.CI`](as.CI.md), [`is.CI`](as.CI.md),
 [`dotchart`](https://rdrr.io/r/graphics/dotchart.html)
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBar()`](plotBar.md), [`plotBox()`](plotBox.md),
+[`plotCatDist()`](plotCatDist.md), [`plotDens()`](plotDens.md),
+[`plotDensBox()`](plotDensBox.md), [`plotECDF()`](plotECDF.md),
+[`plotFdist()`](plotFdist.md), [`plotLines()`](plotLines.md),
+[`plotQQ()`](plotQQ.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

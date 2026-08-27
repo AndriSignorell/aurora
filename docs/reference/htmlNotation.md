@@ -24,14 +24,10 @@ a character vector with the diacritic's HTML entity appended
 
 ## See also
 
-Other html:
-[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
-[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
-[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
-[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
+Other html: [`as.fileLink()`](as.fileLink.md),
+[`as.html()`](as.html.md), [`as.img()`](as.img.md),
+[`embedFile()`](embedFile.md), [`escapeHtml()`](escapeHtml.md),
+[`htmlSubscript`](htmlSubscript.md), [`toHtmlTable()`](toHtmlTable.md)
 
 ## Examples
 

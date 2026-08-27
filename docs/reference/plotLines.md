@@ -97,15 +97,14 @@ plotLines(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/`NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - ...:
 
   additional graphical parameters passed to
   [`par`](https://rdrr.io/r/graphics/par.html) via
-  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  and to the plotting functions.
+  [`.applyParFromDots()`](graphics-framework.md) and to the plotting
+  functions.
 
 ## Value
 
@@ -125,18 +124,12 @@ available. The legend labels default to the column names of the data.
 
 ## See also
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBar()`](plotBar.md), [`plotBox()`](plotBox.md),
+[`plotCatDist()`](plotCatDist.md), [`plotDens()`](plotDens.md),
+[`plotDensBox()`](plotDensBox.md), [`plotDot()`](plotDot.md),
+[`plotECDF()`](plotECDF.md), [`plotFdist()`](plotFdist.md),
+[`plotQQ()`](plotQQ.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

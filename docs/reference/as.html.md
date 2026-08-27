@@ -1,8 +1,8 @@
 # Mark a character vector as HTML
 
 Tags a character vector with the S3 class `"html"` so that it prints via
-[`preview.html`](https://andrisignorell.github.io/pharos/reference/preview.html.md)
-as readable text instead of as a raw character vector.
+[`preview.html`](preview.html.md) as readable text instead of as a raw
+character vector.
 
 ## Usage
 
@@ -22,14 +22,10 @@ as.html(x)
 
 ## See also
 
-Other html:
-[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
-[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
-[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
+Other html: [`as.fileLink()`](as.fileLink.md), [`as.img()`](as.img.md),
+[`embedFile()`](embedFile.md), [`escapeHtml()`](escapeHtml.md),
+[`htmlNotation`](htmlNotation.md), [`htmlSubscript`](htmlSubscript.md),
+[`toHtmlTable()`](toHtmlTable.md)
 
 ## Examples
 

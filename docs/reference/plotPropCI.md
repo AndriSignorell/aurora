@@ -59,8 +59,7 @@ plotPropCI(
   character vector of length 2 specifying fill colours for the stacked
   bar. `.useTheme` (default) resolves to `getTheme()$twin` - the active
   theme's two-color pair. Note this is purely "first label gets the
-  first color"; unlike
-  [`plotCor`](https://andrisignorell.github.io/pharos/reference/plotCor.md)/[`plotWeb`](https://andrisignorell.github.io/pharos/reference/plotWeb.md),
+  first color"; unlike [`plotCor`](plotCor.md)/[`plotWeb`](plotWeb.md),
   there is no positive/ negative sign convention here, since proportions
   of two arbitrary categories (e.g. "yes"/"no") have no inherent sign.
 
@@ -69,10 +68,9 @@ plotPropCI(
   colour for the confidence interval bands. Default is a
   semi-transparent grey (`addOpacity("grey80", 0.12)`). Deliberately not
   theme-driven (like the sequential scales in
-  [`plotDens2D`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md)/[`plotHeatmap`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md)):
-  this is a structural mechanism (many overlapping translucent bands
-  building a gradient via overdraw), not a categorical or diverging
-  color choice.
+  [`plotDens2D`](plotDens2D.md)/[`plotHeatmap`](plotHeatmap.md)): this
+  is a structural mechanism (many overlapping translucent bands building
+  a gradient via overdraw), not a categorical or diverging color choice.
 
 - border:
 
@@ -110,8 +108,7 @@ plotPropCI(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - ...:
 
@@ -136,19 +133,14 @@ all bands overlap. A vertical segment marks the observed proportion.
 
 ## See also
 
-[`prop.test`](https://rdrr.io/r/stats/prop.test.html),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[`prop.test`](https://rdrr.io/r/stats/prop.test.html), [theme](theme.md)
 
-Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotBinaryTree()`](binaryTree.md),
+[`plotCirc()`](plotCirc.md), [`plotLift()`](plotLift.md),
+[`plotMiss()`](plotMiss.md), [`plotPolar()`](plotPolar.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 

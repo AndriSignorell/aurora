@@ -46,11 +46,11 @@ The function uses Unicode-aware character splitting via
 
 ## See also
 
-[`strTrim`](https://andrisignorell.github.io/pharos/reference/strTrim.md),
+[`strTrim`](strTrim.md),
 [`stri_split_boundaries`](https://rdrr.io/pkg/stringi/man/stri_split_boundaries.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

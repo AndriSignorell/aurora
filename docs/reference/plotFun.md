@@ -75,9 +75,7 @@ plotFun(
 
   color of the line. `.useTheme` (default) resolves to
   `getTheme()$twin[1]` - the primary accent color, consistent with
-  [`lines.loess`](https://andrisignorell.github.io/pharos/reference/lines.loess.md)
-  and
-  [`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md).
+  [`lines.loess`](lines.loess.md) and [`plotQQ()`](plotQQ.md).
 
 - lwd:
 
@@ -97,8 +95,7 @@ plotFun(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - ...:
 
@@ -125,9 +122,8 @@ Additional parameters fixed for the expression can be passed via `args`.
 
 ## See also
 
-Other plot.distribution:
-[`plotProbDist()`](https://andrisignorell.github.io/pharos/reference/plotProbDist.md),
-[`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md)
+Other plot.distribution: [`plotProbDist()`](plotProbDist.md),
+[`shade()`](shade.md)
 
 ## Examples
 

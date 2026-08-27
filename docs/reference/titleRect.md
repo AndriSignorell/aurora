@@ -59,13 +59,10 @@ nothing is returned
 
 [`title`](https://rdrr.io/r/graphics/title.html)
 
-Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md)
+Other graphics.annotation: [`barText()`](barText.md),
+[`boxedText()`](boxedText.md), [`colLegend()`](colLegend.md),
+[`errBars()`](errBars.md), [`stamp()`](stamp.md),
+[`textLegend()`](textLegend.md)
 
 ## Examples
 

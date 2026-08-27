@@ -23,9 +23,7 @@ fmCI(x, template = NULL, ...)
 
 - ...:
 
-  the dots are passed on to the
-  [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md)
-  function.
+  the dots are passed on to the [`fm()`](fm.md) function.
 
 ## Value
 
@@ -33,14 +31,11 @@ a formatted string
 
 ## See also
 
-[`fm`](https://andrisignorell.github.io/pharos/reference/fm.md)
+[`fm`](fm.md)
 
-Other format:
-[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
+Other format: [`convUnit()`](convUnit.md), [`fm()`](fm.md),
+[`print.Unit()`](print.Unit.md), [`style()`](style.md),
+[`unit()`](unit.md)
 
 ## Examples
 

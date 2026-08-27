@@ -139,7 +139,7 @@ readability compared to overlaid density plots.
 
 ## See also
 
-[`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md)
+[`plotDens`](plotDens.md)
 
 ## Examples
 

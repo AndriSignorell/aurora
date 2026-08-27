@@ -194,8 +194,7 @@ fm(
   or c respectively. The default is `NULL` which would just leave the
   strings as they are.  
   This argument is send directly to the function
-  [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
-  as argument `sep`.
+  [`strAlign()`](strAlign.md) as argument `sep`.
 
 - lang:
 
@@ -287,12 +286,11 @@ frequently used formats there are the following special codes available:
 | `p*` | p-value stars | will produce p-value and significance stars |
 
 `fmt` can as well be an object of class "`Style`" consisting of a list
-out of the arguments above (as created by
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md)).
-This allows to store and manage the full format in variables or as
-options and use it as format template subsequently. Arguments supplied
-directly to `fm()` override the corresponding Style settings, including
-an explicitly supplied `NULL`.
+out of the arguments above (as created by [`style()`](style.md)). This
+allows to store and manage the full format in variables or as options
+and use it as format template subsequently. Arguments supplied directly
+to `fm()` override the corresponding Style settings, including an
+explicitly supplied `NULL`.
 
 For data frames, every formatting argument must have length one or the
 number of columns. Length-one arguments are recycled, allowing each
@@ -313,14 +311,11 @@ are forwarded to that function.
 [base::Sys.setlocale](https://rdrr.io/r/base/locales.html),  
 [`DescToolsX::weekday`](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
 [`DescToolsX::month`](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[theme](theme.md)
 
-Other format:
-[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
-[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
+Other format: [`convUnit()`](convUnit.md), [`fmCI()`](fmCI.md),
+[`print.Unit()`](print.Unit.md), [`style()`](style.md),
+[`unit()`](unit.md)
 
 ## Examples
 

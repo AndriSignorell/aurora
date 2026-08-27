@@ -40,11 +40,10 @@ This is just a wrapper for the function
 
 ## See also
 
-[`strChop`](https://andrisignorell.github.io/pharos/reference/strChop.md),
-[`regexpr`](https://rdrr.io/r/base/grep.html)
+[`strChop`](strChop.md), [`regexpr`](https://rdrr.io/r/base/grep.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

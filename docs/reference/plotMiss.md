@@ -62,16 +62,12 @@ Following an idea of Henk Harmsen <henk@carbonmetrics.com>
 [`hclust`](https://rdrr.io/r/stats/hclust.html),
 [`countCompCases`](https://andrisignorell.github.io/bedrock/reference/countCompCases.html)
 
-Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotBinaryTree()`](binaryTree.md),
+[`plotCirc()`](plotCirc.md), [`plotLift()`](plotLift.md),
+[`plotPolar()`](plotPolar.md), [`plotPropCI()`](plotPropCI.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 

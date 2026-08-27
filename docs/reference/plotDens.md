@@ -112,9 +112,7 @@ plotDens(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/`NULL`, or an explicit string, as
-  for
-  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  (internal).
+  for [`.withGraphicsState()`](graphics-framework.md) (internal).
 
 ## Value
 
@@ -148,18 +146,12 @@ and `.theme()`.
 [`cdplot`](https://rdrr.io/r/graphics/cdplot.html),
 [`resolveFormula`](https://andrisignorell.github.io/bedrock/reference/resolveFormula.html)
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBar()`](plotBar.md), [`plotBox()`](plotBox.md),
+[`plotCatDist()`](plotCatDist.md), [`plotDensBox()`](plotDensBox.md),
+[`plotDot()`](plotDot.md), [`plotECDF()`](plotECDF.md),
+[`plotFdist()`](plotFdist.md), [`plotLines()`](plotLines.md),
+[`plotQQ()`](plotQQ.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

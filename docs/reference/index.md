@@ -1,447 +1,270 @@
 # Package index
 
-## All functions
+## Univariate & Distribution Plots
 
-- [`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md)
-  : Coordinates for Named Plot Positions
+Plots for distributions, grouped data, functions, and time series.
 
-- [`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md)
-  : Add an Alpha Channel to Colors
+- [`plotArea()`](plotArea.md) : Stacked Area Plot
+- [`plotBar()`](plotBar.md) : Themed Barplot with Grid, Labels and
+  Optional Connecting Lines
+- [`plotBox()`](plotBox.md) : Grouped Boxplot
+- [`plotCatDist()`](plotCatDist.md) : Categorical Distribution Plot
+- [`plotDens()`](plotDens.md) : Grouped Density Plot
+- [`plotDensBox()`](plotDensBox.md) : Density and Boxplot Combination
+  (Grouped)
+- [`plotDot()`](plotDot.md) : Dot Plot for Estimates and Confidence
+  Intervals
+- [`plotECDF()`](plotECDF.md) : Empirical Cumulative Distribution
+  Function
+- [`plotFdist()`](plotFdist.md) : Frequency Distribution Plot
+- [`plotLines()`](plotLines.md) : Line Plot for Multiple Series
+- [`plotQQ()`](plotQQ.md) : QQ-Plot for Any Distribution
+- [`plotRidge(`*`<default>`*`)`](plotRidge.md)
+  [`plotRidge(`*`<formula>`*`)`](plotRidge.md) : Ridge Plot (Stacked
+  Density Plot)
+- [`plotViolin()`](plotViolin.md) : Violin Plot
+- [`plotFun()`](plotFun.md) : Plot Mathematical Functions
+- [`plotProbDist()`](plotProbDist.md) : Plot Probability Distribution
+- [`shade()`](shade.md) : Produce a shaded Curve
 
-- [`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md) :
-  Arc Geometry
+## Bivariate & Specialized Plots
 
-- [`as.CI()`](https://andrisignorell.github.io/pharos/reference/as.CI.md)
-  [`is.CI()`](https://andrisignorell.github.io/pharos/reference/as.CI.md)
-  : Confidence Interval Objects
+Plots for relationships, contingency tables, diagnostics, and
+specialized displays.
 
-- [`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md)
-  : Link to a self-contained embedded file
+- [`plotAssoc()`](plotAssoc.md) : Association Plot for Contingency
+  Tables
 
-- [`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md)
-  : Mark a character vector as HTML
+- [`plotBag()`](plotBag.md) : Create a Bagplot (Bivariate Boxplot)
 
-- [`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md)
-  : Embed a plot as an inline HTML image
+- [`plotBubble(`*`<default>`*`)`](plotBubble.md)
+  [`plotBubble(`*`<formula>`*`)`](plotBubble.md) : Bubble Plot
 
-- [`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md)
-  : Place a Break Mark on an Axis
+- [`plotCor()`](plotCor.md) : Correlation Matrix Plot with Theming and
+  Optional Labels
 
-- [`axisFmt()`](https://andrisignorell.github.io/pharos/reference/axisFmt.md)
-  : Draw an Axis With Formatted or Rotated Labels
+- [`plotDens2D()`](plotDens2D.md) : Two-Dimensional Kernel Density Plot
 
-- [`axTicks.POSIXct()`](https://andrisignorell.github.io/pharos/reference/axTicks.md)
-  [`axTicks.Date()`](https://andrisignorell.github.io/pharos/reference/axTicks.md)
-  : Compute Axis Tickmark Locations (For POSIXct Axis)
+- [`plotHeatmap()`](plotHeatmap.md) : Heatmap for Categorical Data
 
-- [`band()`](https://andrisignorell.github.io/pharos/reference/band.md)
-  : Band Geometry
+- [`plotHexbin()`](plotHexbin.md) : Hexagonal Binning Plot
 
-- [`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md)
-  : Place Value Labels on a Barplot
+- [`plotMosaic()`](plotMosaic.md) : Mosaic Plot for 2-Way Contingency
+  Tables
 
-- [`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md)
-  : Bézier Geometry
+- [`plotXY()`](plotXY.md) : Scatterplot with Optional Smooth Lines
 
-- [`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md)
-  : Binary Tree
+- [`plotBinaryTree()`](binaryTree.md) : Binary Tree
 
-- [`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md)
-  : Add Text in a Box to a Plot
+- [`plotCirc()`](plotCirc.md) : Circular Chord Diagram
 
-- [`canvas()`](https://andrisignorell.github.io/pharos/reference/canvas.md)
-  : Canvas for Geometric Plotting
+- [`plotFacet()`](plotFacet.md) : Facet Panel Matrix in Base Graphics
 
-- [`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md)
-  : Circle Geometry
+- [`plotLift()`](plotLift.md) : Lift Chart
 
-- [`cmykToCmy()`](https://andrisignorell.github.io/pharos/reference/cmykToCmy.md)
-  : Convert CMYK to CMY
+- [`plotMiss()`](plotMiss.md) : Plot Missing Data
 
-- [`cmykToRgb()`](https://andrisignorell.github.io/pharos/reference/cmykToRgb.md)
-  : Convert CMYK to RGB
+- [`plotPolar()`](plotPolar.md) : Polar Plot for Radial Data
 
-- [`cmyToCmyk()`](https://andrisignorell.github.io/pharos/reference/cmyToCmyk.md)
-  : Convert CMY to CMYK
+- [`plotPropCI()`](plotPropCI.md) : Plot Proportions with Confidence
+  Intervals
 
-- [`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md)
-  : Add a Color Legend to a Plot
+- [`plotTernary()`](plotTernary.md) : Ternary Plot
 
-- [`color-conversion-overview`](https://andrisignorell.github.io/pharos/reference/color-conversion-overview.md)
-  : Color Conversion Functions in pharos
+- [`plotTimeSeries()`](plotTimeSeries.md) : Combined Plot of a Time
+  Series and Its ACF and PACF
 
-- [`colToHex()`](https://andrisignorell.github.io/pharos/reference/colToHex.md)
-  : Convert R Colors to Hexadecimal Colors
+- [`plotTreemap()`](plotTreemap.md) : Treemap Plot
 
-- [`colToHSV()`](https://andrisignorell.github.io/pharos/reference/colToHSV.md)
-  : Convert R Colors to HSV
+- [`plotWeb()`](plotWeb.md) : Plot a Web of Connected Points
 
-- [`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md)
-  : Equivalent Opaque Color for Transparent Color
+- [`plot(`*`<BlandAltman>`*`)`](plot.BlandAltman.md) : Bland-Altman Plot
 
-- [`colToRGB()`](https://andrisignorell.github.io/pharos/reference/colToRGB.md)
-  : Convert R Colors to RGB
-
-- [`contrastColor()`](https://andrisignorell.github.io/pharos/reference/contrastColor.md)
-  : Choose Optimal Text Color Based on WCAG Contrast
-
-- [`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md)
-  : Symbolic Unit Conversion Engine
-
-- [`polToCart()`](https://andrisignorell.github.io/pharos/reference/coordinate-conversions.md)
-  [`cartToPol()`](https://andrisignorell.github.io/pharos/reference/coordinate-conversions.md)
-  [`cartToSph()`](https://andrisignorell.github.io/pharos/reference/coordinate-conversions.md)
-  [`sphToCart()`](https://andrisignorell.github.io/pharos/reference/coordinate-conversions.md)
-  : Coordinate Transformations Cartesian/Polar/Spherical
-
-- [`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md)
-  : Darken Colors
-
-- [`degToRad()`](https://andrisignorell.github.io/pharos/reference/degree-radians-conversion.md)
-  [`radToDeg()`](https://andrisignorell.github.io/pharos/reference/degree-radians-conversion.md)
-  : Convert Degrees to Radians and Vice Versa
-
-- [`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md)
-  : Ellipse Geometry
-
-- [`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md)
-  : Base64-encode a file
-
-- [`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md)
-  : Add Error Bars to an Existing Plot
-
-- [`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md)
-  : Escape HTML special characters
-
-- [`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md)
-  : Fade Colors
-
-- [`findColor()`](https://andrisignorell.github.io/pharos/reference/findColor.md)
-  : Get Color on a Defined Color Range
-
-- [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) :
-  Format Numbers and Dates
-
-- [`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md)
-  : Format Confidence Intervals
-
-- [`ftable(`*`<list>`*`)`](https://andrisignorell.github.io/pharos/reference/ftable.list.md)
-  : Flat Contingency Table for tapply-Like Lists
-
-- [`grayScale()`](https://andrisignorell.github.io/pharos/reference/grayScale.md)
-  : Convert Colors to grayScale
-
-- [`hcol()`](https://andrisignorell.github.io/pharos/reference/hcol.md)
-  : Helsana Colors
-
-- [`hexToCol()`](https://andrisignorell.github.io/pharos/reference/hexToCol.md)
-  : Convert Hex Colors to Named R Colors
-
-- [`hexToRGB()`](https://andrisignorell.github.io/pharos/reference/hexToRGB.md)
-  : Convert Hex Colors to RGB
-
-- [`htmlHat()`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md)
-  [`htmlBar()`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md)
-  : HTML notation for hat and bar diacritics
-
-- [`` `%_%` ``](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md)
-  : Subscript notation
-
-- [`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md)
-  : Check Whether the Current Plot Region Is Large Enough
-
-- [`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md)
-  : Lighten Colors
-
-- [`lines(`*`<loess>`*`)`](https://andrisignorell.github.io/pharos/reference/lines.loess.md)
-  : Add a Loess Smoother and Its Confidence Band
-
-- [`lineSep()`](https://andrisignorell.github.io/pharos/reference/lineSep.md)
-  : Create a Line Separator String
-
-- [`lines(`*`<lm>`*`)`](https://andrisignorell.github.io/pharos/reference/linesLm.md)
-  [`lines(`*`<lmlog>`*`)`](https://andrisignorell.github.io/pharos/reference/linesLm.md)
-  : Add a Linear Regression Line
-
-- [`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md)
-  : Convert Line Coordinates To User Coordinates
-
-- [`longToRGB()`](https://andrisignorell.github.io/pharos/reference/longToRGB.md)
-  : Convert Long Integers to RGB
-
-- [`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md) :
-  Get or set plot margins conveniently
-
-- [`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
-  : Mix Colors
-
-- [`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md)
-  [`plot(`*`<Palette>`*`)`](https://andrisignorell.github.io/pharos/reference/pal.md)
-  : Get a Color Palette
-
-- [`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md)
-  : List Available Palette Names
-
-- [`plot(`*`<BlandAltman>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.BlandAltman.md)
-  : Bland-Altman Plot
-
-- [`plot(`*`<Desc.qn>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Desc.qn.md)
-  :
+- [`plot(`*`<Desc.qn>`*`)`](plot.Desc.qn.md) :
 
   Plot Method for Numeric-Categorical `Desc` Objects
 
-- [`plot(`*`<Desc.table>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Desc.table.md)
-  :
+- [`plot(`*`<Desc.table>`*`)`](plot.Desc.table.md) :
 
   Plot Method for Categorical-Categorical `Desc` Objects
 
-- [`plot(`*`<Lc>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  [`lines(`*`<Lc>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  [`points(`*`<Lc>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  [`lines(`*`<LcList>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  [`points(`*`<LcList>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  [`plot(`*`<LcList>`*`)`](https://andrisignorell.github.io/pharos/reference/plot.Lc.md)
-  : Plot Methods for Lorenz Curve Objects
-
-- [`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md)
-  : Stacked Area Plot
-
-- [`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md)
-  : Association Plot for Contingency Tables
-
-- [`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md)
-  : Create a Bagplot (Bivariate Boxplot)
-
-- [`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md)
-  : Themed Barplot with Grid, Labels and Optional Connecting Lines
-
-- [`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md)
-  : Grouped Boxplot
-
-- [`plotBubble(`*`<default>`*`)`](https://andrisignorell.github.io/pharos/reference/plotBubble.md)
-  [`plotBubble(`*`<formula>`*`)`](https://andrisignorell.github.io/pharos/reference/plotBubble.md)
-  : Bubble Plot
-
-- [`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md)
-  : Categorical Distribution Plot
-
-- [`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md)
-  : Circular Chord Diagram
-
-- [`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md)
-  : Correlation Matrix Plot with Theming and Optional Labels
-
-- [`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md)
-  : Grouped Density Plot
-
-- [`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md)
-  : Two-Dimensional Kernel Density Plot
-
-- [`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md)
-  : Density and Boxplot Combination (Grouped)
-
-- [`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md)
-  : Dot Plot for Estimates and Confidence Intervals
-
-- [`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md)
-  : Empirical Cumulative Distribution Function
-
-- [`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md)
-  : Facet Panel Matrix in Base Graphics
-
-- [`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md)
-  : Frequency Distribution Plot
-
-- [`plotFun()`](https://andrisignorell.github.io/pharos/reference/plotFun.md)
-  : Plot Mathematical Functions
-
-- [`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md)
-  : Heatmap for Categorical Data
-
-- [`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md)
-  : Hexagonal Binning Plot
-
-- [`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md)
-  : Lift Chart
-
-- [`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md)
-  : Line Plot for Multiple Series
-
-- [`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md)
-  : Plot Missing Data
-
-- [`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md)
-  : Mosaic Plot for 2-Way Contingency Tables
-
-- [`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md)
-  : Polar Plot for Radial Data
-
-- [`plotProbDist()`](https://andrisignorell.github.io/pharos/reference/plotProbDist.md)
-  : Plot Probability Distribution
-
-- [`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md)
-  : Plot Proportions with Confidence Intervals
-
-- [`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md)
-  : QQ-Plot for Any Distribution
-
-- [`plotRidge(`*`<default>`*`)`](https://andrisignorell.github.io/pharos/reference/plotRidge.md)
-  [`plotRidge(`*`<formula>`*`)`](https://andrisignorell.github.io/pharos/reference/plotRidge.md)
-  : Ridge Plot (Stacked Density Plot)
-
-- [`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md)
-  : Ternary Plot
-
-- [`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md)
-  : Combined Plot of a Time Series and Its ACF and PACF
-
-- [`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md)
-  : Treemap Plot
-
-- [`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
-  : Violin Plot
-
-- [`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
-  : Plot a Web of Connected Points
-
-- [`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
-  : Scatterplot with Optional Smooth Lines
-
-- [`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md)
-  : Draw a Polar Grid with Optional Labels
-
-- [`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md)
-  : Draw Polygonal Geometries
-
-- [`preview(`*`<html>`*`)`](https://andrisignorell.github.io/pharos/reference/preview.html.md)
-  : Print HTML markup as readable text
-
-- [`preview()`](https://andrisignorell.github.io/pharos/reference/preview.md)
-  : Preview an Object
-
-- [`print(`*`<Unit>`*`)`](https://andrisignorell.github.io/pharos/reference/print.Unit.md)
-  : Print Object with Unit
-
-- [`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md)
-  : Regular Polygon Geometry
-
-- [`rgbToCmy()`](https://andrisignorell.github.io/pharos/reference/rgbToCmy.md)
-  : Convert RGB to CMY
-
-- [`rgbToCol()`](https://andrisignorell.github.io/pharos/reference/rgbToCol.md)
-  : Convert RGB Colors to the Nearest Named R Color
-
-- [`rgbToHex()`](https://andrisignorell.github.io/pharos/reference/rgbToHex.md)
-  : Convert RGB to Hexadecimal Colors
-
-- [`rgbToLong()`](https://andrisignorell.github.io/pharos/reference/rgbToLong.md)
-  : Convert RGB to Long Integers
-
-- [`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
-  : Ring Geometry
-
-- [`rotate()`](https://andrisignorell.github.io/pharos/reference/rotate.md)
-  : Rotate a Geometric Structure
-
-- [`setBackCol()`](https://andrisignorell.github.io/pharos/reference/setBackCol.md)
-  : Background of a Plot
-
-- [`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md)
-  : Produce a shaded Curve
-
-- [`splineX()`](https://andrisignorell.github.io/pharos/reference/splineCI.md)
-  [`lines(`*`<SplineX>`*`)`](https://andrisignorell.github.io/pharos/reference/splineCI.md)
-  : Add a Spline Smoother
-
-- [`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
-  : Spread Out a Vector of Numbers To a Minimum Interval
-
-- [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md)
-  : Date/Time/Directory Stamp the Current Plot
-
-- [`strAbbr()`](https://andrisignorell.github.io/pharos/reference/strAbbr.md)
-  : Abbreviate Strings Uniquely
-
-- [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
-  : Align Strings
-
-- [`strCap()`](https://andrisignorell.github.io/pharos/reference/strCap.md)
-  : Capitalize Strings
-
-- [`strChop()`](https://andrisignorell.github.io/pharos/reference/strChop.md)
-  : Split a String into a Number of Sections of Defined Length
-
-- [`strCountW()`](https://andrisignorell.github.io/pharos/reference/strCountW.md)
-  : Count Words in Strings
-
-- [`strDist()`](https://andrisignorell.github.io/pharos/reference/strDist.md)
-  : Compute Distances Between Strings
-
-- [`strExtract()`](https://andrisignorell.github.io/pharos/reference/strExtract.md)
-  : Extract First Match from Strings
-
-- [`strExtractBetween()`](https://andrisignorell.github.io/pharos/reference/strExtractBetween.md)
-  : Extract Substrings Between Patterns
-
-- [`string-overview`](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-  : String Functions in pharos
-
-- [`strIsNumeric()`](https://andrisignorell.github.io/pharos/reference/strIsNumeric.md)
-  : Check if Character Strings Represent Numeric Values
-
-- [`strLeft()`](https://andrisignorell.github.io/pharos/reference/strLeftRight.md)
-  [`strRight()`](https://andrisignorell.github.io/pharos/reference/strLeftRight.md)
-  : Returns the Left Or the Right Part Of a String
-
-- [`strLen()`](https://andrisignorell.github.io/pharos/reference/strLen.md)
-  : String length
-
-- [`strPad()`](https://andrisignorell.github.io/pharos/reference/strPad.md)
-  : Pad a String With Justification
-
-- [`strPos()`](https://andrisignorell.github.io/pharos/reference/strPos.md)
-  : Find Position of First Occurrence Of a String
-
-- [`strRev()`](https://andrisignorell.github.io/pharos/reference/strRev.md)
-  : Reverse Strings
-
-- [`strSpell()`](https://andrisignorell.github.io/pharos/reference/strSpell.md)
-  : Spell Strings Using Phonetic Alphabets
-
-- [`strSplit()`](https://andrisignorell.github.io/pharos/reference/strSplit.md)
-  : Split Strings
-
-- [`strTrim()`](https://andrisignorell.github.io/pharos/reference/strTrim.md)
-  : Remove Leading/Trailing Whitespace From A String
-
-- [`strTrunc()`](https://andrisignorell.github.io/pharos/reference/strTrunc.md)
-  : Truncate Strings and Add Ellipses If a String is Truncated.
-
-- [`strVal()`](https://andrisignorell.github.io/pharos/reference/strVal.md)
-  : Extract Numeric Values from Strings
-
-- [`styles()`](https://andrisignorell.github.io/pharos/reference/style.md)
-  [`style()`](https://andrisignorell.github.io/pharos/reference/style.md)
-  [`print(`*`<Style>`*`)`](https://andrisignorell.github.io/pharos/reference/style.md)
-  : Format Styles
-
-- [`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md)
-  : Direct Labels in the Right Margin
-
-- [`getTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
-  [`setTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
-  [`resetTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
-  : pharos's Graphics and Formatting Theme
-
-- [`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
-  : Plot Boxed Annotation
-
-- [`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
-  : Render a matrix as an HTML table
-
-- [`transformXY()`](https://andrisignorell.github.io/pharos/reference/transformXY.md)
-  : Apply Geometric Transformations to Coordinates
-
-- [`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
-  [`` `unit<-`() ``](https://andrisignorell.github.io/pharos/reference/unit.md)
-  : Get or Set Unit Attribute
+- [`plot(`*`<Lc>`*`)`](plot.Lc.md) [`lines(`*`<Lc>`*`)`](plot.Lc.md)
+  [`points(`*`<Lc>`*`)`](plot.Lc.md)
+  [`lines(`*`<LcList>`*`)`](plot.Lc.md)
+  [`points(`*`<LcList>`*`)`](plot.Lc.md)
+  [`plot(`*`<LcList>`*`)`](plot.Lc.md) : Plot Methods for Lorenz Curve
+  Objects
+
+## Annotation, Axes & Layout
+
+Plot annotation, axes, smoothers, themes, and graphics-state helpers.
+
+- [`abcCoords()`](abcCoords.md) : Coordinates for Named Plot Positions
+- [`axisBreak()`](axisBreak.md) : Place a Break Mark on an Axis
+- [`axisFmt()`](axisFmt.md) : Draw an Axis With Formatted or Rotated
+  Labels
+- [`axTicks.POSIXct()`](axTicks.md) [`axTicks.Date()`](axTicks.md) :
+  Compute Axis Tickmark Locations (For POSIXct Axis)
+- [`barText()`](barText.md) : Place Value Labels on a Barplot
+- [`boxedText()`](boxedText.md) : Add Text in a Box to a Plot
+- [`colLegend()`](colLegend.md) : Add a Color Legend to a Plot
+- [`errBars()`](errBars.md) : Add Error Bars to an Existing Plot
+- [`polarGrid()`](polarGrid.md) : Draw a Polar Grid with Optional Labels
+- [`stamp()`](stamp.md) : Date/Time/Directory Stamp the Current Plot
+- [`textLegend()`](textLegend.md) : Direct Labels in the Right Margin
+- [`titleRect()`](titleRect.md) : Plot Boxed Annotation
+- [`lines(`*`<lm>`*`)`](linesLm.md) [`lines(`*`<lmlog>`*`)`](linesLm.md)
+  : Add a Linear Regression Line
+- [`lines(`*`<loess>`*`)`](lines.loess.md) : Add a Loess Smoother and
+  Its Confidence Band
+- [`splineX()`](splineCI.md) [`lines(`*`<SplineX>`*`)`](splineCI.md) :
+  Add a Spline Smoother
+- [`.useTheme`](graphics-framework.md)
+  [`.drawGrid()`](graphics-framework.md)
+  [`.drawBox()`](graphics-framework.md)
+  [`.withGraphicsState()`](graphics-framework.md)
+  [`.applyParFromDots()`](graphics-framework.md)
+  [`.marTop()`](graphics-framework.md)
+  [`.resolveTitle()`](graphics-framework.md)
+  [`.marginLines()`](graphics-framework.md) : Graphics Framework Helpers
+- [`isValidPlotRegion()`](isValidPlotRegion.md) : Check Whether the
+  Current Plot Region Is Large Enough
+- [`mar()`](mar.md) : Get or set plot margins conveniently
+- [`preview()`](preview.md) : Preview an Object
+- [`setBackCol()`](setBackCol.md) : Background of a Plot
+- [`spreadOut()`](spreadOut.md) : Spread Out a Vector of Numbers To a
+  Minimum Interval
+- [`getTheme()`](theme.md) [`setTheme()`](theme.md)
+  [`resetTheme()`](theme.md) : pharos's Graphics and Formatting Theme
+
+## Geometry & Coordinates
+
+Geometric structures, coordinate conversions, and transformations.
+
+- [`arc()`](arc.md) : Arc Geometry
+- [`band()`](band.md) : Band Geometry
+- [`bezier()`](bezier.md) : Bézier Geometry
+- [`canvas()`](canvas.md) : Canvas for Geometric Plotting
+- [`circle()`](circle.md) : Circle Geometry
+- [`ellipse()`](ellipse.md) : Ellipse Geometry
+- [`polygon()`](polygon.md) : Draw Polygonal Geometries
+- [`regPolygon()`](regPolygon.md) : Regular Polygon Geometry
+- [`ring()`](ring.md) : Ring Geometry
+- [`polToCart()`](coordinate-conversions.md)
+  [`cartToPol()`](coordinate-conversions.md)
+  [`cartToSph()`](coordinate-conversions.md)
+  [`sphToCart()`](coordinate-conversions.md) : Coordinate
+  Transformations Cartesian/Polar/Spherical
+- [`degToRad()`](degree-radians-conversion.md)
+  [`radToDeg()`](degree-radians-conversion.md) : Convert Degrees to
+  Radians and Vice Versa
+- [`lineToUser()`](lineToUser.md) : Convert Line Coordinates To User
+  Coordinates
+- [`rotate()`](rotate.md) : Rotate a Geometric Structure
+- [`transformXY()`](transformXY.md) : Apply Geometric Transformations to
+  Coordinates
+
+## Colours & Palettes
+
+Colour conversion, manipulation, lookup, and palette construction.
+
+- [`color-conversion-overview`](color-conversion-overview.md) : Color
+  Conversion Functions in pharos
+- [`cmykToCmy()`](cmykToCmy.md) : Convert CMYK to CMY
+- [`cmykToRgb()`](cmykToRgb.md) : Convert CMYK to RGB
+- [`cmyToCmyk()`](cmyToCmyk.md) : Convert CMY to CMYK
+- [`colToHex()`](colToHex.md) : Convert R Colors to Hexadecimal Colors
+- [`colToHSV()`](colToHSV.md) : Convert R Colors to HSV
+- [`colToRGB()`](colToRGB.md) : Convert R Colors to RGB
+- [`grayScale()`](grayScale.md) : Convert Colors to grayScale
+- [`hexToCol()`](hexToCol.md) : Convert Hex Colors to Named R Colors
+- [`hexToRGB()`](hexToRGB.md) : Convert Hex Colors to RGB
+- [`longToRGB()`](longToRGB.md) : Convert Long Integers to RGB
+- [`rgbToCmy()`](rgbToCmy.md) : Convert RGB to CMY
+- [`rgbToCol()`](rgbToCol.md) : Convert RGB Colors to the Nearest Named
+  R Color
+- [`rgbToHex()`](rgbToHex.md) : Convert RGB to Hexadecimal Colors
+- [`rgbToLong()`](rgbToLong.md) : Convert RGB to Long Integers
+- [`addOpacity()`](addOpacity.md) : Add an Alpha Channel to Colors
+- [`colToOpaque()`](colToOpaque.md) : Equivalent Opaque Color for
+  Transparent Color
+- [`contrastColor()`](contrastColor.md) : Choose Optimal Text Color
+  Based on WCAG Contrast
+- [`darken()`](darken.md) : Darken Colors
+- [`fade()`](fade.md) : Fade Colors
+- [`findColor()`](findColor.md) : Get Color on a Defined Color Range
+- [`lighten()`](lighten.md) : Lighten Colors
+- [`mixColors()`](mixColors.md) : Mix Colors
+- [`hcol()`](hcol.md) : Helsana Colors
+- [`pal()`](pal.md) [`plot(`*`<Palette>`*`)`](pal.md) : Get a Color
+  Palette
+- [`palNames()`](palNames.md) : List Available Palette Names
+
+## Formatting, Units & Tables
+
+Formatting of values and confidence intervals, units, and table helpers.
+
+- [`fm()`](fm.md) : Format Numbers and Dates
+- [`fmCI()`](fmCI.md) : Format Confidence Intervals
+- [`styles()`](style.md) [`style()`](style.md)
+  [`print(`*`<Style>`*`)`](style.md) : Format Styles
+- [`as.CI()`](as.CI.md) [`is.CI()`](as.CI.md) : Confidence Interval
+  Objects
+- [`convUnit()`](convUnit.md) : Symbolic Unit Conversion Engine
+- [`print(`*`<Unit>`*`)`](print.Unit.md) : Print Object with Unit
+- [`unit()`](unit.md) [`` `unit<-`() ``](unit.md) : Get or Set Unit
+  Attribute
+- [`Formulas`](Formulas.md) : Formula Interface – Common Arguments
+- [`ftable(`*`<list>`*`)`](ftable.list.md) : Flat Contingency Table for
+  tapply-Like Lists
+- [`Prefix`](constants.md) : DescToolsX Constants
+
+## Strings
+
+String inspection, extraction, transformation, and formatting.
+
+- [`string-overview`](string-overview.md) : String Functions in pharos
+- [`strCountW()`](strCountW.md) : Count Words in Strings
+- [`strDist()`](strDist.md) : Compute Distances Between Strings
+- [`strIsNumeric()`](strIsNumeric.md) : Check if Character Strings
+  Represent Numeric Values
+- [`strLen()`](strLen.md) : String length
+- [`strPos()`](strPos.md) : Find Position of First Occurrence Of a
+  String
+- [`strChop()`](strChop.md) : Split a String into a Number of Sections
+  of Defined Length
+- [`strExtract()`](strExtract.md) : Extract First Match from Strings
+- [`strExtractBetween()`](strExtractBetween.md) : Extract Substrings
+  Between Patterns
+- [`strLeft()`](strLeftRight.md) [`strRight()`](strLeftRight.md) :
+  Returns the Left Or the Right Part Of a String
+- [`strSplit()`](strSplit.md) : Split Strings
+- [`strVal()`](strVal.md) : Extract Numeric Values from Strings
+- [`lineSep()`](lineSep.md) : Create a Line Separator String
+- [`strAbbr()`](strAbbr.md) : Abbreviate Strings Uniquely
+- [`strAlign()`](strAlign.md) : Align Strings
+- [`strCap()`](strCap.md) : Capitalize Strings
+- [`strPad()`](strPad.md) : Pad a String With Justification
+- [`strRev()`](strRev.md) : Reverse Strings
+- [`strSpell()`](strSpell.md) : Spell Strings Using Phonetic Alphabets
+- [`strTrim()`](strTrim.md) : Remove Leading/Trailing Whitespace From A
+  String
+- [`strTrunc()`](strTrunc.md) : Truncate Strings and Add Ellipses If a
+  String is Truncated.
+
+## HTML & Embedding
+
+HTML markup, embedded files and images, and self-contained HTML tables.
+
+- [`as.html()`](as.html.md) : Mark a character vector as HTML
+- [`preview(`*`<html>`*`)`](preview.html.md) : Print HTML markup as
+  readable text
+- [`as.fileLink()`](as.fileLink.md) : Link to a self-contained embedded
+  file
+- [`as.img()`](as.img.md) : Embed a plot as an inline HTML image
+- [`embedFile()`](embedFile.md) : Base64-encode a file
+- [`escapeHtml()`](escapeHtml.md) : Escape HTML special characters
+- [`htmlHat()`](htmlNotation.md) [`htmlBar()`](htmlNotation.md) : HTML
+  notation for hat and bar diacritics
+- [`` `%_%` ``](htmlSubscript.md) : Subscript notation
+- [`toHtmlTable()`](toHtmlTable.md) : Render a matrix as an HTML table

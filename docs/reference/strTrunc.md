@@ -2,9 +2,8 @@
 
 Truncates one or more strings to a specified length, adding an ellipsis
 (...) to those strings that have been truncated. The truncation can also
-be performed using word boundaries. Use
-[`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
-to justify the strings if needed.
+be performed using word boundaries. Use [`strAlign()`](strAlign.md) to
+justify the strings if needed.
 
 ## Usage
 
@@ -41,11 +40,10 @@ The string(s) passed as `x` now with a maximum length of `maxlen` + 3
 
 ## See also
 
-[`strAlign`](https://andrisignorell.github.io/pharos/reference/strAlign.md),
-[`strPad`](https://andrisignorell.github.io/pharos/reference/strPad.md)
+[`strAlign`](strAlign.md), [`strPad`](strPad.md)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

@@ -30,7 +30,7 @@ degrees.
 ## See also
 
 Other geometry.conversion:
-[`coordinate-conversions`](https://andrisignorell.github.io/pharos/reference/coordinate-conversions.md)
+[`coordinate-conversions`](coordinate-conversions.md)
 
 ## Examples
 

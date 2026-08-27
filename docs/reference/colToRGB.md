@@ -26,7 +26,7 @@ channels.
 ## See also
 
 [grDevices::col2rgb](https://rdrr.io/r/grDevices/col2rgb.html),
-[color-conversion-overview](https://andrisignorell.github.io/pharos/reference/color-conversion-overview.md)
+[color-conversion-overview](color-conversion-overview.md)
 
 ## Examples
 

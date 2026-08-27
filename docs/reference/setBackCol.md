@@ -29,9 +29,8 @@ setBackCol(col = "grey", region = c("plot", "figure"), border = NA)
 
 [`rect`](https://rdrr.io/r/graphics/rect.html)
 
-Other graphics.setup:
-[`canvas()`](https://andrisignorell.github.io/pharos/reference/canvas.md),
-[`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md)
+Other graphics.setup: [`canvas()`](canvas.md),
+[`polarGrid()`](polarGrid.md)
 
 ## Examples
 

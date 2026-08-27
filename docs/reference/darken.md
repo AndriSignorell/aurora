@@ -30,9 +30,6 @@ Colors are mixed linearly with black in RGB space: \$\$ x\_{new} = x
 
 ## See also
 
-Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
-[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
-[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
+Other color.manipulation: [`addOpacity()`](addOpacity.md),
+[`colToOpaque()`](colToOpaque.md), [`fade()`](fade.md),
+[`lighten()`](lighten.md), [`mixColors()`](mixColors.md)

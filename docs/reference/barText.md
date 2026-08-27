@@ -83,8 +83,7 @@ barText(
 
 - ...:
 
-  the dots are passed to the
-  [`boxedText`](https://andrisignorell.github.io/pharos/reference/boxedText.md).
+  the dots are passed to the [`boxedText`](boxedText.md).
 
 ## Value
 
@@ -104,13 +103,10 @@ clipped. This can be avoided by setting `xpd=TRUE`.
 
 ## See also
 
-Other graphics.annotation:
-[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
+Other graphics.annotation: [`boxedText()`](boxedText.md),
+[`colLegend()`](colLegend.md), [`errBars()`](errBars.md),
+[`stamp()`](stamp.md), [`textLegend()`](textLegend.md),
+[`titleRect()`](titleRect.md)
 
 ## Examples
 

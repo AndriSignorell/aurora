@@ -50,14 +50,10 @@ guard for conditional plotting, e.g.
 [`par`](https://rdrr.io/r/graphics/par.html) (entries `pin`, `fin`,
 `mar`), [`dev.cur`](https://rdrr.io/r/grDevices/dev.html)
 
-Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
-[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
+Other graphics.layout: [`abcCoords()`](abcCoords.md),
+[`axTicks`](axTicks.md), [`axisBreak()`](axisBreak.md),
+[`lineToUser()`](lineToUser.md), [`mar()`](mar.md),
+[`plotFacet()`](plotFacet.md), [`spreadOut()`](spreadOut.md)
 
 ## Examples
 
