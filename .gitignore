@@ -5,6 +5,7 @@
 .positai
 Rplots.pdf
 desktop\*.ini$
-src\*.dll
-src\*.o
 docs
+*.o
+*.dll
+*.so

@@ -186,3 +186,5 @@ plotFdist(bedrock::Pizza$temperature)
 plot(1:5, c(7, 6, 11, 5, 12), xaxt = "n", xlab = "")
 axisFmt(1, at = 1:5, labels = paste("Category", LETTERS[1:5]), srt = 45)
 
+grep("readRegistry", readLines("NAMESPACE"), value = TRUE)
+unlink(Sys.glob("src/*.o"))

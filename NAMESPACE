@@ -352,7 +352,6 @@ importFrom(utils,
   combn,
   head,
   modifyList,
-  readRegistry,
   tail
 )
 useDynLib(pharos, .registration = TRUE)

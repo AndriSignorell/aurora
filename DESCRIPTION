@@ -1,6 +1,6 @@
 Package: pharos
 Title: Descriptive Statistics Graphics and Utilities
-Version: 0.0.0.948
+Version: 0.0.0.949
 Authors@R: c(
   person(given="Andri", family="Signorell", 
          email = "andri@signorell.net", 
@@ -33,7 +33,8 @@ Roxygen: list(markdown = TRUE)
 Imports: graphics, Rcpp, bedrock, MASS, cli, withr, stringi, methods, base64enc
 Suggests:
     testthat (>= 3.0.0), R.rsp, hexbin, aplpack, prettyunits
-Remotes:  AndriSignorell/bedrock
+Remotes:  
+    AndriSignorell/bedrock
 Config/testthat/edition: 3
 VignetteBuilder: R.rsp
 URL: https://andrisignorell.github.io/pharos/,
