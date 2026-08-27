@@ -52,8 +52,8 @@ package.
 [`stri_sub`](https://rdrr.io/pkg/stringi/man/stri_sub.html),
 [`stri_length`](https://rdrr.io/pkg/stringi/man/stri_length.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

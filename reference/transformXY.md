@@ -5,8 +5,7 @@ The transformations are applied in the following order:
 
 1.  Scaling
 
-2.  Rotation (see
-    [`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md))
+2.  Rotation (see [`rotate`](rotate.md))
 
 3.  Translation
 
@@ -51,9 +50,8 @@ transformXY(
 
 - asp:
 
-  aspect ratio adjustment passed to
-  [`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md).
-  Default is `1`.
+  aspect ratio adjustment passed to [`rotate`](rotate.md). Default is
+  `1`.
 
 ## Value
 
@@ -63,14 +61,11 @@ A list with components `x` and `y`, as returned by
 ## Details
 
 This function is a convenience wrapper combining basic affine
-transformations. Internally, it uses
-[`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md)
-for rotation.
+transformations. Internally, it uses [`rotate`](rotate.md) for rotation.
 
 ## See also
 
-Other geometry.transformation:
-[`rotate()`](https://andrisignorell.github.io/pharos/reference/rotate.md)
+Other geometry.transformation: [`rotate()`](rotate.md)
 
 ## Examples
 

@@ -30,7 +30,7 @@ lines(
 
   line color of the smoother. `.useTheme` (default) resolves to
   `getTheme()$twin[1]` - the first of the theme's two-color pair (see
-  [theme](https://andrisignorell.github.io/pharos/reference/theme.md)).
+  [theme](theme.md)).
 
 - lwd:
 
@@ -79,9 +79,8 @@ Loess can result in substantial computational load for large datasets.
 [`scatter.smooth`](https://rdrr.io/r/stats/scatter.smooth.html),
 [`smooth.spline`](https://rdrr.io/r/stats/smooth.spline.html)
 
-Other graphics.trendlines:
-[`lines.lm()`](https://andrisignorell.github.io/pharos/reference/linesLm.md),
-[`splineCI`](https://andrisignorell.github.io/pharos/reference/splineCI.md)
+Other graphics.trendlines: [`lines.lm()`](linesLm.md),
+[`splineCI`](splineCI.md)
 
 ## Examples
 

@@ -37,153 +37,138 @@ remotes::install_github("AndriSignorell/pharos")
 
 ### 🔹 Univariate and Distribution Plots
 
-- [`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-  [`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-  [`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-  [`plotProbDist()`](https://andrisignorell.github.io/pharos/reference/plotProbDist.md)
-- [`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-  [`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md),
-  [`plotRidge()`](https://andrisignorell.github.io/pharos/reference/plotRidge.md),
-  [`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md)
-- [`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-  [`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-  [`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
-  [`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md)
+- [`plotFdist()`](reference/plotFdist.md),
+  [`plotDens()`](reference/plotDens.md),
+  [`plotECDF()`](reference/plotECDF.md),
+  [`plotProbDist()`](reference/plotProbDist.md)
+- [`plotBox()`](reference/plotBox.md),
+  [`plotViolin()`](reference/plotViolin.md),
+  [`plotRidge()`](reference/plotRidge.md),
+  [`plotDensBox()`](reference/plotDensBox.md)
+- [`plotDot()`](reference/plotDot.md),
+  [`plotBar()`](reference/plotBar.md),
+  [`plotBag()`](reference/plotBag.md), [`plotQQ()`](reference/plotQQ.md)
 
 ### 🔹 Bivariate and Multivariate Plots
 
-- [`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md),
-  [`plotBubble()`](https://andrisignorell.github.io/pharos/reference/plotBubble.md),
-  [`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
-  [`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md)
-- [`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-  [`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
-  [`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
-  [`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md)
-- [`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-  [`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-  [`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-  [`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md),
-  [`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md)
+- [`plotXY()`](reference/plotXY.md),
+  [`plotBubble()`](reference/plotBubble.md),
+  [`plotDens2D()`](reference/plotDens2D.md),
+  [`plotHexbin()`](reference/plotHexbin.md)
+- [`plotCor()`](reference/plotCor.md),
+  [`plotAssoc()`](reference/plotAssoc.md),
+  [`plotMosaic()`](reference/plotMosaic.md),
+  [`plotHeatmap()`](reference/plotHeatmap.md)
+- [`plotTernary()`](reference/plotTernary.md),
+  [`plotPolar()`](reference/plotPolar.md),
+  [`plotCirc()`](reference/plotCirc.md),
+  [`plotWeb()`](reference/plotWeb.md),
+  [`plotTreemap()`](reference/plotTreemap.md)
 
 ### 🔹 Model and Diagnostic Displays
 
-- [`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-  [`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-  [`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-  [`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md)
-- [`plot.BlandAltman()`](https://andrisignorell.github.io/pharos/reference/plot.BlandAltman.md),
-  [`plot.Lc()`](https://andrisignorell.github.io/pharos/reference/plot.lc.md),
-  [`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md)
-- [`lines.lm()`](https://andrisignorell.github.io/pharos/reference/linesLm.md),
-  [`lines.loess()`](https://andrisignorell.github.io/pharos/reference/lines.loess.md),
-  [`splineCI()`](https://andrisignorell.github.io/pharos/reference/splineCI.md)
+- [`plotLift()`](reference/plotLift.md),
+  [`plotPropCI()`](reference/plotPropCI.md),
+  [`plotMiss()`](reference/plotMiss.md),
+  [`plotCatDist()`](reference/plotCatDist.md)
+- [`plot.BlandAltman()`](reference/plot.BlandAltman.md),
+  [`plot.Lc()`](reference/plot.lc.md),
+  [`plotBinaryTree()`](reference/binaryTree.md)
+- [`lines.lm()`](reference/linesLm.md),
+  [`lines.loess()`](reference/lines.loess.md),
+  [`splineCI()`](reference/splineCI.md)
 
 ### 🔹 Layout and Faceting
 
-- [`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md)
-  — panel layouts with a user-supplied panel function
-- [`canvas()`](https://andrisignorell.github.io/pharos/reference/canvas.md),
-  [`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-  [`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
-  [`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
-  [`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
-  [`axTicks()`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
-  [`axisFmt()`](https://andrisignorell.github.io/pharos/reference/axisFmt.md)
-- [`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md),
-  [`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
-  [`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md)
+- [`plotFacet()`](reference/plotFacet.md) — panel layouts with a
+  user-supplied panel function
+- [`canvas()`](reference/canvas.md),
+  [`plotArea()`](reference/plotArea.md), [`mar()`](reference/mar.md),
+  [`abcCoords()`](reference/abcCoords.md),
+  [`axisBreak()`](reference/axisBreak.md),
+  [`axTicks()`](reference/axTicks.md),
+  [`axisFmt()`](reference/axisFmt.md)
+- [`spreadOut()`](reference/spreadOut.md),
+  [`lineToUser()`](reference/lineToUser.md),
+  [`isValidPlotRegion()`](reference/isValidPlotRegion.md)
 
 ### 🔹 Annotation
 
-- [`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
-  [`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
-  [`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
-  [`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-  [`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
-  [`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
-  [`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md),
-  [`lineSep()`](https://andrisignorell.github.io/pharos/reference/lineSep.md)
+- [`boxedText()`](reference/boxedText.md),
+  [`barText()`](reference/barText.md),
+  [`textLegend()`](reference/textLegend.md),
+  [`colLegend()`](reference/colLegend.md),
+  [`errBars()`](reference/errBars.md), [`band()`](reference/band.md),
+  [`stamp()`](reference/stamp.md),
+  [`titleRect()`](reference/titleRect.md),
+  [`lineSep()`](reference/lineSep.md)
 
 ### 🔹 Colour
 
-- Conversions:
-  [`colToHex()`](https://andrisignorell.github.io/pharos/reference/colToHex.md),
-  [`colToRGB()`](https://andrisignorell.github.io/pharos/reference/colToRGB.md),
-  [`colToHSV()`](https://andrisignorell.github.io/pharos/reference/colToHSV.md),
-  [`hexToRGB()`](https://andrisignorell.github.io/pharos/reference/hexToRGB.md),
-  [`rgbToCmy()`](https://andrisignorell.github.io/pharos/reference/RGBToCMY.md),
-  [`cmykToRgb()`](https://andrisignorell.github.io/pharos/reference/CMYKToRGB.md),
-  [`longToRGB()`](https://andrisignorell.github.io/pharos/reference/longToRGB.md)
-- Manipulation:
-  [`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
-  [`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
-  [`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
-  [`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
-  [`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md),
-  [`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md),
-  [`contrastColor()`](https://andrisignorell.github.io/pharos/reference/contrastColor.md),
-  [`grayScale()`](https://andrisignorell.github.io/pharos/reference/grayscale.md)
-- Palettes:
-  [`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md),
-  [`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md),
-  [`hcol()`](https://andrisignorell.github.io/pharos/reference/hcol.md),
-  [`findColor()`](https://andrisignorell.github.io/pharos/reference/findColor.md),
-  [`setBackCol()`](https://andrisignorell.github.io/pharos/reference/setBackCol.md)
+- Conversions: [`colToHex()`](reference/colToHex.md),
+  [`colToRGB()`](reference/colToRGB.md),
+  [`colToHSV()`](reference/colToHSV.md),
+  [`hexToRGB()`](reference/hexToRGB.md),
+  [`rgbToCmy()`](reference/RGBToCMY.md),
+  [`cmykToRgb()`](reference/CMYKToRGB.md),
+  [`longToRGB()`](reference/longToRGB.md)
+- Manipulation: [`addOpacity()`](reference/addOpacity.md),
+  [`fade()`](reference/fade.md), [`darken()`](reference/darken.md),
+  [`lighten()`](reference/lighten.md), [`shade()`](reference/shade.md),
+  [`mixColors()`](reference/mixColors.md),
+  [`contrastColor()`](reference/contrastColor.md),
+  [`grayScale()`](reference/grayscale.md)
+- Palettes: [`pal()`](reference/pal.md),
+  [`palNames()`](reference/palNames.md), [`hcol()`](reference/hcol.md),
+  [`findColor()`](reference/findColor.md),
+  [`setBackCol()`](reference/setBackCol.md)
 
 ### 🔹 Geometry
 
-- [`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
-  [`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
-  [`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
-  [`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-  [`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md),
-  [`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
-  [`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-  [`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md)
-- [`rotate()`](https://andrisignorell.github.io/pharos/reference/rotate.md),
-  [`transformXY()`](https://andrisignorell.github.io/pharos/reference/transformXY.md),
-  coordinate conversions, degree/radian conversion,
-  [`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md)
+- [`arc()`](reference/arc.md), [`bezier()`](reference/bezier.md),
+  [`circle()`](reference/circle.md),
+  [`ellipse()`](reference/ellipse.md), [`ring()`](reference/ring.md),
+  [`polygon()`](reference/polygon.md),
+  [`regPolygon()`](reference/regPolygon.md),
+  [`polarGrid()`](reference/polarGrid.md)
+- [`rotate()`](reference/rotate.md),
+  [`transformXY()`](reference/transformXY.md), coordinate conversions,
+  degree/radian conversion, [`convUnit()`](reference/convUnit.md)
 
 ### 🔹 Formatting and Strings
 
-- [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-  [`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-  [`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md),
-  [`ftable.list()`](https://andrisignorell.github.io/pharos/reference/ftable.list.md)
-- [`strAbbr()`](https://andrisignorell.github.io/pharos/reference/strAbbr.md),
-  [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md),
-  [`strCap()`](https://andrisignorell.github.io/pharos/reference/strCap.md),
-  [`strChop()`](https://andrisignorell.github.io/pharos/reference/strChop.md),
-  [`strPad()`](https://andrisignorell.github.io/pharos/reference/strPad.md),
-  [`strTrunc()`](https://andrisignorell.github.io/pharos/reference/strTrunc.md),
-  [`strRev()`](https://andrisignorell.github.io/pharos/reference/strRev.md),
-  [`strDist()`](https://andrisignorell.github.io/pharos/reference/strDist.md),
-  [`strSpell()`](https://andrisignorell.github.io/pharos/reference/strSpell.md),
-  [`strExtract()`](https://andrisignorell.github.io/pharos/reference/strExtract.md)
+- [`fm()`](reference/fm.md), [`fmCI()`](reference/fmCI.md),
+  [`unit()`](reference/unit.md),
+  [`ftable.list()`](reference/ftable.list.md)
+- [`strAbbr()`](reference/strAbbr.md),
+  [`strAlign()`](reference/strAlign.md),
+  [`strCap()`](reference/strCap.md),
+  [`strChop()`](reference/strChop.md),
+  [`strPad()`](reference/strPad.md),
+  [`strTrunc()`](reference/strTrunc.md),
+  [`strRev()`](reference/strRev.md),
+  [`strDist()`](reference/strDist.md),
+  [`strSpell()`](reference/strSpell.md),
+  [`strExtract()`](reference/strExtract.md)
 
 ### 🔹 HTML Output
 
-- [`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
-  [`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md),
-  [`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
-  [`htmlNotation()`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
-  [`htmlSubscript()`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
-  [`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
-  [`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-  [`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-  [`preview()`](https://andrisignorell.github.io/pharos/reference/preview.md)
+- [`as.html()`](reference/as.html.md),
+  [`toHtmlTable()`](reference/toHtmlTable.md),
+  [`escapeHtml()`](reference/escapeHtml.md),
+  [`htmlNotation()`](reference/htmlNotation.md),
+  [`htmlSubscript()`](reference/htmlSubscript.md),
+  [`as.img()`](reference/as.img.md),
+  [`as.fileLink()`](reference/as.fileLink.md),
+  [`embedFile()`](reference/embedFile.md),
+  [`preview()`](reference/preview.md)
 
 ## 🚀 Design Principles
 
 - **Consistent** — lowerCamelCase API and uniform argument conventions
   across the whole DescToolsX suite
 - **Themed** — colours, symbols and layout resolved centrally through
-  [`theme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
-  and
-  [`style()`](https://andrisignorell.github.io/pharos/reference/style.md)
+  [`theme()`](reference/theme.md) and [`style()`](reference/style.md)
 - **Base graphics** — no grid, no extra graphics stack; plots compose
   with everything already in R
 - **Fast** — performance-critical routines implemented in Rcpp

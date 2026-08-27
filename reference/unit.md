@@ -42,12 +42,9 @@ Assigning `NULL` removes the unit attribute.
 
 ## See also
 
-Other format:
-[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md)
+Other format: [`convUnit()`](convUnit.md), [`fm()`](fm.md),
+[`fmCI()`](fmCI.md), [`print.Unit()`](print.Unit.md),
+[`style()`](style.md)
 
 ## Examples
 

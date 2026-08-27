@@ -158,13 +158,10 @@ boxedText(formula, data = parent.frame(), ..., subset)
 similar function in package plotrix plotrix::boxed.labels (lacking
 rotation option)
 
-Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
-[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
+Other graphics.annotation: [`barText()`](barText.md),
+[`colLegend()`](colLegend.md), [`errBars()`](errBars.md),
+[`stamp()`](stamp.md), [`textLegend()`](textLegend.md),
+[`titleRect()`](titleRect.md)
 
 ## Examples
 

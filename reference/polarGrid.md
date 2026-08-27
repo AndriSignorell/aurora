@@ -129,9 +129,8 @@ Label placement and formatting can be customized via `adj`, `las`, and
 
 [`grid()`](https://rdrr.io/r/graphics/grid.html)
 
-Other graphics.setup:
-[`canvas()`](https://andrisignorell.github.io/pharos/reference/canvas.md),
-[`setBackCol()`](https://andrisignorell.github.io/pharos/reference/setBackCol.md)
+Other graphics.setup: [`canvas()`](canvas.md),
+[`setBackCol()`](setBackCol.md)
 
 ## Examples
 

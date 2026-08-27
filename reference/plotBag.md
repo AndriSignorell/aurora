@@ -100,7 +100,7 @@ plotBag(
 - stamp:
 
   optional stamp passed to
-  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
+  [`.withGraphicsState()`](graphics-framework.md).
 
 - formula:
 
@@ -203,14 +203,10 @@ depth, *Applied Statistics*, vol. 45, no. 4, 516–526.
 
 ## See also
 
-Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
-[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
+Other plot.bivariate: [`plotAssoc()`](plotAssoc.md),
+[`plotCor()`](plotCor.md), [`plotDens2D()`](plotDens2D.md),
+[`plotHeatmap()`](plotHeatmap.md), [`plotHexbin()`](plotHexbin.md),
+[`plotMosaic()`](plotMosaic.md), [`plotXY()`](plotXY.md)
 
 ## Examples
 

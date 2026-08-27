@@ -100,8 +100,8 @@ Psychometric Analyses*
 [`adist`](https://rdrr.io/r/utils/adist.html),
 [`dist`](https://rdrr.io/r/stats/dist.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.
 
 ## Examples
 

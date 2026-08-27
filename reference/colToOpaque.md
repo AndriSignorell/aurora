@@ -39,12 +39,9 @@ color.
 
 ## See also
 
-Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
-[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
+Other color.manipulation: [`addOpacity()`](addOpacity.md),
+[`darken()`](darken.md), [`fade()`](fade.md), [`lighten()`](lighten.md),
+[`mixColors()`](mixColors.md)
 
 ## Examples
 

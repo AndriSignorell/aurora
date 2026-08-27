@@ -102,8 +102,7 @@ plotFdist(
 - ecdf:
 
   controls the ECDF panel. `TRUE` (default) calls
-  [`plotECDF`](https://andrisignorell.github.io/pharos/reference/plotECDF.md);
-  a list overrides specific arguments.
+  [`plotECDF`](plotECDF.md); a list overrides specific arguments.
 
 - curveEcdf:
 
@@ -114,8 +113,7 @@ plotFdist(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - ...:
 
@@ -146,24 +144,17 @@ For exploratory work on very large data, consider sampling first:
 
 [`hist`](https://rdrr.io/r/graphics/hist.html),
 [`boxplot`](https://rdrr.io/r/graphics/boxplot.html),
-[`plotECDF`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+[`plotECDF`](plotECDF.md),
 [`density`](https://rdrr.io/r/stats/density.html),
 [`rug`](https://rdrr.io/r/graphics/rug.html),
-[`layout`](https://rdrr.io/r/graphics/layout.html),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[`layout`](https://rdrr.io/r/graphics/layout.html), [theme](theme.md)
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBar()`](plotBar.md), [`plotBox()`](plotBox.md),
+[`plotCatDist()`](plotCatDist.md), [`plotDens()`](plotDens.md),
+[`plotDensBox()`](plotDensBox.md), [`plotDot()`](plotDot.md),
+[`plotECDF()`](plotECDF.md), [`plotLines()`](plotLines.md),
+[`plotQQ()`](plotQQ.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

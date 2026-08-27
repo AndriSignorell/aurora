@@ -26,12 +26,9 @@ Character vector of hexadecimal colors with alpha channel.
 
 [grDevices::adjustcolor](https://rdrr.io/r/grDevices/adjustcolor.html)
 
-Other color.manipulation:
-[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
-[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
+Other color.manipulation: [`colToOpaque()`](colToOpaque.md),
+[`darken()`](darken.md), [`fade()`](fade.md), [`lighten()`](lighten.md),
+[`mixColors()`](mixColors.md)
 
 ## Examples
 

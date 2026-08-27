@@ -31,14 +31,10 @@ for text placed inside an attribute value rather than between tags.
 
 ## See also
 
-Other html:
-[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
-[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
-[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
+Other html: [`as.fileLink()`](as.fileLink.md),
+[`as.html()`](as.html.md), [`as.img()`](as.img.md),
+[`embedFile()`](embedFile.md), [`htmlNotation`](htmlNotation.md),
+[`htmlSubscript`](htmlSubscript.md), [`toHtmlTable()`](toHtmlTable.md)
 
 ## Examples
 

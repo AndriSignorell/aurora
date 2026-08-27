@@ -42,14 +42,11 @@ For restoring graphical parameters, the recommended base R approach is:
 
 ## See also
 
-Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
-[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
+Other graphics.layout: [`abcCoords()`](abcCoords.md),
+[`axTicks`](axTicks.md), [`axisBreak()`](axisBreak.md),
+[`isValidPlotRegion()`](isValidPlotRegion.md),
+[`lineToUser()`](lineToUser.md), [`plotFacet()`](plotFacet.md),
+[`spreadOut()`](spreadOut.md)
 
 ## Examples
 

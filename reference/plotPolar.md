@@ -87,16 +87,12 @@ Graphical parameters such as `lwd`, `lty`, `pch`, `cex`, `fill`, and
 
 ## See also
 
-Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
-[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotBinaryTree()`](binaryTree.md),
+[`plotCirc()`](plotCirc.md), [`plotLift()`](plotLift.md),
+[`plotMiss()`](plotMiss.md), [`plotPropCI()`](plotPropCI.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 

@@ -1,10 +1,8 @@
 # Format Styles
 
 Interface for format templates, defined as a list consisting of any
-accepted format features in
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md). This
-enables to define templates globally and easily change or modify them
-later.
+accepted format features in [`fm()`](fm.md). This enables to define
+templates globally and easily change or modify them later.
 
 ## Usage
 
@@ -113,8 +111,7 @@ print(x, ...)
   or c respectively. The default is `NULL` which would just leave the
   strings as they are.  
   This argument is send directly to the function
-  [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
-  as argument `sep`.
+  [`strAlign()`](strAlign.md) as argument `sep`.
 
 - lang:
 
@@ -140,15 +137,11 @@ print(x, ...)
 
 `style()` can either create new styles or edit existing ones. `style()`
 can be used to create new styles. It takes any of the arguments from
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) and
-combines them to an object of class `"Style"`, which then can be handed
-over to
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) as
-argument `fmt`.  
+[`fm()`](fm.md) and combines them to an object of class `"Style"`, which
+then can be handed over to [`fm()`](fm.md) as argument `fmt`.  
 Following will define a new format template named "`num.sty`". Passed to
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) this
-will result in a number displayed with 2 fixed digits and a comma as big
-mark:
+[`fm()`](fm.md) this will result in a number displayed with 2 fixed
+digits and a comma as big mark:
 
     num.sty <- style(digits=2, bigMark=",")
     fm(12222.89345, fmt=num.sty) = 12,222.89
@@ -170,9 +163,7 @@ The styles can be stored as options for convenience. To store a new
 format we use the default
 [`options()`](https://rdrr.io/r/base/options.html) approach:
 `options(num.sty = style(digits=1, bigMark=" "))` Defined styles in the
-options can be passed on to
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) simply
-by their name.
+options can be passed on to [`fm()`](fm.md) simply by their name.
 
 Many report functions (e.g. `DescToolsX::tOne()`) in **DescToolsX** use
 three default formats for counts (named `"abs.sty"`), numeric values
@@ -180,14 +171,11 @@ three default formats for counts (named `"abs.sty"`), numeric values
 
 ## See also
 
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[theme](theme.md)
 
-Other format:
-[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
-[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
+Other format: [`convUnit()`](convUnit.md), [`fm()`](fm.md),
+[`fmCI()`](fmCI.md), [`print.Unit()`](print.Unit.md),
+[`unit()`](unit.md)
 
 ## Examples
 

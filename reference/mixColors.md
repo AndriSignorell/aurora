@@ -36,9 +36,6 @@ All arguments are recycled as necessary.
 
 ## See also
 
-Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
-[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
-[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md)
+Other color.manipulation: [`addOpacity()`](addOpacity.md),
+[`colToOpaque()`](colToOpaque.md), [`darken()`](darken.md),
+[`fade()`](fade.md), [`lighten()`](lighten.md)

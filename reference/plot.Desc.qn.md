@@ -64,12 +64,12 @@ plot(
   `3`
 
   :   Overlapping kernel density curves, one per group (via
-      [`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md)).
+      [`plotDens`](plotDens.md)).
 
   `4`
 
   :   Boxplot of the numeric variable by group (via
-      [`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md)).
+      [`plotBox`](plotBox.md)).
 
   `5`
 
@@ -100,8 +100,7 @@ plot(
   :   a grey ramp from `"grey30"` to `"grey90"`, sized to the number of
       categorical levels (not theme-driven by design, to keep the
       unordered category fill neutral - see
-      [`plotMosaic`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md)
-      for the same rationale).
+      [`plotMosaic`](plotMosaic.md) for the same rationale).
 
   panels 3/4
 
@@ -124,10 +123,9 @@ plot(
   ([`cdplot()`](https://rdrr.io/r/graphics/cdplot.html)/[`spineplot()`](https://rdrr.io/r/graphics/spineplot.html))
   have no effect from this argument - they always draw their native
   frame unconditionally, with no toggle to override it. Panel 4
-  ([`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md))
-  always draws its own frame regardless of this argument. Panel 3
-  ([`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md))
-  never draws a frame, regardless of this argument.
+  ([`plotBox`](plotBox.md)) always draws its own frame regardless of
+  this argument. Panel 3 ([`plotDens`](plotDens.md)) never draws a
+  frame, regardless of this argument.
 
 - legend:
 
@@ -141,12 +139,10 @@ plot(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`, drawn once after all selected panels (panels 3/4
-  delegate to
-  [`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md)/
-  [`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-  whose own stamp is suppressed internally to avoid a duplicate).
+  delegate to [`plotDens`](plotDens.md)/ [`plotBox`](plotBox.md), whose
+  own stamp is suppressed internally to avoid a duplicate).
   `TRUE`/`FALSE`/`NULL`, a string, or a named list for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  [`stamp()`](stamp.md).
 
 - ...:
 
@@ -155,10 +151,9 @@ plot(
   framework and to the underlying panel-drawing functions
   ([`cdplot()`](https://rdrr.io/r/graphics/cdplot.html),
   [`spineplot()`](https://rdrr.io/r/graphics/spineplot.html),
-  [`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-  [`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-  or [`plot`](https://rdrr.io/r/graphics/plot.default.html), depending
-  on the selected panel).
+  [`plotDens`](plotDens.md), [`plotBox`](plotBox.md), or
+  [`plot`](https://rdrr.io/r/graphics/plot.default.html), depending on
+  the selected panel).
 
 ## Value
 
@@ -173,13 +168,9 @@ clipped regardless of `which`.
 
 ## See also
 
-`DescToolsX::desc`,
-[`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
+`DescToolsX::desc`, [`plotDens`](plotDens.md), [`plotBox`](plotBox.md),
 [`cdplot`](https://rdrr.io/r/graphics/cdplot.html),
 [`spineplot`](https://rdrr.io/r/graphics/spineplot.html)
 
-Other plot.s3:
-[`plot.BlandAltman()`](https://andrisignorell.github.io/pharos/reference/plot.BlandAltman.md),
-[`plot.Desc.table()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.table.md),
-[`plot.Lc()`](https://andrisignorell.github.io/pharos/reference/plot.lc.md)
+Other plot.s3: [`plot.BlandAltman()`](plot.BlandAltman.md),
+[`plot.Desc.table()`](plot.Desc.table.md), [`plot.Lc()`](plot.lc.md)

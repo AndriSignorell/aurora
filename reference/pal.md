@@ -25,10 +25,8 @@ plot(x, cex = 2.5, border = "grey70", ...)
 
   character or integer. Palette name (full match via
   [`match.arg`](https://rdrr.io/r/base/match.arg.html)) or index into
-  [`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md).
-  If missing, returns the palette named in the active theme
-  (`getTheme()$palette`, see
-  [theme](https://andrisignorell.github.io/pharos/reference/theme.md)).
+  [`palNames()`](palNames.md). If missing, returns the palette named in
+  the active theme (`getTheme()$palette`, see [theme](theme.md)).
 
 - n:
 
@@ -63,13 +61,11 @@ a character vector of `n` hex color codes of class
 
 ## See also
 
-[`palNames`](https://andrisignorell.github.io/pharos/reference/palNames.md),
+[`palNames`](palNames.md),
 [`colorRampPalette`](https://rdrr.io/r/grDevices/colorRamp.html),
 [`adjustcolor`](https://rdrr.io/r/grDevices/adjustcolor.html)
 
-Other color.palettes:
-[`hcol()`](https://andrisignorell.github.io/pharos/reference/hcol.md),
-[`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md)
+Other color.palettes: [`hcol()`](hcol.md), [`palNames()`](palNames.md)
 
 ## Examples
 

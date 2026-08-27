@@ -107,9 +107,8 @@ plotFacet(
   [bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html):
   `TRUE` (default) draws strips with default settings,
   `FALSE`/`NULL`/`NA` suppresses them (no space is reserved), a named
-  list is passed as arguments to
-  [`titleRect`](https://andrisignorell.github.io/pharos/reference/titleRect.md),
-  e.g. `list(bg = "steelblue", col = "white", line = 1.5)`. The `label`
+  list is passed as arguments to [`titleRect`](titleRect.md), e.g.
+  `list(bg = "steelblue", col = "white", line = 1.5)`. The `label`
   argument is set per panel from `stripLabels` and cannot be overridden.
 
 - bg:
@@ -121,10 +120,10 @@ plotFacet(
   controls the grid lines, evaluated by
   [bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html):
   `TRUE` (default) draws grid lines at the positions of
-  [`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md)
-  with default settings (`col = "grey85", lwd = 0.8`),
-  `FALSE`/`NULL`/`NA` suppresses them, a named list is passed as
-  arguments to [`abline`](https://rdrr.io/r/graphics/abline.html), e.g.
+  [`axTicks`](axTicks.md) with default settings
+  (`col = "grey85", lwd = 0.8`), `FALSE`/`NULL`/`NA` suppresses them, a
+  named list is passed as arguments to
+  [`abline`](https://rdrr.io/r/graphics/abline.html), e.g.
   `list(col = "white", lty = "dotted")`. The default positions `v` and
   `h` can be overridden, e.g. `list(v = seq(0, 20, 5))`.
 
@@ -179,11 +178,10 @@ position, only by shape. The natural case is a set of diagnostics of one
 model against different predictors - the residual scale is shared and
 worth comparing, the predictor scales are not commensurable at all.
 
-The strip is drawn with
-[`titleRect`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
-above each panel. Its height (`line` argument of `titleRect`) is
-reserved in the top margin of every panel, so the strip never eats into
-the gap between the rows.
+The strip is drawn with [`titleRect`](titleRect.md) above each panel.
+Its height (`line` argument of `titleRect`) is reserved in the top
+margin of every panel, so the strip never eats into the gap between the
+rows.
 
 Note that [`plot.new`](https://rdrr.io/r/graphics/frame.html) silently
 reduces `cex` (and with it `csi`, the physical size of a margin line) in
@@ -196,17 +194,14 @@ are exactly equal in size.
 ## See also
 
 [graphics::layout](https://rdrr.io/r/graphics/layout.html),
-[titleRect](https://andrisignorell.github.io/pharos/reference/titleRect.md),
+[titleRect](titleRect.md),
 [bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html)
 
-Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
-[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
+Other graphics.layout: [`abcCoords()`](abcCoords.md),
+[`axTicks`](axTicks.md), [`axisBreak()`](axisBreak.md),
+[`isValidPlotRegion()`](isValidPlotRegion.md),
+[`lineToUser()`](lineToUser.md), [`mar()`](mar.md),
+[`spreadOut()`](spreadOut.md)
 
 ## Examples
 

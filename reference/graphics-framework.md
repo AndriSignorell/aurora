@@ -118,8 +118,7 @@ to absorb rounding and font metric differences across devices.
   sentinel `.useTheme` (default; let the theme decide),
   `TRUE`/`FALSE`/`NULL`/`NA` as an on/off toggle, a bare string or an
   expression (used as the stamp text itself), or a list of arguments for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md)
-  (e.g. `list(text = "...", las = 2)`).
+  [`stamp()`](stamp.md) (e.g. `list(text = "...", las = 2)`).
 
 - resetLayout:
 

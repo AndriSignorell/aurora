@@ -47,8 +47,8 @@ angles of the given points.
 ## Details
 
 Angles are in radians, not degrees (i.e., a right angle is pi/2). Use
-[`degToRad`](https://andrisignorell.github.io/pharos/reference/degree-radians-conversion.md)
-to convert, if you don't wanna do it by yourself.  
+[`degToRad`](degree-radians-conversion.md) to convert, if you don't
+wanna do it by yourself.  
 All parameters are recycled if necessary.
 
 ## Note
@@ -58,7 +58,7 @@ Based on code by Christian W. Hoffmann
 ## See also
 
 Other geometry.conversion:
-[`degree-radians-conversion`](https://andrisignorell.github.io/pharos/reference/degree-radians-conversion.md)
+[`degree-radians-conversion`](degree-radians-conversion.md)
 
 ## Examples
 

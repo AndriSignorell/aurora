@@ -59,8 +59,7 @@ get the color of the bigger one.
 
 [`findInterval`](https://rdrr.io/r/base/findInterval.html)
 
-Other color.lookup:
-[`contrastColor()`](https://andrisignorell.github.io/pharos/reference/contrastColor.md)
+Other color.lookup: [`contrastColor()`](contrastColor.md)
 
 ## Examples
 

@@ -78,7 +78,7 @@ plotXY(
   formula's `data.name` for the formula method. `""`, `NA`, or `FALSE`
   suppress the title entirely (and compact the top margin accordingly);
   any other string is used as given (resolved internally via
-  [`.resolveTitle()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)).
+  [`.resolveTitle()`](graphics-framework.md)).
 
 - xlab:
 
@@ -190,8 +190,7 @@ plotXY(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  for [`stamp()`](stamp.md).
 
 - formula:
 
@@ -227,9 +226,8 @@ semantics:
 - named list: customize component arguments
 
 `col`, `bg`, `pch`, `cex`, `grid`, and `box` default to `.useTheme`,
-deferring to the package's active theme (see
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md))
-rather than a hardcoded value. This means
+deferring to the package's active theme (see [theme](theme.md)) rather
+than a hardcoded value. This means
 `setTheme(list(points = list(col = "black")))` changes the point color
 for every call to `plotXY()` (and any other function using the same
 theme section) that doesn't override `col` explicitly.
@@ -241,14 +239,10 @@ theme section) that doesn't override `col` explicitly.
 [`loess`](https://rdrr.io/r/stats/loess.html),
 [`callIf`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
 
-Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md)
+Other plot.bivariate: [`plotAssoc()`](plotAssoc.md),
+[`plotBag()`](plotBag.md), [`plotCor()`](plotCor.md),
+[`plotDens2D()`](plotDens2D.md), [`plotHeatmap()`](plotHeatmap.md),
+[`plotHexbin()`](plotHexbin.md), [`plotMosaic()`](plotMosaic.md)
 
 ## Examples
 

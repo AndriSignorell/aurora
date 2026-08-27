@@ -75,12 +75,9 @@ multiplicative scaling.
 
 ## See also
 
-Other format:
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
+Other format: [`fm()`](fm.md), [`fmCI()`](fmCI.md),
+[`print.Unit()`](print.Unit.md), [`style()`](style.md),
+[`unit()`](unit.md)
 
 ## Examples
 

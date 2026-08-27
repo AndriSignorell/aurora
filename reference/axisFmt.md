@@ -2,8 +2,7 @@
 
 A drop-in replacement for
 [`graphics::axis()`](https://rdrr.io/r/graphics/axis.html) that adds two
-conveniences: tick labels can be formatted through
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) via
+conveniences: tick labels can be formatted through [`fm()`](fm.md) via
 the `fmt` argument, and labels can be drawn at an arbitrary angle using
 `srt` (which [`graphics::axis()`](https://rdrr.io/r/graphics/axis.html)
 itself ignores). When rotated labels are requested the function also
@@ -41,10 +40,9 @@ axisFmt(
 
 - fmt:
 
-  format specification passed to
-  [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) to
-  format the tick labels. If `NULL` (default) the labels are used as
-  they are (or the bare tick values, coerced to character). See Details.
+  format specification passed to [`fm()`](fm.md) to format the tick
+  labels. If `NULL` (default) the labels are used as they are (or the
+  bare tick values, coerced to character). See Details.
 
 - labels:
 
@@ -92,15 +90,12 @@ or `NA` when `srt` is `NULL`).
 
 ## Details
 
-The `fmt` argument is passed straight to
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) and
-therefore accepts the full range of format specifications: a special
-short code (e.g. `"%"`, `"e"`, `"eng"`, `"p"`), an ISO-8601 date pattern
-(e.g. `"MMM yyyy"`), a `Style` object, a bare (named) list treated as a
-style template (e.g. `fmt = list(digits = 1, bigMark = " ")`), or a
-function of `x`. See
-[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) for
-the details.
+The `fmt` argument is passed straight to [`fm()`](fm.md) and therefore
+accepts the full range of format specifications: a special short code
+(e.g. `"%"`, `"e"`, `"eng"`, `"p"`), an ISO-8601 date pattern (e.g.
+`"MMM yyyy"`), a `Style` object, a bare (named) list treated as a style
+template (e.g. `fmt = list(digits = 1, bigMark = " ")`), or a function
+of `x`. See [`fm()`](fm.md) for the details.
 
 When `srt` is set, the axis line and ticks are drawn without labels via
 [`graphics::axis()`](https://rdrr.io/r/graphics/axis.html), and the
@@ -123,8 +118,7 @@ routine can reserve the space in advance.
 
 [graphics::axis](https://rdrr.io/r/graphics/axis.html),
 [graphics::axTicks](https://rdrr.io/r/graphics/axTicks.html),
-[graphics::text](https://rdrr.io/r/graphics/text.html),
-[fm](https://andrisignorell.github.io/pharos/reference/fm.md)
+[graphics::text](https://rdrr.io/r/graphics/text.html), [fm](fm.md)
 
 ## Author
 

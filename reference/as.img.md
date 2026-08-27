@@ -2,10 +2,8 @@
 
 Evaluates a plotting expression in a temporary PNG device and returns
 the resulting image as a self-contained, base64-encoded `<img>` tag
-(class `"html"`, see
-[`as.html`](https://andrisignorell.github.io/pharos/reference/as.html.md)),
-suitable for embedding directly in HTML text – a report, a question, an
-e-mail.
+(class `"html"`, see [`as.html`](as.html.md)), suitable for embedding
+directly in HTML text – a report, a question, an e-mail.
 
 ## Usage
 
@@ -48,14 +46,10 @@ Several statements are given in braces, as in the examples below.
 
 ## See also
 
-Other html:
-[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
-[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
-[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
-[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
-[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
+Other html: [`as.fileLink()`](as.fileLink.md),
+[`as.html()`](as.html.md), [`embedFile()`](embedFile.md),
+[`escapeHtml()`](escapeHtml.md), [`htmlNotation`](htmlNotation.md),
+[`htmlSubscript`](htmlSubscript.md), [`toHtmlTable()`](toHtmlTable.md)
 
 ## Examples
 

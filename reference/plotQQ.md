@@ -96,9 +96,8 @@ plotQQ(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/`NULL`, a string, or a named list
-  of arguments for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md)
-  (e.g. `list(text = "...", las = 2)`).
+  of arguments for [`stamp()`](stamp.md) (e.g.
+  `list(text = "...", las = 2)`).
 
 - ...:
 
@@ -127,22 +126,15 @@ Teetor, P. (2011) *R Cookbook*. O'Reilly, pp. 254-255.
 
 [stats::qqnorm](https://rdrr.io/r/stats/qqnorm.html),
 [stats::qqline](https://rdrr.io/r/stats/qqnorm.html),
-[stats::qqplot](https://rdrr.io/r/stats/qqnorm.html),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md),
-[lines.loess](https://andrisignorell.github.io/pharos/reference/lines.loess.md)
+[stats::qqplot](https://rdrr.io/r/stats/qqnorm.html), [theme](theme.md),
+[lines.loess](lines.loess.md)
 
-Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
-[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
+Other plot.univariate: [`plotArea()`](plotArea.md),
+[`plotBar()`](plotBar.md), [`plotBox()`](plotBox.md),
+[`plotCatDist()`](plotCatDist.md), [`plotDens()`](plotDens.md),
+[`plotDensBox()`](plotDensBox.md), [`plotDot()`](plotDot.md),
+[`plotECDF()`](plotECDF.md), [`plotFdist()`](plotFdist.md),
+[`plotLines()`](plotLines.md), [`plotViolin()`](plotViolin.md)
 
 ## Examples
 

@@ -35,13 +35,13 @@ plotAssoc(
   main title of the plot. `NULL` (default) derives a title from the
   expression passed as `x` (via `deparse(match.call()$x)`), the same
   "substitute magic" convention used by
-  [`plotXY`](https://andrisignorell.github.io/pharos/reference/plotXY.md)/[`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md)
-  for their `y ~ x` default - there's no formula pair here, just the
-  single table argument, so the default is simply that expression's text
-  (e.g. `plotAssoc(tab)` titles itself `"tab"`). `""`, `NA`, or `FALSE`
+  [`plotXY`](plotXY.md)/[`plotBox`](plotBox.md) for their `y ~ x`
+  default - there's no formula pair here, just the single table
+  argument, so the default is simply that expression's text (e.g.
+  `plotAssoc(tab)` titles itself `"tab"`). `""`, `NA`, or `FALSE`
   suppress the title entirely and compact the top margin; any other
   string is used as given (resolved internally via
-  [`.resolveTitle()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)).
+  [`.resolveTitle()`](graphics-framework.md)).
 
 - xlab:
 
@@ -84,9 +84,7 @@ plotAssoc(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, or an explicit string, as
-  for
-  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  (internal).
+  for [`.withGraphicsState()`](graphics-framework.md) (internal).
 
 - ...:
 
@@ -126,14 +124,10 @@ Group International Conference Proceedings*, 17, 190–200.
 [graphics::mosaicplot](https://rdrr.io/r/graphics/mosaicplot.html),
 `DescToolsX::conf`
 
-Other plot.bivariate:
-[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
+Other plot.bivariate: [`plotBag()`](plotBag.md),
+[`plotCor()`](plotCor.md), [`plotDens2D()`](plotDens2D.md),
+[`plotHeatmap()`](plotHeatmap.md), [`plotHexbin()`](plotHexbin.md),
+[`plotMosaic()`](plotMosaic.md), [`plotXY()`](plotXY.md)
 
 ## Examples
 

@@ -7,15 +7,15 @@ a script next to its output."><meta property="og:description" content="Turns a f
 contents travel base64-encoded inside the href, so the resulting
 HTML needs no server and no accompanying assets. The counterpart of
 as.img for non-image files – a data set next to a table,
-a script next to its output."><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
+a script next to its output."><meta property="og:image" content="/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.950</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.951</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +23,20 @@ a script next to its output."><meta property="og:image" content="https://andrisi
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-book"></span></button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-"><li><h6 class="dropdown-header" data-toc-skip>Documentation for version of package:</h6></li>
+    <li><a class="external-link dropdown-item" href="https://andrisignorell.github.io/pharos/">Released</a></li>
+    <li><a class="external-link dropdown-item" href="https://andrisignorell.github.io/pharos/dev/">In-development</a></li>
+  </ul></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-tutorials" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Tutorials</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-tutorials"><li><h6 class="dropdown-header" data-toc-skip>PDF:</h6></li>
+    <li><a class="external-link dropdown-item" href="https://github.com/AndriSignorell/pharos/blob/main/vignettes/Format.pdf">Formatting</a></li>
+  </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/AndriSignorell/pharos/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://github.com/AndriSignorell/pharos/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -95,7 +104,7 @@ text files rather than large binaries.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">fn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".csv"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, <span class="va">fn</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">as.fileLink</span><span class="op">(</span><span class="va">fn</span>, label <span class="op">=</span> <span class="st">"iris"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;a href="data:text/csv;base64,IlNlcGFsLkxlbmd0aCIsIlNlcGFsLldpZHRoIiwiUGV0YWwuTGVuZ3RoIiwiUGV0YWwuV2lkdGgiLCJTcGVjaWVzIgo1LjEsMy41LDEuNCwwLjIsInNldG9zYSIKNC45LDMsMS40LDAuMiwic2V0b3NhIgo0LjcsMy4yLDEuMywwLjIsInNldG9zYSIKNC42LDMuMSwxLjUsMC4yLCJzZXRvc2EiCjUsMy42LDEuNCwwLjIsInNldG9zYSIKNS40LDMuOSwxLjcsMC40LCJzZXRvc2EiCg==" download="file1a3f67616366.csv"&gt;iris&lt;/a&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;a href="data:text/csv;base64,IlNlcGFsLkxlbmd0aCIsIlNlcGFsLldpZHRoIiwiUGV0YWwuTGVuZ3RoIiwiUGV0YWwuV2lkdGgiLCJTcGVjaWVzIgo1LjEsMy41LDEuNCwwLjIsInNldG9zYSIKNC45LDMsMS40LDAuMiwic2V0b3NhIgo0LjcsMy4yLDEuMywwLjIsInNldG9zYSIKNC42LDMuMSwxLjUsMC4yLCJzZXRvc2EiCjUsMy42LDEuNCwwLjIsInNldG9zYSIKNS40LDMuOSwxLjcsMC40LCJzZXRvc2EiCg==" download="file1a1f3e6da26b.csv"&gt;iris&lt;/a&gt;</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

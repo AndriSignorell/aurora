@@ -57,14 +57,11 @@ Based on code by Jim Lemon <jim@bitwrit.com.au>
 
 [`strheight()`](https://rdrr.io/r/graphics/strwidth.html)
 
-Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md)
+Other graphics.layout: [`abcCoords()`](abcCoords.md),
+[`axTicks`](axTicks.md), [`axisBreak()`](axisBreak.md),
+[`isValidPlotRegion()`](isValidPlotRegion.md),
+[`lineToUser()`](lineToUser.md), [`mar()`](mar.md),
+[`plotFacet()`](plotFacet.md)
 
 ## Examples
 

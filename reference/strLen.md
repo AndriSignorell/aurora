@@ -22,5 +22,5 @@ strLen(x, ...)
 
 [`nchar`](https://rdrr.io/r/base/nchar.html)
 
-[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
-for an overview of all string utilities in pharos.
+[string-overview](string-overview.md) for an overview of all string
+utilities in pharos.

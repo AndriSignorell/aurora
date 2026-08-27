@@ -36,4 +36,4 @@ safe to call even for types with no dedicated method.
 
 ## See also
 
-[`as.html`](https://andrisignorell.github.io/pharos/reference/as.html.md)
+[`as.html`](as.html.md)

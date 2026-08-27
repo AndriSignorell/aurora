@@ -67,12 +67,11 @@ plotMosaic(
   vector of colors for the fill/legend variable (the second table
   dimension, or first if `swap = TRUE`). `.useTheme` (default) resolves
   to `pal(getTheme()$palette, n = <number of levels>)` - the active
-  theme's qualitative palette (see
-  [theme](https://andrisignorell.github.io/pharos/reference/theme.md)),
-  sampled or interpolated to match the number of category levels. A
-  diverging or sequential color ramp is deliberately not used here: the
-  fill variable is an unordered categorical variable, and a ramp would
-  visually suggest an ordering between levels that doesn't exist.
+  theme's qualitative palette (see [theme](theme.md)), sampled or
+  interpolated to match the number of category levels. A diverging or
+  sequential color ramp is deliberately not used here: the fill variable
+  is an unordered categorical variable, and a ramp would visually
+  suggest an ordering between levels that doesn't exist.
 
 - border:
 
@@ -102,16 +101,14 @@ plotMosaic(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, or an explicit string, as
-  for
-  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
-  (internal).
+  for [`.withGraphicsState()`](graphics-framework.md) (internal).
 
 - ...:
 
   further graphical parameters passed to
   [`par()`](https://rdrr.io/r/graphics/par.html) via
-  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md),
-  e.g. `mar`, `cex.axis`, `las`.
+  [`.applyParFromDots()`](graphics-framework.md), e.g. `mar`,
+  `cex.axis`, `las`.
 
 ## Value
 
@@ -139,18 +136,13 @@ the legend order.
 
 ## See also
 
-[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
-[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
-[`getTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
+[`plotCatDist()`](plotCatDist.md), [`plotBar()`](plotBar.md),
+[`getTheme()`](theme.md)
 
-Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
-[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
+Other plot.bivariate: [`plotAssoc()`](plotAssoc.md),
+[`plotBag()`](plotBag.md), [`plotCor()`](plotCor.md),
+[`plotDens2D()`](plotDens2D.md), [`plotHeatmap()`](plotHeatmap.md),
+[`plotHexbin()`](plotHexbin.md), [`plotXY()`](plotXY.md)
 
 ## Examples
 

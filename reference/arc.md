@@ -40,11 +40,7 @@ An object inheriting from class `"arcGeometry"`.
 
 ## See also
 
-Other geometry.structures:
-[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
-[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
-[`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
+Other geometry.structures: [`band()`](band.md), [`bezier()`](bezier.md),
+[`circle()`](circle.md), [`ellipse()`](ellipse.md),
+[`polygon()`](polygon.md), [`regPolygon()`](regPolygon.md),
+[`ring()`](ring.md)

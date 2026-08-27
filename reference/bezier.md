@@ -32,14 +32,10 @@ Design*. Academic Press.
 
 [graphics::lines](https://rdrr.io/r/graphics/lines.html)
 
-Other geometry.structures:
-[`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
-[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
-[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
-[`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
-[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
+Other geometry.structures: [`arc()`](arc.md), [`band()`](band.md),
+[`circle()`](circle.md), [`ellipse()`](ellipse.md),
+[`polygon()`](polygon.md), [`regPolygon()`](regPolygon.md),
+[`ring()`](ring.md)
 
 ## Examples
 

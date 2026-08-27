@@ -64,7 +64,7 @@ plotLift(
 
   color of the curve or the bars. `.useTheme` (default) resolves to
   `getTheme()$twin[1]` - a single accent color, consistent with
-  [`plotECDF`](https://andrisignorell.github.io/pharos/reference/plotECDF.md).
+  [`plotECDF`](plotECDF.md).
 
 - lwd:
 
@@ -128,8 +128,7 @@ plotLift(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
-  of arguments for
-  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
+  of arguments for [`stamp()`](stamp.md).
 
 - ...:
 
@@ -167,30 +166,24 @@ semantics:
 - named list: customize component arguments
 
 `col`, `grid`, `box`, and `stamp` default to `.useTheme`, deferring to
-the package's active theme (see
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md))
-rather than a hardcoded value.
+the package's active theme (see [theme](theme.md)) rather than a
+hardcoded value.
 
 The number of groups is a property of the lift table, not of the plot -
 set it via the `nBins` argument of `alloy::lift()`.
 
 ## See also
 
-`alloy::lift()`, `alloy::roc()`,
-[`plotECDF`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+`alloy::lift()`, `alloy::roc()`, [`plotECDF`](plotECDF.md),
 [`callIf`](https://andrisignorell.github.io/bedrock/reference/callIf.html),
-[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
+[theme](theme.md)
 
-Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
-[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
+Other plot.special: [`plotBinaryTree()`](binaryTree.md),
+[`plotCirc()`](plotCirc.md), [`plotMiss()`](plotMiss.md),
+[`plotPolar()`](plotPolar.md), [`plotPropCI()`](plotPropCI.md),
+[`plotTernary()`](plotTernary.md),
+[`plotTimeSeries()`](plotTimeSeries.md),
+[`plotTreemap()`](plotTreemap.md), [`plotWeb()`](plotWeb.md)
 
 ## Examples
 
