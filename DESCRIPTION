@@ -39,3 +39,6 @@ URL: https://andrisignorell.github.io/pharos/,
             https://github.com/AndriSignorell/pharos/
 BugReports: https://github.com/AndriSignorell/pharos/issues
 Config/roxygen2/version: 8.1.0
+Remotes:
+    AndriSignorell/bedrock
+    
