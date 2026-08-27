@@ -1,7 +1,7 @@
 # List Available Palette Names
 
 Returns the names of all palettes available in
-[`pal`](https://andrisignorell.github.io/aurora/reference/pal.md),
+[`pal`](https://andrisignorell.github.io/pharos/reference/pal.md),
 optionally filtered by type.
 
 ## Usage
@@ -22,11 +22,11 @@ a character vector of palette names.
 
 ## See also
 
-[`pal`](https://andrisignorell.github.io/aurora/reference/pal.md)
+[`pal`](https://andrisignorell.github.io/pharos/reference/pal.md)
 
 Other color.palettes:
-[`hcol()`](https://andrisignorell.github.io/aurora/reference/hcol.md),
-[`pal()`](https://andrisignorell.github.io/aurora/reference/pal.md)
+[`hcol()`](https://andrisignorell.github.io/pharos/reference/hcol.md),
+[`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md)
 
 ## Examples
 

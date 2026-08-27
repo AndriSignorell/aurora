@@ -51,13 +51,13 @@ guard for conditional plotting, e.g.
 `mar`), [`dev.cur`](https://rdrr.io/r/grDevices/dev.html)
 
 Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/aurora/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md),
-[`lineToUser()`](https://andrisignorell.github.io/aurora/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/aurora/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/aurora/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md)
+[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
+[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
+[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
+[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
+[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
+[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
 
 ## Examples
 

@@ -37,8 +37,8 @@ All arguments are recycled as necessary.
 ## See also
 
 Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/aurora/reference/addOpacity.md),
-[`colToOpaque()`](https://andrisignorell.github.io/aurora/reference/colToOpaque.md),
-[`darken()`](https://andrisignorell.github.io/aurora/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/aurora/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/aurora/reference/lighten.md)
+[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
+[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
+[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
+[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
+[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md)

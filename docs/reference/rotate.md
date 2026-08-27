@@ -38,13 +38,13 @@ shape(s).
 
 ## See also
 
-[`polygon`](https://andrisignorell.github.io/aurora/reference/polygon.md),
-[`regPolygon`](https://andrisignorell.github.io/aurora/reference/regPolygon.md),
-[`ellipse`](https://andrisignorell.github.io/aurora/reference/ellipse.md),
-[`arc`](https://andrisignorell.github.io/aurora/reference/arc.md)
+[`polygon`](https://andrisignorell.github.io/pharos/reference/polygon.md),
+[`regPolygon`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
+[`ellipse`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
+[`arc`](https://andrisignorell.github.io/pharos/reference/arc.md)
 
 Other geometry.transformation:
-[`transformXY()`](https://andrisignorell.github.io/aurora/reference/transformXY.md)
+[`transformXY()`](https://andrisignorell.github.io/pharos/reference/transformXY.md)
 
 ## Examples
 

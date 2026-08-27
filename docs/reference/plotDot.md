@@ -1,9 +1,8 @@
-# Dot Plot with Optional Confidence Intervals
+# Dot Plot for Estimates and Confidence Intervals
 
-Draws a dot plot for numeric values with optional confidence intervals.
-The function accepts vectors, matrices, or 3-dimensional arrays.
-Internally the data are normalized to an array of dimension
-`items × (est, low, high) × groups`.
+Displays numeric estimates as points on a horizontal scale. Optional
+confidence limits are shown as horizontal lines with capped endpoints.
+Several series of estimates can be arranged in labelled groups.
 
 ## Usage
 
@@ -28,146 +27,198 @@ plotDot(
 
 - x:
 
-  numeric data. Can be
-
-  - a numeric vector (estimates only),
-
-  - a matrix with 1 column (estimates) or 3 columns (estimate, lower,
-    upper),
-
-  - a 3D array of dimension `items × (est, low, high) × groups`.
+  numeric estimates or confidence interval data. Supported formats are a
+  numeric vector, a numeric matrix, a three-dimensional numeric array,
+  or a `"CI"` object created with
+  [`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md)
 
 - items:
 
-  optional labels for the items (rows). Defaults to `dimnames(x)[[1]]`
-  if available.
+  optional character vector containing the item labels; defaults to the
+  row names or first dimension names of `x`
 
 - groups:
 
-  optional group labels. Defaults to `dimnames(x)[[3]]` if present.
+  optional character vector containing the group labels; defaults to the
+  column names or third dimension names of `x`
 
 - main:
 
-  main title of the plot.
+  optional main title
 
 - xlim:
 
-  limits for the horizontal axis.
+  numeric vector containing the limits of the horizontal axis; by
+  default, the range of all estimates and confidence limits
 
 - gap:
 
-  vertical spacing between groups.
+  non-negative numeric value controlling the vertical space between
+  groups
 
 - axes:
 
-  logical; if `TRUE` axes are drawn.
+  logical; whether the horizontal and item axes are drawn
 
 - xax:
 
-  optional specification of the x-axis. Passed to (the internal
-  function) `.drawAxis`.
+  optional specification for the horizontal axis, interpreted by the
+  internal axis renderer
 
 - box:
 
-  controls drawing of the plot box. `.useTheme` (default) resolves to
-  `getTheme()$box`. `TRUE`/`FALSE`/`NA`, or a named list, as for
-  [`box`](https://rdrr.io/r/graphics/box.html).
+  specification controlling the plot box. The default `.useTheme` uses
+  the active theme. A logical value, `NA`, or a named list of graphical
+  parameters can also be supplied
 
 - grid:
 
-  controls drawing of the horizontal item/group grid lines. `.useTheme`
-  (default) follows whether the active theme's grid section is enabled
-  (`getTheme()$grid`); the line style itself (color/lty) stays
-  `plotDot`'s own distinctive look unless overridden.
-  `TRUE`/`FALSE`/`NA`, or a named list, as for `.drawDotGrid()`
-  (internal).
+  specification controlling the horizontal item and group grid lines.
+  The default `.useTheme` follows the active theme. A logical value,
+  `NA`, or a named list of graphical parameters can also be supplied
 
 - pch:
 
-  plotting symbol specification for the points. `.useTheme` (default)
-  resolves to `getTheme()$points` (`pch`/`col`/ `bg`/`cex`). May also be
-  a single value or a list of graphical parameters passed to
-  [`points`](https://rdrr.io/r/graphics/points.html).
+  specification for the estimate points. The default `.useTheme` uses
+  the point settings of the active theme. A plotting symbol or a named
+  list containing parameters such as `pch`, `col`, `bg`, and `cex` can
+  also be supplied
 
 - ...:
 
   additional graphical parameters passed to
-  [`par`](https://rdrr.io/r/graphics/par.html) via
-  `.applyParFromDots()`.
+  [`par`](https://rdrr.io/r/graphics/par.html)
 
 ## Value
 
-Invisibly returns a list with the vertical layout positions used in the
-plot:
+invisibly, a list containing:
 
-- `ypos` positions of items,
+- `ypos`:
 
-- `group_y` positions of group labels,
+  vertical positions of the items within each group
 
-- `sep_y` positions of group separator lines.
+- `group_y`:
+
+  vertical positions of the group labels
+
+- `sep_y`:
+
+  vertical positions of the group separators
 
 ## Details
 
-If lower and upper bounds are supplied, horizontal confidence intervals
-are drawn with capped ends. Items are arranged vertically and may
-optionally be grouped.
+A numeric vector represents one estimate for each item.
 
-Graphical defaults for `box`, `grid`, and `pch` are drawn from the
-active theme (see
-[theme](https://andrisignorell.github.io/aurora/reference/theme.md)/[`setTheme`](https://andrisignorell.github.io/aurora/reference/theme.md))
-when left at their default value. Values supplied as arguments take
-precedence over theme settings.
+A numeric matrix represents estimates only: rows define the items and
+columns define the groups. Consequently, a matrix with three columns is
+interpreted as three groups and not automatically as estimates with
+lower and upper confidence limits.
+
+Use
+[`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md) to
+declare explicitly that a matrix, data frame, list, or result from
+[`tapply`](https://rdrr.io/r/base/tapply.html) contains confidence
+interval data:
+
+
+    plotDot(as.CI(x))
+
+A `"CI"` object contains the columns `est`, `lci`, and `uci`. Additional
+columns can define the item and group structure. If two additional
+columns are present, the first defines the items and the second defines
+the groups.
+
+Confidence interval data can alternatively be supplied as a
+three-dimensional numeric array with dimensions `items × 3 × groups`.
+The second dimension must contain, in this order, the estimate, lower
+confidence limit, and upper confidence limit.
+
+Values supplied directly as arguments take precedence over the
+corresponding settings of the active theme.
 
 ## See also
 
+[`as.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md),
+[`is.CI`](https://andrisignorell.github.io/pharos/reference/as.CI.md),
+[`dotchart`](https://rdrr.io/r/graphics/dotchart.html)
+
 Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/aurora/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/aurora/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/aurora/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/aurora/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/aurora/reference/plotDensBox.md),
-[`plotECDF()`](https://andrisignorell.github.io/aurora/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/aurora/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/aurora/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/aurora/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/aurora/reference/plotViolin.md)
+[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
+[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
+[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
+[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
+[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
+[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
+[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
+[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
+[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
+[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
 
 ## Examples
 
 ``` r
-# simple dot plot
-plotDot(c(12, 18, 28, 40, 65), items = LETTERS[1:5])
-
-
-# dot plot with confidence intervals
-est  <- c(12, 18, 28, 40, 65)
-low  <- est - 3
-high <- est + 3
-
-plotDot(cbind(est, low, high), items = LETTERS[1:5])
-
-
-dat <- structure(c(12, 18, 28, 40, 65, 9.2, 14.9, 24.3, 35.3, 62.4, 
-                   16.8, 20.6, 32, 42.4, 67.8, 20, 15, 22, 32, 55, 15.3, 10.2, 18, 
-                   28.1, 52.8, 23.2, 17, 25.1, 36.6, 58, 16, 24, 36, 54, 70, 13.4, 
-                   21.5, 31.9, 50.8, 65.7, 19.4, 27.8, 39.5, 56.6, 74.5, 10, 14, 
-                   21, 35, 50, 6.5, 9.8, 16, 31.9, 45.7, 14, 18.4, 23.3, 39.2, 53.2
-                   ), dim = c(5L, 3L, 4L)) 
+# estimates for a single series
+est <- c(A = 12, B = 18, C = 28, D = 40, E = 65)
 
 plotDot(
-  dat, main="Plot Dot VADeaths", cex.axis=0.8,
-  items = c("50-54","55-59","60-64","65-69","70-74"),
-  groups = c("Rural Male","Rural Female","Urban Male","Urban Female"),
-  xlim = c(0,80),
-  pch = list(pch=c(16, 21), col= c("green","blue"), 
-             cex=c(1,2), bg="white")
+  est,
+  main = "Estimates"
 )
 
 
-ypos <- plotDot(c(12,18,28,40,65), # groups="", 
-                items=LETTERS[1:5], pch=list(cex=1.5), main="Title")
-                
-points(c(12,18,28,40,65) + runif(n = 5)*15, y=unlist(ypos$ypos), 
-       cex=1.5, pch=15)
+# matrix columns represent groups of estimates
+groupedEst <- cbind(
+  Control = c(A = 12, B = 18, C = 28),
+  Treatment = c(A = 16, B = 24, C = 35)
+)
+
+plotDot(
+  groupedEst,
+  main = "Grouped estimates"
+)
+
+
+# confidence intervals stored in a matrix
+ci <- cbind(
+  est = est,
+  lci = est - c(2, 3, 4, 5, 6),
+  uci = est + c(2, 3, 4, 5, 6)
+)
+
+plotDot(
+  as.CI(ci),
+  main = "Estimates with confidence intervals"
+)
+
+
+# grouped confidence intervals stored in a data frame
+groupedCI <- data.frame(
+  item = rep(c("A", "B", "C"), 2),
+  group = rep(c("Control", "Treatment"), each = 3),
+  estimate = c(12, 18, 28, 16, 24, 35),
+  lower = c(10, 15, 24, 13, 20, 30),
+  upper = c(14, 21, 32, 19, 28, 40)
+)
+
+plotDot(
+  as.CI(
+    groupedCI,
+    estimate = "estimate",
+    lower = "lower",
+    upper = "upper"
+  ),
+  main = "Grouped confidence intervals"
+)
+
+
+# returned positions can be used to add graphical elements
+pos <- plotDot(est)
+
+points(
+  est + 3,
+  y = unlist(pos$ypos),
+  pch = 4
+)
+
 ```

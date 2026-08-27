@@ -43,11 +43,11 @@ Assigning `NULL` removes the unit attribute.
 ## See also
 
 Other format:
-[`convUnit()`](https://andrisignorell.github.io/aurora/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/aurora/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/aurora/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/aurora/reference/style.md)
+[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
+[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
+[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
+[`style()`](https://andrisignorell.github.io/pharos/reference/style.md)
 
 ## Examples
 

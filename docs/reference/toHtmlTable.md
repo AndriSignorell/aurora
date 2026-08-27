@@ -3,9 +3,9 @@
 Converts a matrix (or vector) to a `<table>` HTML fragment, with
 optional row/column headers, caption, per-column alignment and widths.
 The result has class `c("html", "character")` (see
-[`as.html`](https://andrisignorell.github.io/aurora/reference/as.html.md))
+[`as.html`](https://andrisignorell.github.io/pharos/reference/as.html.md))
 and prints as a formatted text table via
-[`preview.html`](https://andrisignorell.github.io/aurora/reference/preview.html.md).
+[`preview.html`](https://andrisignorell.github.io/pharos/reference/preview.html.md).
 
 ## Usage
 
@@ -21,7 +21,9 @@ toHtmlTable(
   border = 0,
   tableWidth = NA,
   captionAlign = "center",
-  frame = TRUE
+  frame = TRUE,
+  rowNames = TRUE,
+  colNames = TRUE
 )
 ```
 
@@ -78,16 +80,29 @@ toHtmlTable(
   logical; if `TRUE`, draw outer frame and group rules
   (`frame="hsides" rules="groups"`)
 
+- rowNames:
+
+  logical; render the row names as a leading header column. Ignored when
+  `m` has none
+
+- colNames:
+
+  logical; render the column names as a header row. Ignored when `m` has
+  none
+
 ## Value
 
 an object of class `c("html", "character")`
 
 ## See also
 
-[bedrock::appendEnum](https://rdrr.io/pkg/bedrock/man/appendEnum.html)
+[bedrock::appendEnum](https://andrisignorell.github.io/bedrock/reference/appendEnum.html)
 
 Other html:
-[`as.html()`](https://andrisignorell.github.io/aurora/reference/as.html.md),
-[`as.img()`](https://andrisignorell.github.io/aurora/reference/as.img.md),
-[`htmlNotation`](https://andrisignorell.github.io/aurora/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/aurora/reference/htmlSubscript.md)
+[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
+[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
+[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
+[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
+[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
+[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
+[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md)

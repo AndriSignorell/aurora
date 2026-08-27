@@ -99,7 +99,8 @@ plotBag(
 
 - stamp:
 
-  optional stamp passed to `.withGraphicsState()`.
+  optional stamp passed to
+  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
 
 - formula:
 
@@ -129,7 +130,7 @@ Invisibly returns a list of class `"bagplot"` with components:
 All graphical elements are controlled via an object-oriented interface:
 each element can be specified as `TRUE`, `FALSE`, or a `list(...)` of
 graphical parameters. Internally, this is handled via
-[`bedrock::callIf()`](https://rdrr.io/pkg/bedrock/man/callIf.html).
+[`bedrock::callIf()`](https://andrisignorell.github.io/bedrock/reference/callIf.html).
 
 The construction follows Rousseeuw, Ruts and Tukey (1999):
 
@@ -203,13 +204,13 @@ depth, *Applied Statistics*, vol. 45, no. 4, 516–526.
 ## See also
 
 Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
-[`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/aurora/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/aurora/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md)
+[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
+[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
+[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
+[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
+[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
+[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
+[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
 
 ## Examples
 

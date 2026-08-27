@@ -3,36 +3,73 @@
 Evaluates a plotting expression in a temporary PNG device and returns
 the resulting image as a self-contained, base64-encoded `<img>` tag
 (class `"html"`, see
-[`as.html`](https://andrisignorell.github.io/aurora/reference/as.html.md))
-suitable for embedding directly in HTML text.
+[`as.html`](https://andrisignorell.github.io/pharos/reference/as.html.md)),
+suitable for embedding directly in HTML text – a report, a question, an
+e-mail.
 
 ## Usage
 
 ``` r
-as.img(x, ...)
+as.img(expr, width = 520, height = 440, res = 96, ...)
 ```
 
 ## Arguments
 
-- x:
+- expr:
 
-  a string containing a plotting expression, e.g. `"plot(1:10)"` –
-  evaluated via `eval(parse(text = x))` in the caller's environment
+  a plotting expression, evaluated once inside the device. Character
+  input is evaluated via `eval(parse(text = expr))` for compatibility
+  with the earlier form of this function.
+
+- width, height:
+
+  size of the device in pixels
+
+- res:
+
+  nominal resolution in dpi, which also scales the text: raise it for a
+  larger picture with the same relative proportions
 
 - ...:
 
   further arguments passed to
-  [`png`](https://rdrr.io/r/grDevices/png.html) (e.g. `width`, `height`)
+  [`png`](https://rdrr.io/r/grDevices/png.html)
 
 ## Value
 
-an object of class `"html"` containing an `<img>` tag with a
-`data:image/png;base64,...` source
+an object of class `c("html", "character")` containing an `<img>` tag
+with a `data:image/png;base64,...` source
+
+## Details
+
+The expression is passed unevaluated and carries its own environment, so
+a plot built inside a function sees that function's local variables.
+Several statements are given in braces, as in the examples below.
 
 ## See also
 
 Other html:
-[`as.html()`](https://andrisignorell.github.io/aurora/reference/as.html.md),
-[`htmlNotation`](https://andrisignorell.github.io/aurora/reference/htmlNotation.md),
-[`htmlSubscript`](https://andrisignorell.github.io/aurora/reference/htmlSubscript.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/aurora/reference/toHtmlTable.md)
+[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
+[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
+[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
+[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
+[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
+[`htmlSubscript`](https://andrisignorell.github.io/pharos/reference/htmlSubscript.md),
+[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
+
+## Examples
+
+``` r
+img <- as.img(plot(1:10))
+
+# several statements, and local variables
+f <- function(n) {
+  x <- seq_len(n)
+  as.img({
+    plot(x, x^2, type = "b")
+    abline(h = mean(x^2), lty = 2)
+  })
+}
+substr(f(10), 1, 30)
+#> <img src="data:image/png;base6
+```

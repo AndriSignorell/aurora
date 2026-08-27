@@ -1,6 +1,6 @@
 Package: pharos
 Title: Descriptive Statistics Graphics and Utilities
-Version: 0.0.0.946
+Version: 0.0.0.947
 Authors@R: c(
   person(given="Andri", family="Signorell", 
          email = "andri@signorell.net", 
@@ -22,11 +22,7 @@ Authors@R: c(
   person("John"         , "Verzani"                    , role = c("ctb")),
   person("W. N."        , "Venables"                   , role = c("ctb")),
   person("Hans Peter"   , "Wolf"                       , role = c("ctb")),
-  person("Ying"         , "Wu"                         , role = c("ctb")),
-  person("OpenAI Codex",  role = c("ctb"), 
-    comment = "AI-assisted code and documentation review; all suggestions reviewed by the maintainer"),
-  person("Anthropic Claude", role = c("ctb"),
-    comment = "AI-assisted code and documentation review; all suggestions reviewed by the maintainer")
+  person("Ying"         , "Wu"                         , role = c("ctb"))
  )
 Description: Provides plots and graphic routines used in DescToolsX.
 Depends: R (>= 4.2.0)

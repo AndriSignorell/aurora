@@ -10,7 +10,7 @@ text or other annotations at consistent, region-aware positions.
 ``` r
 abcCoords(
   x = "topleft",
-  region = c("figure", "plot", "device"),
+  region = c("plot", "figure", "device"),
   cex = NULL,
   inset = 0
 )
@@ -27,8 +27,9 @@ abcCoords(
 
 - region:
 
-  one of `"figure"` (default), `"plot"`, or `"device"`. Determines the
-  coordinate region used.
+  one of `"plot"` (default), `"figure"`, or `"device"`. Determines the
+  coordinate region used. See Details for the clipping that comes with
+  the latter two.
 
 - cex:
 
@@ -68,7 +69,8 @@ Three regions are supported:
 
 - `"plot"`:
 
-  The inner plot area (`par("usr")`).
+  The inner plot area (`par("usr")`). The default, and the region
+  [`legend`](https://rdrr.io/r/graphics/legend.html) positions in.
 
 - `"figure"`:
 
@@ -78,19 +80,25 @@ Three regions are supported:
 
   The full device area.
 
+Coordinates for `"figure"` and `"device"` lie outside `par("usr")` and
+are therefore clipped away by
+[`text`](https://rdrr.io/r/graphics/text.html) and friends unless the
+drawing call sets `xpd = NA`. The returned values are in user space
+either way; only the clipping has to be turned off by the caller.
+
 ## See also
 
 [`text`](https://rdrr.io/r/graphics/text.html),
 [`legend`](https://rdrr.io/r/graphics/legend.html)
 
 Other graphics.layout:
-[`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/aurora/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/aurora/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/aurora/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/aurora/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md)
+[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
+[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
+[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
+[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
+[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
+[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
 
 ## Examples
 
@@ -101,10 +109,10 @@ plot(x = rnorm(10), type = "n", xlab = "", ylab = "")
 abcCoords("bottomleft")
 #> $xy
 #> $xy$x
-#> [1] -0.8287469
+#> [1] 0.64
 #> 
 #> $xy$y
-#> [1] -3.399057
+#> [1] -2.580691
 #> 
 #> 
 #> $adj
@@ -112,20 +120,18 @@ abcCoords("bottomleft")
 #> 
 
 # place text at a named position
-xy <- abcCoords("bottomleft", region = "plot")
-text(x = xy$xy$x, y = xy$xy$y, labels = "My Label",
-     adj = xy$adj, xpd = NA)
+xy <- abcCoords("bottomleft")
+text(x = xy$xy$x, y = xy$xy$y, labels = "My Label", adj = xy$adj)
 
 # all nine positions with inset
 sapply(c("topleft", "top", "topright",
          "left",    "center", "right",
          "bottomleft", "bottom", "bottomright"),
   function(p) {
-    xy <- abcCoords(p, region = "plot", inset = 1)
+    xy <- abcCoords(p, inset = 1)
     text(x = xy$xy$x, y = xy$xy$y,
-         labels = p, adj = xy$adj, xpd = NA)
+         labels = p, adj = xy$adj)
   })
-
 #> $topleft
 #> NULL
 #> 
@@ -153,4 +159,10 @@ sapply(c("topleft", "top", "topright",
 #> $bottomright
 #> NULL
 #> 
+
+# the margins need xpd = NA, whatever the coordinates say
+xy <- abcCoords("bottomright", region = "figure", inset = 0.5)
+text(x = xy$xy$x, y = xy$xy$y, labels = "source: ...",
+     adj = xy$adj, cex = 0.7, xpd = NA)
+
 ```

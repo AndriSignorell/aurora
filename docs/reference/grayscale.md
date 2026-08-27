@@ -25,7 +25,7 @@ R + 0.59 G + 0.11 B\$\$
 
 ## See also
 
-[color-conversion-overview](https://andrisignorell.github.io/aurora/reference/color-conversion-overview.md)
+[color-conversion-overview](https://andrisignorell.github.io/pharos/reference/color-conversion-overview.md)
 
 ## Examples
 

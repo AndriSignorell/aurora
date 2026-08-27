@@ -26,10 +26,13 @@ a character vector: `x` followed by `<sub>i</sub>`
 ## See also
 
 Other html:
-[`as.html()`](https://andrisignorell.github.io/aurora/reference/as.html.md),
-[`as.img()`](https://andrisignorell.github.io/aurora/reference/as.img.md),
-[`htmlNotation`](https://andrisignorell.github.io/aurora/reference/htmlNotation.md),
-[`toHtmlTable()`](https://andrisignorell.github.io/aurora/reference/toHtmlTable.md)
+[`as.fileLink()`](https://andrisignorell.github.io/pharos/reference/as.fileLink.md),
+[`as.html()`](https://andrisignorell.github.io/pharos/reference/as.html.md),
+[`as.img()`](https://andrisignorell.github.io/pharos/reference/as.img.md),
+[`embedFile()`](https://andrisignorell.github.io/pharos/reference/embedFile.md),
+[`escapeHtml()`](https://andrisignorell.github.io/pharos/reference/escapeHtml.md),
+[`htmlNotation`](https://andrisignorell.github.io/pharos/reference/htmlNotation.md),
+[`toHtmlTable()`](https://andrisignorell.github.io/pharos/reference/toHtmlTable.md)
 
 ## Examples
 

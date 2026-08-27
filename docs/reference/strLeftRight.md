@@ -35,7 +35,7 @@ The functions `strLeft` and `strRight` are simple wrappers to `substr`.
 
 ## See also
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

@@ -90,23 +90,24 @@ they are automatically normalized with a warning.
 
 Graphical elements such as grids are controlled via the unified plot
 design system using
-[`bedrock::callIf()`](https://rdrr.io/pkg/bedrock/man/callIf.html) and
-`.theme()`.
+[`bedrock::callIf()`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
+and `.theme()`.
 
 ## See also
 
-[`plotDens`](https://andrisignorell.github.io/aurora/reference/plotDens.md),
-[`plotRidge`](https://andrisignorell.github.io/aurora/reference/plotRidge.md)
+[`plotDens`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
+[`plotRidge`](https://andrisignorell.github.io/pharos/reference/plotRidge.md)
 
 Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/aurora/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/aurora/reference/plotCirc.md),
-[`plotMiss()`](https://andrisignorell.github.io/aurora/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/aurora/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/aurora/reference/plotPropCI.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/aurora/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/aurora/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/aurora/reference/plotWeb.md)
+[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
+[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
+[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
+[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
+[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
+[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
+[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
+[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
+[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
 
 ## Examples
 

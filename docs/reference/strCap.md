@@ -42,7 +42,7 @@ remain lowercase unless they appear as part of another word.
 [`stri_trans_totitle`](https://rdrr.io/pkg/stringi/man/stri_trans_casemap.html),
 [`stri_split_boundaries`](https://rdrr.io/pkg/stringi/man/stri_split_boundaries.html)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

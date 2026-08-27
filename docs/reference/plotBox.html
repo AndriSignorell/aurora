@@ -3,7 +3,7 @@
 variable. Group means and a reference line for the overall mean can
 optionally be overlaid."><meta property="og:description" content="Draws boxplots for a numeric variable, optionally grouped by a categorical
 variable. Group means and a reference line for the overall mean can
-optionally be overlaid."><meta property="og:image" content="https://andrisignorell.github.io/aurora/logo.png"></head><body>
+optionally be overlaid."><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -11,7 +11,7 @@ optionally be overlaid."><meta property="og:image" content="https://andrisignore
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.946</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,7 +141,7 @@ Supported arguments: <code>col</code>, <code>pch</code>, <code>cex</code>,
 <dt id="arg-stamp">stamp<a class="anchor" aria-label="anchor" href="#arg-stamp"></a></dt>
 <dd><p>controls the corner stamp. <code>.useTheme</code> (default)
 resolves to <code>getTheme()$stamp</code>. <code>TRUE</code>/<code>FALSE</code>/<code>NULL</code>,
-or an explicit string, as for <code>.withGraphicsState()</code> (internal).</p></dd>
+or an explicit string, as for <code><a href="graphics-framework.html">.withGraphicsState()</a></code> (internal).</p></dd>
 
 
 <dt id="arg-formula">formula<a class="anchor" aria-label="anchor" href="#arg-formula"></a></dt>
@@ -167,14 +167,14 @@ or an explicit string, as for <code>.withGraphicsState()</code> (internal).</p><
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Optional plot components are controlled using
-<code><a href="https://rdrr.io/pkg/bedrock/man/callIf.html" class="external-link">callIf</a></code> semantics:</p><ul><li><p><code>TRUE</code>: draw with defaults</p></li>
+<code><a href="https://andrisignorell.github.io/bedrock/reference/callIf.html" class="external-link">callIf</a></code> semantics:</p><ul><li><p><code>TRUE</code>: draw with defaults</p></li>
 <li><p><code>FALSE</code>, <code>NULL</code>, or <code>NA</code>: suppress component</p></li>
 <li><p>named list: customize component arguments</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></code>,
-<code><a href="https://rdrr.io/pkg/bedrock/man/callIf.html" class="external-link">callIf</a></code></p>
+<code><a href="https://andrisignorell.github.io/bedrock/reference/callIf.html" class="external-link">callIf</a></code></p>
 <p>Other plot.univariate:
 <code><a href="plotArea.html">plotArea()</a></code>,
 <code><a href="plotBar.html">plotBar()</a></code>,

@@ -127,8 +127,8 @@ visually accurate circles.
 
 Graphical elements such as grids are controlled via the unified plot
 design system using
-[`bedrock::callIf()`](https://rdrr.io/pkg/bedrock/man/callIf.html) and
-`.theme()`.
+[`bedrock::callIf()`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
+and `.theme()`.
 
 ## See also
 

@@ -30,7 +30,7 @@ lines(
 
   line color of the smoother. `.useTheme` (default) resolves to
   `getTheme()$twin[1]` - the first of the theme's two-color pair (see
-  [theme](https://andrisignorell.github.io/aurora/reference/theme.md)).
+  [theme](https://andrisignorell.github.io/pharos/reference/theme.md)).
 
 - lwd:
 
@@ -80,8 +80,8 @@ Loess can result in substantial computational load for large datasets.
 [`smooth.spline`](https://rdrr.io/r/stats/smooth.spline.html)
 
 Other graphics.trendlines:
-[`lines.lm()`](https://andrisignorell.github.io/aurora/reference/linesLm.md),
-[`splineCI`](https://andrisignorell.github.io/aurora/reference/splineCI.md)
+[`lines.lm()`](https://andrisignorell.github.io/pharos/reference/linesLm.md),
+[`splineCI`](https://andrisignorell.github.io/pharos/reference/splineCI.md)
 
 ## Examples
 

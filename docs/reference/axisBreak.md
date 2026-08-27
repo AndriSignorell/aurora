@@ -68,13 +68,13 @@ standards
 ## See also
 
 Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/aurora/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/aurora/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/aurora/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/aurora/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/aurora/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md)
+[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
+[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
+[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
+[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
+[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
+[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
 
 ## Examples
 

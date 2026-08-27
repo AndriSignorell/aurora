@@ -43,7 +43,7 @@ The functions are defined depending on method as
 
 [`trimws`](https://rdrr.io/r/base/trimws.html)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

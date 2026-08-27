@@ -7,7 +7,7 @@ curves for both the histogram and the ECDF panel."><meta property="og:descriptio
 mass plot for discrete data), a kernel density curve, a boxplot, and an
 empirical cumulative distribution function in a single multi-panel figure.
 Optional components include a rug, and fitted theoretical distribution
-curves for both the histogram and the ECDF panel."><meta property="og:image" content="https://andrisignorell.github.io/aurora/logo.png"></head><body>
+curves for both the histogram and the ECDF panel."><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +15,7 @@ curves for both the histogram and the ECDF panel."><meta property="og:image" con
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.946</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,7 +170,7 @@ inner panel margins are managed internally and cannot be overridden.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Each plot component is controlled via a single argument accepting
-<code><a href="https://rdrr.io/pkg/bedrock/man/callIf.html" class="external-link">callIf</a></code> semantics:</p><ul><li><p><code>TRUE</code>: draw with package defaults</p></li>
+<code><a href="https://andrisignorell.github.io/bedrock/reference/callIf.html" class="external-link">callIf</a></code> semantics:</p><ul><li><p><code>TRUE</code>: draw with package defaults</p></li>
 <li><p><code>FALSE</code>, <code>NULL</code>, or <code>NA</code>: suppress entirely</p></li>
 <li><p>a named list: draw with the given overrides merged into the defaults</p></li>
 </ul><p>Performance: for very large vectors (n &gt; 1e7) the density curve, ECDF,

@@ -39,9 +39,9 @@ pattern.
 ## See also
 
 [`stri_extract_first_regex`](https://rdrr.io/pkg/stringi/man/stri_extract.html),
-[`strExtractBetween`](https://andrisignorell.github.io/aurora/reference/strExtractBetween.md)
+[`strExtractBetween`](https://andrisignorell.github.io/pharos/reference/strExtractBetween.md)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

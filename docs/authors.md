@@ -39,27 +39,19 @@
 
 - **Ying Wu**. Contributor.
 
-- **OpenAI Codex**. Contributor.  
-  AI-assisted code and documentation review; all suggestions reviewed by
-  the maintainer
-
-- **Anthropic Claude**. Contributor.  
-  AI-assisted code and documentation review; all suggestions reviewed by
-  the maintainer
-
 ## Citation
 
 Source:
 [`DESCRIPTION`](https://github.com/AndriSignorell/pharos/blob/HEAD/DESCRIPTION)
 
 Signorell A (2026). *pharos: Descriptive Statistics Graphics and
-Utilities*. R package version 0.0.0.939,
+Utilities*. R package version 0.0.0.946,
 <https://andrisignorell.github.io/pharos/>.
 
     @Manual{,
       title = {pharos: Descriptive Statistics Graphics and Utilities},
       author = {Andri Signorell},
       year = {2026},
-      note = {R package version 0.0.0.939},
+      note = {R package version 0.0.0.946},
       url = {https://andrisignorell.github.io/pharos/},
     }

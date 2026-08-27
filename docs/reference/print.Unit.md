@@ -28,14 +28,14 @@ Invisibly returns `x`.
 ## See also
 
 [base::attr](https://rdrr.io/r/base/attr.html),
-[bedrock::label](https://rdrr.io/pkg/bedrock/man/label.html)
+[bedrock::label](https://andrisignorell.github.io/bedrock/reference/label.html)
 
 Other format:
-[`convUnit()`](https://andrisignorell.github.io/aurora/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/aurora/reference/fmCI.md),
-[`style()`](https://andrisignorell.github.io/aurora/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/aurora/reference/unit.md)
+[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
+[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
+[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
+[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
 
 ## Examples
 

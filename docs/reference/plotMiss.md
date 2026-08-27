@@ -60,17 +60,18 @@ Following an idea of Henk Harmsen <henk@carbonmetrics.com>
 ## See also
 
 [`hclust`](https://rdrr.io/r/stats/hclust.html),
-[`countCompCases`](https://rdrr.io/pkg/bedrock/man/countCompCases.html)
+[`countCompCases`](https://andrisignorell.github.io/bedrock/reference/countCompCases.html)
 
 Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/aurora/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/aurora/reference/plotCirc.md),
-[`plotPolar()`](https://andrisignorell.github.io/aurora/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/aurora/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/aurora/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/aurora/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/aurora/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/aurora/reference/plotWeb.md)
+[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
+[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
+[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
+[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
+[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
+[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
+[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
+[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
+[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
 
 ## Examples
 

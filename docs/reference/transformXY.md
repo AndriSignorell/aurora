@@ -6,7 +6,7 @@ The transformations are applied in the following order:
 1.  Scaling
 
 2.  Rotation (see
-    [`rotate`](https://andrisignorell.github.io/aurora/reference/rotate.md))
+    [`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md))
 
 3.  Translation
 
@@ -52,7 +52,7 @@ transformXY(
 - asp:
 
   aspect ratio adjustment passed to
-  [`rotate`](https://andrisignorell.github.io/aurora/reference/rotate.md).
+  [`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md).
   Default is `1`.
 
 ## Value
@@ -64,13 +64,13 @@ A list with components `x` and `y`, as returned by
 
 This function is a convenience wrapper combining basic affine
 transformations. Internally, it uses
-[`rotate`](https://andrisignorell.github.io/aurora/reference/rotate.md)
+[`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md)
 for rotation.
 
 ## See also
 
 Other geometry.transformation:
-[`rotate()`](https://andrisignorell.github.io/aurora/reference/rotate.md)
+[`rotate()`](https://andrisignorell.github.io/pharos/reference/rotate.md)
 
 ## Examples
 

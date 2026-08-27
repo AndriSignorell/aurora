@@ -41,10 +41,10 @@ An object inheriting from class `"arcGeometry"`.
 ## See also
 
 Other geometry.structures:
-[`band()`](https://andrisignorell.github.io/aurora/reference/band.md),
-[`bezier()`](https://andrisignorell.github.io/aurora/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/aurora/reference/circle.md),
-[`ellipse()`](https://andrisignorell.github.io/aurora/reference/ellipse.md),
-[`polygon()`](https://andrisignorell.github.io/aurora/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/aurora/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/aurora/reference/ring.md)
+[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
+[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
+[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
+[`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
+[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
+[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
+[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)

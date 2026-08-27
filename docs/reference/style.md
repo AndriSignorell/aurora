@@ -2,7 +2,7 @@
 
 Interface for format templates, defined as a list consisting of any
 accepted format features in
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md). This
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md). This
 enables to define templates globally and easily change or modify them
 later.
 
@@ -113,7 +113,7 @@ print(x, ...)
   or c respectively. The default is `NULL` which would just leave the
   strings as they are.  
   This argument is send directly to the function
-  [`strAlign()`](https://andrisignorell.github.io/aurora/reference/strAlign.md)
+  [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
   as argument `sep`.
 
 - lang:
@@ -140,13 +140,13 @@ print(x, ...)
 
 `style()` can either create new styles or edit existing ones. `style()`
 can be used to create new styles. It takes any of the arguments from
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) and
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) and
 combines them to an object of class `"Style"`, which then can be handed
 over to
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) as
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) as
 argument `fmt`.  
 Following will define a new format template named "`num.sty`". Passed to
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) this
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) this
 will result in a number displayed with 2 fixed digits and a comma as big
 mark:
 
@@ -171,23 +171,24 @@ format we use the default
 [`options()`](https://rdrr.io/r/base/options.html) approach:
 `options(num.sty = style(digits=1, bigMark=" "))` Defined styles in the
 options can be passed on to
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) simply
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) simply
 by their name.
 
-Many report functions (e.g. `tOne()`) in **DescToolsX** use three
-default formats for counts (named `"abs.sty"`), numeric values
-(`"num.sty"`) and percentages (`"per.sty"`).
+Many report functions (e.g.
+[`DescToolsX::tOne()`](https://rdrr.io/pkg/DescToolsX/man/tOne.html)) in
+**DescToolsX** use three default formats for counts (named `"abs.sty"`),
+numeric values (`"num.sty"`) and percentages (`"per.sty"`).
 
 ## See also
 
-[theme](https://andrisignorell.github.io/aurora/reference/theme.md)
+[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
 
 Other format:
-[`convUnit()`](https://andrisignorell.github.io/aurora/reference/convUnit.md),
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md),
-[`fmCI()`](https://andrisignorell.github.io/aurora/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/aurora/reference/print.Unit.md),
-[`unit()`](https://andrisignorell.github.io/aurora/reference/unit.md)
+[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md),
+[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
+[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
+[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
 
 ## Examples
 
@@ -199,31 +200,77 @@ abs.sty <- style(digits=0, bigMark=" ")
 dat.sty <- style(fmt="MM, dd yyyy")
 
 num.sty                             # displays the details of the style
+#> Format name:   
+#> Description:   
 #> Definition:    digits=2, bigMark=" "
 #> Example:       314 159.27
 # editing styles
 style("abs.sty")                    # looks for format "abs.sty"
-#> Warning: Style x could not be found!
-#> Definition:    =NA
-#> Example:       nan
+#> Format name:   
+#> Description:   
+#> Definition:    digits=0, bigMark="", label="Number format for counts"
+#> Example:       314159
+#> (Source:       options)
+#> 
 # style("nexist")                     # return for nonexisting style
 style("abs.sty", bigMark="")       # get Style("abs") and overwrite bigMark
-#> Warning: Style x could not be found!
-#> Definition:    =NA
-#> Example:       nan
+#> Format name:   
+#> Description:   
+#> Definition:    digits=0, bigMark="", label="Number format for counts"
+#> Example:       314159
+#> (Source:       options)
+#> 
 style("abs.sty", naForm="-")       # get Style("abs") and add user defined naForm
-#> Warning: Style x could not be found!
-#> Definition:    =NA
-#> Example:       nan
+#> Format name:   
+#> Description:   
+#> Definition:    digits=0, bigMark="", label="Number format for counts", naForm="-"
+#> Example:       314159
+#> (Source:       options)
+#> 
 
 styles()                            # all defined formats
-#> list()
-styles()[c("num.sty", "abs.sty")]   # numeric and integer styles
-#> [[1]]
-#> NULL
+#> $abs.sty
+#> Format name:   
+#> Description:   
+#> Definition:    digits=0, bigMark="", label="Number format for counts"
+#> Example:       314159
+#> (Source:       options)
 #> 
-#> [[2]]
-#> NULL
+#> $num.sty
+#> Format name:   
+#> Description:   
+#> Definition:    digits=3, bigMark="", label="Number format for numeric values"
+#> Example:       314159.265
+#> (Source:       options)
+#> 
+#> $per.sty
+#> Format name:   
+#> Description:   
+#> Definition:    digits=1, fmt="%", name="per", label="Percentage number format"
+#> Example:       3.1e+07%
+#> (Source:       options)
+#> 
+#> $pval.sty
+#> Format name:   
+#> Description:   
+#> Definition:    fmt="p", pThreshold=0.001, label="Number format for p-values"
+#> Example:       NA
+#> (Source:       options)
+#> 
+styles()[c("num.sty", "abs.sty")]   # numeric and integer styles
+#> $num.sty
+#> Format name:   
+#> Description:   
+#> Definition:    digits=3, bigMark="", label="Number format for numeric values"
+#> Example:       314159.265
+#> (Source:       options)
+#> 
+#> $abs.sty
+#> Format name:   
+#> Description:   
+#> Definition:    digits=0, bigMark="", label="Number format for counts"
+#> Example:       314159
+#> (Source:       options)
 #> 
 
 # define totally new format and store as option
@@ -236,5 +283,5 @@ fm(314.1563, fmt=num.sty)
 #> [1] 314.16
 
 fm(Sys.Date(), fmt=dat.sty)
-#> [1] 07, 24 2026
+#> [1] 08, 27 2026
 ```

@@ -33,13 +33,13 @@ For the `lineToUser` function to work, there must be an open plot.
 [`mtext`](https://rdrr.io/r/graphics/mtext.html)
 
 Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/aurora/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/aurora/reference/isValidPlotRegion.md),
-[`mar()`](https://andrisignorell.github.io/aurora/reference/mar.md),
-[`plotFacet()`](https://andrisignorell.github.io/aurora/reference/plotFacet.md),
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md)
+[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
+[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
+[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
+[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
+[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
+[`plotFacet()`](https://andrisignorell.github.io/pharos/reference/plotFacet.md),
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
 
 ## Examples
 

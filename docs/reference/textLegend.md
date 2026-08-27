@@ -66,7 +66,7 @@ textLegend(
 
   minimal vertical distance between labels in user coordinates, passed
   to
-  [`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md).
+  [`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md).
   Default is `1.2 * strheight("M") * cex`.
 
 ## Value
@@ -80,7 +80,7 @@ The function owns the legend geometry: the anchor positions `y` are
 sorted internally so the legend follows the vertical order of the lines,
 the graphical parameters are recycled accordingly, and vertical label
 collisions are resolved via
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md).
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md).
 Callers therefore simply pass the values in series order, parallel to
 `col`, `lty` and `lwd`.
 
@@ -89,25 +89,25 @@ Drawing uses [`mtext()`](https://rdrr.io/r/graphics/mtext.html) and
 margin; `xpd` is set to `TRUE` and restored on exit. Horizontal
 positions are given in margin lines of side 4 and converted to user
 coordinates via
-[`lineToUser()`](https://andrisignorell.github.io/aurora/reference/lineToUser.md).
+[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md).
 
 Make sure the right margin is wide enough for segments and labels, e.g.
 via the `mar` argument of the calling plot function.
 
 ## See also
 
-[`plotLines`](https://andrisignorell.github.io/aurora/reference/plotLines.md),
+[`plotLines`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
 [`mtext`](https://rdrr.io/r/graphics/mtext.html),
 [`segments`](https://rdrr.io/r/graphics/segments.html),
 [`legend`](https://rdrr.io/r/graphics/legend.html)
 
 Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/aurora/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/aurora/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/aurora/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/aurora/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/aurora/reference/stamp.md),
-[`titleRect()`](https://andrisignorell.github.io/aurora/reference/titleRect.md)
+[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
+[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
+[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
+[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
+[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
+[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
 
 ## Examples
 

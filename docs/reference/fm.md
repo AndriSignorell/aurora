@@ -26,14 +26,104 @@ fm(
   lang = NULL,
   ...
 )
+
+# Default S3 method
+fm(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+# S3 method for class 'data.frame'
+fm(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+# S3 method for class 'matrix'
+fm(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+# S3 method for class 'table'
+fm(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
+
+# S3 method for class 'ftable'
+fm(
+  x,
+  digits = NULL,
+  leadDigits = NULL,
+  sci = NULL,
+  bigMark = NULL,
+  decMark = NULL,
+  naForm = NULL,
+  zeroForm = NULL,
+  fmt = NULL,
+  pThreshold = NULL,
+  width = NULL,
+  align = NULL,
+  lang = NULL,
+  ...
+)
 ```
 
 ## Arguments
 
 - x:
 
-  an atomic numerical, typically a vector of real numbers or a matrix of
-  numerical values. Factors will be converted to strings.
+  a numeric, logical, character, factor, `Date`, or `POSIXt` vector, or
+  a matrix, table, ftable, or data frame
 
 - digits:
 
@@ -41,7 +131,8 @@ fm(
   Unlike [`formatC`](https://rdrr.io/r/base/formatc.html) you will
   always get this number of digits even if the last digit is 0. Negative
   numbers of digits round to a power of ten (`digits=-2` would round to
-  the nearest hundred).
+  the nearest hundred) for standard numeric formats; engineering formats
+  require nonnegative values
 
 - leadDigits:
 
@@ -53,13 +144,11 @@ fm(
 
 - sci:
 
-  integer. The power of 10 to be set when deciding to print numeric
-  values in exponential notation. Fixed notation will be preferred
-  unless the number is larger than 10^scipen. If just one value is set
-  it will be used for the left border 10^(-scipen) as well as for the
-  right one (10^scipen). A negative and a positive value can also be set
-  independently. Default is `getOption("scipen")`, whereas `scipen=0` is
-  overridden.
+  numeric scalar giving the absolute power-of-ten threshold for
+  scientific notation. Its absolute value is used symmetrically: for
+  `sci = 8`, nonzero values below \\10^{-8}\\ and values at or above
+  \\10^8\\ are displayed scientifically. The default is based on
+  `getOption("scipen")`; an option value of zero is replaced by 7
 
 - bigMark:
 
@@ -68,8 +157,8 @@ fm(
 
 - decMark:
 
-  character, specifying the decimal mark to be used. If not provided,
-  the default set as `decMark` option is used.
+  character specifying the decimal mark. If `NULL`, the current `OutDec`
+  option is used
 
 - naForm:
 
@@ -84,20 +173,17 @@ fm(
 
 - fmt:
 
-  either a format string, allowing to flexibly define special formats or
-  an object of class `style`, consisting of a list of `fm` arguments.
-  See Details.
+  a format code or date-time template, a formatting function, a named
+  Style, or an object of class `Style`. See Details
 
 - pThreshold:
 
-  a numerical tolerance used mainly for formatting p values, those less
-  than pThreshold are formatted as "`\code{< [pThreshold]}`" (where
-  '`[pThreshold]`' stands for `format(pThreshold, digits))`. Default is
-  `0.001`.
+  positive numeric threshold below which p-values are shown as
+  `"< threshold"`
 
 - width:
 
-  integer, the defined fixed width of the strings.
+  nonnegative integer giving the minimum display width
 
 - align:
 
@@ -108,25 +194,28 @@ fm(
   or c respectively. The default is `NULL` which would just leave the
   strings as they are.  
   This argument is send directly to the function
-  [`strAlign()`](https://andrisignorell.github.io/aurora/reference/strAlign.md)
+  [`strAlign()`](https://andrisignorell.github.io/pharos/reference/strAlign.md)
   as argument `sep`.
 
 - lang:
 
   optional value setting the language for the months and daynames. Can
   be either `"local"` for current locale or `"en"` for english. If left
-  to `NULL`, the DescToolsOption `"lang"` will be searched for and if
-  not found `"local"` will be taken as default.
+  to `NULL`, the package option `"lang"` is used, falling back to `"en"`
 
 - ...:
 
-  further arguments to be passed to or from methods.
+  additional arguments passed to methods or to a formatting function
+  supplied through `fmt`
 
 ## Value
 
-the formatted values as characters.  
-If `x` was a `matrix`, then a the result will also be a `matrix`. (Hope
-this will not surprise you...)
+formatted character values with the dimensions or tabular structure of
+`x` preserved where applicable, of class `noquote` so that they print
+without quotation marks. For a matrix or a table the entries are padded
+to one common width unless `width` is given, so that the decimal points
+line up: a character matrix prints left justified, which would otherwise
+shift every negative entry against the positive ones.
 
 ## Details
 
@@ -140,7 +229,7 @@ everyday reporting. Among these, the argument `fmt` deserves a more
 detailed description due to its flexibility. It is used to generate a
 variety of different special formats.  
   
-If `x` is a date, it can take ISO-8601–inspired token syntax similar to
+If `x` is a date, it can take ISO-8601-inspired token syntax similar to
 .NET or Moment.js (consisting of `d`, `M` and `y` for day, month or year
 and `h/H`, `m`, `s`, `t` for hours, minutes, seconds and AM/PM
 designator) and defining the combination of day month and year
@@ -183,7 +272,7 @@ frequently used formats there are the following special codes available:
 | engineering | forces scientific representation of `x`, but only with powers that are a multiple of 3. | `engabb`` ` |
 | engineering abbr.` ` | same as `eng`, but replaces the exponential representation by codes, |  |
 |  | e.g. `M` for mega (1e6). | `%` |
-| percent | will divide the given number by 100 and append the \\ will wrap the function [`format.pval`](https://rdrr.io/r/base/format.pval.html) and return a p-value format. |  |
+| percent | multiplies the given number by 100 and appends the \\ formats values as p-values. |  |
 |  | Use `pThreshold` to define the threshold to e.g. switch to a ` <0.001 ` representation. |  |
 |  | `frac` | fractions |
 | will (try to) convert numbers to fractions. So 0.1 will be displayed as 1/10. |  |  |
@@ -199,12 +288,20 @@ frequently used formats there are the following special codes available:
 
 `fmt` can as well be an object of class "`Style`" consisting of a list
 out of the arguments above (as created by
-[`style()`](https://andrisignorell.github.io/aurora/reference/style.md)).
+[`style()`](https://andrisignorell.github.io/pharos/reference/style.md)).
 This allows to store and manage the full format in variables or as
-options and use it as format template subsequently.
+options and use it as format template subsequently. Arguments supplied
+directly to `fm()` override the corresponding Style settings, including
+an explicitly supplied `NULL`.
 
-Finally `fmt` can also be a function in x, which makes formatting very
-flexible.
+For data frames, every formatting argument must have length one or the
+number of columns. Length-one arguments are recycled, allowing each
+column to use its own formatting settings without ambiguous partial
+recycling. Functions and Style objects count as single settings; use a
+list to supply different functions or Styles by column.
+
+Finally, `fmt` can be a function of `x`. Additional arguments in `...`
+are forwarded to that function.
 
 ## See also
 
@@ -214,15 +311,16 @@ flexible.
 [base::sprintf](https://rdrr.io/r/base/sprintf.html),
 [stats::symnum](https://rdrr.io/r/stats/symnum.html),  
 [base::Sys.setlocale](https://rdrr.io/r/base/locales.html),  
-DescToolsX::weekday, DescToolsX::month,
-[theme](https://andrisignorell.github.io/aurora/reference/theme.md)
+[`DescToolsX::weekday`](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
+[`DescToolsX::month`](https://rdrr.io/pkg/DescToolsX/man/date_functions.html),
+[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
 
 Other format:
-[`convUnit()`](https://andrisignorell.github.io/aurora/reference/convUnit.md),
-[`fmCI()`](https://andrisignorell.github.io/aurora/reference/fmCI.md),
-[`print.Unit()`](https://andrisignorell.github.io/aurora/reference/print.Unit.md),
-[`style()`](https://andrisignorell.github.io/aurora/reference/style.md),
-[`unit()`](https://andrisignorell.github.io/aurora/reference/unit.md)
+[`convUnit()`](https://andrisignorell.github.io/pharos/reference/convUnit.md),
+[`fmCI()`](https://andrisignorell.github.io/pharos/reference/fmCI.md),
+[`print.Unit()`](https://andrisignorell.github.io/pharos/reference/print.Unit.md),
+[`style()`](https://andrisignorell.github.io/pharos/reference/style.md),
+[`unit()`](https://andrisignorell.github.io/pharos/reference/unit.md)
 
 ## Examples
 
@@ -245,12 +343,11 @@ gettextf("Report generated on %s",
 x <- pi * 10^(-10:10)
 
 fm(x, digits=3, fmt="%")
-#>  [1] 0.000%             0.000%             0.000%             0.000%            
-#>  [5] 0.000%             0.003%             0.031%             0.314%            
-#>  [9] 3.142%             31.416%            314.159%           3141.593%         
-#> [13] 31415.927%         314159.265%        3141592.654%       31415926.536%     
-#> [17] 314159265.359%     3141592653.590%    31415926535.898%   314159265358.979% 
-#> [21] 3141592653589.793%
+#>  [1] 3.142e-08%   0.000%       0.000%       0.000%       0.000%      
+#>  [6] 0.003%       0.031%       0.314%       3.142%       31.416%     
+#> [11] 314.159%     3141.593%    31415.927%   314159.265%  3141592.654%
+#> [16] 3.142e+07%   3.142e+08%   3.142e+09%   3.142e+10%   3.142e+11%  
+#> [21] 3.142e+12%  
 fm(x, digits=4, sci=4, leadDigits=0, width=9, align=".")
 #>  [1]     3.1416e-10     3.1416e-09     3.1416e-08     3.1416e-07     3.1416e-06
 #>  [6]     3.1416e-05      .0003          .0031          .0314          .3142    
@@ -264,17 +361,17 @@ m <- matrix(runif(100), nrow=10,
             dimnames=list(LETTERS[1:10], LETTERS[1:10]))
 
 fm(m, digits=1)
-#>   A     B     C     D     E     F     G     H     I     J    
-#> A "0.4" "0.3" "0.5" "0.7" "0.2" "0.6" "0.3" "0.7" "0.7" "0.8"
-#> B "0.2" "0.7" "0.3" "0.7" "0.0" "0.7" "0.0" "0.4" "1.0" "0.7"
-#> C "0.7" "0.2" "0.0" "0.2" "0.7" "0.3" "0.6" "0.3" "0.3" "0.5"
-#> D "0.6" "0.3" "0.3" "0.7" "0.4" "0.2" "0.9" "0.2" "0.6" "0.1"
-#> E "0.8" "0.1" "0.2" "0.6" "0.1" "0.4" "0.6" "0.1" "0.4" "0.2"
-#> F "0.3" "0.8" "0.4" "0.2" "0.7" "0.2" "0.9" "0.8" "1.0" "0.8"
-#> G "0.1" "0.7" "0.9" "0.1" "0.7" "0.3" "0.2" "0.2" "0.0" "0.1"
-#> H "0.6" "1.0" "0.9" "0.0" "1.0" "0.8" "0.1" "0.5" "0.3" "0.7"
-#> I "0.4" "0.3" "0.5" "0.5" "0.3" "0.1" "0.5" "1.0" "0.6" "0.3"
-#> J "0.7" "0.2" "0.7" "0.1" "0.5" "0.2" "0.3" "0.6" "0.1" "0.6"
+#>   A   B   C   D   E   F   G   H   I   J  
+#> A 0.4 0.3 0.5 0.7 0.2 0.6 0.3 0.7 0.7 0.8
+#> B 0.2 0.7 0.3 0.7 0.0 0.7 0.0 0.4 1.0 0.7
+#> C 0.7 0.2 0.0 0.2 0.7 0.3 0.6 0.3 0.3 0.5
+#> D 0.6 0.3 0.3 0.7 0.4 0.2 0.9 0.2 0.6 0.1
+#> E 0.8 0.1 0.2 0.6 0.1 0.4 0.6 0.1 0.4 0.2
+#> F 0.3 0.8 0.4 0.2 0.7 0.2 0.9 0.8 1.0 0.8
+#> G 0.1 0.7 0.9 0.1 0.7 0.3 0.2 0.2 0.0 0.1
+#> H 0.6 1.0 0.9 0.0 1.0 0.8 0.1 0.5 0.3 0.7
+#> I 0.4 0.3 0.5 0.5 0.3 0.1 0.5 1.0 0.6 0.3
+#> J 0.7 0.2 0.7 0.1 0.5 0.2 0.3 0.6 0.1 0.6
 
 # engineering format
 fm(x, fmt="eng",  digits=2)
@@ -289,8 +386,8 @@ fm(x, fmt="engabb", leadDigits=2, digits=2)
 # combine with grams [g]
 paste(fm(x, fmt="engabb", leadDigits=2, digits=2), "g", sep="")
 #>  [1] "314.16 pg" "03.14 ng"  "31.42 ng"  "314.16 ng" "03.14 ug"  "31.42 ug" 
-#>  [7] "314.16 ug" "03.14 mg"  "31.42 mg"  "314.16 mg" "03.14 g"   "31.42 g"  
-#> [13] "314.16 g"  "03.14 kg"  "31.42 kg"  "314.16 kg" "03.14 Mg"  "31.42 Mg" 
+#>  [7] "314.16 ug" "03.14 mg"  "31.42 mg"  "314.16 mg" "03.14g"    "31.42g"   
+#> [13] "314.16g"   "03.14 kg"  "31.42 kg"  "314.16 kg" "03.14 Mg"  "31.42 Mg" 
 #> [19] "314.16 Mg" "03.14 Gg"  "31.42 Gg" 
 
 # example form symnum

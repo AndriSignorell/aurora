@@ -49,6 +49,11 @@ plotFacet(
 
   the panel function, called per panel as
   `panelFun(x, y, col, pch, ...)` with a fully set up coordinate system.
+  Components of a sample beyond `x` and `y` are passed on under their
+  own names, so a panel can carry per-panel data of its own - confidence
+  bounds, weights, labels. They are only passed to a `panelFun` that can
+  accept them (a matching formal, or `...`), so panel functions written
+  for the two-component form keep working unchanged.
 
 - cols:
 
@@ -57,8 +62,8 @@ plotFacet(
 
 - stripLabels:
 
-  the labels for the panel strips. Default is the sequence along
-  `samples`.
+  the labels for the panel strips. Default is `names(samples)` where the
+  samples are named, otherwise the sequence along `samples`.
 
 - main:
 
@@ -70,8 +75,12 @@ plotFacet(
 
 - xlim, ylim:
 
-  the common axis limits for all panels. Default is the range over all
-  samples.
+  the axis limits. A numeric vector of length 2 (or `NULL`, the default,
+  for the range over all samples) binds every panel to the same scale.
+  `"free"` gives each panel its own scale, taken from its own sample. A
+  *list* of length 2 vectors, one per sample, does the same with limits
+  you choose; a list of length 1 is recycled. See the section on free
+  scales.
 
 - mar:
 
@@ -95,11 +104,11 @@ plotFacet(
 - strip:
 
   controls the panel strips, evaluated by
-  [bedrock::callIf](https://rdrr.io/pkg/bedrock/man/callIf.html): `TRUE`
-  (default) draws strips with default settings, `FALSE`/`NULL`/`NA`
-  suppresses them (no space is reserved), a named list is passed as
-  arguments to
-  [`titleRect`](https://andrisignorell.github.io/aurora/reference/titleRect.md),
+  [bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html):
+  `TRUE` (default) draws strips with default settings,
+  `FALSE`/`NULL`/`NA` suppresses them (no space is reserved), a named
+  list is passed as arguments to
+  [`titleRect`](https://andrisignorell.github.io/pharos/reference/titleRect.md),
   e.g. `list(bg = "steelblue", col = "white", line = 1.5)`. The `label`
   argument is set per panel from `stripLabels` and cannot be overridden.
 
@@ -110,9 +119,9 @@ plotFacet(
 - grid:
 
   controls the grid lines, evaluated by
-  [bedrock::callIf](https://rdrr.io/pkg/bedrock/man/callIf.html): `TRUE`
-  (default) draws grid lines at the positions of
-  [`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md)
+  [bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html):
+  `TRUE` (default) draws grid lines at the positions of
+  [`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md)
   with default settings (`col = "grey85", lwd = 0.8`),
   `FALSE`/`NULL`/`NA` suppresses them, a named list is passed as
   arguments to [`abline`](https://rdrr.io/r/graphics/abline.html), e.g.
@@ -151,8 +160,27 @@ two adjacent rows is `vert` lines. Since margin lines have the same
 physical size in both directions, `horiz == vert` yields visually equal
 gaps.
 
+## Bound and free scales
+
+By default all panels share one coordinate system, and the axes are
+drawn on the outer panels only - the arrangement that makes small
+multiples comparable at a glance.
+
+Passing `xlim = "free"` - or a list of limits, for control over the
+individual panels - frees that dimension: every panel gets its own
+limits, and with them its own axis, because an outer axis would no
+longer describe the panels above or beside it. The layout answers for
+this - a freed dimension reserves the full `mar` on every panel edge
+that now carries annotation, not just on the outer ones, so the panels
+stay equal in size and the tick labels have room.
+
+Free scales cost what they free: panels can no longer be compared by
+position, only by shape. The natural case is a set of diagnostics of one
+model against different predictors - the residual scale is shared and
+worth comparing, the predictor scales are not commensurable at all.
+
 The strip is drawn with
-[`titleRect`](https://andrisignorell.github.io/aurora/reference/titleRect.md)
+[`titleRect`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
 above each panel. Its height (`line` argument of `titleRect`) is
 reserved in the top margin of every panel, so the strip never eats into
 the gap between the rows.
@@ -168,17 +196,17 @@ are exactly equal in size.
 ## See also
 
 [graphics::layout](https://rdrr.io/r/graphics/layout.html),
-[titleRect](https://andrisignorell.github.io/aurora/reference/titleRect.md),
-[bedrock::callIf](https://rdrr.io/pkg/bedrock/man/callIf.html)
+[titleRect](https://andrisignorell.github.io/pharos/reference/titleRect.md),
+[bedrock::callIf](https://andrisignorell.github.io/bedrock/reference/callIf.html)
 
 Other graphics.layout:
-[`abcCoords()`](https://andrisignorell.github.io/aurora/reference/abcCoords.md),
-[`axTicks`](https://andrisignorell.github.io/aurora/reference/axTicks.md),
-[`axisBreak()`](https://andrisignorell.github.io/aurora/reference/axisBreak.md),
-[`isValidPlotRegion()`](https://andrisignorell.github.io/aurora/reference/isValidPlotRegion.md),
-[`lineToUser()`](https://andrisignorell.github.io/aurora/reference/lineToUser.md),
-[`mar()`](https://andrisignorell.github.io/aurora/reference/mar.md),
-[`spreadOut()`](https://andrisignorell.github.io/aurora/reference/spreadOut.md)
+[`abcCoords()`](https://andrisignorell.github.io/pharos/reference/abcCoords.md),
+[`axTicks`](https://andrisignorell.github.io/pharos/reference/axTicks.md),
+[`axisBreak()`](https://andrisignorell.github.io/pharos/reference/axisBreak.md),
+[`isValidPlotRegion()`](https://andrisignorell.github.io/pharos/reference/isValidPlotRegion.md),
+[`lineToUser()`](https://andrisignorell.github.io/pharos/reference/lineToUser.md),
+[`mar()`](https://andrisignorell.github.io/pharos/reference/mar.md),
+[`spreadOut()`](https://andrisignorell.github.io/pharos/reference/spreadOut.md)
 
 ## Examples
 
@@ -194,5 +222,27 @@ my_panel <- function(x, y, col, pch = 16, ...) {
 plotFacet(samples, dim = c(5, 5), panelFun = my_panel,
            xlab = "Time", ylab = "Weight", main = "ChickWeight",
            strip = list(bg = "grey80", cex = 0.8))
+
+
+# free x scales: mpg against four predictors, each on its own range,
+# with a shared y scale. The regression band travels in the samples and
+# reaches the panel function under its own names.
+vars <- c("disp", "hp", "wt", "qsec")
+
+samples <- lapply(vars, function(v) {
+  ord <- order(mtcars[[v]])
+  ci  <- predict(lm(reformulate(v, "mpg"), mtcars), interval = "confidence")
+  list(x = mtcars[[v]][ord], y = mtcars$mpg[ord],
+       lci = ci[ord, "lwr"], uci = ci[ord, "upr"])
+})
+
+panelBand <- function(x, y, lci, uci, col, pch = 16, ...) {
+  polygon(c(x, rev(x)), c(uci, rev(lci)), col = "grey85", border = NA)
+  points(x, y, col = col, pch = pch)
+}
+
+plotFacet(setNames(samples, vars), dim = c(2, 2), panelFun = panelBand,
+          xlim = "free", ylab = "mpg",
+          main = "mpg against four predictors")
 
 ```

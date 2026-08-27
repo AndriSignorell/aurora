@@ -4,7 +4,7 @@
 points to pharos's theme system: a single, named list of graphical and
 formatting defaults, consulted by essentially every plotting function in
 the package (and by
-[`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md) for
+[`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md) for
 numeric/percentage/p-value formatting) whenever the corresponding
 function argument is left at its default value.
 
@@ -51,9 +51,9 @@ order of precedence (highest first):
 2.  **Function-specific default** - some functions deliberately hardcode
     a value that differs from the generic theme baseline instead of
     using `.useTheme` (e.g.
-    [`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md)'s
+    [`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md)'s
     `box` defaults to `FALSE` rather than the theme's box setting, and
-    [`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md)'s
+    [`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md)'s
     grid line color/style stays its own orange/grey dashed look
     regardless of the active theme). This is a conscious per-function
     design choice, not a bug - see the individual function's
@@ -76,38 +76,40 @@ sub-list, e.g.
 
   `col.axis="grey40", las=1, cex=1.1`. Global
   [`par()`](https://rdrr.io/r/graphics/par.html) pass applied by every
-  `.applyParFromDots()` call (axis label color, axis label orientation,
-  global text scaling).
+  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
+  call (axis label color, axis label orientation, global text scaling).
 
 - `grid`:
 
   `col="grey80", lwd=1, lty="dotted"`, plus `group.*` variants.
-  Background grid lines, via `.drawGrid()`. The `group.*` entries style
-  a subordinate/secondary grid (e.g. group separators) where a function
-  draws one.
+  Background grid lines, via
+  [`.drawGrid()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
+  The `group.*` entries style a subordinate/secondary grid (e.g. group
+  separators) where a function draws one.
 
 - `box`:
 
   `col="grey50", lwd=1, lty="solid"`. The frame drawn around a plot
-  region, via `.drawBox()`.
+  region, via
+  [`.drawBox()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
 
 - `points`:
 
   `pch=21, col="grey50", bg=addOpacity("grey"), cex=1.1`. Default point
   styling for scatterplot-like functions (e.g.
-  [`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md),
-  [`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md)).
+  [`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md),
+  [`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md)).
 
 - `twin`:
 
   `pal("helsana")[c(6, 1)]`. A fixed pair of colors for contexts that
   inherently need exactly two contrasting colors (e.g. a fit line and a
   smoother in
-  [`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md),
+  [`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md),
   the two poles of a diverging color ramp in
-  [`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md),
+  [`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
   a single accent color via `twin[1]` in
-  [`lines.loess`](https://andrisignorell.github.io/aurora/reference/lines.loess.md)/[`plotQQ()`](https://andrisignorell.github.io/aurora/reference/plotQQ.md)'s
+  [`lines.loess`](https://andrisignorell.github.io/pharos/reference/lines.loess.md)/[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md)'s
   confidence band). Never used as a substitute for `palette` when more
   than two colors are needed.
 
@@ -115,45 +117,45 @@ sub-list, e.g.
 
   `"helsana"`. Name of the qualitative (categorical) palette used
   whenever more than two unordered colors are needed (e.g.
-  [`plotMosaic()`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md)'s
+  [`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md)'s
   fill colors), resolved via
-  [`pal()`](https://andrisignorell.github.io/aurora/reference/pal.md).
+  [`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md).
   Deliberately not used for sequential or diverging numeric scales – see
   the next item.
 
 - (none – by design):
 
   Sequential/diverging numeric color scales (e.g.
-  [`plotDens2D()`](https://andrisignorell.github.io/aurora/reference/plotDens2D.md)'s
+  [`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md)'s
   density heatmap,
-  [`plotHeatmap()`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md)'s
+  [`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md)'s
   cell shading) are deliberately *not* theme-driven; they use a
   hardcoded, purpose-built palette via
-  [`pal()`](https://andrisignorell.github.io/aurora/reference/pal.md)
+  [`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md)
   instead (e.g. `pal("red-black")`, `pal("Blues")`). Neither `palette`
   (categorical) nor `twin` (a fixed pair) is the right semantic fit for
   an ordered, continuous scale – see
-  [`pal`](https://andrisignorell.github.io/aurora/reference/pal.md) for
+  [`pal`](https://andrisignorell.github.io/pharos/reference/pal.md) for
   the registry of named continuous palettes.
 
 - `bar`:
 
   `col="grey80", border=NA`. Default bar fill/border in
-  [`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md).
+  [`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md).
 
 - `sty`:
 
   `abs="abs.sty", perc="per.sty", num="num.sty", pval="pval.sty"`. Names
-  of [`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md)
+  of [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md)
   format styles (see
-  [`styles()`](https://andrisignorell.github.io/aurora/reference/style.md))
+  [`styles()`](https://andrisignorell.github.io/pharos/reference/style.md))
   used for absolute counts, percentages, plain numbers, and p-values
   respectively.
 
 - `stamp`:
 
   `expression(...)` – unevaluated. The corner stamp text drawn by every
-  [`stamp()`](https://andrisignorell.github.io/aurora/reference/stamp.md)/`.withGraphicsState()`
+  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md)/[`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
   call. Stored as an unevaluated
   [`expression()`](https://rdrr.io/r/base/expression.html) and
   [`eval()`](https://rdrr.io/r/base/eval.html)'d at draw time (not at
@@ -182,7 +184,8 @@ Two small internal helpers resolve it:
 - `.resolveToggle(spec, themeValue)` - for an on/off-style argument
   (such as `grid`/`box`) that may also be a
   `TRUE`/`FALSE`/`NA`/`NULL`/list spec in its own right, used internally
-  by `.drawGrid()`/`.drawBox()`.
+  by
+  [`.drawGrid()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)/[`.drawBox()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
 
 Some theme values require more than a simple key lookup to resolve (e.g.
 building a color ramp from `twin`, or constructing a list of point
@@ -190,14 +193,14 @@ parameters from `points`); those are resolved with a small inline
 `identical(x, .useTheme)` check directly in the consuming function
 rather than forcing them through one of the two generic helpers above.
 See e.g.
-[`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md)'s
+[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md)'s
 `col` argument or
-[`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md)'s
+[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md)'s
 `pch` argument for worked examples.
 
 ## How plotting functions consume the theme
 
-- `.applyParFromDots()`:
+- [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md):
 
   Applies `getTheme()$par` as the lowest-precedence
   [`par()`](https://rdrr.io/r/graphics/par.html) pass, before the
@@ -211,13 +214,14 @@ See e.g.
   [`graphics::box()`](https://rdrr.io/r/graphics/box.html). Resolve the
   `.useTheme` sentinel, merge the theme's style values with any
   function-specific `defaults` (e.g.
-  [`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md)
+  [`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md)
   suppressing the axis-parallel grid direction via `nx`/`ny`), and
-  dispatch via [`callIf`](https://rdrr.io/pkg/bedrock/man/callIf.html).
+  dispatch via
+  [`callIf`](https://andrisignorell.github.io/bedrock/reference/callIf.html).
   **Not** used by every function that draws a grid or frame: a few
-  ([`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md),
-  [`plotHeatmap()`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
-  [`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md))
+  ([`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
+  [`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
+  [`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md))
   have grid/box geometry tied to exact data coordinates (e.g.
   half-integer cell boundaries) that doesn't match
   [`graphics::grid()`](https://rdrr.io/r/graphics/grid.html)'s
@@ -231,7 +235,7 @@ See e.g.
   Wraps a plotting function's body, restores
   [`par()`](https://rdrr.io/r/graphics/par.html) afterwards, and - after
   `expr` has run successfully - calls
-  [`stamp()`](https://andrisignorell.github.io/aurora/reference/stamp.md)
+  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md)
   with the (possibly theme-resolved) corner stamp text/arguments.
 
 ## Presets
@@ -244,11 +248,11 @@ later without changing the `setTheme()` interface.
 
 ## See also
 
-[`pal`](https://andrisignorell.github.io/aurora/reference/pal.md) for
+[`pal`](https://andrisignorell.github.io/pharos/reference/pal.md) for
 the color palette registry,
-[`fm`](https://andrisignorell.github.io/aurora/reference/fm.md) for the
+[`fm`](https://andrisignorell.github.io/pharos/reference/fm.md) for the
 formatting styles referenced by `sty`,
-[`stamp`](https://andrisignorell.github.io/aurora/reference/stamp.md)
+[`stamp`](https://andrisignorell.github.io/pharos/reference/stamp.md)
 for the corner stamp mechanism.
 
 ## Examples
@@ -339,18 +343,26 @@ getTheme()
 #> 
 #> $sty
 #> $sty$abs
+#> Format name:   
+#> Description:   
 #> Definition:    digits=0, bigMark="", label="Number format for counts"
 #> Example:       314159
 #> 
 #> $sty$perc
+#> Format name:   
+#> Description:   
 #> Definition:    digits=1, fmt="%", label="Percentage number format"
-#> Example:       31415926.5%
+#> Example:       3.1e+07%
 #> 
 #> $sty$num
+#> Format name:   
+#> Description:   
 #> Definition:    digits=3, bigMark="", label="Number format for numeric values"
 #> Example:       314159.265
 #> 
 #> $sty$pval
+#> Format name:   
+#> Description:   
 #> Definition:    fmt="p", pThreshold=0.001, label="Number format for p-values"
 #> Example:       NA
 #> 

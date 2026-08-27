@@ -155,7 +155,8 @@ top and a horizontal boxplot below. When a grouping variable is
 provided, densities and boxplots are drawn for each group.
 
 Optional plot components are controlled using
-[`callIf`](https://rdrr.io/pkg/bedrock/man/callIf.html) semantics:
+[`callIf`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
+semantics:
 
 - `TRUE`: draw with defaults
 
@@ -167,20 +168,20 @@ Optional plot components are controlled using
 
 [`density`](https://rdrr.io/r/stats/density.html),
 [`boxplot`](https://rdrr.io/r/graphics/boxplot.html),
-[`callIf`](https://rdrr.io/pkg/bedrock/man/callIf.html)
+[`callIf`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
 
 Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/aurora/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/aurora/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/aurora/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/aurora/reference/plotDens.md),
-[`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/aurora/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/aurora/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/aurora/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/aurora/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/aurora/reference/plotViolin.md)
+[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
+[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
+[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
+[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
+[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
+[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
+[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
+[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
+[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
+[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
 
 ## Examples
 

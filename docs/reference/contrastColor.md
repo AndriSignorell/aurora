@@ -61,7 +61,7 @@ returns the better option.
 ## See also
 
 Other color.lookup:
-[`findColor()`](https://andrisignorell.github.io/aurora/reference/findColor.md)
+[`findColor()`](https://andrisignorell.github.io/pharos/reference/findColor.md)
 
 ## Examples
 

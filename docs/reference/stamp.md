@@ -46,12 +46,12 @@ For R results may not be satisfactory if `par(mfrow=)` is in effect.
 [`text`](https://rdrr.io/r/graphics/text.html)
 
 Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/aurora/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/aurora/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/aurora/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/aurora/reference/errBars.md),
-[`textLegend()`](https://andrisignorell.github.io/aurora/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/aurora/reference/titleRect.md)
+[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
+[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
+[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
+[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
+[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
+[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
 
 ## Examples
 

@@ -49,9 +49,9 @@ which returns the first captured group.
 ## See also
 
 [`stri_match_first_regex`](https://rdrr.io/pkg/stringi/man/stri_match.html),
-[`strExtract`](https://andrisignorell.github.io/aurora/reference/strExtract.md)
+[`strExtract`](https://andrisignorell.github.io/pharos/reference/strExtract.md)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

@@ -101,8 +101,8 @@ Confidence bands are controlled via `bandArgs`. These arguments can be:
 [`scatter.smooth`](https://rdrr.io/r/stats/scatter.smooth.html)
 
 Other graphics.trendlines:
-[`lines.lm()`](https://andrisignorell.github.io/aurora/reference/linesLm.md),
-[`lines.loess()`](https://andrisignorell.github.io/aurora/reference/lines.loess.md)
+[`lines.lm()`](https://andrisignorell.github.io/pharos/reference/linesLm.md),
+[`lines.loess()`](https://andrisignorell.github.io/pharos/reference/lines.loess.md)
 
 ## Examples
 

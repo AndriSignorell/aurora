@@ -79,7 +79,8 @@ plotArea(
 - ...:
 
   additional graphical parameters passed to
-  [`par`](https://rdrr.io/r/graphics/par.html) via `.applyParFromDots()`
+  [`par`](https://rdrr.io/r/graphics/par.html) via
+  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
   and to the plotting functions.
 
 ## Value
@@ -110,17 +111,17 @@ Row names are used as x-axis labels when available and `y` is omitted.
 ## See also
 
 Other plot.univariate:
-[`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/aurora/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/aurora/reference/plotCatDist.md),
-[`plotDens()`](https://andrisignorell.github.io/aurora/reference/plotDens.md),
-[`plotDensBox()`](https://andrisignorell.github.io/aurora/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/aurora/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/aurora/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/aurora/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/aurora/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/aurora/reference/plotViolin.md)
+[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
+[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
+[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
+[`plotDens()`](https://andrisignorell.github.io/pharos/reference/plotDens.md),
+[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
+[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
+[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
+[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
+[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
+[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
 
 ## Examples
 

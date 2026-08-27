@@ -61,7 +61,7 @@ accordingly before coercion.
 [`as.numeric`](https://rdrr.io/r/base/numeric.html),
 [`stri_extract_all_regex`](https://rdrr.io/pkg/stringi/man/stri_extract.html)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

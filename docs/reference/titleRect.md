@@ -60,12 +60,12 @@ nothing is returned
 [`title`](https://rdrr.io/r/graphics/title.html)
 
 Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/aurora/reference/barText.md),
-[`boxedText()`](https://andrisignorell.github.io/aurora/reference/boxedText.md),
-[`colLegend()`](https://andrisignorell.github.io/aurora/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/aurora/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/aurora/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/aurora/reference/textLegend.md)
+[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
+[`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md),
+[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
+[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
+[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
+[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md)
 
 ## Examples
 

@@ -30,8 +30,8 @@ setBackCol(col = "grey", region = c("plot", "figure"), border = NA)
 [`rect`](https://rdrr.io/r/graphics/rect.html)
 
 Other graphics.setup:
-[`canvas()`](https://andrisignorell.github.io/aurora/reference/canvas.md),
-[`polarGrid()`](https://andrisignorell.github.io/aurora/reference/polarGrid.md)
+[`canvas()`](https://andrisignorell.github.io/pharos/reference/canvas.md),
+[`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md)
 
 ## Examples
 

@@ -72,7 +72,8 @@ plotHexbin(
 
 - ...:
 
-  additional graphical parameters passed to `.applyParFromDots()`.
+  additional graphical parameters passed to
+  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md).
 
 ## Value
 
@@ -82,10 +83,10 @@ original `x` and `y`.
 ## See also
 
 Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/aurora/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/aurora/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
-[`plotMosaic()`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md)
+[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
+[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
+[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
+[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
+[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
+[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
+[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)

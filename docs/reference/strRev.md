@@ -28,7 +28,7 @@ which correctly handles Unicode characters and multi-byte encodings.
 
 [`stri_reverse`](https://rdrr.io/pkg/stringi/man/stri_reverse.html)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

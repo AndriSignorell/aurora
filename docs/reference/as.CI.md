@@ -1,11 +1,27 @@
 # Confidence Interval Objects
 
 Converts common confidence interval representations into a standardized
-`"ci"` object.
+object of class `"CI"`. The standardized representation removes the
+ambiguity between ordinary numeric data and confidence interval data.
 
 ## Usage
 
 ``` r
+as.CI(x, ...)
+
+# S3 method for class 'matrix'
+as.CI(x, ...)
+
+# S3 method for class 'data.frame'
+as.CI(x, estimate = "est", lower = "lci", upper = "uci", ...)
+
+# S3 method for class 'list'
+as.CI(x, ...)
+
+# S3 method for class 'CI'
+as.CI(x, ...)
+
+# Default S3 method
 as.CI(x, ...)
 
 is.CI(x)
@@ -15,90 +31,106 @@ is.CI(x)
 
 - x:
 
-  object to convert.
+  object to convert or, for `is.CI()`, object to test
 
 - ...:
 
-  further arguments passed to methods.
+  further arguments passed to methods
+
+- estimate:
+
+  name of the data-frame column containing the point estimates
+
+- lower:
+
+  name of the data-frame column containing the lower confidence limits
+
+- upper:
+
+  name of the data-frame column containing the upper confidence limits
 
 ## Value
 
-A data frame of class `"ci"` with columns:
-
-- est:
-
-  Point estimate
-
-- lci:
-
-  Lower confidence limit
-
-- uci:
-
-  Upper confidence limit
-
-Additional columns represent grouping variables.
+`as.CI()` returns a data frame of class `"CI"` containing the columns
+`est`, `lci`, and `uci`, followed by any grouping columns; `is.CI()`
+returns a single logical value
 
 ## Details
 
-A `ci` object is a data frame containing at least the columns `est`,
-`lci`, and `uci`. Additional columns are interpreted as grouping
-variables.
+A `"CI"` object is a data frame containing the columns `est`, `lci`, and
+`uci`. Additional columns are retained and can be used as grouping
+variables by functions such as
+[`plotDot`](https://andrisignorell.github.io/pharos/reference/plotDot.md).
 
-The primary purpose of `as.CI()` is to remove ambiguity between ordinary
-matrices and confidence interval data. For example, a 3-column matrix
-may either represent three groups or the columns `est`, `lci`, and
-`uci`. Wrapping the object in `as.CI()` explicitly declares that the
-structure should be treated as confidence interval data.
+The primary purpose of `as.CI()` is to declare explicitly that an object
+contains estimates and confidence limits. For example, a numeric matrix
+with three columns is normally ambiguous: its columns may represent
+three groups or the estimate, lower limit, and upper limit. Passing the
+matrix to `as.CI()` declares that its columns have the latter meaning.
 
-Supported inputs include:
+Supported inputs are:
 
-- Numeric matrices with three columns representing `est`, `lci`, and
-  `uci`.
+- a numeric matrix with exactly three columns, interpreted in the order
+  `est`, `lci`, and `uci`
 
-- Data frames containing columns for estimate, lower confidence limit,
-  and upper confidence limit.
+- a data frame containing columns for the estimates and confidence
+  limits; their names can be specified with `estimate`, `lower`, and
+  `upper`
 
-- Named lists where each element contains `c(est, lci, uci)`.
+- a list in which every element contains three values representing
+  `c(est, lci, uci)`
 
-- Results from [`tapply()`](https://rdrr.io/r/base/tapply.html) where
-  the applied function returns `c(est, lci, uci)`. Grouping dimensions
-  are automatically converted to grouping variables.
+- an array-like result from
+  [`tapply`](https://rdrr.io/r/base/tapply.html) in which every cell
+  contains `c(est, lci, uci)`; its dimensions are converted to grouping
+  variables
 
-The returned object inherits from class `"ci"`.
+- an existing `"CI"` object, which is returned unchanged
+
+The standardized object can be passed directly to
+[`plotDot`](https://andrisignorell.github.io/pharos/reference/plotDot.md)
+to display the estimates and their confidence intervals. This is
+particularly useful for matrices, because a bare matrix supplied to
+[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md)
+is interpreted as grouped estimates rather than as confidence interval
+data.
 
 ## See also
 
-[`fmCI`](https://andrisignorell.github.io/aurora/reference/fmCI.md),
-[`plotDot`](https://andrisignorell.github.io/aurora/reference/plotDot.md)
+[`plotDot`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
+[`fmCI`](https://andrisignorell.github.io/pharos/reference/fmCI.md)
 
 ## Examples
 
 ``` r
-
-# ----------------------------------------------------------
-# matrix
-# ----------------------------------------------------------
-
+# matrix containing estimate, lower limit, and upper limit
 x <- matrix(
   c(
     10, 20, 30,
      8, 18, 28,
     12, 22, 32
   ),
-  ncol = 3
+  ncol = 3,
+  dimnames = list(
+    c("A", "B", "C"),
+    c("est", "lci", "uci")
+  )
 )
 
-as.CI(x)
+ci <- as.CI(x)
+ci
 #>   est lci uci
-#> 1  10   8  12
-#> 2  20  18  22
-#> 3  30  28  32
+#> A  10   8  12
+#> B  20  18  22
+#> C  30  28  32
+is.CI(ci)
+#> [1] TRUE
 
-# ----------------------------------------------------------
-# data frame
-# ----------------------------------------------------------
+# display the estimates and confidence intervals
+plotDot(ci)
 
+
+# data frame using the standard column names
 d <- data.frame(
   est = c(10, 20),
   lci = c(8, 18),
@@ -111,10 +143,25 @@ as.CI(d)
 #> 1  10   8  12   F
 #> 2  20  18  22   M
 
-# ----------------------------------------------------------
-# tapply result
-# ----------------------------------------------------------
+# data frame using different column names
+d <- data.frame(
+  item = c("A", "B"),
+  estimate = c(10, 20),
+  lower = c(8, 18),
+  upper = c(12, 22)
+)
 
+as.CI(
+  d,
+  estimate = "estimate",
+  lower = "lower",
+  upper = "upper"
+)
+#>   est lci uci item
+#> 1  10   8  12    A
+#> 2  20  18  22    B
+
+# confidence intervals returned by tapply()
 if (FALSE) { # \dontrun{
 xci <- with(
   Pizza,

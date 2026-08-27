@@ -3,7 +3,7 @@
 are mapped to colors based on counts or proportions, optionally with text
 labels overlaid."><meta property="og:description" content="Visualizes a contingency table using a heatmap representation. Cell values
 are mapped to colors based on counts or proportions, optionally with text
-labels overlaid."><meta property="og:image" content="https://andrisignorell.github.io/aurora/logo.png"></head><body>
+labels overlaid."><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -11,7 +11,7 @@ labels overlaid."><meta property="og:image" content="https://andrisignorell.gith
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.946</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@ is simply that expression's text (e.g. <code>plotHeatmap(tab)</code>
 titles itself <code>"tab"</code>). <code>""</code>, <code>NA</code>, or <code>FALSE</code>
 suppress the title entirely and compact the top margin; any other
 string is used as given (resolved internally via
-<code>.resolveTitle()</code>).</p></dd>
+<code><a href="graphics-framework.html">.resolveTitle()</a></code>).</p></dd>
 
 
 <dt id="arg-xlab">xlab<a class="anchor" aria-label="anchor" href="#arg-xlab"></a></dt>
@@ -155,7 +155,7 @@ or a named list overriding <code><a href="https://rdrr.io/r/graphics/rect.html" 
 <dd><p>controls the corner stamp. <code>.useTheme</code> (default)
 resolves to <code>getTheme()$stamp</code>. <code>TRUE</code>/<code>FALSE</code>/
 <code>NULL</code>, or an explicit string, as for
-<code>.withGraphicsState()</code> (internal).</p></dd>
+<code><a href="graphics-framework.html">.withGraphicsState()</a></code> (internal).</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

@@ -110,5 +110,5 @@ Confidence and prediction bands are controlled via `cbandArgs` and
 [`lm`](https://rdrr.io/r/stats/lm.html)
 
 Other graphics.trendlines:
-[`lines.loess()`](https://andrisignorell.github.io/aurora/reference/lines.loess.md),
-[`splineCI`](https://andrisignorell.github.io/aurora/reference/splineCI.md)
+[`lines.loess()`](https://andrisignorell.github.io/pharos/reference/lines.loess.md),
+[`splineCI`](https://andrisignorell.github.io/pharos/reference/splineCI.md)

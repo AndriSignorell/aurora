@@ -38,14 +38,14 @@ plotHeatmap(
   main title of the plot. `NULL` (default) derives a title from the
   expression passed as `x` (via `deparse(match.call()$x)`), the same
   "substitute magic" convention used by
-  [`plotXY`](https://andrisignorell.github.io/aurora/reference/plotXY.md)/[`plotBox`](https://andrisignorell.github.io/aurora/reference/plotBox.md)/
-  [`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md)
+  [`plotXY`](https://andrisignorell.github.io/pharos/reference/plotXY.md)/[`plotBox`](https://andrisignorell.github.io/pharos/reference/plotBox.md)/
+  [`plotAssoc`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md)
   for their default titles - there's no formula pair here, just the
   single table argument, so the default is simply that expression's text
   (e.g. `plotHeatmap(tab)` titles itself `"tab"`). `""`, `NA`, or
   `FALSE` suppress the title entirely and compact the top margin; any
   other string is used as given (resolved internally via
-  `.resolveTitle()`).
+  [`.resolveTitle()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)).
 
 - xlab:
 
@@ -98,7 +98,7 @@ plotHeatmap(
 - text:
 
   logical; if `TRUE`, cell values are printed on top of the tiles using
-  [`fm()`](https://andrisignorell.github.io/aurora/reference/fm.md)
+  [`fm()`](https://andrisignorell.github.io/pharos/reference/fm.md)
   formatting.
 
 - zlim:
@@ -122,7 +122,9 @@ plotHeatmap(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, or an explicit string, as
-  for `.withGraphicsState()` (internal).
+  for
+  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
+  (internal).
 
 - ...:
 
@@ -146,18 +148,18 @@ or statistical inference.
 
 ## See also
 
-[`plotAssoc`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
+[`plotAssoc`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
 [`image`](https://rdrr.io/r/graphics/image.html),
-[theme](https://andrisignorell.github.io/aurora/reference/theme.md)
+[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
 
 Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/aurora/reference/plotBag.md),
-[`plotCor()`](https://andrisignorell.github.io/aurora/reference/plotCor.md),
-[`plotDens2D()`](https://andrisignorell.github.io/aurora/reference/plotDens2D.md),
-[`plotHexbin()`](https://andrisignorell.github.io/aurora/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md)
+[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
+[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
+[`plotCor()`](https://andrisignorell.github.io/pharos/reference/plotCor.md),
+[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
+[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
+[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
+[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
 
 ## Examples
 

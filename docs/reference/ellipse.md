@@ -29,16 +29,16 @@ An object inheriting from class `"ellipseGeometry"`.
 ## Details
 
 Use
-[`rotate`](https://andrisignorell.github.io/aurora/reference/rotate.md)
+[`rotate`](https://andrisignorell.github.io/pharos/reference/rotate.md)
 to rotate the resulting geometry.
 
 ## See also
 
 Other geometry.structures:
-[`arc()`](https://andrisignorell.github.io/aurora/reference/arc.md),
-[`band()`](https://andrisignorell.github.io/aurora/reference/band.md),
-[`bezier()`](https://andrisignorell.github.io/aurora/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/aurora/reference/circle.md),
-[`polygon()`](https://andrisignorell.github.io/aurora/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/aurora/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/aurora/reference/ring.md)
+[`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
+[`band()`](https://andrisignorell.github.io/pharos/reference/band.md),
+[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
+[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
+[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
+[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
+[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)

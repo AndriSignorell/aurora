@@ -174,16 +174,16 @@ padding.
 
 [`image`](https://rdrr.io/r/graphics/image.html),
 [`cor`](https://rdrr.io/r/stats/cor.html),
-[theme](https://andrisignorell.github.io/aurora/reference/theme.md)
+[theme](https://andrisignorell.github.io/pharos/reference/theme.md)
 
 Other plot.bivariate:
-[`plotAssoc()`](https://andrisignorell.github.io/aurora/reference/plotAssoc.md),
-[`plotBag()`](https://andrisignorell.github.io/aurora/reference/plotBag.md),
-[`plotDens2D()`](https://andrisignorell.github.io/aurora/reference/plotDens2D.md),
-[`plotHeatmap()`](https://andrisignorell.github.io/aurora/reference/plotHeatmap.md),
-[`plotHexbin()`](https://andrisignorell.github.io/aurora/reference/plotHexbin.md),
-[`plotMosaic()`](https://andrisignorell.github.io/aurora/reference/plotMosaic.md),
-[`plotXY()`](https://andrisignorell.github.io/aurora/reference/plotXY.md)
+[`plotAssoc()`](https://andrisignorell.github.io/pharos/reference/plotAssoc.md),
+[`plotBag()`](https://andrisignorell.github.io/pharos/reference/plotBag.md),
+[`plotDens2D()`](https://andrisignorell.github.io/pharos/reference/plotDens2D.md),
+[`plotHeatmap()`](https://andrisignorell.github.io/pharos/reference/plotHeatmap.md),
+[`plotHexbin()`](https://andrisignorell.github.io/pharos/reference/plotHexbin.md),
+[`plotMosaic()`](https://andrisignorell.github.io/pharos/reference/plotMosaic.md),
+[`plotXY()`](https://andrisignorell.github.io/pharos/reference/plotXY.md)
 
 ## Examples
 

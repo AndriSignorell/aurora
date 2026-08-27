@@ -35,13 +35,13 @@ Typically used to represent confidence or prediction bands.
 [graphics::polygon](https://rdrr.io/r/graphics/polygon.html)
 
 Other geometry.structures:
-[`arc()`](https://andrisignorell.github.io/aurora/reference/arc.md),
-[`bezier()`](https://andrisignorell.github.io/aurora/reference/bezier.md),
-[`circle()`](https://andrisignorell.github.io/aurora/reference/circle.md),
-[`ellipse()`](https://andrisignorell.github.io/aurora/reference/ellipse.md),
-[`polygon()`](https://andrisignorell.github.io/aurora/reference/polygon.md),
-[`regPolygon()`](https://andrisignorell.github.io/aurora/reference/regPolygon.md),
-[`ring()`](https://andrisignorell.github.io/aurora/reference/ring.md)
+[`arc()`](https://andrisignorell.github.io/pharos/reference/arc.md),
+[`bezier()`](https://andrisignorell.github.io/pharos/reference/bezier.md),
+[`circle()`](https://andrisignorell.github.io/pharos/reference/circle.md),
+[`ellipse()`](https://andrisignorell.github.io/pharos/reference/ellipse.md),
+[`polygon()`](https://andrisignorell.github.io/pharos/reference/polygon.md),
+[`regPolygon()`](https://andrisignorell.github.io/pharos/reference/regPolygon.md),
+[`ring()`](https://andrisignorell.github.io/pharos/reference/ring.md)
 
 ## Examples
 

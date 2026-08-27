@@ -1,6 +1,7 @@
 # Plot Methods for Lorenz Curve Objects
 
-Visualize objects of class `"Lc"` and `"LcList"` returned by `lc()`. The
+Visualize objects of class `"Lc"` and `"LcList"` returned by
+[`DescToolsX::lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html). The
 [`plot()`](https://rdrr.io/r/graphics/plot.default.html) method draws a
 new Lorenz curve plot including the line of perfect equality;
 [`lines()`](https://rdrr.io/r/graphics/lines.html) and
@@ -14,15 +15,19 @@ plot.
 plot(
   x,
   main = NULL,
-  xlab = "p",
-  ylab = "L(p)",
+  xlab = NULL,
+  ylab = NULL,
   xlim = NULL,
   ylim = NULL,
   general = FALSE,
+  col = NULL,
   line = TRUE,
-  points = TRUE,
-  grid = TRUE,
-  box = TRUE,
+  points = NULL,
+  eqline = TRUE,
+  grid = .useTheme,
+  box = .useTheme,
+  cbandArgs = NA,
+  stamp = .useTheme,
   ...
 )
 
@@ -39,7 +44,7 @@ lines(x, col = NULL, ...)
 points(x, col = NULL, ...)
 
 # S3 method for class 'LcList'
-plot(x, col = NULL, ...)
+plot(x, col = NULL, general = FALSE, ylim = NULL, ...)
 ```
 
 ## Arguments
@@ -51,80 +56,102 @@ plot(x, col = NULL, ...)
 
 - main, xlab, ylab:
 
-  main title and axis labels, used by `plot.Lc()` only. Defaults are
-  `NULL`, `"p"`, and `"L(p)"`, respectively.
+  main title and axis labels, used by `plot.Lc()` only. All default to
+  `NULL`: no title, `"p"`, and `"L(p)"` (`"GL(p)"` if `general = TRUE`),
+  respectively.
 
 - xlim, ylim:
 
   numeric vectors of length 2 giving axis limits, used by `plot.Lc()`
-  only. Default `NULL`, which resolves to `c(0, 1)`.
+  and `plot.LcList()`. Default `NULL`, which resolves to `c(0, 1)` for
+  `xlim` and, for `ylim`, to `c(0, 1)` for the standard and
+  `c(0, max(L))` for the generalized curve.
 
 - general:
 
   logical. If `TRUE`, the generalized Lorenz curve (scaled by the mean)
-  is displayed instead of the standard curve. Default is `FALSE`. Used
-  by `plot.Lc()`, `lines.Lc()`, and `points.Lc()`; for the `"LcList"`
-  methods it is passed through `...` to the underlying `Lc` method.
+  is displayed instead of the standard curve. Default is `FALSE`.
+
+- col:
+
+  color of curve and symbols. For `plot.Lc()`, `lines.Lc()` and
+  `points.Lc()` a single color (default `NULL`, i.e. `"black"` in
+  `plot.Lc()` and the device default in the low-level methods). For the
+  `"LcList"` methods a vector recycled to the number of groups (default
+  `NULL`, i.e. `seq_len(k)`).
 
 - line:
 
   logical or list, used by `plot.Lc()` to control drawing of the Lorenz
-  curve line. `TRUE` (default) draws the line with package defaults
-  (`col = "black"`, `lty = 1`, `lwd = 2`); `FALSE` suppresses it; a list
-  overrides individual defaults and is forwarded to
-  [`lines()`](https://rdrr.io/r/graphics/lines.html).
+  curve. `TRUE` (default) draws it with package defaults (`lty = 1`,
+  `lwd = 2`); `FALSE` suppresses it (and the confidence band); a list
+  overrides individual defaults and is forwarded to `lines.Lc()`.
 
 - points:
 
-  logical or list, used by `plot.Lc()` to control drawing of points on
-  the Lorenz curve. `TRUE` (default) draws points with package defaults
-  (`pch = 21`, `bg = "white"`, `col = "black"`, `cex = 1.4`); `FALSE`
+  `NULL`, logical or list, used by `plot.Lc()` to control drawing of
+  symbols on the curve. `NULL` (default) is automatic: symbols are drawn
+  only while the curve has at most
+  `getOption("DescToolsX.plot.maxSymbols")` knots (100 by default),
+  which keeps large samples legible. `TRUE` always draws them with
+  package defaults (`pch = 21`, `bg = "white"`, `cex = 1.4`); `FALSE`
   suppresses them; a list overrides individual defaults and is forwarded
-  to [`points()`](https://rdrr.io/r/graphics/points.html).
+  to `points.Lc()`.
 
-- grid:
+- eqline:
 
-  logical or list, used by `plot.Lc()` only. If `TRUE` (default) or a
-  list, a grid is drawn before the curve via
-  [`grid()`](https://rdrr.io/r/graphics/grid.html); a list is forwarded
-  as arguments to that function.
+  logical or list, used by `plot.Lc()` only. Controls the line of
+  perfect equality: `TRUE` (default) draws it with package defaults
+  (`col = "grey50"`, `lty = 2`), `FALSE` suppresses it, a list is
+  forwarded to [`abline()`](https://rdrr.io/r/graphics/abline.html). Its
+  slope is `1` for the standard and `max(L)` for the generalized curve;
+  overriding `a`/`b` is possible but rarely sensible.
 
-- box:
+- grid, box:
 
-  logical, used by `plot.Lc()` only. If `TRUE` (default), a box is drawn
-  around the plot area.
+  callIf-style specs for the grid and the box around the plot region,
+  used by `plot.Lc()` only. `.useTheme` (default) lets
+  [`getTheme()`](https://andrisignorell.github.io/pharos/reference/theme.md)
+  decide, `TRUE`/`FALSE` force drawing/suppression, and a named list is
+  forwarded to [`grid()`](https://rdrr.io/r/graphics/grid.html) resp.
+  [`box()`](https://rdrr.io/r/graphics/box.html).
+
+- cbandArgs:
+
+  used by `plot.Lc()` and `lines.Lc()`. `NA` to suppress the confidence
+  band (default), or a list of arguments passed to
+  [`DescToolsX::predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html)
+  to control bootstrap confidence intervals.
+
+- stamp:
+
+  controls the corner stamp. `.useTheme` (default) resolves to
+  `getTheme()$stamp`. `TRUE`/`FALSE`/ `NULL`, a string, or a named list
+  for
+  [`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md).
 
 - ...:
 
   further arguments. For `plot.Lc()`, graphical parameters passed to
   [`par()`](https://rdrr.io/r/graphics/par.html) via
-  `.applyParFromDots()` (e.g. `mar`, `cex.axis`, `las`). For
-  `lines.Lc()` and `points.Lc()`, further arguments passed on to
+  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
+  (e.g. `mar`, `cex.axis`, `las`). For `lines.Lc()` and `points.Lc()`,
+  further arguments passed on to
   [`lines()`](https://rdrr.io/r/graphics/lines.html) and
   [`points()`](https://rdrr.io/r/graphics/points.html), respectively.
-  For the `"LcList"` methods, arguments passed through to the
-  corresponding `Lc` method for each group.
-
-- col:
-
-  color for the curve or points. For `lines.Lc()` and `points.Lc()`, a
-  single color (default `NULL`, i.e. the current device default). For
-  the `"LcList"` methods, a vector recycled over groups (default `NULL`,
-  i.e. `seq_len(k)`).
+  For `plot.LcList()`, arguments are passed to `plot.Lc()` for the first
+  group and, restricted to those the low-level method understands, to
+  `lines.Lc()` for the remaining ones.
 
 - lwd:
 
-  line width, used by `lines.Lc()` only. Default is `2`.
+  line width, used by `plot.Lc()` (via `line`) and `lines.Lc()`. Default
+  is `2`.
 
 - lty:
 
-  line type, used by `lines.Lc()` only. Default is `1`.
-
-- cbandArgs:
-
-  used by `lines.Lc()` only. `NA` to suppress the confidence band
-  (default), or a list of arguments passed to `predict.Lc()` to control
-  bootstrap confidence intervals.
+  line type, used by `plot.Lc()` (via `line`) and `lines.Lc()`. Default
+  is `1`.
 
 - pch:
 
@@ -140,19 +167,35 @@ For `"LcList"` objects (grouped Lorenz curves),
 [`plot()`](https://rdrr.io/r/graphics/plot.default.html) draws the first
 group and overlays the remaining groups with
 [`lines()`](https://rdrr.io/r/graphics/lines.html). Colors cycle
-automatically when `col` is not supplied.
+automatically when `col` is not supplied and are recycled to the number
+of groups otherwise.
 
-The confidence band in `lines.Lc()` is drawn via `cbandArgs`. Pass a
-list of arguments to `predict.Lc()` to control the bootstrap (e.g.
+The curve of `plot.Lc()` is drawn by `lines.Lc()` and the symbols by
+`points.Lc()`, so all three methods share one code path and one set of
+semantics - including the confidence band, which is controlled by
+`cbandArgs` in `plot.Lc()` exactly as it is in `lines.Lc()`. Pass a list
+of arguments to
+[`DescToolsX::predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html)
+to control the bootstrap (e.g.
 `cbandArgs = list(conf.level = 0.90, n = 500)`). Set `cbandArgs = NA`
-(default) to suppress the band.
+(default) to suppress the band. Note that `line = FALSE` suppresses the
+band along with the curve.
+
+With `general = TRUE` the generalized Lorenz curve is displayed. It ends
+at the mean rather than at 1, so the default `ylim` and the slope of the
+equality line follow the data; for `"LcList"` objects the panel is sized
+to accommodate *all* groups, not just the first.
 
 ## See also
 
-`lc()` for computing the Lorenz curve, `predict.Lc()` for bootstrap
-confidence intervals, `gini()` for the Gini coefficient.
+[`DescToolsX::lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html) for
+computing the Lorenz curve,
+[`DescToolsX::predict.Lc()`](https://rdrr.io/pkg/DescToolsX/man/lc.html)
+for bootstrap confidence intervals,
+[`DescToolsX::gini()`](https://rdrr.io/pkg/DescToolsX/man/gini.html) for
+the Gini coefficient.
 
 Other plot.s3:
-[`plot.BlandAltman()`](https://andrisignorell.github.io/aurora/reference/plot.BlandAltman.md),
-[`plot.Desc.qn()`](https://andrisignorell.github.io/aurora/reference/plot.Desc.qn.md),
-[`plot.Desc.table()`](https://andrisignorell.github.io/aurora/reference/plot.Desc.table.md)
+[`plot.BlandAltman()`](https://andrisignorell.github.io/pharos/reference/plot.BlandAltman.md),
+[`plot.Desc.qn()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.qn.md),
+[`plot.Desc.table()`](https://andrisignorell.github.io/pharos/reference/plot.Desc.table.md)

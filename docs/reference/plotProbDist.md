@@ -29,7 +29,7 @@ plotProbDist(
 
   numeric vector of break points defining the boundaries between shaded
   areas. The first and last value define the plot range passed to
-  [`shade()`](https://andrisignorell.github.io/aurora/reference/shade.md);
+  [`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md);
   interior values are the actual boundaries.
 
 - FUN:
@@ -55,7 +55,7 @@ plotProbDist(
 - density:
 
   density of shading lines passed to
-  [`shade()`](https://andrisignorell.github.io/aurora/reference/shade.md).
+  [`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md).
   Default is `7`.
 
 - ylab:
@@ -68,7 +68,7 @@ plotProbDist(
   (default) suppresses labels. `TRUE` uses `LETTERS` as default labels.
   A character vector sets explicit labels. A named list overrides
   individual arguments passed to
-  [`boxedText()`](https://andrisignorell.github.io/aurora/reference/boxedText.md)
+  [`boxedText()`](https://andrisignorell.github.io/pharos/reference/boxedText.md)
   (e.g. `list(cex = 3)` or `list(x = c(-2, 3), y = 0.1)` for manual
   positioning).
 
@@ -98,7 +98,8 @@ plotProbDist(
 
   further graphical parameters passed to
   [`curve()`](https://rdrr.io/r/graphics/curve.html) and
-  `.applyParFromDots()`, e.g. `las`, `col.axis`.
+  [`.applyParFromDots()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md),
+  e.g. `las`, `col.axis`.
 
 ## Value
 
@@ -109,8 +110,8 @@ plotProbDist(
 [`curve`](https://rdrr.io/r/graphics/curve.html)
 
 Other plot.distribution:
-[`plotFun()`](https://andrisignorell.github.io/aurora/reference/plotFun.md),
-[`shade()`](https://andrisignorell.github.io/aurora/reference/shade.md)
+[`plotFun()`](https://andrisignorell.github.io/pharos/reference/plotFun.md),
+[`shade()`](https://andrisignorell.github.io/pharos/reference/shade.md)
 
 ## Examples
 

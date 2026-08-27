@@ -112,7 +112,9 @@ plotDens(
 
   controls the corner stamp. `.useTheme` (default) resolves to
   `getTheme()$stamp`. `TRUE`/`FALSE`/`NULL`, or an explicit string, as
-  for `.withGraphicsState()` (internal).
+  for
+  [`.withGraphicsState()`](https://andrisignorell.github.io/pharos/reference/graphics-framework.md)
+  (internal).
 
 ## Value
 
@@ -121,7 +123,7 @@ Invisibly returns `NULL`.
 ## Details
 
 The function defers entirely to
-[`resolveFormula()`](https://rdrr.io/pkg/bedrock/man/resolveFormula.html)'s
+[`resolveFormula()`](https://andrisignorell.github.io/bedrock/reference/resolveFormula.html)'s
 design classification to pick a mode when `type = NULL`:
 
 - `y ~ g` (`g` categorical) → density, one curve per group.
@@ -137,27 +139,27 @@ formula's shape is ambiguous).
 
 Graphical elements such as grids are controlled via the unified plot
 design system using
-[`bedrock::callIf()`](https://rdrr.io/pkg/bedrock/man/callIf.html) and
-`.theme()`.
+[`bedrock::callIf()`](https://andrisignorell.github.io/bedrock/reference/callIf.html)
+and `.theme()`.
 
 ## See also
 
 [`density`](https://rdrr.io/r/stats/density.html),
 [`cdplot`](https://rdrr.io/r/graphics/cdplot.html),
-[`resolveFormula`](https://rdrr.io/pkg/bedrock/man/resolveFormula.html)
+[`resolveFormula`](https://andrisignorell.github.io/bedrock/reference/resolveFormula.html)
 
 Other plot.univariate:
-[`plotArea()`](https://andrisignorell.github.io/aurora/reference/plotArea.md),
-[`plotBar()`](https://andrisignorell.github.io/aurora/reference/plotBar.md),
-[`plotBox()`](https://andrisignorell.github.io/aurora/reference/plotBox.md),
-[`plotCatDist()`](https://andrisignorell.github.io/aurora/reference/plotCatDist.md),
-[`plotDensBox()`](https://andrisignorell.github.io/aurora/reference/plotDensBox.md),
-[`plotDot()`](https://andrisignorell.github.io/aurora/reference/plotDot.md),
-[`plotECDF()`](https://andrisignorell.github.io/aurora/reference/plotECDF.md),
-[`plotFdist()`](https://andrisignorell.github.io/aurora/reference/plotFdist.md),
-[`plotLines()`](https://andrisignorell.github.io/aurora/reference/plotLines.md),
-[`plotQQ()`](https://andrisignorell.github.io/aurora/reference/plotQQ.md),
-[`plotViolin()`](https://andrisignorell.github.io/aurora/reference/plotViolin.md)
+[`plotArea()`](https://andrisignorell.github.io/pharos/reference/plotArea.md),
+[`plotBar()`](https://andrisignorell.github.io/pharos/reference/plotBar.md),
+[`plotBox()`](https://andrisignorell.github.io/pharos/reference/plotBox.md),
+[`plotCatDist()`](https://andrisignorell.github.io/pharos/reference/plotCatDist.md),
+[`plotDensBox()`](https://andrisignorell.github.io/pharos/reference/plotDensBox.md),
+[`plotDot()`](https://andrisignorell.github.io/pharos/reference/plotDot.md),
+[`plotECDF()`](https://andrisignorell.github.io/pharos/reference/plotECDF.md),
+[`plotFdist()`](https://andrisignorell.github.io/pharos/reference/plotFdist.md),
+[`plotLines()`](https://andrisignorell.github.io/pharos/reference/plotLines.md),
+[`plotQQ()`](https://andrisignorell.github.io/pharos/reference/plotQQ.md),
+[`plotViolin()`](https://andrisignorell.github.io/pharos/reference/plotViolin.md)
 
 ## Examples
 

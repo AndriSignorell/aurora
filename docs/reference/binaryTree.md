@@ -34,7 +34,7 @@ plotBinaryTree(
 - text:
 
   properties of the text, can be any of the arguments of
-  [`boxedText`](https://andrisignorell.github.io/aurora/reference/boxedText.md)
+  [`boxedText`](https://andrisignorell.github.io/pharos/reference/boxedText.md)
   (besides geometry and label).
 
 - line:
@@ -44,7 +44,7 @@ plotBinaryTree(
 - ...:
 
   the dots are sent to
-  [`canvas`](https://andrisignorell.github.io/aurora/reference/canvas.md).
+  [`canvas`](https://andrisignorell.github.io/pharos/reference/canvas.md).
 
 ## Value
 
@@ -70,14 +70,15 @@ improvements by the package author.
 ## See also
 
 Other plot.special:
-[`plotCirc()`](https://andrisignorell.github.io/aurora/reference/plotCirc.md),
-[`plotMiss()`](https://andrisignorell.github.io/aurora/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/aurora/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/aurora/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/aurora/reference/plotTernary.md),
-[`plotTimeSeries()`](https://andrisignorell.github.io/aurora/reference/plotTimeSeries.md),
-[`plotTreemap()`](https://andrisignorell.github.io/aurora/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/aurora/reference/plotWeb.md)
+[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
+[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
+[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
+[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
+[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
+[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
+[`plotTimeSeries()`](https://andrisignorell.github.io/pharos/reference/plotTimeSeries.md),
+[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
+[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
 
 ## Examples
 

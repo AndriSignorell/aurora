@@ -160,12 +160,12 @@ similar function in package plotrix
 (lacking rotation option)
 
 Other graphics.annotation:
-[`barText()`](https://andrisignorell.github.io/aurora/reference/barText.md),
-[`colLegend()`](https://andrisignorell.github.io/aurora/reference/colLegend.md),
-[`errBars()`](https://andrisignorell.github.io/aurora/reference/errBars.md),
-[`stamp()`](https://andrisignorell.github.io/aurora/reference/stamp.md),
-[`textLegend()`](https://andrisignorell.github.io/aurora/reference/textLegend.md),
-[`titleRect()`](https://andrisignorell.github.io/aurora/reference/titleRect.md)
+[`barText()`](https://andrisignorell.github.io/pharos/reference/barText.md),
+[`colLegend()`](https://andrisignorell.github.io/pharos/reference/colLegend.md),
+[`errBars()`](https://andrisignorell.github.io/pharos/reference/errBars.md),
+[`stamp()`](https://andrisignorell.github.io/pharos/reference/stamp.md),
+[`textLegend()`](https://andrisignorell.github.io/pharos/reference/textLegend.md),
+[`titleRect()`](https://andrisignorell.github.io/pharos/reference/titleRect.md)
 
 ## Examples
 

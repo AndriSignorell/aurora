@@ -42,10 +42,10 @@ length of width.
 
 ## See also
 
-[`strAlign`](https://andrisignorell.github.io/aurora/reference/strAlign.md),
-[`strTrunc`](https://andrisignorell.github.io/aurora/reference/strTrunc.md)
+[`strAlign`](https://andrisignorell.github.io/pharos/reference/strAlign.md),
+[`strTrunc`](https://andrisignorell.github.io/pharos/reference/strTrunc.md)
 
-[string-overview](https://andrisignorell.github.io/aurora/reference/string-overview.md)
+[string-overview](https://andrisignorell.github.io/pharos/reference/string-overview.md)
 for an overview of all string utilities in pharos.
 
 ## Examples

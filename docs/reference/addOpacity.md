@@ -27,11 +27,11 @@ Character vector of hexadecimal colors with alpha channel.
 [grDevices::adjustcolor](https://rdrr.io/r/grDevices/adjustcolor.html)
 
 Other color.manipulation:
-[`colToOpaque()`](https://andrisignorell.github.io/aurora/reference/colToOpaque.md),
-[`darken()`](https://andrisignorell.github.io/aurora/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/aurora/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/aurora/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/aurora/reference/mixColors.md)
+[`colToOpaque()`](https://andrisignorell.github.io/pharos/reference/colToOpaque.md),
+[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
+[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
+[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
+[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
 
 ## Examples
 

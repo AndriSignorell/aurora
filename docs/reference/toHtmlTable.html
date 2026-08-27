@@ -7,7 +7,7 @@ preview.html.'><meta property="og:description" content='Converts a matrix (or ve
 optional row/column headers, caption, per-column alignment and widths.
 The result has class c("html", "character") (see
 as.html) and prints as a formatted text table via
-preview.html.'><meta property="og:image" content="https://andrisignorell.github.io/aurora/logo.png"></head><body>
+preview.html.'><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +15,7 @@ preview.html.'><meta property="og:image" content="https://andrisignorell.github.
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.946</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,9 @@ The result has class <code>c("html", "character")</code> (see
 <span>  border <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  tableWidth <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  captionAlign <span class="op">=</span> <span class="st">"center"</span>,</span>
-<span>  frame <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  frame <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  rowNames <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  colNames <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -121,6 +123,16 @@ to the number of columns including an optional rowname column; use
 <dd><p>logical; if <code>TRUE</code>, draw outer frame and group rules
 (<code>frame="hsides" rules="groups"</code>)</p></dd>
 
+
+<dt id="arg-rownames">rowNames<a class="anchor" aria-label="anchor" href="#arg-rownames"></a></dt>
+<dd><p>logical; render the row names as a leading header
+column. Ignored when <code>m</code> has none</p></dd>
+
+
+<dt id="arg-colnames">colNames<a class="anchor" aria-label="anchor" href="#arg-colnames"></a></dt>
+<dd><p>logical; render the column names as a header row.
+Ignored when <code>m</code> has none</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -128,10 +140,13 @@ to the number of columns including an optional rowname column; use
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="https://rdrr.io/pkg/bedrock/man/appendEnum.html" class="external-link">bedrock::appendEnum</a></p>
+    <div class="dont-index"><p><a href="https://andrisignorell.github.io/bedrock/reference/appendEnum.html" class="external-link">bedrock::appendEnum</a></p>
 <p>Other html:
+<code><a href="as.fileLink.html">as.fileLink()</a></code>,
 <code><a href="as.html.html">as.html()</a></code>,
 <code><a href="as.img.html">as.img()</a></code>,
+<code><a href="embedFile.html">embedFile()</a></code>,
+<code><a href="escapeHtml.html">escapeHtml()</a></code>,
 <code><a href="htmlNotation.html">htmlNotation</a></code>,
 <code><a href="htmlSubscript.html">htmlSubscript</a></code></p></div>
     </div>

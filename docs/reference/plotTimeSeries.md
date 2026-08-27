@@ -53,14 +53,15 @@ Rewritten based on ideas of M.Huerzeler
 [`ts`](https://rdrr.io/r/stats/ts.html)
 
 Other plot.special:
-[`plotBinaryTree()`](https://andrisignorell.github.io/aurora/reference/binaryTree.md),
-[`plotCirc()`](https://andrisignorell.github.io/aurora/reference/plotCirc.md),
-[`plotMiss()`](https://andrisignorell.github.io/aurora/reference/plotMiss.md),
-[`plotPolar()`](https://andrisignorell.github.io/aurora/reference/plotPolar.md),
-[`plotPropCI()`](https://andrisignorell.github.io/aurora/reference/plotPropCI.md),
-[`plotTernary()`](https://andrisignorell.github.io/aurora/reference/plotTernary.md),
-[`plotTreemap()`](https://andrisignorell.github.io/aurora/reference/plotTreemap.md),
-[`plotWeb()`](https://andrisignorell.github.io/aurora/reference/plotWeb.md)
+[`plotBinaryTree()`](https://andrisignorell.github.io/pharos/reference/binaryTree.md),
+[`plotCirc()`](https://andrisignorell.github.io/pharos/reference/plotCirc.md),
+[`plotLift()`](https://andrisignorell.github.io/pharos/reference/plotLift.md),
+[`plotMiss()`](https://andrisignorell.github.io/pharos/reference/plotMiss.md),
+[`plotPolar()`](https://andrisignorell.github.io/pharos/reference/plotPolar.md),
+[`plotPropCI()`](https://andrisignorell.github.io/pharos/reference/plotPropCI.md),
+[`plotTernary()`](https://andrisignorell.github.io/pharos/reference/plotTernary.md),
+[`plotTreemap()`](https://andrisignorell.github.io/pharos/reference/plotTreemap.md),
+[`plotWeb()`](https://andrisignorell.github.io/pharos/reference/plotWeb.md)
 
 ## Examples
 

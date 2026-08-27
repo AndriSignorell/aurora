@@ -24,8 +24,8 @@ A named character vector of hex color codes.
 ## See also
 
 Other color.palettes:
-[`pal()`](https://andrisignorell.github.io/aurora/reference/pal.md),
-[`palNames()`](https://andrisignorell.github.io/aurora/reference/palNames.md)
+[`pal()`](https://andrisignorell.github.io/pharos/reference/pal.md),
+[`palNames()`](https://andrisignorell.github.io/pharos/reference/palNames.md)
 
 ## Examples
 

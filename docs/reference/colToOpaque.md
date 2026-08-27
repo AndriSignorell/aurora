@@ -40,11 +40,11 @@ color.
 ## See also
 
 Other color.manipulation:
-[`addOpacity()`](https://andrisignorell.github.io/aurora/reference/addOpacity.md),
-[`darken()`](https://andrisignorell.github.io/aurora/reference/darken.md),
-[`fade()`](https://andrisignorell.github.io/aurora/reference/fade.md),
-[`lighten()`](https://andrisignorell.github.io/aurora/reference/lighten.md),
-[`mixColors()`](https://andrisignorell.github.io/aurora/reference/mixColors.md)
+[`addOpacity()`](https://andrisignorell.github.io/pharos/reference/addOpacity.md),
+[`darken()`](https://andrisignorell.github.io/pharos/reference/darken.md),
+[`fade()`](https://andrisignorell.github.io/pharos/reference/fade.md),
+[`lighten()`](https://andrisignorell.github.io/pharos/reference/lighten.md),
+[`mixColors()`](https://andrisignorell.github.io/pharos/reference/mixColors.md)
 
 ## Examples
 

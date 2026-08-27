@@ -5,7 +5,7 @@ legend.  Useful for placing text or other annotations at
 consistent, region-aware positions.'><meta property="og:description" content='Returns the xy-coordinates and text-adjustment values for named anchor
 positions such as "topleft", "center", etc., as used by
 legend.  Useful for placing text or other annotations at
-consistent, region-aware positions.'><meta property="og:image" content="https://andrisignorell.github.io/aurora/logo.png"></head><body>
+consistent, region-aware positions.'><meta property="og:image" content="https://andrisignorell.github.io/pharos/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -13,7 +13,7 @@ consistent, region-aware positions.'><meta property="og:image" content="https://
 
     <a class="navbar-brand me-2" href="../index.html">pharos</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.939</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.946</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ consistent, region-aware positions.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">abcCoords</span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="st">"topleft"</span>,</span>
-<span>  region <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"figure"</span>, <span class="st">"plot"</span>, <span class="st">"device"</span><span class="op">)</span>,</span>
+<span>  region <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"plot"</span>, <span class="st">"figure"</span>, <span class="st">"device"</span><span class="op">)</span>,</span>
 <span>  cex <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  inset <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -67,8 +67,9 @@ of <code>"bottomright"</code>, <code>"bottom"</code>, <code>"bottomleft"</code>,
 
 
 <dt id="arg-region">region<a class="anchor" aria-label="anchor" href="#arg-region"></a></dt>
-<dd><p>one of <code>"figure"</code> (default), <code>"plot"</code>, or
-<code>"device"</code>.  Determines the coordinate region used.</p></dd>
+<dd><p>one of <code>"plot"</code> (default), <code>"figure"</code>, or
+<code>"device"</code>.  Determines the coordinate region used.  See Details
+for the clipping that comes with the latter two.</p></dd>
 
 
 <dt id="arg-cex">cex<a class="anchor" aria-label="anchor" href="#arg-cex"></a></dt>
@@ -101,7 +102,8 @@ The inset is computed in character units via <code><a href="https://rdrr.io/r/gr
 <code><a href="https://rdrr.io/r/graphics/strwidth.html" class="external-link">strheight</a></code>, making it robust to device resizing, font
 changes, and plot-range scaling.</p>
 <p>Three regions are supported:</p><dl><dt><code>"plot"</code></dt>
-<dd><p>The inner plot area (<code>par("usr")</code>).</p></dd>
+<dd><p>The inner plot area (<code>par("usr")</code>).  The
+default, and the region <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code> positions in.</p></dd>
 
 <dt><code>"figure"</code></dt>
 <dd><p>The figure region within the device, accounting
@@ -111,7 +113,12 @@ for <code>par("fig")</code>.</p></dd>
 <dd><p>The full device area.</p></dd>
 
 
-</dl></div>
+</dl><p>Coordinates for <code>"figure"</code> and <code>"device"</code> lie outside
+<code>par("usr")</code> and are therefore clipped away by <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>
+and friends unless the drawing call sets <code>xpd = NA</code>.  The returned
+values are in user space either way; only the clipping has to be turned
+off by the caller.</p>
+    </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code></p>
@@ -133,10 +140,10 @@ for <code>par("fig")</code>.</p></dd>
 <span class="r-in"><span><span class="fu">abcCoords</span><span class="op">(</span><span class="st">"bottomleft"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $xy</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $xy$x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.8287469</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $xy$y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -3.399057</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -2.580691</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $adj</span>
@@ -144,20 +151,18 @@ for <code>par("fig")</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># place text at a named position</span></span></span>
-<span class="r-in"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">abcCoords</span><span class="op">(</span><span class="st">"bottomleft"</span>, region <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">y</span>, labels <span class="op">=</span> <span class="st">"My Label"</span>,</span></span>
-<span class="r-in"><span>     adj <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">adj</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">abcCoords</span><span class="op">(</span><span class="st">"bottomleft"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">y</span>, labels <span class="op">=</span> <span class="st">"My Label"</span>, adj <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">adj</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># all nine positions with inset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="st">"top"</span>, <span class="st">"topright"</span>,</span></span>
 <span class="r-in"><span>         <span class="st">"left"</span>,    <span class="st">"center"</span>, <span class="st">"right"</span>,</span></span>
 <span class="r-in"><span>         <span class="st">"bottomleft"</span>, <span class="st">"bottom"</span>, <span class="st">"bottomright"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>    <span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">abcCoords</span><span class="op">(</span><span class="va">p</span>, region <span class="op">=</span> <span class="st">"plot"</span>, inset <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">abcCoords</span><span class="op">(</span><span class="va">p</span>, inset <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">y</span>,</span></span>
-<span class="r-in"><span>         labels <span class="op">=</span> <span class="va">p</span>, adj <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">adj</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span>         labels <span class="op">=</span> <span class="va">p</span>, adj <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">adj</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="abcCoords-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $topleft</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -185,6 +190,12 @@ for <code>par("fig")</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bottomright</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># the margins need xpd = NA, whatever the coordinates say</span></span></span>
+<span class="r-in"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">abcCoords</span><span class="op">(</span><span class="st">"bottomright"</span>, region <span class="op">=</span> <span class="st">"figure"</span>, inset <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">x</span>, y <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">xy</span><span class="op">$</span><span class="va">y</span>, labels <span class="op">=</span> <span class="st">"source: ..."</span>,</span></span>
+<span class="r-in"><span>     adj <span class="op">=</span> <span class="va">xy</span><span class="op">$</span><span class="va">adj</span>, cex <span class="op">=</span> <span class="fl">0.7</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="abcCoords-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

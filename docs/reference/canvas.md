@@ -47,8 +47,8 @@ The plot is created with these settings:
 ## See also
 
 Other graphics.setup:
-[`polarGrid()`](https://andrisignorell.github.io/aurora/reference/polarGrid.md),
-[`setBackCol()`](https://andrisignorell.github.io/aurora/reference/setBackCol.md)
+[`polarGrid()`](https://andrisignorell.github.io/pharos/reference/polarGrid.md),
+[`setBackCol()`](https://andrisignorell.github.io/pharos/reference/setBackCol.md)
 
 ## Examples
 
